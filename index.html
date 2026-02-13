@@ -257,7 +257,7 @@
         }
 
         .card.card--light p {
-            color: var(--black) !important;
+            color: var(--black);
         }
 
         .card-footer {
@@ -513,9 +513,7 @@
             color: var(--text-light);
         }
 
-        .clean-list {
-            margin-left: 0;
-        }
+
 
         .highlight-box {
             margin-top: 40px;
@@ -619,23 +617,19 @@
         }
 
 
+
+        .card--red-shadow {
+            background: var(--red);
+            color: white;
+            border: none;
+            box-shadow: 15px 15px 0px var(--black);
+        }
+
         .catalog-grid--single-col {
             grid-template-columns: 1fr;
         }
 
 
-        .img-stack-item--fixed-height {
-            height: 300px;
-            /* Ensure other properties match img-stack img if needed,
-               but img-stack img selector is stronger (specificity 0,2,1 vs 0,1,0).
-               Actually, .img-stack img is class+tag = 0,1,1.
-               .img-stack-item--fixed-height is class = 0,1,0.
-               Wait, specificity of `.img-stack img` is (0,1,1) if img-stack is class.
-               Specificity of `.img-stack-item--fixed-height` is (0,1,0).
-               To override `height: 200px` from `.img-stack img`, we might need !important
-               or higher specificity like `.img-stack .img-stack-item--fixed-height`.
-            */
-        }
         .img-stack .img-stack-item--fixed-height {
             height: 300px;
         }
@@ -771,8 +765,7 @@
         <section id="eixos">
             <div class="section-label stamped">EIXOS</div>
             <div class="catalog-grid catalog-grid--single-col">
-                <div class="card"
-                    style="background: var(--red); color: white; border: none; box-shadow: 15px 15px 0px var(--black);">
+                <div class="card card--red-shadow">
                     <div class="card-content" style="padding: 60px;">
                         <ul class="eixos-list">
                             <li>Teatro e performance</li>
@@ -928,7 +921,7 @@
                     <div class="card-content" style="padding: 50px;">
                         <span class="card-tag">PESQUISA & CRIAÇÃO COLETIVA</span>
                         <h3 style="font-size: 2.5rem; margin-top: 20px;">Direção e Escrita Cênica</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: var(--text-light);">
+                        <p class="project-desc light">
                             Experiência centrada em processos colaborativos e dramaturgia da escuta.
                         </p>
                         <div
