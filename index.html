@@ -454,6 +454,78 @@
         .img-stack img:hover {
             filter: grayscale(0) contrast(1);
         }
+
+        /* NEW UTILITY CLASSES */
+        .flex-col-gap {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-header {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .section-header.mt-20 {
+            margin-top: 20px;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            margin-top: 10px;
+        }
+
+        .project-desc {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .project-desc.light {
+            color: #ddd;
+        }
+
+        .project-meta {
+            margin-top: 20px;
+        }
+
+        .project-meta.light {
+            color: #ddd;
+        }
+
+        .clean-list {
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        .highlight-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--black);
+            color: white;
+        }
+
+        .awards-list {
+            list-style: none;
+            font-family: 'Archivo Black';
+            font-size: 2rem;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .awards-list li {
+            margin-bottom: 30px;
+        }
+
+        .award-sub {
+            font-family: 'Lora';
+            font-size: 1.2rem;
+            text-transform: none;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
     </style>
 </head>
 
@@ -520,9 +592,9 @@
         <!-- SEÇÃO: FORMAÇÃO ACADÊMICA -->
         <section id="formacao">
             <div class="section-label stamped">ESTUDO</div>
-            <div style="display: flex; flex-direction: column; gap: 40px;">
+            <div class="flex-col-gap">
 
-                <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Formação Acadêmica</h2>
+                <h2 class="section-header">Formação Acadêmica</h2>
                 <div class="catalog-grid">
                     <div class="card woodcut-border">
                         <div class="card-content">
@@ -547,7 +619,7 @@
                     </div>
                 </div>
 
-                <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-top: 20px;">Formação Complementar e Cursos Livres</h2>
+                <h2 class="section-header mt-20">Formação Complementar e Cursos Livres</h2>
                 <div class="catalog-grid">
                     <div class="card woodcut-border" style="background: white; color: black;">
                         <div class="card-content">
@@ -607,13 +679,13 @@
                     </div>
                     <div class="card-content" style="padding: 40px;">
                         <span class="card-tag">ESPETÁCULO / RITO / PARTICIPAÇÃO</span>
-                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Exu Não Vem Hoje (2022 – atual)</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: #ddd;">
+                        <h3 class="project-title">Exu Não Vem Hoje (2022 – atual)</h3>
+                        <p class="project-desc light">
                             Espetáculo teatral participativo que investiga Exu, tempo e presença.
                         </p>
-                        <div style="margin-top: 20px; color: #ddd;">
+                        <div class="project-meta light">
                             <strong>Equipamentos culturais:</strong>
-                            <ul style="list-style-type: none; margin-left: 0;">
+                            <ul class="clean-list">
                                 <li>- Hub Cultural Porto Dragão</li>
                                 <li>- Centro Cultural do Nordeste</li>
                             </ul>
@@ -630,17 +702,17 @@
                     <div class="card-content" style="padding: 40px;">
                         <span class="card-tag" style="background: var(--red); color: white;">TEATRO / MÚSICA /
                             MEMÓRIA</span>
-                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Vão (2023)</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px;">
+                        <h3 class="project-title">Vão (2023)</h3>
+                        <p class="project-desc">
                             Espetáculo teatral criado a partir do cruzamento entre teatro e música.
                         </p>
-                        <div style="margin-top: 20px;">
+                        <div class="project-meta">
                             <p><strong>Reconhecimento:</strong></p>
-                            <ul style="list-style-type: none; margin-left: 0;">
+                            <ul class="clean-list">
                                 <li>- Prêmio Amarrações Estéticas – Escola Porto Iracema das Artes (2023)</li>
                             </ul>
                             <p style="margin-top: 10px;"><strong>Equipamento cultural:</strong></p>
-                            <ul style="list-style-type: none; margin-left: 0;">
+                            <ul class="clean-list">
                                 <li>- Escola Porto Iracema das Artes</li>
                             </ul>
                         </div>
@@ -656,13 +728,13 @@
                     <div class="card-content" style="padding: 40px;">
                         <span class="card-tag" style="background: var(--red); color: white;">PESQUISA CÊNICA /
                             LITERATURA</span>
-                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Contos de Exu (2022)</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px;">
+                        <h3 class="project-title">Contos de Exu (2022)</h3>
+                        <p class="project-desc">
                             Livro e pesquisa cênica desenvolvidos no Laboratório de Criação em Teatro.
                         </p>
-                        <div style="margin-top: 20px;">
+                        <div class="project-meta">
                             <p><strong>Equipamento cultural:</strong></p>
-                            <ul style="list-style-type: none; margin-left: 0;">
+                            <ul class="clean-list">
                                 <li>- Escola Porto Iracema das Artes</li>
                             </ul>
                         </div>
@@ -677,8 +749,8 @@
                     </div>
                     <div class="card-content" style="padding: 40px;">
                         <span class="card-tag">AUDIOVISUAL / DOCUMENTAÇÃO</span>
-                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Rastros de Exu (2023)</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: #ddd;">
+                        <h3 class="project-title">Rastros de Exu (2023)</h3>
+                        <p class="project-desc light">
                             Série audiovisual derivada do processo do espetáculo <em>Exu Não Vem Hoje</em>.
                         </p>
                     </div>
@@ -786,9 +858,9 @@
         <!-- SEÇÃO: ENSINO E EXPERIÊNCIA PEDAGÓGICA -->
         <section id="ensino">
             <div class="section-label stamped">ENSINO</div>
-            <div style="display: flex; flex-direction: column; gap: 40px;">
+            <div class="flex-col-gap">
 
-                <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Ensino Formal</h2>
+                <h2 class="section-header">Ensino Formal</h2>
                 <div class="catalog-grid">
                     <div class="card woodcut-border" style="background: white; color: black;">
                         <div class="card-content">
@@ -806,7 +878,7 @@
                     </div>
                 </div>
 
-                <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-top: 20px;">Projetos, Programas e Cursos Livres</h2>
+                <h2 class="section-header mt-20">Projetos, Programas e Cursos Livres</h2>
                 <div class="catalog-grid" style="grid-template-columns: 1fr;">
                     <div class="card woodcut-border" style="background: white; color: black;">
                          <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
@@ -829,7 +901,7 @@
                     </div>
                 </div>
 
-                <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-top: 20px;">Formação Artística e Mediação Cultural</h2>
+                <h2 class="section-header mt-20">Formação Artística e Mediação Cultural</h2>
                 <div class="catalog-grid">
                      <div class="card woodcut-border" style="background: white; color: black;">
                         <div class="card-content">
@@ -847,7 +919,7 @@
                     </div>
                 </div>
 
-                 <h2 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-top: 20px;">Estágio Docente</h2>
+                 <h2 class="section-header mt-20">Estágio Docente</h2>
                 <div class="catalog-grid" style="grid-template-columns: 1fr;">
                      <div class="card woodcut-border" style="background: white; color: black;">
                         <div class="card-content">
@@ -921,15 +993,15 @@
             <div class="catalog-grid" style="grid-template-columns: 1fr;">
                 <div class="card woodcut-border" style="background: var(--red); color: white; border: none;">
                     <div class="card-content" style="padding: 60px;">
-                        <h2 style="font-family: 'Archivo Black'; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 40px; color: white;">Prêmios e Reconhecimentos</h2>
-                        <ul style="list-style: none; font-family: 'Archivo Black'; font-size: 2rem; line-height: 1.4; text-transform: uppercase;">
-                            <li style="margin-bottom: 30px;">
+                        <h2 class="section-header" style="margin-bottom: 40px; color: white;">Prêmios e Reconhecimentos</h2>
+                        <ul class="awards-list">
+                            <li>
                                 • Prêmio Amarrações Estéticas
-                                <div style="font-family: 'Lora'; font-size: 1.2rem; text-transform: none; margin-top: 5px; opacity: 0.9;">Escola Porto Iracema das Artes – 2023</div>
+                                <div class="award-sub">Escola Porto Iracema das Artes – 2023</div>
                             </li>
                             <li>
                                 • Destaque – Amostra Estudantil
-                                <div style="font-family: 'Lora'; font-size: 1.2rem; text-transform: none; margin-top: 5px; opacity: 0.9;">Teatro José de Alencar – 2016</div>
+                                <div class="award-sub">Teatro José de Alencar – 2016</div>
                             </li>
                         </ul>
                     </div>
