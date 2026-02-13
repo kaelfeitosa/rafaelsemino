@@ -721,6 +721,48 @@
             font-size: 1.2rem;
         }
 
+
+        .ator-destaque-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--black);
+            color: white;
+        }
+
+
+        .ator-destaque-subtitle {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+
+        .coletivo-title {
+            font-size: 3rem;
+            margin-top: 20px;
+            color: var(--red);
+        }
+
+
+        .coletivo-desc {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+
+
+        .profile-intro {
+            margin-bottom: 30px;
+        }
+
     </style>
 </head>
 
@@ -771,7 +813,7 @@
                         <img src="images/portfolio_rafael/page_4_img_1.jpeg">
                     </div>
                     <div class="card-content card-content--large-padding profile-text">
-                        <p style="margin-bottom: 30px;">Minha trajetória articula <strong>criação artística, pesquisa
+                        <p class="profile-intro">Minha trajetória articula <strong>criação artística, pesquisa
                                 acadêmica e práticas pedagógicas</strong> como campos indissociáveis. Atuo no teatro
                             entendendo a cena como espaço de pensamento, rito contemporâneo e dispositivo
                             político-pedagógico.</p>
@@ -978,10 +1020,10 @@
                                 <p><strong>• PERFORMANCE CALOR (2019)</strong><br>V Bienal de Dança do Ceará.</p>
                             </div>
                         </div>
-                        <div style="margin-top: 40px; padding: 30px; background: var(--black); color: white;"
+                        <div class="ator-destaque-box"
                             class="woodcut-border">
                             <p class="ator-destaque-title">ATOR DESTAQUE</p>
-                            <p style="font-size: 1.1rem; margin-top: 10px;">Amostra Estudantil (2016) • TJA</p>
+                            <p class="ator-destaque-subtitle">Amostra Estudantil (2016) • TJA</p>
                         </div>
                     </div>
                 </div>
@@ -1004,7 +1046,7 @@
                             Experiência centrada em processos colaborativos e dramaturgia da escuta.
                         </p>
                         <div
-                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px;">
+                            class="direction-grid">
                             <div>
                                 <h4 class="ifce-shows-title">MOSTRAS IFCE:</h4>
                                 <ul class="direction-list">
@@ -1137,8 +1179,8 @@
                     </div>
                     <div class="card-content card-content--large-padding">
                         <span class="card-tag">FUNDADO EM 2022</span>
-                        <h3 style="font-size: 3rem; margin-top: 20px; color: var(--red);">Coletivo Farol Novo</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.4rem; margin-top: 30px; line-height: 1.6;">
+                        <h3 class="coletivo-title">Coletivo Farol Novo</h3>
+                        <p class="coletivo-desc">
                             Articulação entre teatro, rito e oralidade. Pesquisa centrada na figura de Exu e poéticas
                             afro-diaspóricas.
                         </p>
