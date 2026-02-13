@@ -255,8 +255,7 @@
             /* Default for black cards */
         }
 
-        .card[style*="background: white"] p,
-        .card[style*="background:white"] p {
+        .card.card--light p {
             color: var(--black) !important;
         }
 
@@ -456,6 +455,37 @@
         }
 
         /* NEW UTILITY CLASSES */
+        .card--light {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Update selector for legibility fix to use the new class */
+        .card.card--light p {
+            color: var(--black) !important;
+        }
+
+        .project-details-divider {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #000;
+        }
+
+        .project-details-divider p {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+        }
+
+        .clean-list li::before {
+            content: "- ";
+            margin-right: 0.5em;
+        }
+
+        .awards-list li::before {
+            content: "• ";
+            margin-right: 0.5em;
+        }
+
         .flex-col-gap {
             display: flex;
             flex-direction: column;
@@ -570,7 +600,7 @@
         <section id="apresentacao">
             <div class="section-label stamped">PERFIL</div>
             <div class="catalog-grid" style="grid-template-columns: 1fr;">
-                <div class="card woodcut-border" style="background: white; color: black;">
+                <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfolio_rafael/page_3_img_1.png">
                         <img src="images/portfolio_rafael/page_4_img_1.jpeg">
@@ -621,21 +651,21 @@
 
                 <h2 class="section-header mt-20">Formação Complementar e Cursos Livres</h2>
                 <div class="catalog-grid">
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Cursos Livres</span>
                             <h3>Porto Iracema das Artes</h3>
                             <p>Carga horária total aproximada: <strong>394 horas</strong>.<br>Inclui cursos livres e participação em laboratórios de criação.</p>
                         </div>
                     </div>
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Laboratório de Criação</span>
                             <h3>Contos de Exu</h3>
                             <p>Escola Porto Iracema das Artes.<br>Laboratório de Criação em Teatro.</p>
                         </div>
                     </div>
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Laboratório de Criação</span>
                             <h3>CCBJ</h3>
@@ -655,10 +685,10 @@
                     <div class="card-content" style="padding: 60px;">
                         <ul
                             style="list-style: none; font-family: 'Archivo Black'; font-size: 2.2rem; line-height: 1.4; text-transform: uppercase;">
-                            <li>• Teatro e performance</li>
-                            <li>• Direção e dramaturgia</li>
-                            <li>• Pesquisa em artes cênicas</li>
-                            <li>• Ensino e mediação cultural</li>
+                            <li>Teatro e performance</li>
+                            <li>Direção e dramaturgia</li>
+                            <li>Pesquisa em artes cênicas</li>
+                            <li>Ensino e mediação cultural</li>
                         </ul>
                     </div>
                 </div>
@@ -671,13 +701,13 @@
             <div class="catalog-grid" style="grid-template-columns: 1fr; gap: 80px;">
 
                 <!-- PROJETO: EXU NÃO VEM HOJE -->
-                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                <div class="card woodcut-border">
                     <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
                         <img src="images/portfolio_coletivo_farol_novo/page_5_img_1.jpeg">
                         <img src="images/portfolio_coletivo_farol_novo/page_16_img_1.jpeg">
                         <img src="images/portfolio_rafael/page_14_img_1.jpeg">
                     </div>
-                    <div class="card-content" style="padding: 40px;">
+                    <div class="card-content">
                         <span class="card-tag">ESPETÁCULO / RITO / PARTICIPAÇÃO</span>
                         <h3 class="project-title">Exu Não Vem Hoje (2022 – atual)</h3>
                         <p class="project-desc light">
@@ -686,20 +716,20 @@
                         <div class="project-meta light">
                             <strong>Equipamentos culturais:</strong>
                             <ul class="clean-list">
-                                <li>- Hub Cultural Porto Dragão</li>
-                                <li>- Centro Cultural do Nordeste</li>
+                                <li>Hub Cultural Porto Dragão</li>
+                                <li>Centro Cultural do Nordeste</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROJETO: VÃO -->
-                <div class="card woodcut-border" style="background: white; color: black;">
+                <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfolio_coletivo_farol_novo/page_6_img_1.jpeg">
                         <img src="images/portfolio_rafael/page_15_img_2.png">
                     </div>
-                    <div class="card-content" style="padding: 40px;">
+                    <div class="card-content">
                         <span class="card-tag" style="background: var(--red); color: white;">TEATRO / MÚSICA /
                             MEMÓRIA</span>
                         <h3 class="project-title">Vão (2023)</h3>
@@ -709,23 +739,23 @@
                         <div class="project-meta">
                             <p><strong>Reconhecimento:</strong></p>
                             <ul class="clean-list">
-                                <li>- Prêmio Amarrações Estéticas – Escola Porto Iracema das Artes (2023)</li>
+                                <li>Prêmio Amarrações Estéticas – Escola Porto Iracema das Artes (2023)</li>
                             </ul>
                             <p style="margin-top: 10px;"><strong>Equipamento cultural:</strong></p>
                             <ul class="clean-list">
-                                <li>- Escola Porto Iracema das Artes</li>
+                                <li>Escola Porto Iracema das Artes</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROJETO: CONTOS DE EXU -->
-                <div class="card woodcut-border" style="background: white; color: black;">
+                <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfolio_rafael/page_13_img_1.png">
                         <img src="images/portfolio_rafael/page_13_img_2.png">
                     </div>
-                    <div class="card-content" style="padding: 40px;">
+                    <div class="card-content">
                         <span class="card-tag" style="background: var(--red); color: white;">PESQUISA CÊNICA /
                             LITERATURA</span>
                         <h3 class="project-title">Contos de Exu (2022)</h3>
@@ -735,19 +765,19 @@
                         <div class="project-meta">
                             <p><strong>Equipamento cultural:</strong></p>
                             <ul class="clean-list">
-                                <li>- Escola Porto Iracema das Artes</li>
+                                <li>Escola Porto Iracema das Artes</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROJETO: RASTROS DE EXU -->
-                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                <div class="card woodcut-border">
                     <div class="img-stack">
                         <img src="images/portfolio_coletivo_farol_novo/page_14_img_1.jpeg" style="height: 300px;">
                         <img src="images/portfolio_coletivo_farol_novo/page_18_img_1.jpeg" style="height: 300px;">
                     </div>
-                    <div class="card-content" style="padding: 40px;">
+                    <div class="card-content">
                         <span class="card-tag">AUDIOVISUAL / DOCUMENTAÇÃO</span>
                         <h3 class="project-title">Rastros de Exu (2023)</h3>
                         <p class="project-desc light">
@@ -763,7 +793,7 @@
         <section id="atuacao">
             <div class="section-label stamped">ATUAÇÃO</div>
             <div class="catalog-grid" style="grid-template-columns: 1fr; gap: 60px;">
-                <div class="card woodcut-border" style="background: white; color: black;">
+                <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
                         <img src="images/portfolio_rafael/page_7_img_1.png">
                         <img src="images/portfolio_rafael/page_8_img_1.png">
@@ -800,7 +830,7 @@
         <section id="direcao">
             <div class="section-label stamped">DIREÇÃO</div>
             <div class="catalog-grid" style="grid-template-columns: 1fr;">
-                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                <div class="card woodcut-border">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfólio_semino_antigo/image_1.png">
                         <img src="images/portfólio_semino_antigo/image_3.png">
@@ -816,9 +846,9 @@
                             <div>
                                 <h4 style="color: var(--red); font-family: 'Archivo Black';">MOSTRAS IFCE:</h4>
                                 <ul style="list-style: none; font-size: 1.1rem; margin-top: 15px;">
-                                    <li>• Cala-me os Olhos (2016)</li>
-                                    <li>• Sociedade o Circo (2017)</li>
-                                    <li>• O Caso da Casa (2019)</li>
+                                    <li>Cala-me os Olhos (2016)</li>
+                                    <li>Sociedade o Circo (2017)</li>
+                                    <li>O Caso da Casa (2019)</li>
                                 </ul>
                             </div>
                         </div>
@@ -831,7 +861,7 @@
         <section id="producao">
             <div class="section-label stamped">PRODUÇÃO</div>
             <div class="catalog-grid">
-                <div class="card woodcut-border" style="background: white; color: black;">
+                <div class="card woodcut-border card--light">
                     <div class="card-content">
                         <span class="card-tag">COORDENAÇÃO</span>
                         <h3>Black Heroes</h3>
@@ -845,7 +875,7 @@
                         <p>Coordenação de ensino e processos formativos (2018–2023).</p>
                     </div>
                 </div>
-                <div class="card woodcut-border" style="background: var(--black); color: white;">
+                <div class="card woodcut-border">
                     <div class="card-content">
                         <span class="card-tag">INTERNACIONAL</span>
                         <h3>Luanda – Angola</h3>
@@ -862,14 +892,14 @@
 
                 <h2 class="section-header">Ensino Formal</h2>
                 <div class="catalog-grid">
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Professor de Artes</span>
                             <h3>Escola Paulo Petrola</h3>
                             <p>Ensino básico.</p>
                         </div>
                     </div>
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Professor de Artes</span>
                             <h3>Escola Hugo Sadrack do Vale</h3>
@@ -880,19 +910,19 @@
 
                 <h2 class="section-header mt-20">Projetos, Programas e Cursos Livres</h2>
                 <div class="catalog-grid" style="grid-template-columns: 1fr;">
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                          <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                             <img src="images/portfolio_rafael/page_9_img_1.png">
                             <img src="images/portfolio_rafael/page_16_img_1.png">
                         </div>
-                        <div class="card-content" style="padding: 40px;">
+                        <div class="card-content">
                             <span class="card-tag" style="background: var(--red); color: white;">Projeto ABARCA</span>
                             <h3 style="margin-top: 10px; font-size: 2rem;">Escola Porto Iracema das Artes</h3>
                             <p style="margin-top: 15px;"><strong>Territórios de atuação:</strong> Vicente Pinzón, Genibaú, Itapipoca.</p>
                             <p style="margin-top: 10px;"><strong>Disciplinas ministradas:</strong> Teatro, Dramaturgia, Construção de personagem, Jogos teatrais, Processos de criação.</p>
                         </div>
                     </div>
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Percurso Básico de Teatro</span>
                             <h3>Escola Porto Iracema das Artes</h3>
@@ -903,14 +933,14 @@
 
                 <h2 class="section-header mt-20">Formação Artística e Mediação Cultural</h2>
                 <div class="catalog-grid">
-                     <div class="card woodcut-border" style="background: white; color: black;">
+                     <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Programa de Aceleração do Idoso</span>
                             <h3>Professor</h3>
                             <p>Atuação em processos de criação e montagem teatral.<br>Público: pessoas idosas.</p>
                         </div>
                     </div>
-                    <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Orientador de Montagem / Mediação</span>
                             <h3>Projeto no Bairro Terceiro</h3>
@@ -921,7 +951,7 @@
 
                  <h2 class="section-header mt-20">Estágio Docente</h2>
                 <div class="catalog-grid" style="grid-template-columns: 1fr;">
-                     <div class="card woodcut-border" style="background: white; color: black;">
+                     <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Estágio em Teatro – Intérprete</span>
                             <h3>Noite de Alegria da Rua Trinta e Sete</h3>
@@ -937,7 +967,7 @@
         <section id="coletivo">
             <div class="section-label stamped">COLETIVO</div>
             <div class="catalog-grid" style="grid-template-columns: 1fr;">
-                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                <div class="card woodcut-border">
                     <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
                         <img src="images/portfolio_coletivo_farol_novo/page_1_img_1.jpeg">
                         <img src="images/portfolio_coletivo_farol_novo/page_5_img_1.jpeg">
@@ -962,12 +992,12 @@
         <section id="audiovisual">
             <div class="section-label stamped">MÍDIA</div>
             <div class="catalog-grid" style="grid-template-columns: 1fr;">
-                <div class="card woodcut-border" style="background: white; color: black;">
+                <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfolio_rafael/page_18_img_1.png">
                         <img src="images/portfolio_rafael/page_13_img_1.png">
                     </div>
-                    <div class="card-content" style="padding: 40px;">
+                    <div class="card-content">
                         <span class="card-tag" style="background: var(--red); color: white;">TRANSMÍDIA</span>
                         <h3 style="font-size: 2.5rem; margin-top: 20px;">Audiovisual e Transmídia</h3>
 
@@ -976,8 +1006,8 @@
                             <p style="font-family: 'Lora', serif; font-size: 1.2rem;">Série audiovisual experimental derivada de processo teatral.</p>
                         </div>
 
-                        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed #000;">
-                            <p style="font-family: 'Lora', serif; font-size: 1.2rem;">
+                        <div class="project-details-divider">
+                            <p>
                                 <strong>Experiências em roteiro, produção e assistência de direção</strong><br>
                                 em projetos culturais e educacionais.
                             </p>
@@ -995,12 +1025,10 @@
                     <div class="card-content" style="padding: 60px;">
                         <h2 class="section-header" style="margin-bottom: 40px; color: white;">Prêmios e Reconhecimentos</h2>
                         <ul class="awards-list">
-                            <li>
-                                • Prêmio Amarrações Estéticas
+                            <li>Prêmio Amarrações Estéticas
                                 <div class="award-sub">Escola Porto Iracema das Artes – 2023</div>
                             </li>
-                            <li>
-                                • Destaque – Amostra Estudantil
+                            <li>Destaque – Amostra Estudantil
                                 <div class="award-sub">Teatro José de Alencar – 2016</div>
                             </li>
                         </ul>
