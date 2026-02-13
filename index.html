@@ -15,6 +15,7 @@
             --red: #e60000;
             --gray: #f2f2f2;
             --border: #000;
+            --text-light: var(--text-light);
             --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
@@ -251,7 +252,7 @@
         .card p {
             font-family: 'Lora', serif;
             font-size: 1.1rem;
-            color: #ddd;
+            color: var(--text-light);
             /* Default for black cards */
         }
 
@@ -501,7 +502,7 @@
         }
 
         .project-desc.light {
-            color: #ddd;
+            color: var(--text-light);
         }
 
         .project-meta {
@@ -509,11 +510,10 @@
         }
 
         .project-meta.light {
-            color: #ddd;
+            color: var(--text-light);
         }
 
         .clean-list {
-            list-style-type: none;
             margin-left: 0;
         }
 
@@ -525,7 +525,6 @@
         }
 
         .awards-list {
-            list-style: none;
             font-family: 'Archivo Black';
             font-size: 2rem;
             line-height: 1.4;
@@ -545,7 +544,6 @@
         }
 
         .eixos-list {
-            list-style: none;
             font-family: 'Archivo Black';
             font-size: 2.2rem;
             line-height: 1.4;
@@ -553,7 +551,6 @@
         }
 
         .direction-list {
-            list-style: none;
             font-size: 1.1rem;
             margin-top: 15px;
         }
@@ -625,6 +622,30 @@
         .catalog-grid--single-col {
             grid-template-columns: 1fr;
         }
+
+
+        .img-stack-item--fixed-height {
+            height: 300px;
+            /* Ensure other properties match img-stack img if needed,
+               but img-stack img selector is stronger (specificity 0,2,1 vs 0,1,0).
+               Actually, .img-stack img is class+tag = 0,1,1.
+               .img-stack-item--fixed-height is class = 0,1,0.
+               Wait, specificity of `.img-stack img` is (0,1,1) if img-stack is class.
+               Specificity of `.img-stack-item--fixed-height` is (0,1,0).
+               To override `height: 200px` from `.img-stack img`, we might need !important
+               or higher specificity like `.img-stack .img-stack-item--fixed-height`.
+            */
+        }
+        .img-stack .img-stack-item--fixed-height {
+            height: 300px;
+        }
+
+
+        .clean-list,
+        .awards-list,
+        .eixos-list,
+        .direction-list {
+            }
 
     </style>
 </head>
@@ -843,8 +864,8 @@
                 <!-- PROJETO: RASTROS DE EXU -->
                 <div class="card woodcut-border">
                     <div class="img-stack">
-                        <img src="images/portfolio_coletivo_farol_novo/page_14_img_1.jpeg" style="height: 300px;">
-                        <img src="images/portfolio_coletivo_farol_novo/page_18_img_1.jpeg" style="height: 300px;">
+                        <img class="img-stack-item--fixed-height" src="images/portfolio_coletivo_farol_novo/page_14_img_1.jpeg">
+                        <img class="img-stack-item--fixed-height" src="images/portfolio_coletivo_farol_novo/page_18_img_1.jpeg">
                     </div>
                     <div class="card-content">
                         <span class="card-tag">AUDIOVISUAL / DOCUMENTAÇÃO</span>
@@ -907,7 +928,7 @@
                     <div class="card-content" style="padding: 50px;">
                         <span class="card-tag">PESQUISA & CRIAÇÃO COLETIVA</span>
                         <h3 style="font-size: 2.5rem; margin-top: 20px;">Direção e Escrita Cênica</h3>
-                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: #ddd;">
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: var(--text-light);">
                             Experiência centrada em processos colaborativos e dramaturgia da escuta.
                         </p>
                         <div
