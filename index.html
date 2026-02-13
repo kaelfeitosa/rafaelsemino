@@ -515,12 +515,7 @@
 
 
 
-        .highlight-box {
-            margin-top: 40px;
-            padding: 30px;
-            background: var(--black);
-            color: white;
-        }
+
 
         .awards-list {
             font-family: 'Archivo Black';
@@ -599,14 +594,14 @@
 
 
         /* Shared list style properties */
-        .clean-list li::before,
+        .hyphen-list li::before,
         .awards-list li::before,
         .eixos-list li::before,
         .direction-list li::before {
             margin-right: 0.5em;
         }
 
-        .clean-list li::before {
+        .hyphen-list li::before {
             content: "- ";
         }
 
@@ -643,6 +638,44 @@
         }
         .img-stack--cols-3 {
             grid-template-columns: repeat(3, 1fr);
+        }
+
+
+        .card-content--large-padding {
+            padding: 60px;
+        }
+
+
+        .profile-text {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+        }
+
+
+        .gap-80 { gap: 80px; }
+        .gap-60 { gap: 60px; }
+
+
+        .section-subtitle {
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+        }
+
+
+        .card--red-flat {
+            background: var(--red);
+            color: white;
+            border: none;
         }
 
     </style>
@@ -694,7 +727,7 @@
                         <img src="images/portfolio_rafael/page_3_img_1.png">
                         <img src="images/portfolio_rafael/page_4_img_1.jpeg">
                     </div>
-                    <div class="card-content" style="font-family: 'Lora', serif; font-size: 1.4rem; padding: 60px;">
+                    <div class="card-content card-content--large-padding profile-text">
                         <p style="margin-bottom: 30px;">Minha trajetória articula <strong>criação artística, pesquisa
                                 acadêmica e práticas pedagógicas</strong> como campos indissociáveis. Atuo no teatro
                             entendendo a cena como espaço de pensamento, rito contemporâneo e dispositivo
@@ -770,7 +803,7 @@
             <div class="section-label stamped">EIXOS</div>
             <div class="catalog-grid catalog-grid--single-col">
                 <div class="card card--red-shadow">
-                    <div class="card-content" style="padding: 60px;">
+                    <div class="card-content card-content--large-padding">
                         <ul class="eixos-list">
                             <li>Teatro e performance</li>
                             <li>Direção e dramaturgia</li>
@@ -785,7 +818,7 @@
         <!-- SEÇÃO: PESQUISA ARTÍSTICA E PROJETOS AUTORAIS -->
         <section id="pesquisa">
             <div class="section-label stamped">AUTORIA</div>
-            <div class="catalog-grid catalog-grid--single-col" style="gap: 80px;">
+            <div class="catalog-grid catalog-grid--single-col" class="catalog-grid catalog-grid--single-col gap-80">
 
                 <!-- PROJETO: EXU NÃO VEM HOJE -->
                 <div class="card woodcut-border">
@@ -801,8 +834,8 @@
                             Espetáculo teatral participativo que investiga Exu, tempo e presença.
                         </p>
                         <div class="project-meta light">
-                            <strong>Equipamentos culturais:</strong>
-                            <ul class="clean-list">
+                            <p><strong>Equipamentos culturais:</strong></p>
+                            <ul class="hyphen-list">
                                 <li>Hub Cultural Porto Dragão</li>
                                 <li>Centro Cultural do Nordeste</li>
                             </ul>
@@ -825,11 +858,11 @@
                         </p>
                         <div class="project-meta">
                             <p><strong>Reconhecimento:</strong></p>
-                            <ul class="clean-list">
+                            <ul class="hyphen-list">
                                 <li>Prêmio Amarrações Estéticas – Escola Porto Iracema das Artes (2023)</li>
                             </ul>
                             <p><strong>Equipamento cultural:</strong></p>
-                            <ul class="clean-list">
+                            <ul class="hyphen-list">
                                 <li>Escola Porto Iracema das Artes</li>
                             </ul>
                         </div>
@@ -851,7 +884,7 @@
                         </p>
                         <div class="project-meta">
                             <p><strong>Equipamento cultural:</strong></p>
-                            <ul class="clean-list">
+                            <ul class="hyphen-list">
                                 <li>Escola Porto Iracema das Artes</li>
                             </ul>
                         </div>
@@ -879,7 +912,7 @@
         <!-- SEÇÃO: TEATRO – ATUAÇÃO -->
         <section id="atuacao">
             <div class="section-label stamped">ATUAÇÃO</div>
-            <div class="catalog-grid catalog-grid--single-col" style="gap: 60px;">
+            <div class="catalog-grid catalog-grid--single-col gap-60">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-3">
                         <img src="images/portfolio_rafael/page_7_img_1.png">
@@ -889,9 +922,9 @@
                     <div class="card-content" style="padding: 50px;">
                         <span class="card-tag card-tag--red">REPERTÓRIO &
                             PERFORMANCE</span>
-                        <h3 style="font-size: 2.5rem; margin-top: 20px;">Trabalhos em Destaque</h3>
+                        <h3 class="section-subtitle">Trabalhos em Destaque</h3>
                         <div
-                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; font-family: 'Lora', serif; font-size: 1.1rem;">
+                            class="works-grid">
                             <div>
                                 <p><strong>• IRREVERSÍVEL (2018)</strong><br>Direção: Andréia Pires. Grupo Bagaceira.
                                 </p>
@@ -924,7 +957,7 @@
                     </div>
                     <div class="card-content" style="padding: 50px;">
                         <span class="card-tag">PESQUISA & CRIAÇÃO COLETIVA</span>
-                        <h3 style="font-size: 2.5rem; margin-top: 20px;">Direção e Escrita Cênica</h3>
+                        <h3 class="section-subtitle">Direção e Escrita Cênica</h3>
                         <p class="project-desc light">
                             Experiência centrada em processos colaborativos e dramaturgia da escuta.
                         </p>
@@ -1060,7 +1093,7 @@
                         <img src="images/portfolio_coletivo_farol_novo/page_5_img_1.jpeg">
                         <img src="images/portfolio_coletivo_farol_novo/page_7_img_1.jpeg">
                     </div>
-                    <div class="card-content" style="padding: 60px;">
+                    <div class="card-content card-content--large-padding">
                         <span class="card-tag">FUNDADO EM 2022</span>
                         <h3 style="font-size: 3rem; margin-top: 20px; color: var(--red);">Coletivo Farol Novo</h3>
                         <p style="font-family: 'Lora', serif; font-size: 1.4rem; margin-top: 30px; line-height: 1.6;">
@@ -1108,8 +1141,8 @@
         <section id="premios">
             <div class="section-label stamped">MÉRITO</div>
             <div class="catalog-grid catalog-grid--single-col">
-                <div class="card woodcut-border" style="background: var(--red); color: white; border: none;">
-                    <div class="card-content" style="padding: 60px;">
+                <div class="card woodcut-border" class="card--red-flat">
+                    <div class="card-content card-content--large-padding">
                         <h2 class="section-header section-header--on-red">Prêmios e Reconhecimentos</h2>
                         <ul class="awards-list">
                             <li>Prêmio Amarrações Estéticas
