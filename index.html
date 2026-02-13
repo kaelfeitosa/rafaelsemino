@@ -471,10 +471,7 @@
             font-size: 1.2rem;
         }
 
-        .clean-list li::before {
-            content: "- ";
-            margin-right: 0.5em;
-        }
+
 
         .flex-col-gap {
             display: flex;
@@ -603,11 +600,30 @@
             font-size: 1.2rem;
         }
 
+
+
+
+        /* Shared list style properties */
+        .clean-list li::before,
+        .awards-list li::before,
+        .eixos-list li::before,
+        .direction-list li::before {
+            margin-right: 0.5em;
+        }
+
+        .clean-list li::before {
+            content: "- ";
+        }
+
         .awards-list li::before,
         .eixos-list li::before,
         .direction-list li::before {
             content: "• ";
-            margin-right: 0.5em;
+        }
+
+
+        .catalog-grid--single-col {
+            grid-template-columns: 1fr;
         }
 
     </style>
@@ -653,7 +669,7 @@
         <!-- SEÇÃO: APRESENTAÇÃO -->
         <section id="apresentacao">
             <div class="section-label stamped">PERFIL</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+            <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfolio_rafael/page_3_img_1.png">
@@ -733,7 +749,7 @@
         <!-- SEÇÃO: EIXOS DE ATUAÇÃO -->
         <section id="eixos">
             <div class="section-label stamped">EIXOS</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+            <div class="catalog-grid catalog-grid--single-col">
                 <div class="card"
                     style="background: var(--red); color: white; border: none; box-shadow: 15px 15px 0px var(--black);">
                     <div class="card-content" style="padding: 60px;">
@@ -751,7 +767,7 @@
         <!-- SEÇÃO: PESQUISA ARTÍSTICA E PROJETOS AUTORAIS -->
         <section id="pesquisa">
             <div class="section-label stamped">AUTORIA</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr; gap: 80px;">
+            <div class="catalog-grid catalog-grid--single-col" style="gap: 80px;">
 
                 <!-- PROJETO: EXU NÃO VEM HOJE -->
                 <div class="card woodcut-border">
@@ -845,7 +861,7 @@
         <!-- SEÇÃO: TEATRO – ATUAÇÃO -->
         <section id="atuacao">
             <div class="section-label stamped">ATUAÇÃO</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr; gap: 60px;">
+            <div class="catalog-grid catalog-grid--single-col" style="gap: 60px;">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
                         <img src="images/portfolio_rafael/page_7_img_1.png">
@@ -882,7 +898,7 @@
         <!-- SEÇÃO: DIREÇÃO E DRAMATURGIA -->
         <section id="direcao">
             <div class="section-label stamped">DIREÇÃO</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+            <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfólio_semino_antigo/image_1.png">
@@ -962,7 +978,7 @@
                 </div>
 
                 <h2 class="section-header mt-20">Projetos, Programas e Cursos Livres</h2>
-                <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="catalog-grid catalog-grid--single-col">
                     <div class="card woodcut-border card--light">
                          <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                             <img src="images/portfolio_rafael/page_9_img_1.png">
@@ -1003,7 +1019,7 @@
                 </div>
 
                  <h2 class="section-header mt-20">Estágio Docente</h2>
-                <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="catalog-grid catalog-grid--single-col">
                      <div class="card woodcut-border card--light">
                         <div class="card-content">
                             <span class="card-tag">Estágio em Teatro – Intérprete</span>
@@ -1019,7 +1035,7 @@
         <!-- SEÇÃO: COLETIVO FAROL NOVO -->
         <section id="coletivo">
             <div class="section-label stamped">COLETIVO</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+            <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border">
                     <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
                         <img src="images/portfolio_coletivo_farol_novo/page_1_img_1.jpeg">
@@ -1044,7 +1060,7 @@
         <!-- SEÇÃO: AUDIOVISUAL E TRANSMÍDIA -->
         <section id="audiovisual">
             <div class="section-label stamped">MÍDIA</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+            <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
                         <img src="images/portfolio_rafael/page_18_img_1.png">
@@ -1073,7 +1089,7 @@
         <!-- SEÇÃO: PRÊMIOS E RECONHECIMENTOS -->
         <section id="premios">
             <div class="section-label stamped">MÉRITO</div>
-            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+            <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border" style="background: var(--red); color: white; border: none;">
                     <div class="card-content" style="padding: 60px;">
                         <h2 class="section-header section-header--on-red">Prêmios e Reconhecimentos</h2>
