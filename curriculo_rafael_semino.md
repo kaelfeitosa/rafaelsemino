@@ -14,6 +14,8 @@ Possui experiências também no campo audiovisual como roteirista, produtor e
 assistente de direção, e é autor de publicação infantil desenvolvida no
 Laboratório de Teatro da Escola Porto Iracema das Artes.
 Educação
+UFBA – Universidade Federal da Bahia
+2024 | Pós-graduação em Estudos em Teatro do Oprimido (330h cursadas)
 UFC – Universidade Federal do Ceará
 2023 | Mestrado em Artes
 IFCE – Instituto Federal de Educação, Ciência e Tecnologia do Ceará
