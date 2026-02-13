@@ -460,9 +460,6 @@
             color: var(--black);
         }
 
-
-
-
         .project-details-divider {
             margin-top: 30px;
             padding-top: 20px;
@@ -476,11 +473,6 @@
 
         .clean-list li::before {
             content: "- ";
-            margin-right: 0.5em;
-        }
-
-        .awards-list li::before {
-            content: "• ";
             margin-right: 0.5em;
         }
 
@@ -562,27 +554,16 @@
             line-height: 1.4;
             text-transform: uppercase;
         }
-        .eixos-list li::before {
-            content: "• ";
-            margin-right: 0.5em;
-        }
-
 
         .direction-list {
             list-style: none;
             font-size: 1.1rem;
             margin-top: 15px;
         }
-        .direction-list li::before {
-            content: "• ";
-            margin-right: 0.5em;
-        }
-
 
         .project-meta p + p {
             margin-top: 10px;
         }
-
 
         .course-institution {
             margin-top: 10px;
@@ -594,7 +575,6 @@
         .course-details + .course-details {
             margin-top: 10px;
         }
-
 
         .card-tag.card-tag--red {
             background: var(--red);
@@ -613,16 +593,21 @@
             margin-bottom: 10px;
         }
 
-
         .section-header--on-red {
             margin-bottom: 40px;
             color: white;
         }
 
-
         .av-project-desc {
             font-family: 'Lora', serif;
             font-size: 1.2rem;
+        }
+
+        .awards-list li::before,
+        .eixos-list li::before,
+        .direction-list li::before {
+            content: "• ";
+            margin-right: 0.5em;
         }
 
     </style>
