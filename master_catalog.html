@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rafael Semino | Catálogo Mestre</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <style>
         :root {
             --black: #000000;
             --white: #ffffff;
             --red: #e60000;
-            --gray: #f8f8f8;
-            --border: #111;
+            --gray: #f2f2f2;
+            --border: #000;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
@@ -23,405 +24,836 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--white);
             color: var(--black);
             font-family: 'Inter', sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            overflow-x: hidden;
+        }
+
+        /* GRAIN OVERLAY */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: 9999;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* PRINT SETTINGS */
         @media print {
-            body {
-                padding: 0;
-            }
-
             .no-print {
                 display: none !important;
             }
 
             section {
-                page-break-after: always;
+                page-break-inside: avoid;
                 border: none !important;
-                padding: 20px !important;
+                padding: 40px !important;
             }
 
             .card {
                 break-inside: avoid;
-                border: 1px solid #ddd !important;
+                border: 1px solid #000 !important;
             }
 
-            a {
-                color: black !important;
-                text-decoration: none !important;
+            .page-wrapper {
+                border: none !important;
+            }
+
+            .section-label {
+                position: static !important;
+                font-size: 3rem !important;
+                margin-bottom: 20px;
             }
 
             .hero {
-                height: auto !important;
-                padding: 40px !important;
+                background: white !important;
+                color: black !important;
+                border: 2px solid #000;
+            }
+
+            .hero-bio {
+                border-left-color: #000 !important;
             }
         }
 
         /* Layout */
         .page-wrapper {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 0 auto;
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
+            border-left: 2px solid var(--border);
+            border-right: 2px solid var(--border);
+            position: relative;
         }
 
         header {
             padding: 40px;
-            border-bottom: 4px solid var(--black);
+            border-bottom: 6px solid var(--black);
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             position: sticky;
             top: 0;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
         }
 
         .brand h1 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             line-height: 0.8;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
         }
 
         .brand p {
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 900;
             text-transform: uppercase;
             color: var(--red);
-            margin-top: 5px;
+            margin-top: 8px;
+            letter-spacing: 2px;
         }
 
         .nav-meta {
             text-align: right;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         /* Section Styling */
         section {
-            padding: 80px 40px;
-            border-bottom: 1px solid var(--border);
+            padding: 120px 60px;
+            border-bottom: 2px solid var(--border);
             display: grid;
-            grid-template-columns: 350px 1fr;
+            grid-template-columns: 180px 1fr;
             gap: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-label {
             font-family: 'Archivo Black', sans-serif;
             font-size: 5rem;
             line-height: 0.8;
-            color: transparent;
-            -webkit-text-stroke: 1px var(--black);
+            color: var(--black);
             position: sticky;
-            top: 150px;
-            height: fit-content;
+            top: 100px;
+            height: calc(100vh - 200px);
+            text-transform: uppercase;
+            transition: all 0.4s var(--ease);
+            cursor: default;
+            -webkit-text-stroke: 1px var(--black);
+            z-index: 10;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
         }
 
-        .section-label span {
-            color: var(--red);
-            -webkit-text-stroke: 0;
-        }
-
-        /* Grid Content */
+        /* Catalog Grid */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 60px;
         }
 
         .card {
-            border: 1px solid #eee;
-            background: #fff;
-            transition: all 0.3s;
+            border: 2px solid var(--black);
+            background: var(--black);
+            color: var(--white);
+            transition: all 0.5s var(--ease);
+            position: relative;
         }
 
         .card:hover {
             border-color: var(--red);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 15px 15px 0px var(--red);
+            transform: translate(-5px, -5px);
         }
 
         .card-img {
             width: 100%;
-            height: 250px;
+            height: 320px;
             background: var(--gray);
             overflow: hidden;
             position: relative;
+            border-bottom: 2px solid var(--black);
         }
 
         .card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.5s;
+            filter: grayscale(100%) contrast(1.1);
+            transition: all 0.6s var(--ease);
         }
 
         .card:hover .card-img img {
-            filter: grayscale(0);
+            filter: grayscale(0) contrast(1);
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 30px;
+            padding: 40px;
         }
 
         .card-tag {
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             font-weight: 900;
             text-transform: uppercase;
             color: var(--red);
-            margin-bottom: 10px;
-            display: block;
+            margin-bottom: 15px;
+            display: inline-block;
+            border-bottom: 1px solid var(--red);
+            transition: all 0.3s;
+        }
+
+        .card:hover .card-tag {
+            background: var(--red);
+            color: white;
+            padding: 2px 6px;
+            transform: skew(-10deg);
         }
 
         .card h3 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            line-height: 1;
         }
 
+        /* Legibility Fix: Ensure color is set per card theme */
         .card p {
             font-family: 'Lora', serif;
-            font-size: 0.95rem;
-            color: #444;
+            font-size: 1.1rem;
+            color: #ddd;
+            /* Default for black cards */
         }
 
-        /* Hero / Bio */
+        .card[style*="background: white"] p,
+        .card[style*="background:white"] p {
+            color: var(--black) !important;
+        }
+
+        .card-footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #444;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        /* Hero Section */
         .hero {
             background: var(--black);
             color: var(--white);
-            padding: 120px 40px;
+            padding: 160px 60px;
             grid-template-columns: 1fr 1fr;
             border-bottom: none;
+            opacity: 1;
+            transform: none;
         }
 
         .hero-text h2 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 8vw;
-            line-height: 0.85;
+            font-size: 9.5vw;
+            line-height: 0.8;
             margin-bottom: 40px;
+            letter-spacing: -5px;
+            transition: all 0.5s var(--ease);
+        }
+
+        .hero-text h2:hover {
+            text-shadow: 15px 15px 0px var(--red);
+            transform: translate(-8px, -8px);
+        }
+
+        .hero-text h2:hover span {
+            color: var(--white);
+        }
+
+        .hero-text span {
+            color: var(--red);
         }
 
         .hero-bio {
             font-family: 'Lora', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            border-left: 2px solid var(--red);
-            padding-left: 30px;
+            font-size: 1.6rem;
+            line-height: 1.4;
+            border-left: 6px solid var(--red);
+            padding-left: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-bio p {
+            margin-bottom: 30px;
         }
 
         /* Footer */
         footer {
-            padding: 100px 40px;
+            padding: 140px 60px;
             text-align: center;
-            background: var(--gray);
+            background: var(--black);
+            color: white;
         }
 
         .big-link {
             font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2rem, 10vw, 8rem);
-            color: var(--black);
+            font-size: clamp(3rem, 12vw, 10rem);
+            color: var(--white);
             text-decoration: none;
-            line-height: 1;
+            line-height: 0.9;
+            transition: all 0.3s;
+            display: block;
         }
 
         .big-link:hover {
-            color: var(--red);
+            color: var(--white);
+            text-shadow: 15px 15px 0px var(--red);
+            transform: translate(-8px, -8px);
+            -webkit-text-stroke: 0;
+        }
+
+        /* QR CODE SIMULATION */
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            background: white;
+            padding: 5px;
+            display: none;
+            margin: 20px auto 0;
+        }
+
+        @media print {
+            .qr-placeholder {
+                display: block;
+                border: 1px solid #000;
+            }
         }
 
         /* Responsive */
-        @media (max-width: 1100px) {
-            section {
-                grid-template-columns: 1fr;
-            }
-
-            .section-label {
-                font-size: 3rem;
-                position: static;
-                margin-bottom: 20px;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .catalog-grid {
-                grid-template-columns: 1fr;
-            }
-
+        @media (max-width: 1200px) {
             header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 20px;
+                padding: 30px 40px;
             }
+
+            .nav-meta {
+                text-align: left;
+            }
+
+            section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 80px 40px;
+            }
+
+            .section-label {
+                font-size: 15vw;
+                position: static;
+                margin-bottom: 40px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 40px;
+            }
+
+            .hero-text h2 {
+                font-size: 18vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .brand h1 {
+                font-size: 12vw;
+            }
+
+            .catalog-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* WOODCUT UTILS */
+        .woodcut-border {
+            border: 4px solid var(--black);
+            box-shadow: 8px 8px 0px var(--black);
+        }
+
+        .stamped {
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+            -webkit-text-stroke: 1px var(--black);
+        }
+
+        .img-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2px;
+            background: var(--black);
+            border: 4px solid var(--black);
+        }
+
+        .img-stack img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.2);
+            transition: filter 0.3s;
+        }
+
+        .img-stack img:hover {
+            filter: grayscale(0) contrast(1);
         }
     </style>
 </head>
 
 <body>
 
+    <div class="noise no-print"></div>
+
     <div class="page-wrapper">
         <header class="no-print">
             <div class="brand">
                 <h1>RAFAEL<br>SEMINO</h1>
-                <p>Catálogo Mestre v2.0</p>
+                <p>CATÁLOGO MESTRE V4.0 • 2026</p>
             </div>
             <div class="nav-meta">
-                Investigação Narrativa / Simbólica<br>
-                Portfólio 2026<br>
-                <a href="javascript:window.print()" style="color:red; text-decoration:none;">DOWNLOAD PDF</a>
+                ATOR / DIRETOR / DRAMATURGO / PROFESSOR / PESQUISADOR<br>
+                PORTFÓLIO CONSOLIDADO • FORTALEZA - CE - BRASIL<br>
+                seminorafael5@gmail.com • @coletivofarolnovo
             </div>
         </header>
 
-        <section class="hero">
-            <div class="hero-text">
-                <h2>O CORPO<br><span>A PALAVRA</span><br>O JOGO</h2>
+        <section class="hero visible"
+            style="background: url('images/portfolio_rafael/page_1_img_1.jpeg') center/cover no-repeat; min-height: 80vh; position: relative; border-bottom: 10px solid var(--black); display: flex; flex-direction: column; justify-content: flex-end;">
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);">
             </div>
-            <div class="hero-bio">
-                <p>Rafael Semino é um criador multifacetado. Ator, escritor, dramaturgo e Mestre em Artes. Desenvolve
-                    mundos que transitam entre a materialidade física do palco, a densidade do papel e a lógica
-                    interativa dos códigos.</p>
-                <br>
-                <p style="font-size: 1rem; font-style: normal; opacity: 0.8;">Pesquisador do simbólico de Exu e da
-                    pedagogia do conto. Atuante em diversos equipamentos culturais brasileiros.</p>
-            </div>
-        </section>
-
-        <!-- SEÇÃO: CENA -->
-        <section id="cena">
-            <div class="section-label">CE<span>NA</span></div>
-            <div class="catalog-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silhouette-red-tall-high_res.jpg"
-                            alt="Atuação">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag">Atuação / Solo</span>
-                        <h3>Performance Raiz</h3>
-                        <p>Presença cênica ancorada na investigação do corpo como receptáculo de memórias e mitos.</p>
-                    </div>
+            <div style="position: relative; z-index: 1;">
+                <div class="hero-text">
+                    <h2 style="font-size: 12vw; color: white;">RAFAEL<br><span>SEMINO</span></h2>
                 </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/NYUAD_Red_Theater.jpg"
-                            alt="Teatro">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag">Espetáculo / Itinerante</span>
-                        <h3>Palcos Culturais</h3>
-                        <p>Apresentações em teatros e equipamentos culturais nacionais, integrando coletivos de renome.
-                        </p>
-                    </div>
+                <div class="hero-bio"
+                    style="border-left: 10px solid var(--red); padding: 20px 40px; margin-bottom: 60px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px);">
+                    <p style="font-size: 2.5rem; font-weight: 900; line-height: 1; color: white;">Ator, diretor,
+                        dramaturgo, professor e pesquisador em Artes Cênicas.</p>
+                    <p
+                        style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 4px; color: var(--red); margin-top: 10px;">
+                        Fortaleza – Ceará – Brasil</p>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO: PALAVRA -->
-        <section id="palavra">
-            <div class="section-label">PA<span>LA</span>VRA</div>
-            <div class="catalog-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Underwood_1_typewriter,_1896.jpg"
-                            alt="Dramaturgia">
+        <!-- SEÇÃO: APRESENTAÇÃO -->
+        <section id="apresentacao">
+            <div class="section-label stamped">PERFIL</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
+                        <img src="images/portfolio_rafael/page_3_img_1.png">
+                        <img src="images/portfolio_rafael/page_4_img_1.jpeg">
                     </div>
-                    <div class="card-content">
-                        <span class="card-tag">Dramaturgia / Texto</span>
-                        <h3>Escrita Dramática</h3>
-                        <p>Construção de narrativas para teatro e audiovisual, com foco na oralidade e no ritmo.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Notebook_writing.jpg"
-                            alt="Literatura">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag">Literatura / Contos</span>
-                        <h3>Contos de Exu</h3>
-                        <p>Série literária que investiga a reinterpretação simbólica do Orixá como matriz narrativa.</p>
+                    <div class="card-content" style="font-family: 'Lora', serif; font-size: 1.4rem; padding: 60px;">
+                        <p style="margin-bottom: 30px;">Minha trajetória articula <strong>criação artística, pesquisa
+                                acadêmica e práticas pedagógicas</strong> como campos indissociáveis. Atuo no teatro
+                            entendendo a cena como espaço de pensamento, rito contemporâneo e dispositivo
+                            político-pedagógico.</p>
+                        <p>Desenvolvo investigações continuadas sobre <strong>mito, oralidade, tempo e ancestralidade
+                                afro-brasileira</strong>, com especial atenção à figura de Exu como princípio
+                            dramatúrgico, filosófico e relacional. Meu trabalho se constrói em processos coletivos,
+                            atravessando espetáculos, livros, ações pedagógicas e projetos audiovisuais.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO: JOGO -->
-        <section id="jogo">
-            <div class="section-label">JO<span>GO</span></div>
-            <div class="catalog-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Arcade_video_game_buttons.jpg"
-                            alt="Game Design">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag">Estúdio / Desenvolvimento</span>
-                        <h3>Design Narrativo</h3>
-                        <p>Atuação em estúdio de jogos para criar sistemas lúdicos baseados em mitologias brasileiras.
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Exu2.jpg" alt="Mitologia">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag">Pesquisa / IA</span>
-                        <h3>Mundo Simbólico</h3>
-                        <p>A transposição do conto para árvores de diálogo e mecânicas de jogo narrativo.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO: FORMAÇÃO -->
+        <!-- SEÇÃO: FORMAÇÃO ACADÊMICA -->
         <section id="formacao">
-            <div class="section-label">MEST<span>RE</span></div>
+            <div class="section-label stamped">ESTUDO</div>
             <div class="catalog-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Biblioteka_Jagiello%C5%84ska_interior_2.jpg/800px-Biblioteka_Jagiello%C5%84ska_interior_2.jpg"
-                            alt="Academia">
-                    </div>
+                <div class="card woodcut-border">
                     <div class="card-content">
-                        <span class="card-tag">Academia / Mestre</span>
-                        <h3>Mestrado em Artes</h3>
-                        <p>Investigação acadêmica profunda sobre pedagogia do conto e transposição de linguagens.</p>
+                        <span class="card-tag">Mestrado em Artes</span>
+                        <h3>UFC (2023)</h3>
+                        <p>Universidade Federal do Ceará. Foco em Exu e pedagogia do teatro.</p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Old_map_of_South_America%2C_1850.jpg/800px-Old_map_of_South_America%2C_1850.jpg"
-                            alt="Viagens">
-                    </div>
+                <div class="card woodcut-border">
                     <div class="card-content">
-                        <span class="card-tag">Viagens / Formação</span>
-                        <h3>Trajetória Global</h3>
-                        <p>Formações internacionais e residências que ampliaram o repertório técnico e cultural.</p>
+                        <span class="card-tag">Licenciatura em Teatro</span>
+                        <h3>IFCE (2022)</h3>
+                        <p>Instituto Federal do Ceará.</p>
+                    </div>
+                </div>
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card-content">
+                        <span class="card-tag">Grupo Miraira</span>
+                        <h3>Matriz Estética</h3>
+                        <p>IFCE • Cultura Popular.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <p style="font-weight: 700; color: var(--red); margin-bottom: 20px;">VAMOS CRIAR JUNTOS?</p>
-            <a href="mailto:contato@rafaelsemino.com" class="big-link">CONTATO</a>
-            <p style="margin-top: 60px; font-size: 0.8rem; opacity: 0.6;">SÃO PAULO / FORTALEZA / BRASIL • 2026</p>
+        <!-- SEÇÃO: EIXOS DE ATUAÇÃO -->
+        <section id="eixos">
+            <div class="section-label stamped">EIXOS</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="card"
+                    style="background: var(--red); color: white; border: none; box-shadow: 15px 15px 0px var(--black);">
+                    <div class="card-content" style="padding: 60px;">
+                        <ul
+                            style="list-style: none; font-family: 'Archivo Black'; font-size: 2.2rem; line-height: 1.4; text-transform: uppercase;">
+                            <li>• Teatro e performance</li>
+                            <li>• Direção e dramaturgia</li>
+                            <li>• Pesquisa em artes cênicas</li>
+                            <li>• Ensino e mediação cultural</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PESQUISA ARTÍSTICA E PROJETOS AUTORAIS -->
+        <section id="pesquisa">
+            <div class="section-label stamped">AUTORIA</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr; gap: 80px;">
+
+                <!-- PROJETO: CONTOS DE EXU -->
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
+                        <img src="images/portfolio_rafael/page_13_img_1.png">
+                        <img src="images/portfolio_rafael/page_13_img_2.png">
+                    </div>
+                    <div class="card-content" style="padding: 40px;">
+                        <span class="card-tag" style="background: var(--red); color: white;">PESQUISA CÊNICA /
+                            LITERATURA</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Contos de Exu</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px;">
+                            Desenvolvido no Laboratório de Criação da Escola Porto Iracema das Artes (2022).
+                            Investigação sobre a literatura oral, a infância e a presença de Exu na cultura popular.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PROJETO: EXU NÃO VEM HOJE -->
+                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                    <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
+                        <img src="images/portfolio_coletivo_farol_novo/page_5_img_1.jpeg">
+                        <img src="images/portfolio_coletivo_farol_novo/page_16_img_1.jpeg">
+                        <img src="images/portfolio_rafael/page_14_img_1.jpeg">
+                    </div>
+                    <div class="card-content" style="padding: 40px;">
+                        <span class="card-tag">ESPETÁCULO / RITO / PARTICIPAÇÃO</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Exu Não Vem Hoje</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: #ddd;">
+                            Espetáculo sensorial e rito-participativo. Investigação continuada de Exu como princípio de
+                            jogo e contemporaneidade.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PROJETO: VÃO -->
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
+                        <img src="images/portfolio_coletivo_farol_novo/page_6_img_1.jpeg">
+                        <img src="images/portfolio_rafael/page_15_img_2.png">
+                    </div>
+                    <div class="card-content" style="padding: 40px;">
+                        <span class="card-tag" style="background: var(--red); color: white;">TEATRO / MÚSICA /
+                            MEMÓRIA</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Vão</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px;">
+                            Cruzamento entre teatro e musicalidade preta. Uma obra sobre silêncios e o tempo da memória.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PROJETO: RASTROS DE EXU -->
+                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                    <div class="img-stack">
+                        <img src="images/portfolio_coletivo_farol_novo/page_14_img_1.jpeg" style="height: 300px;">
+                        <img src="images/portfolio_coletivo_farol_novo/page_18_img_1.jpeg" style="height: 300px;">
+                    </div>
+                    <div class="card-content" style="padding: 40px;">
+                        <span class="card-tag">AUDIOVISUAL / DOCUMENTAÇÃO</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 10px;">Rastros de Exu</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: #ddd;">
+                            Série documental e experimental derivada dos experimentos cênicos. Articula a poética do
+                            registro com a performance ao vivo, criando uma narrativa transmídia sobre a pesquisa do
+                            Coletivo Farol Novo.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: TEATRO – ATUAÇÃO -->
+        <section id="atuacao">
+            <div class="section-label stamped">ATUAÇÃO</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr; gap: 60px;">
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
+                        <img src="images/portfolio_rafael/page_7_img_1.png">
+                        <img src="images/portfolio_rafael/page_8_img_1.png">
+                        <img src="images/portfolio_rafael/page_8_img_2.png">
+                    </div>
+                    <div class="card-content" style="padding: 50px;">
+                        <span class="card-tag" style="background: var(--red); color: white;">REPERTÓRIO &
+                            PERFORMANCE</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 20px;">Trabalhos em Destaque</h3>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; font-family: 'Lora', serif; font-size: 1.1rem;">
+                            <div>
+                                <p><strong>• IRREVERSÍVEL (2018)</strong><br>Direção: Andréia Pires. Grupo Bagaceira.
+                                </p>
+                                <p><strong>• REINO DE ASPAN (2018)</strong><br>Direção: Andréia Pires e Gura Moraes.</p>
+                            </div>
+                            <div>
+                                <p><strong>• SANTO BORDEL (2018)</strong><br>Direção: Andrei Bessa.</p>
+                                <p><strong>• PERFORMANCE CALOR (2019)</strong><br>V Bienal de Dança do Ceará.</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 40px; padding: 30px; background: var(--black); color: white;"
+                            class="woodcut-border">
+                            <p style="font-family: 'Archivo Black'; font-size: 1.5rem; color: var(--red);">ATOR DESTAQUE
+                            </p>
+                            <p style="font-size: 1.1rem; margin-top: 10px;">Amostra Estudantil (2016) • TJA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: DIREÇÃO E DRAMATURGIA -->
+        <section id="direcao">
+            <div class="section-label stamped">DIREÇÃO</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                    <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
+                        <img src="images/portfólio_semino_antigo/image_1.png">
+                        <img src="images/portfólio_semino_antigo/image_3.png">
+                    </div>
+                    <div class="card-content" style="padding: 50px;">
+                        <span class="card-tag">PESQUISA & CRIAÇÃO COLETIVA</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 20px;">Direção e Escrita Cênica</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px; color: #ddd;">
+                            Experiência centrada em processos colaborativos e dramaturgia da escuta.
+                        </p>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px;">
+                            <div>
+                                <h4 style="color: var(--red); font-family: 'Archivo Black';">MOSTRAS IFCE:</h4>
+                                <ul style="list-style: none; font-size: 1.1rem; margin-top: 15px;">
+                                    <li>• Cala-me os Olhos (2016)</li>
+                                    <li>• Sociedade o Circo (2017)</li>
+                                    <li>• O Caso da Casa (2019)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRODUÇÃO E GESTÃO -->
+        <section id="producao">
+            <div class="section-label stamped">PRODUÇÃO</div>
+            <div class="catalog-grid">
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="card-content">
+                        <span class="card-tag">COORDENAÇÃO</span>
+                        <h3>Black Heroes</h3>
+                        <p>Produtor Cultural e Coordenador de Formação (2018–2023).</p>
+                    </div>
+                </div>
+                <div class="card woodcut-border">
+                    <div class="card-content">
+                        <span class="card-tag">PESQUISA</span>
+                        <h3>Azusa</h3>
+                        <p>Coordenação de ensino e processos formativos (2018–2023).</p>
+                    </div>
+                </div>
+                <div class="card woodcut-border" style="background: var(--black); color: white;">
+                    <div class="card-content">
+                        <span class="card-tag">INTERNACIONAL</span>
+                        <h3>Luanda – Angola</h3>
+                        <p>Gestão de projetos culturais e intercâmbio artístico (2024).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: ENSINO E MEDIAÇÃO -->
+        <section id="ensino">
+            <div class="section-label stamped">ENSINO</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
+                        <img src="images/portfolio_rafael/page_9_img_1.png">
+                        <img src="images/portfolio_rafael/page_16_img_1.png">
+                    </div>
+                    <div class="card-content" style="padding: 50px;">
+                        <span class="card-tag" style="background: var(--red); color: white;">PEDAGOGIA DAS ARTES</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 20px;">Trajetória Pedagógica</h3>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 30px; font-family: 'Lora', serif; font-size: 1.2rem;">
+                            <div>
+                                <p><strong>• Porto Iracema (2022–2023)</strong><br>Artista-Pesquisador no Lab de
+                                    Criação.</p>
+                                <p><strong>• Rede Municipal (2019–2022)</strong><br>Professor de Artes e Africanidade.
+                                </p>
+                            </div>
+                            <div>
+                                <p><strong>• Bié – Angola (2023–2024)</strong><br>Escola Sebastiana Garcia. Cinema e
+                                    teatro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: COLETIVO FAROL NOVO -->
+        <section id="coletivo">
+            <div class="section-label stamped">COLETIVO</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="card woodcut-border" style="background: var(--black); color: var(--white);">
+                    <div class="img-stack" style="grid-template-columns: repeat(3, 1fr);">
+                        <img src="images/portfolio_coletivo_farol_novo/page_1_img_1.jpeg">
+                        <img src="images/portfolio_coletivo_farol_novo/page_5_img_1.jpeg">
+                        <img src="images/portfolio_coletivo_farol_novo/page_7_img_1.jpeg">
+                    </div>
+                    <div class="card-content" style="padding: 60px;">
+                        <span class="card-tag">FUNDADO EM 2022</span>
+                        <h3 style="font-size: 3rem; margin-top: 20px; color: var(--red);">Coletivo Farol Novo</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.4rem; margin-top: 30px; line-height: 1.6;">
+                            Articulação entre teatro, rito e oralidade. Pesquisa centrada na figura de Exu e poéticas
+                            afro-diaspóricas.
+                        </p>
+                        <p style="margin-top: 40px; font-family: 'Archivo Black'; font-size: 1.2rem; opacity: 0.8;">
+                            RAFAEL SEMINO / GABRIEL FRANÇA / FELIPE MARQUES
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: AUDIOVISUAL E OUTRAS LINGUAGENS -->
+        <section id="audiovisual">
+            <div class="section-label stamped">MÍDIA</div>
+            <div class="catalog-grid">
+                <div class="card woodcut-border" style="background: white; color: black;">
+                    <div class="img-stack" style="grid-template-columns: repeat(2, 1fr);">
+                        <img src="images/portfolio_rafael/page_18_img_1.png">
+                        <img src="images/portfolio_rafael/page_13_img_1.png">
+                    </div>
+                    <div class="card-content" style="padding: 40px;">
+                        <span class="card-tag" style="background: var(--red); color: white;">TRANSMÍDIA &
+                            EDUCAÇÃO</span>
+                        <h3 style="font-size: 2.5rem; margin-top: 20px;">Audiovisual e Transmídia</h3>
+                        <p style="font-family: 'Lora', serif; font-size: 1.2rem; margin-top: 20px;">
+                            Atuação como roteirista e produtor em projetos que articulam as artes cênicas com a educação
+                            e as tecnologias sociais. Destaque para as produções realizadas no Black Heroes e as
+                            parcerias com o Hub Cultural Porto Dragão.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRÊMIOS E RECONHECIMENTOS -->
+        <section id="premios">
+            <div class="section-label stamped">MÉRITO</div>
+            <div class="catalog-grid" style="grid-template-columns: 1fr;">
+                <div class="card woodcut-border" style="background: var(--red); color: white; border: none;">
+                    <div class="card-content" style="padding: 60px;">
+                        <ul
+                            style="list-style: none; font-family: 'Archivo Black'; font-size: 2rem; line-height: 1.4; text-transform: uppercase;">
+                            <li>• PRÊMIO AMARRAÇÕES ESTÉTICAS (2023) • PORT IRACEMA</li>
+                            <li>• ATOR DESTAQUE NA AMOSTRA ESTUDANTIL (2016) • TJA</li>
+                            <li>• SELECIONADO NO FESTIVAL DE TEATRO DE FORTALEZA (2023)</li>
+                            <li>• ARTISTA-PESQUISADOR CONVIDADO NO PROJETO ABARCA (2022)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer
+            style="background: var(--black); color: white; border-top: 10px solid var(--red); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 120px 60px;">
+            <div style="max-width: 800px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+                <p
+                    style="text-transform: uppercase; font-weight: 900; letter-spacing: 4px; margin-bottom: 30px; color: var(--red);">
+                    CONTATO E REDES</p>
+                <a href="mailto:seminorafael5@gmail.com" class="big-link" style="font-size: 4rem; color: white;">FALE
+                    AGORA</a>
+                <p style="margin-top: 40px; font-weight: 700; font-size: 1.5rem;">@coletivofarolnovo</p>
+                <p style="margin-top: 10px; opacity: 0.8; font-family: 'Lora'; font-size: 1.2rem;">Fortaleza – CE –
+                    Brasil</p>
+                <div class="qr-placeholder"
+                    style="margin-top: 60px; width: 150px; height: 150px; background: white; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%;">
+                        <path
+                            d="M10 10h30v30h-30z M60 10h30v30h-30z M10 60h30v30h-30z M60 60h10v10h-10z M80 60h10v10h-10z M60 80h10v10h-10z M80 80h10v10h-10z"
+                            fill="black" />
+                    </svg>
+                </div>
+                <p
+                    style="margin-top: 80px; font-size: 0.8rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px;">
+                    RAFAEL SEMINO • PORTFÓLIO CONSOLIDADO • CATÁLOGO MESTRE v5.0 • 2026
+                </p>
+            </div>
         </footer>
     </div>
 
+    <script>
+        // Intersection Observer for Section Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 
 </html>
