@@ -146,11 +146,12 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s var(--ease);
+            align-items: start;
         }
 
         section.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
 
         .section-label {
@@ -159,9 +160,8 @@
             line-height: 0.8;
             color: var(--black);
             position: sticky;
-            top: 100px;
-            height: 100%;
-            min-height: 400px;
+            top: 40px;
+            height: auto;
             text-transform: uppercase;
             transition: all 0.4s var(--ease);
             cursor: default;
@@ -169,10 +169,7 @@
             z-index: 10;
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            padding-bottom: 40px;
             pointer-events: none;
         }
 
@@ -782,7 +779,7 @@
         }
 
         #eixos .section-label {
-            height: auto;
+            padding-bottom: 20px;
         }
 
         .ator-destaque-box p {
@@ -845,30 +842,28 @@
 
     <div class="page-wrapper">
         <section class="hero visible"
-            style="background: url('images/portfolio_rafael/page_1_img_1.jpeg') center/cover no-repeat; min-height: 90vh; position: relative; border-bottom: 10px solid var(--black); display: flex; flex-direction: column; justify-content: flex-end;">
+            style="background: url('images/portfolio_rafael/page_1_img_1.jpeg') center/cover no-repeat; height: 85vh; max-height: 1080px; position: relative; border-bottom: 10px solid var(--black); display: flex; flex-direction: column; justify-content: flex-end; padding: 0;">
             <div
                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);">
             </div>
 
             <div
-                style="position: absolute; top: 40px; right: 60px; z-index: 2; text-align: right; color: rgba(255,255,255,0.8); font-size: 0.9rem; letter-spacing: 2px;">
+                style="position: absolute; top: 40px; right: 40px; z-index: 2; text-align: right; color: rgba(255,255,255,0.8); font-size: 0.8rem; letter-spacing: 2px;">
                 seminorafael5@gmail.com • @coletivofarolnovo<br>
                 FORTALEZA - CE - BRASIL
             </div>
 
-            <div style="position: relative; z-index: 1; padding: 60px;">
+            <div style="position: relative; z-index: 1; padding: 40px 60px;">
                 <div class="hero-text">
                     <p
-                        style="color: var(--red); font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; letter-spacing: 5px; margin-bottom: 10px;">
+                        style="color: var(--red); font-family: 'Archivo Black', sans-serif; font-size: 1rem; letter-spacing: 5px; margin-bottom: 10px;">
                         PORTFÓLIO</p>
-                    <h2 style="font-size: 15vw; color: white; line-height: 0.85;">RAFAEL<br><span>SEMINO</span></h2>
+                    <h2 style="font-size: 12vw; color: white; line-height: 0.85;">RAFAEL<br><span>SEMINO</span></h2>
                 </div>
                 <div class="hero-bio"
-                    style="border-left: 10px solid var(--red); padding: 20px 40px; margin-top: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); max-width: 800px;">
-                    <p
-                        style="font-size: 2.5rem; font-weight: 900; line-height: 1.1; color: white; margin-bottom: 15px;">
-                        Ator, diretor,
-                        dramaturgo, professor e pesquisador em Artes Cênicas.</p>
+                    style="border-left: 10px solid var(--red); padding: 15px 30px; margin-top: 30px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); max-width: 700px;">
+                    <p style="font-size: 2rem; font-weight: 900; line-height: 1.1; color: white; margin-bottom: 0;">
+                        Ator, diretor, dramaturgo, professor e pesquisador em Artes Cênicas.</p>
                 </div>
             </div>
         </section>
@@ -981,7 +976,7 @@
                 <!-- PROJETO: EXU NÃO VEM HOJE -->
                 <div class="card woodcut-border">
                     <div class="img-stack img-stack--cols-3">
-                        <img src="images/portfolio_coletivo_farol_novo/page_6_img_1.jpeg">
+                        <img src="images/portfolio_rafael/page_14_img_1.jpeg">
                         <img src="images/portfolio_coletivo_farol_novo/page_13_img_1.jpeg">
                         <img src="images/portfolio_rafael/page_14_img_3.jpeg">
                     </div>
@@ -1327,28 +1322,21 @@
         </section>
 
         <footer
-            style="background: var(--black); color: white; border-top: 10px solid var(--red); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 120px 60px;">
-            <div style="max-width: 800px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            style="background: var(--black); color: white; border-top: 5px solid var(--red); padding: 80px 60px; text-align: center;">
+            <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
                 <p
-                    style="text-transform: uppercase; font-weight: 900; letter-spacing: 4px; margin-bottom: 30px; color: var(--red);">
+                    style="text-transform: uppercase; font-weight: 900; letter-spacing: 4px; margin-bottom: 20px; color: var(--red); font-size: 0.8rem;">
                     CONTATO E REDES</p>
-                <a href="mailto:seminorafael5@gmail.com" class="big-link" style="font-size: 4rem; color: white;">FALE
+                <a href="mailto:seminorafael5@gmail.com" class="big-link" style="font-size: 3.5rem; color: white;">FALE
                     AGORA</a>
-                <p style="margin-top: 40px; font-weight: 700; font-size: 1.5rem;">@coletivofarolnovo</p>
-                <p class="footer-location">Fortaleza – CE –
-                    Brasil</p>
-                <div class="qr-placeholder"
-                    style="margin-top: 60px; width: 150px; height: 150px; background: white; padding: 10px; display: flex; align-items: center; justify-content: center;">
-                    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%;">
-                        <path
-                            d="M10 10h30v30h-30z M60 10h30v30h-30z M10 60h30v30h-30z M60 60h10v10h-10z M80 60h10v10h-10z M60 80h10v10h-10z M80 80h10v10h-10z"
-                            fill="black" />
-                    </svg>
+                <p style="margin-top: 25px; font-weight: 700; font-size: 1.3rem;">@coletivofarolnovo</p>
+                <p style="margin-top: 10px; opacity: 0.8; font-size: 1rem;">Fortaleza – CE – Brasil</p>
+                <div
+                    style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%;">
+                    <p
+                        style="font-family: 'Archivo Black', sans-serif; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">
+                        RAFAEL SEMINO</p>
                 </div>
-                <p
-                    style="margin-top: 80px; font-size: 0.8rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px;">
-                    RAFAEL SEMINO • PORTFÓLIO CONSOLIDADO • CATÁLOGO MESTRE v5.0 • 2026
-                </p>
             </div>
         </footer>
     </div>
