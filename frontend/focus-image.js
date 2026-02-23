@@ -17,14 +17,14 @@ class MetadataReader {
 
             // Tenta extrair XMP baseado no tipo de arquivo
             let xmpString = "";
-            if (this.isJPEG(view)) {
-                xmpString = this.extractXMPFromJPEG(view);
-            } else if (this.isPNG(view)) {
-                xmpString = this.extractXMPFromPNG(view);
+            if (MetadataReader.isJPEG(view)) {
+                xmpString = MetadataReader.extractXMPFromJPEG(view);
+            } else if (MetadataReader.isPNG(view)) {
+                xmpString = MetadataReader.extractXMPFromPNG(view);
             }
 
             if (!xmpString) return null;
-            return this.parseXMPFocus(xmpString);
+            return MetadataReader.parseXMPFocus(xmpString);
         } catch (e) {
             if (e.name !== 'AbortError') {
                 console.warn("MetadataReader error:", e);
@@ -34,6 +34,7 @@ class MetadataReader {
     }
 
     static isJPEG(view) {
+        // Safety check: ensure buffer has at least 2 bytes for SOI marker
         if (view.byteLength < 2) return false;
         return view.getUint16(0) === 0xFFD8;
     }
@@ -45,6 +46,7 @@ class MetadataReader {
 
     static extractXMPFromJPEG(view) {
         let offset = 2;
+        // Ensure enough bytes for marker (2) and length (2) to prevent out-of-bounds reads
         while (offset + 4 <= view.byteLength) {
             const marker = view.getUint16(offset);
             const length = view.getUint16(offset + 2);
@@ -55,9 +57,11 @@ class MetadataReader {
             // APP1 Marker (XMP)
             if (marker === 0xFFE1) {
                 // Check if we have enough bytes for the identifier "http://ns.adobe.com/xap/1.0/" (29 bytes)
+                // Safety check: ensure segment length is sufficient to contain the identifier
                 if (length >= 2 + 29) {
                     const identifier = new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4, 29));
                     if (identifier.startsWith("http://ns.adobe.com/xap/1.0/")) {
+                        // Extract XMP packet: length - 2 (length bytes) - 29 (identifier)
                         return new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4 + 29, length - 2 - 29));
                     }
                 }
@@ -69,6 +73,7 @@ class MetadataReader {
 
     static extractXMPFromPNG(view) {
         let offset = 8; // Skip PNG header
+        // Ensure enough bytes for length (4) and type (4) to prevent out-of-bounds reads
         while (offset + 8 <= view.byteLength) {
             const length = view.getUint32(offset);
             const type = new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4, 4));
@@ -146,7 +151,7 @@ class FocusImage extends HTMLElement {
     }
 
     async render() {
-        // Cancel previous fetch if any
+        // Cancel previous fetch if any to avoid race conditions and ensure only the latest request is processed
         if (this.abortController) {
             this.abortController.abort();
         }
