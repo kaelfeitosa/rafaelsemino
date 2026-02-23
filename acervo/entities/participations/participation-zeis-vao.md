@@ -8,5 +8,5 @@ role: Músico / Diretor Musical
 description: Responsável pelo núcleo "Encruzilhada" no qual as canções baseiam a dramaturgia
   do Vão.
 date: '2024-01-01'
-title: Zeis Vao
+title: Direção Musical e Performance em Vão
 ---
