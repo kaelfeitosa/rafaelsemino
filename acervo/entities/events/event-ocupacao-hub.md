@@ -2,6 +2,7 @@
 id: event-ocupacao-hub
 type: event
 name: Ocupacao Hub
+location: Fortaleza - CE (Hub Cultural Porto Dragão)
 date: '2024-01-01'
 tags:
 - event

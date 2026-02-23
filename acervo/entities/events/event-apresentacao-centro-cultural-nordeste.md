@@ -2,6 +2,7 @@
 id: event-apresentacao-centro-cultural-nordeste
 type: event
 name: Apresentacao Centro Cultural Nordeste
+location: Fortaleza - CE (CCBNB)
 date: '2024-01-01'
 tags:
 - event

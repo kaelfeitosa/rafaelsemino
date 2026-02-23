@@ -2,6 +2,7 @@
 id: event-premio-amarracoes-esteticas
 type: event
 name: Premio Amarracoes Esteticas
+location: Fortaleza - CE (Porto Iracema das Artes)
 date: '2024-01-01'
 tags:
 - event

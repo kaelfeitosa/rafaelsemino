@@ -11,6 +11,7 @@ date_end: '2018-11-30'
 roles:
 - Professor Voluntário
 - Produtor
+role: Professor e Produtor
 tags:
 - ensino
 - internacional

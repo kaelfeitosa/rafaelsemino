@@ -10,6 +10,7 @@ date_start: '2020-01-01'
 date_end: '2020-12-31'
 roles:
 - Avaliador
+role: Avaliador
 tags:
 - cultura-popular
 - carnaval

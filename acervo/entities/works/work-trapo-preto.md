@@ -2,6 +2,7 @@
 id: work-trapo-preto
 type: work
 title: Trapo Preto
+created_by: "[[agent-rafael-semino]]"
 date: '2024-01-01'
 tags:
 - work
