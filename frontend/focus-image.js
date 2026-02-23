@@ -1,12 +1,17 @@
 /**
  * MetadataReader
  * Responsável por extrair o ponto de foco (XMP) de arquivos JPG e PNG.
+ * Optimized for partial content (Range requests).
  */
 class MetadataReader {
-    static async read(src) {
+    static async read(src, signal) {
         try {
-            const response = await fetch(src);
-            if (!response.ok) return null;
+            // Tenta buscar apenas os primeiros 64KB (cabeçalho + metadados geralmente estão no início)
+            const headers = { "Range": "bytes=0-65535" };
+            const response = await fetch(src, { headers, signal });
+
+            if (!response.ok && response.status !== 206) return null;
+
             const buffer = await response.arrayBuffer();
             const view = new DataView(buffer);
 
@@ -21,30 +26,40 @@ class MetadataReader {
             if (!xmpString) return null;
             return this.parseXMPFocus(xmpString);
         } catch (e) {
-            console.warn("MetadataReader error:", e);
+            if (e.name !== 'AbortError') {
+                console.warn("MetadataReader error:", e);
+            }
             return null;
         }
     }
 
     static isJPEG(view) {
+        if (view.byteLength < 2) return false;
         return view.getUint16(0) === 0xFFD8;
     }
 
     static isPNG(view) {
+        if (view.byteLength < 8) return false;
         return view.getUint32(0) === 0x89504E47;
     }
 
     static extractXMPFromJPEG(view) {
         let offset = 2;
-        while (offset < view.byteLength) {
+        while (offset + 4 <= view.byteLength) {
             const marker = view.getUint16(offset);
             const length = view.getUint16(offset + 2);
 
+            // Bounds check for segment data
+            if (offset + 2 + length > view.byteLength) break;
+
             // APP1 Marker (XMP)
             if (marker === 0xFFE1) {
-                const identifier = new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4, 29));
-                if (identifier.startsWith("http://ns.adobe.com/xap/1.0/")) {
-                    return new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4 + 29, length - 4 - 29));
+                // Check if we have enough bytes for the identifier "http://ns.adobe.com/xap/1.0/" (29 bytes)
+                if (length >= 2 + 29) {
+                    const identifier = new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4, 29));
+                    if (identifier.startsWith("http://ns.adobe.com/xap/1.0/")) {
+                        return new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4 + 29, length - 2 - 29));
+                    }
                 }
             }
             offset += 2 + length;
@@ -54,12 +69,17 @@ class MetadataReader {
 
     static extractXMPFromPNG(view) {
         let offset = 8; // Skip PNG header
-        while (offset < view.byteLength) {
+        while (offset + 8 <= view.byteLength) {
             const length = view.getUint32(offset);
             const type = new TextDecoder().decode(new Uint8Array(view.buffer, offset + 4, 4));
 
+            // Bounds check for chunk data + CRC (4 bytes)
+            if (offset + 8 + length + 4 > view.byteLength) break;
+
             if (type === "iTXt") {
                 const data = new Uint8Array(view.buffer, offset + 8, length);
+                // iTXt structure: Keyword (null-terminated), compression flag, compression method, language tag (null-term), translated keyword (null-term), text
+                // Simple search for XML packet in the data
                 const text = new TextDecoder().decode(data);
                 if (text.includes("XML:com.adobe.xmp")) {
                     const xmpStart = text.indexOf("<x:xmpmeta");
@@ -100,29 +120,47 @@ class MetadataReader {
  */
 class FocusImage extends HTMLElement {
     static get observedAttributes() {
-        return ["src", "fit", "fallback", "debug"];
+        return ["src", "fit", "fallback", "debug", "alt", "loading"];
     }
 
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
+        this.abortController = null;
     }
 
     connectedCallback() {
         this.render();
     }
 
-    attributeChangedCallback() {
-        this.render();
+    disconnectedCallback() {
+        if (this.abortController) {
+            this.abortController.abort();
+        }
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue !== newValue) {
+            this.render();
+        }
     }
 
     async render() {
+        // Cancel previous fetch if any
+        if (this.abortController) {
+            this.abortController.abort();
+        }
+        this.abortController = new AbortController();
+        const signal = this.abortController.signal;
+
         const src = this.getAttribute("src");
         if (!src) return;
 
         const fit = this.getAttribute("fit") || "cover";
         const fallback = this.getAttribute("fallback") || "center center";
         const debug = this.hasAttribute("debug");
+        const alt = this.getAttribute("alt") || "";
+        const loading = this.getAttribute("loading") || "lazy";
 
         // UI Inicial
         this.shadowRoot.innerHTML = `
@@ -161,41 +199,47 @@ class FocusImage extends HTMLElement {
                     content: '⊕';
                 }
             </style>
-            <img src="${src}" style="object-fit: ${fit}; object-position: ${fallback};">
+            <img part="image" src="${src}" alt="${alt}" loading="${loading}" style="object-fit: ${fit}; object-position: ${fallback};">
         `;
 
-        // Busca metadados
-        const focus = await MetadataReader.read(src);
         const img = this.shadowRoot.querySelector("img");
 
-        let xPct, yPct;
-        if (focus) {
-            xPct = (focus.x * 100).toFixed(2) + "%";
-            yPct = (focus.y * 100).toFixed(2) + "%";
-            img.style.objectPosition = `${xPct} ${yPct}`;
-        } else {
-            img.style.objectPosition = fallback;
-            // Best effort to parse fallback for debug marker
-            xPct = "50%"; yPct = "50%";
-            if (fallback.includes("%")) {
-                const parts = fallback.split(" ");
-                xPct = parts[0] || "50%";
-                yPct = parts[1] || "50%";
-            }
-        }
+        try {
+            // Busca metadados
+            const focus = await MetadataReader.read(src, signal);
+            if (signal.aborted) return;
 
-        if (debug) {
-            const marker = document.createElement("div");
-            marker.className = "marker";
-            marker.style.left = xPct;
-            marker.style.top = yPct;
-            if (!focus) {
-                // Dim the fallback marker differently
-                marker.style.borderColor = "#ff9900";
-                marker.style.color = "#ff9900";
-                marker.title = "Fallback Focus";
+            let xPct, yPct;
+            if (focus) {
+                xPct = (focus.x * 100).toFixed(2) + "%";
+                yPct = (focus.y * 100).toFixed(2) + "%";
+                img.style.objectPosition = `${xPct} ${yPct}`;
+            } else {
+                // If metadata fetch failed or no focus found, keep fallback
+                // but we might want to recalculate debug marker position if needed
+                xPct = "50%"; yPct = "50%";
+                if (fallback.includes("%")) {
+                    const parts = fallback.split(" ");
+                    xPct = parts[0] || "50%";
+                    yPct = parts[1] || "50%";
+                }
             }
-            this.shadowRoot.appendChild(marker);
+
+            if (debug) {
+                const marker = document.createElement("div");
+                marker.className = "marker";
+                marker.style.left = xPct;
+                marker.style.top = yPct;
+                if (!focus) {
+                    // Dim the fallback marker differently
+                    marker.style.borderColor = "#ff9900";
+                    marker.style.color = "#ff9900";
+                    marker.title = "Fallback Focus";
+                }
+                this.shadowRoot.appendChild(marker);
+            }
+        } catch (error) {
+            // Ignore abort errors
         }
     }
 }
