@@ -2,6 +2,7 @@
 id: participation-avaliador-junino
 type: participation
 agent: "[[agent-rafael-semino]]"
+event: "[[event-ciclo-junino-ceara-2023]]"
 title: Avaliador Junino
 description: Atuação de Rafael Semino como avaliador em festivais e quadrilhas juninas
   no Ceará, ano 2023.

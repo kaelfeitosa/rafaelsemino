@@ -2,6 +2,7 @@
 id: participation-avaliador-ciclo-carnavalesco
 type: participation
 agent: "[[agent-rafael-semino]]"
+event: "[[event-ciclo-carnavalesco-2020]]"
 title: Avaliador do Ciclo Carnavalesco
 description: Atuação como avaliador do Ciclo Carnavalesco da Avenida Domingos Olímpio
   em Fortaleza.
