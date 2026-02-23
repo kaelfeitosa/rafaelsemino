@@ -1,77 +1,126 @@
-# Auditoria de Entidades - Relatório de Inconsistências
+# Relatório de Auditoria de Entidades e Ações Recomendadas
 
-Este relatório lista as entidades identificadas no acervo cujos tipos parecem inadequados, ambíguos ou que apresentam problemas estruturais, conforme as diretrizes da auditoria.
+Este relatório detalha as inconsistências identificadas no acervo e propõe ações corretivas específicas baseadas na análise dos documentos extraídos (`extracted_texts`).
 
-## Entidades de Teste / Lixo
+---
 
-### ID: work-dummy2
-- **Tipo Atual:** Work
-- **Problema:** Entidade de teste ("Dummy Work 2").
-- **Sugestão:** Remover.
-- **Impacto:** Limpeza do banco de dados e remoção de ruído.
+## 1. Entidades de Teste e Lixo (Remoção Imediata)
 
-### ID: agent-foo
-- **Tipo Atual:** Agent
-- **Problema:** Entidade de teste ("foo").
-- **Sugestão:** Remover.
-- **Impacto:** Limpeza do banco de dados e remoção de ruído.
+### `work-dummy2`
+- **Diagnóstico:** Entidade de teste sem valor documental ("Dummy Work 2").
+- **Ação:** **Excluir** o arquivo `acervo/entities/works/work-dummy2.md`.
 
-## Entidades com Identificação ou Título Problemáticos
+### `agent-foo`
+- **Diagnóstico:** Entidade de teste ("foo").
+- **Ação:** **Excluir** o arquivo `acervo/entities/agents/agent-foo.md`.
 
-### ID: work-constelacao
-- **Tipo Atual:** Work
-- **Problema:** Título malformado ("ConstelaÃ§Ã£o"). Campos com valores de placeholder (`language: teatro | audiovisual ...`, `status: em-andamento | concluida ...`).
-- **Sugestão:** Corrigir título para "Constelação", definir `language` e `status` corretos baseados na obra real.
-- **Impacto:** Corrige erros de codificação e garante a integridade dos dados.
+---
 
-### ID: work-convite
-- **Tipo Atual:** Work
-- **Problema:** O título "Convite" é genérico e pode ser confundido com um tipo de registro (convite impresso). A descrição indica que é um "Espetáculo de teatro".
-- **Sugestão:** Verificar se este é o título completo e correto. Se possível, adicionar subtítulo ou contexto para desambiguar (ex: "O Convite").
-- **Impacto:** Evita confusão semântica entre a obra e um documento.
+## 2. Correções de Títulos e Metadados
 
-### ID: work-a-serpente
-- **Tipo Atual:** Work
-- **Problema:** "A Serpente" é uma obra clássica de Nelson Rodrigues. A entidade atual representa a *encenação* feita por Rafael Semino, mas o ID e título sugerem a obra original.
-- **Sugestão:** Clarificar na descrição que se trata de uma encenação/montagem. Considerar renomear o ID para algo como `work-encenacao-a-serpente` se o sistema permitir distinção entre obra original e derivada.
-- **Impacto:** Distingue a criação do diretor da obra do dramaturgo original.
+### `work-constelacao`
+- **Diagnóstico:** Título corrompido ("ConstelaÃ§Ã£o") e metadados genéricos (`language: teatro | audiovisual...`).
+- **Evidência:** O termo aparece em `portfolio_rafael.pdf.txt` (pág. 26) e há registros relacionados (`record-constelacao-2023-001.md`). Refere-se a um processo de residência ou criação em 2023.
+- **Ação:**
+    1.  Renomear `title` para **"Constelação"**.
+    2.  Definir `language` como **"processo criativo"** ou **"performance"** (conforme a natureza exata, provavelmente performance/residência).
+    3.  Atualizar `status` para **"concluída"** (2023).
 
-## Entidades Ambíguas ou Mal Classificadas
+### `work-convite`
+- **Diagnóstico:** Título genérico ("Convite"), mas refere-se a uma peça teatral real de 2017.
+- **Evidência:** `portfólio_semino_antigo.docx.txt`: "Peça 'Convite', 2017".
+- **Ação:**
+    1.  Manter a entidade.
+    2.  Atualizar `description` para incluir: **"Espetáculo teatral encenado em 2017."**
+    3.  Se possível, verificar se há subtítulo ou contexto de grupo (ex: Cia Del Artes?) para desambiguar no futuro.
 
-### ID: participation-avaliador-junino
-- **Tipo Atual:** Participation
-- **Problema:** Descreve um papel/função ("Avaliador") ao longo de um período ("ano 2023") sem vínculo explícito a um Evento específico. A "Participação" deve descrever uma ação concreta em um evento.
-- **Sugestão:** Vincular a um evento agregador (ex: `event-ciclo-junino-2023`) ou dividir em participações específicas se houver eventos distintos documentados.
-- **Impacto:** Ancora a participação em um contexto temporal e evental concreto.
+### `work-a-serpente`
+- **Diagnóstico:** ID e título sugerem a obra original de Nelson Rodrigues, não a montagem específica de Rafael Semino.
+- **Evidência:** `portfólio_semino_antigo.docx.txt`: "A serpente, 2014".
+- **Ação:**
+    1.  Renomear ID para **`work-a-serpente-montagem-2014`** (se a política de IDs permitir mudança) ou manter ID e ajustar título.
+    2.  Alterar `title` para **"A Serpente (Montagem 2014)"**.
+    3.  Na `description`, explicitar: **"Montagem do texto de Nelson Rodrigues, realizada em 2014 com direção/atuação de Rafael Semino."**
 
-### ID: participation-avaliador-ciclo-carnavalesco
-- **Tipo Atual:** Participation
-- **Problema:** Similar ao anterior. Descreve a função de avaliador sem vínculo direto a um evento cadastrado (o evento "Ciclo Carnavalesco" está implícito no texto).
-- **Sugestão:** Criar ou vincular ao evento `event-ciclo-carnavalesco-2020`.
-- **Impacto:** Garante que a participação tenha um "lugar" (evento) onde ocorreu.
+---
 
-### ID: participation-projeto-angola-bie
-- **Tipo Atual:** Participation
-- **Problema:** O ID sugere que a participação *é* o projeto. "Projeto Angola Bié" soa como um Evento (a viagem/intercâmbio) ou Work (o projeto em si).
-- **Sugestão:** Renomear para `participation-rafael-projeto-angola-bie` e garantir que exista o `event-projeto-angola-bie` ao qual esta participação se conecta.
-- **Impacto:** Clarifica a distinção entre o evento (projeto) e a ação do agente (participação).
+## 3. Resolução de Ambiguidades de Participação (Vínculo com Eventos)
 
-### ID: participation-jogos-teatrais
-- **Tipo Atual:** Participation
-- **Problema:** "Jogos Teatrais" é um conceito ou metodologia. Como ID de participação, é ambíguo. Se refere a uma oficina ministrada ou cursada, deve ser explícito. Atualmente é uma entidade "auto-patched" (gerada automaticamente).
-- **Sugestão:** Identificar o evento específico (ex: Oficina de Jogos Teatrais) e renomear/vincular corretamente. Se for apenas um tópico, não deve ser uma participação isolada sem evento.
-- **Impacto:** Resolve a ambiguidade entre conceito e ação concreta.
+### `participation-avaliador-junino`
+- **Diagnóstico:** Participação "flutuante" sem evento vinculado.
+- **Evidência:** `atualizacao_potfolio.pdf.txt` (pág. 8): "Atuação como avaliador junino (2023)".
+- **Ação:**
+    1.  Criar a entidade **`event-ciclo-junino-ceara-2023`**.
+        -   `type`: event
+        -   `title`: **"Ciclo de Festivais Juninos do Ceará 2023"**
+        -   `date_start`: **"2023-06-01"** (estimado, verificar datas exatas se possível ou usar mês).
+        -   `location`: **"Ceará"**
+    2.  Vincular `participation-avaliador-junino` a este novo evento (`event: [[event-ciclo-junino-ceara-2023]]`).
 
-## Duplicatas e Entidades Automáticas
+### `participation-avaliador-ciclo-carnavalesco`
+- **Diagnóstico:** Participação sem evento vinculado.
+- **Evidência:** `atualizacao_potfolio.pdf.txt` (pág. 10): "Atuação como avaliador do Ciclo Carnavalesco da Avenida Domingos Olímpio (2020)".
+- **Ação:**
+    1.  Criar a entidade **`event-ciclo-carnavalesco-2020`**.
+        -   `type`: event
+        -   `title`: **"Ciclo Carnavalesco 2020"**
+        -   `location`: **"Avenida Domingos Olímpio, Fortaleza - CE"**
+        -   `date_start`: **"2020-02-01"** (estimado carnaval).
+    2.  Vincular `participation-avaliador-ciclo-carnavalesco` a este evento.
 
-### ID: participation-formacao-ufba
-- **Tipo Atual:** Participation
-- **Problema:** Entidade gerada automaticamente ("auto-patched") que parece duplicar `participation-rafael-pos-ufba` (que já descreve a pós-graduação na UFBA).
-- **Sugestão:** Fundir com `participation-rafael-pos-ufba` e remover a duplicata.
-- **Impacto:** Elimina redundância e consolida as informações.
+### `participation-projeto-angola-bie`
+- **Diagnóstico:** Nome confunde "Projeto" (Evento/Obra) com "Participação" (Ação).
+- **Evidência:** `curriculo_rafael_semino.pdf.txt` (pág. 2): "Cia Del Artes — Professor Voluntário... Angola – Província do Bié... Outubro de 2018 a Novembro de 2018".
+- **Ação:**
+    1.  Renomear ID para **`participation-rafael-ensino-angola-2018`**.
+    2.  Alterar `title` para **"Ensino de Artes e Cinema em Angola"**.
+    3.  Criar a entidade **`event-intercambio-angola-2018`**.
+        -   `type`: event
+        -   `title`: **"Intercâmbio Cultural e Educativo em Angola"**
+        -   `location`: **"Província do Bié, Angola"**
+        -   `date_start`: **"2018-10-01"**
+        -   `date_end`: **"2018-11-30"**
+    4.  Vincular a participação a este evento.
 
-### ID: event-premio-amarracoes-esteticas
-- **Tipo Atual:** Event
-- **Problema:** Classificado como Evento, mas "Prêmio" pode ser interpretado como o objeto (Record) ou a conquista (Participation). Se representar a *cerimônia* de premiação, o tipo Event é aceitável, mas deve ser verificado se não duplica a informação do prêmio em si.
-- **Sugestão:** Se for a cerimônia, manter como Event. Se for o prêmio (objeto/conquista), considerar modelar como Record vinculado a uma Participation de "Premiação".
-- **Impacto:** Garante a modelagem correta de "conquistas" vs "eventos".
+### `participation-jogos-teatrais`
+- **Diagnóstico:** Termo genérico, entidade gerada automaticamente ("auto-patched").
+- **Evidência:** `curriculo_rafael_semino.pdf.txt` (pág. 2) menciona a disciplina "Jogos e Africanidade" ministrada na Escola Mário Hugo Sadrak.
+- **Ação:**
+    1.  Verificar se `participation-prof-hugo-sadrack` já cobre esta atividade.
+    2.  Se sim, **excluir** `participation-jogos-teatrais` e adicionar "Ministração da disciplina Jogos e Africanidade" à descrição/notas de `participation-prof-hugo-sadrack`.
+    3.  Se não for redundante, renomear para algo específico (ex: `participation-oficina-jogos-teatrais-local-ano`) se houver evidência de outro contexto. Caso contrário, assumir redundância e excluir.
+
+---
+
+## 4. Deduplicação e Fusão
+
+### `participation-formacao-ufba` vs `participation-rafael-pos-ufba`
+- **Diagnóstico:** Duplicidade. A primeira é automática, a segunda é manual e correta.
+- **Evidência:** `portfolio_rafael.pdf.txt` (pág. 2) confirma "Especialização em Estudos em Teatro do Oprimido / UFBA".
+- **Ação:**
+    1.  Transferir quaisquer dados úteis de `participation-formacao-ufba` (se houver) para `participation-rafael-pos-ufba`.
+    2.  **Excluir** `participation-formacao-ufba`.
+    3.  Garantir que `participation-rafael-pos-ufba` esteja vinculada ao evento `event-pos-teatro-oprimido` (verificar se existe ou criar).
+
+---
+
+## 5. Estruturação de Prêmios (Event vs Participation)
+
+### `event-premio-amarracoes-esteticas`
+- **Diagnóstico:** Ambiguidade entre a *Cerimônia* e a *Conquista*.
+- **Evidência:** `portfolio_coletivo_farol_novo.pdf.txt` (pág. 3) diz: "...lançou o prêmio 'Amarrações Estéticas'. Esse prêmio incentivava artistas...".
+- **Ação:**
+    1.  Manter `event-premio-amarracoes-esteticas` representando o **Edital/Evento de Premiação** da Escola Porto Iracema (2023).
+    2.  Garantir que exista uma **Participação** (ex: `participation-rafael-premio-amarracoes`) do tipo "Premiação" ou "Contemplado".
+        -   `agent`: `[[agent-rafael-semino]]` (e `[[agent-zeis]]` se aplicável).
+        -   `event`: `[[event-premio-amarracoes-esteticas]]`.
+        -   `role`: **"Artista Premiado"** ou **"Contemplado"**.
+        -   `related_to`: `[[work-vao]]` (pois o texto diz que o prêmio resultou no espetáculo "Vão").
+
+---
+
+## Resumo das Ações Críticas
+1.  **Excluir:** `work-dummy2`, `agent-foo`, `participation-jogos-teatrais` (após merge), `participation-formacao-ufba`.
+2.  **Criar Eventos:** `event-ciclo-junino-ceara-2023`, `event-ciclo-carnavalesco-2020`, `event-intercambio-angola-2018`.
+3.  **Renomear/Corrigir:** `work-constelacao` (título), `work-a-serpente` (título/contexto), `participation-projeto-angola-bie` (ID e título).
+4.  **Vincular:** Participações órfãs aos novos eventos criados.
