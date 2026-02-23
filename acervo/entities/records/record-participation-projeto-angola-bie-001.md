@@ -5,7 +5,7 @@ title: "Registro Documental: Projeto Angola Bie"
 date: 2024-01-01
 path: "/acervo/media/images/participation-projeto-angola-bie-001.jpeg"
 related_to:
-- '[[participation-projeto-angola-bie]]'
+- '[[participation-rafael-ensino-angola-2018]]'
 tags: [foto, participation, memoria]
 ---
 Projeto Cultural e Educacional na Província do Bié, Angola.
