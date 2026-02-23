@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"acervo/internal/assets"
 	"acervo/internal/auditor"
 	"acervo/internal/indexer"
 	"acervo/internal/ingester"
@@ -141,7 +142,25 @@ func main() {
 		},
 	}
 
-	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd)
+	var buildAssetsCmd = &cobra.Command{
+		Use:   "build-assets",
+		Short: "Scans HTML for images and generates optimized WebP assets using cwebp",
+		Run: func(cmd *cobra.Command, args []string) {
+			htmlPath, _ := cmd.Flags().GetString("html")
+			sourceDir := "../media/images"
+			outputDir := "../../frontend/images/optimized"
+
+			fmt.Println("🚀 Iniciando otimização de assets...")
+			if err := assets.BuildAssets(htmlPath, sourceDir, outputDir); err != nil {
+				fmt.Println("❌ Erro ao construir assets:", err)
+				os.Exit(1)
+			}
+			fmt.Println("✅ Assets otimizados com sucesso.")
+		},
+	}
+	buildAssetsCmd.Flags().String("html", "../../frontend/index.html", "Path to HTML file to scan")
+
+	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
