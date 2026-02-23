@@ -33,7 +33,8 @@ func Reindex(entitiesDir, dbPath string) error {
 			id TEXT PRIMARY KEY,
 			type TEXT,
 			title TEXT,
-			path TEXT
+			path TEXT,
+			featured INTEGER DEFAULT 0
 		);
 		CREATE TABLE relations(
 			src TEXT,
@@ -76,7 +77,14 @@ func Reindex(entitiesDir, dbPath string) error {
 
 			absolutePath, _ := filepath.Abs(path)
 
-			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?)", id, typ, title, absolutePath)
+			featured := 0
+			if val, ok := data["featured"].(bool); ok && val {
+				featured = 1
+			} else if val, ok := data["featured"].(string); ok && strings.ToLower(val) == "true" {
+				featured = 1
+			}
+
+			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?)", id, typ, title, absolutePath, featured)
 			if err != nil {
 				return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
 			}

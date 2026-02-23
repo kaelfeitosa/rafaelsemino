@@ -6,5 +6,6 @@ format: image/jpeg | video/mp4 | application/pdf
 path: registros/<tipo>/<arquivo>
 author:
 rights:
+featured: false
 ---
 Descrição do registro.
