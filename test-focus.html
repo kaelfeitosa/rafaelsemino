@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extreme Focus Test Suite</title>
+    <script src="focus-image.js"></script>
+    <script>
+        // Mocks for extreme testing (reads hashes to avoid attributeChangedCallback race conditions)
+        const originalRead = MetadataReader.read;
+        MetadataReader.read = async (src) => {
+            if (src.includes("#ref")) return { x: 0.5, y: 0.5 };
+            if (src.includes("#topleft")) return { x: 0, y: 0 };
+            if (src.includes("#bottomright")) return { x: 1, y: 1 };
+            if (src.includes("#wide")) return { x: 0.5, y: 0.2 };
+            if (src.includes("#tall")) return { x: 0.8, y: 0.5 };
+
+            return originalRead(src);
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f0f0;
+            padding: 40px;
+            color: #333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .test-box {
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+            border: 2px solid #333;
+        }
+
+        .ultra-wide {
+            height: 150px;
+        }
+
+        .ultra-tall {
+            height: 600px;
+            width: 200px;
+            align-self: center;
+        }
+
+        .standard {
+            height: 400px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #e60000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .controls {
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #e60000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📦 Focus Image: Extreme Cases</h1>
+
+    <div class="controls">
+        <p><strong>Testing Protocol:</strong> Verifying coordinates at exact edges (0, 1) and behavior in non-standard
+            aspect ratios.</p>
+    </div>
+
+    <div class="grid">
+        <!-- FULL IMAGE REFERENCE -->
+        <div class="container">
+            <h2>0. Full Image (Reference)</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg#ref" fit="contain" style="background: #222;"
+                    debug></focus-image>
+            </div>
+            <p>Un-cropped image using <code>fit="contain"</code>. Example debug point mocked at center (0.5, 0.5).</p>
+        </div>
+
+        <!-- TOP LEFT EDGE -->
+        <div class="container">
+            <h2>1. Top-Left Edge (0, 0)</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg#topleft" id="img-0-0" debug></focus-image>
+            </div>
+            <p>Mocked at <code>(0, 0)</code>. Should show top-left of image.</p>
+        </div>
+
+        <!-- BOTTOM RIGHT EDGE -->
+        <div class="container">
+            <h2>2. Bottom-Right Edge (1, 1)</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg#bottomright" id="img-1-1" debug></focus-image>
+            </div>
+            <p>Mocked at <code>(1, 1)</code>. Should show bottom-right of image.</p>
+        </div>
+
+        <!-- ULTRA WIDE CONTAINER -->
+        <div class="container">
+            <h2>3. Ultra-Wide Container</h2>
+            <div class="test-box ultra-wide">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg#wide" id="img-wide" debug></focus-image>
+            </div>
+            <p>Extreme horizontal crop. Mocked at <code>(0.5, 0.2)</code> (top center).</p>
+        </div>
+
+        <!-- ULTRA TALL CONTAINER -->
+        <div class="container">
+            <h2>4. Ultra-Tall Container</h2>
+            <div class="test-box ultra-tall">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg#tall" id="img-tall" debug></focus-image>
+            </div>
+            <p>Extreme vertical crop. Mocked at <code>(0.8, 0.5)</code> (middle right).</p>
+        </div>
+
+        <!-- FALLBACK CHECK -->
+        <div class="container">
+            <h2>5. Metadata Fail -> Center Center</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg" debug></focus-image>
+            </div>
+            <p>Should default to <code>center center</code> because metadata fetch fails.</p>
+        </div>
+
+        <!-- EXPLICIT FALLBACK -->
+        <div class="container">
+            <h2>6. Metadata Fail -> Explicit Fallback</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg" fallback="10% 90%" debug></focus-image>
+            </div>
+            <p>Should use <code>10% 90%</code> if metadata fails.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
