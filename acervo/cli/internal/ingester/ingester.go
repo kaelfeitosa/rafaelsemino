@@ -17,16 +17,25 @@ func applyArgs(data map[string]interface{}, args []string) {
 			key := strings.TrimSpace(parts[0])
 			val := strings.TrimSpace(parts[1])
 
-			// Check if the field is a slice in the template/existing data
+			// Check if the field is a slice or boolean in the template/existing data
 			isSlice := false
+			isBool := false
 			if v, ok := data[key]; ok {
 				switch v.(type) {
 				case []interface{}, []string:
 					isSlice = true
+				case bool:
+					isBool = true
 				}
 			}
 
-			if isSlice {
+			// Also try to detect boolean from value string.
+			// Only convert to boolean if it was already a boolean (to update it)
+			// OR if the key didn't exist (assuming "true"/"false" means bool for new fields).
+			valLower := strings.ToLower(val)
+			if (valLower == "true" || valLower == "false") && (isBool || data[key] == nil) {
+				data[key] = (valLower == "true")
+			} else if isSlice {
 				// Strip surrounding brackets if present
 				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
 					val = strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")

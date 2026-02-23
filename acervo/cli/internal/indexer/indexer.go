@@ -20,6 +20,16 @@ func cleanWikilink(s string) string {
 	return s
 }
 
+func isFeatured(v interface{}) bool {
+	if val, ok := v.(bool); ok {
+		return val
+	}
+	if val, ok := v.(string); ok {
+		return strings.ToLower(val) == "true"
+	}
+	return false
+}
+
 func Reindex(entitiesDir, dbPath string) error {
 	os.Remove(dbPath)
 	db, err := sql.Open("sqlite", dbPath)
@@ -33,7 +43,8 @@ func Reindex(entitiesDir, dbPath string) error {
 			id TEXT PRIMARY KEY,
 			type TEXT,
 			title TEXT,
-			path TEXT
+			path TEXT,
+			featured INTEGER DEFAULT 0
 		);
 		CREATE TABLE relations(
 			src TEXT,
@@ -76,7 +87,12 @@ func Reindex(entitiesDir, dbPath string) error {
 
 			absolutePath, _ := filepath.Abs(path)
 
-			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?)", id, typ, title, absolutePath)
+			featured := 0
+			if isFeatured(data["featured"]) {
+				featured = 1
+			}
+
+			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?)", id, typ, title, absolutePath, featured)
 			if err != nil {
 				return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
 			}

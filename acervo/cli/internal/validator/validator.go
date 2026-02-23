@@ -38,9 +38,10 @@ func ValidateEntities(entitiesDir string) error {
 				Title string `yaml:"title"`
 				Name  string `yaml:"name"`
 				Date  string `yaml:"date"`
-				Agent string `yaml:"agent"`
-				Path  string `yaml:"path"`
-				URL   string `yaml:"url"`
+				Agent    string `yaml:"agent"`
+				Path     string `yaml:"path"`
+				URL      string `yaml:"url"`
+				Featured bool   `yaml:"featured"`
 			}
 			if err := yaml.Unmarshal(parts[1], &entity); err != nil {
 				return fmt.Errorf("ERRO: %s tem YAML inválido: %w", path, err)
