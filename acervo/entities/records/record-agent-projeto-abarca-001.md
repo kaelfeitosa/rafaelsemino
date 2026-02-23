@@ -3,7 +3,7 @@ date: 2024-01-01T00:00:00Z
 id: record-agent-projeto-abarca-001
 path: /acervo/media/images/agent-projeto-abarca-001.png
 related_to:
-    - '[[work-projeto-abarca]]'
+    - '[[event-projeto-abarca]]'
 tags:
     - foto
     - agent

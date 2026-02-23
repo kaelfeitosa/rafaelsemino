@@ -5,7 +5,7 @@ title: "Registro Documental: Teatro 2015"
 date: 2024-01-01
 path: "/acervo/media/images/participation-teatro-2015-001.png"
 related_to:
-- '[[participation-teatro-2015]]'
+- '[[agent-rafael-semino]]'
 tags: [foto, participation, memoria]
 ---
 Registro fotográfico histórico (2014-2018) da obra Participation Teatro 2015

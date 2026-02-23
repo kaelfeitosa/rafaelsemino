@@ -1,6 +1,6 @@
 ---
 agent: '[[agent-rafael-semino]]'
-event: '[[agent-escola-hugo-sadrack]]'
+event: '[[event-docencia-hugo-sadrack]]'
 id: participation-prof-hugo-sadrack
 notes: null
 role: Professor de Artes

@@ -5,7 +5,7 @@ title: "Registro Documental: Perfil Academico"
 date: 2024-01-01
 path: "/acervo/media/images/participation-perfil-academico-001.jpeg"
 related_to:
-- '[[participation-perfil-academico]]'
+- '[[agent-rafael-semino]]'
 tags: [foto, participation, memoria]
 ---
 Registro Oficial, Certificados e Perfil Pedagógico.

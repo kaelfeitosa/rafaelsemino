@@ -1,6 +1,6 @@
 ---
 agent: '[[agent-rafael-semino]]'
-event: '[[agent-escola-paulo-petrola]]'
+event: '[[event-docencia-paulo-petrola]]'
 id: participation-prof-paulo-petrola
 notes: null
 role: Professor de Artes

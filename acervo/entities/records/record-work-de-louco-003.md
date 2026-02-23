@@ -5,7 +5,7 @@ title: "Registro Documental: De Louco"
 date: 2024-01-01
 path: "/acervo/media/images/work-de-louco-003.jpeg"
 related_to:
-- '[[work-de-louco]]'
+- '[[work-de-louco-todo-mundo-tem-um-pouco]]'
 tags: [foto, work, memoria]
 ---
 Festival de Esquetes - De louco todo mundo tem um pouco (Hiroldo Serra).

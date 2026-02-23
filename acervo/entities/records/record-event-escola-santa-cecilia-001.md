@@ -3,7 +3,7 @@ date: 2024-01-01T00:00:00Z
 id: record-event-escola-santa-cecilia-001
 path: /acervo/media/images/event-escola-santa-cecilia-001.jpeg
 related_to:
-    - '[[work-sao-joao-santa-cecilia]]'
+    - '[[event-sao-joao-santa-cecilia]]'
 tags:
     - foto
     - event
