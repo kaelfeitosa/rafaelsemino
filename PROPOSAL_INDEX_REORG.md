@@ -1,84 +1,95 @@
-# Proposta de Reestruturação do `index.html`
+# Conteúdo do Novo Portfólio (Index.html)
 
-## Visão Geral
-A nova organização do `index.html` deve refletir a estrutura relacional do `acervo` (Agente -> Obra -> Participação -> Evento), transformando o portfólio estático em uma narrativa dinâmica da trajetória de Rafael Semino. O foco deixa de ser listas isoladas para se tornar uma história coesa de **Criação, Pesquisa e Ensino**.
-
----
-
-## Lógica Narrativa (O "Porquê")
-A estrutura proposta segue o arco da **Pesquisa-Criação**:
-1.  **Quem sou (Identidade/Bio):** Estabelece o lugar de fala (Artista-Pesquisador).
-2.  **O que crio (Obras):** A materialização da pesquisa em produtos artísticos.
-3.  **Como ensino (Pedagogia):** A aplicação da pesquisa na formação de outros.
-4.  **Onde atuo (Trajetória):** O reconhecimento e a inserção no campo profissional.
+## 1. CABEÇALHO (HERO)
+**Título:** RAFAEL SEMINO
+**Subtítulo:** Ator, Diretor, Dramaturgo & Pesquisador.
+**Tagline (Bio Curta):** Investigação continuada sobre mito, oralidade e ancestralidade na cena contemporânea.
+**Local:** Fortaleza - CE - Brasil
+**E-mail:** seminorafael5@gmail.com
 
 ---
 
-## Estrutura Proposta
+## 2. SOBRE (BIO)
+**Título da Seção:** QUEM SOU
 
-### 1. Cabeçalho & Identidade (Hero)
-*   **Conceito:** Manter o impacto visual atual, mas refinar a "tagline" para alinhar com o perfil de pesquisador.
-*   **Título:** RAFAEL SEMINO
-*   **Subtítulo:** Ator, Diretor, Dramaturgo & Pesquisador.
-*   **Bio Curta (Floating):** "Investigação continuada sobre mito, oralidade e ancestralidade na cena contemporânea."
+Francisco Rafael da Silva Semino (29 anos) atua há mais de dez anos no campo das artes cênicas. Sua trajetória articula criação artística, pesquisa acadêmica e práticas pedagógicas como campos indissociáveis, entendendo a cena como espaço de pensamento, rito e dispositivo político.
 
-### 2. Sobre (Bio & Perfil)
-*   **Fonte de Dados:** `acervo/entities/agents/agent-rafael-semino.md`
-*   **Conteúdo:**
-    *   Foto de perfil atualizada.
-    *   Texto biográfico focado na tríade: **Criação Artística + Pesquisa Acadêmica (Mestrado UFC) + Ação Pedagógica**.
-    *   Destaque para a formação: Mestre em Artes (UFC), Licenciado (IFCE), Pós-graduando (UFBA).
+É **Mestre em Artes** pela Universidade Federal do Ceará (UFC, 2023), onde desenvolveu pesquisa sobre teatro, pedagogia do corpo e ritual. Possui **Licenciatura em Teatro** pelo Instituto Federal do Ceará (IFCE, 2022) e atualmente cursa especialização em **Teatro do Oprimido** pela Universidade Federal da Bahia (UFBA).
 
-### 3. Obras em Destaque (Criação & Autoria)
-*   **Fonte de Dados:** `acervo/entities/works/*.md`
-*   **Formato:** Grid visual (Estilo Xilogravura).
-*   **Categorias Sugeridas:**
-    *   **Cênicas (Teatro & Performance):**
-        *   *Exu Não Vem Hoje* (Destaque Principal - Coletivo Farol Novo).
-        *   *Vão* (Teatro + Música).
-        *   *Trapo Preto*.
-    *   **Audiovisual:**
-        *   *Rebordose* (Curta).
-        *   *Mundo-Imagem* (Websérie).
-        *   *Astronauta* (Produção Angola).
-    *   **Escrita & Dramaturgia:**
-        *   *Contos de Exu* (Livro).
-        *   *Cala-me os Olhos* (Dramaturgia).
-
-### 4. Trajetória Pedagógica & Pesquisa (O Diferencial)
-*   **Conceito:** Esta seção é crucial para editais e para o perfil de educador.
-*   **Subseções:**
-    *   **Ensino Formal:** Escolas (Paulo Petrola, Hugo Sadrack).
-    *   **Projetos & Cursos Livres:** Porto Iracema (Projeto Abarca, Percurso Básico).
-    *   **Pesquisa & Tradição:** Grupo Miraira (IFCE), Reisado, Mestres do Mundo. *Aqui conecta a pesquisa acadêmica com a prática popular.*
-
-### 5. Atuação & Performance (Colaborações)
-*   **Fonte de Dados:** `acervo/entities/participations/participation-ator-*.md`
-*   **Foco:** Trabalhos onde Rafael atua como intérprete em obras de terceiros.
-*   **Lista Selecionada:**
-    *   *Irreversível* (Dir. Caique Melo).
-    *   *Santo Bordel de Tiatira*.
-    *   *A Serpente*.
-
-### 6. Gestão, Produção & Curadoria
-*   **Fonte de Dados:** `acervo/entities/participations/participation-produtor-*.md` e `participation-avaliador-*.md`
-*   **Conteúdo:**
-    *   Coordenação pedagógica (Azusa).
-    *   Produção (Black Heroes).
-    *   Avaliação (Ciclo Junino, Carnaval).
-
-### 7. Coletivo Farol Novo (Identidade Coletiva)
-*   **Fonte de Dados:** `acervo/entities/agents/agent-coletivo-farol-novo.md`
-*   **Conceito:** Apresentar o coletivo não apenas como um "grupo", mas como uma **plataforma de pesquisa** contínua.
-*   **Destaque:** Link para *Exu Não Vem Hoje* e *Zona de Criação*.
-
-### 8. Rodapé & Contato
-*   **Informações:** E-mail, Redes Sociais (@coletivofarolnovo).
-*   **Territórios:** Fortaleza, Luanda, Itapipoca (destacar a atuação internacional/estadual).
+Além do palco, Rafael acumula experiências no audiovisual como roteirista e produtor, e na literatura com a obra infantil "Contos de Exu". Sua atuação se estende à gestão cultural e ao ensino, tendo coordenado projetos em Angola (Província do Bié) e ministrado laboratórios de formação em diversas regiões do Ceará.
 
 ---
 
-## Melhorias Técnicas & Visuais
-1.  **Responsividade:** O grid atual precisa de ajustes para mobile (colunas empilhadas).
-2.  **Imagens:** Substituir os placeholders `acervo_pendente` por imagens reais extraídas de `acervo/entities/records`.
-3.  **Links:** Cada card de "Obra" deve, idealmente, abrir um modal ou levar a uma página de detalhe (se houver) ou link externo (YouTube/Drive) conforme o metadado `url` no `acervo`.
+## 3. CRIAÇÃO & PESQUISA (OBRAS EM DESTAQUE)
+**Título da Seção:** OBRAS E PROCESSOS
+
+### Exu Não Vem Hoje (2022 – Atual)
+**Categoria:** Teatro / Rito
+**Sinopse:** Primeira obra de fôlego do Coletivo Farol Novo, gestada no Laboratório de Criação da Escola Porto Iracema das Artes. A peça mergulha na força matriz e nos rastros arquetípicos de Exu, propondo uma encenação onde o público não é mero observador, mas convidado à participação coletiva. Uma investigação densa sobre o tempo, o mito e a oralidade.
+**Ficha Técnica:** Direção e Dramaturgia: Rafael Semino e Felipe Marques.
+
+### Vão (2023)
+**Categoria:** Teatro / Música
+**Sinopse:** Espetáculo nascido do cruzamento interdisciplinar fomentado pelo Prêmio "Amarrações Estéticas" (Porto Iracema). A obra funde a dramaturgia teatral de Rafael Semino com a pesquisa musical de Zeis (projeto "Encruzilhada"), investigando a presença dos mitos e a circularidade do tempo.
+**Ficha Técnica:** Criação: Coletivo Farol Novo (Rafael Semino, Zeis).
+
+### Contos de Exu (2022)
+**Categoria:** Literatura / Pesquisa
+**Sinopse:** Livro infantil resultante da pesquisa de mestrado de Rafael Semino (UFC). A obra traduz para a linguagem literária as experimentações cênicas sobre corpo e ancestralidade desenvolvidas no laboratório criativo, focando na oralidade e nos itãs de Exu.
+**Disponível:** [Link para Download/Visualização]
+
+### Rebordose (2024)
+**Categoria:** Audiovisual (Curta-metragem)
+**Sinopse:** Dois amigos tentam manter juntos uma quitinete na periferia de Fortaleza quando acontecem "uns B.O." (problemas inesperados).
+**Ficha Técnica:** Direção: Darlan Souza. Elenco: Rafael Semino.
+
+### Mundo-Imagem (2024)
+**Categoria:** Audiovisual (Websérie)
+**Sinopse:** Produção da Escola Porto Iracema das Artes lançada em setembro de 2024. A série explora o universo audiovisual de forma acessível e didática ao longo de 11 episódios.
+**Ficha Técnica:** Direção Original: Isaac Pipano.
+
+---
+
+## 4. ENSINO & MEDIAÇÃO (PEDAGOGIA)
+**Título da Seção:** TRAJETÓRIA PEDAGÓGICA
+
+### Ensino Formal & Escolas
+*   **Escola Paulo Petrola (2020-2021):** Docência no Programa Mais Educação.
+*   **Escola Mário Hugo Sadrak do Vale (2021-2022):** Professor de Artes, Jogos e Africanidade para o Ensino Médio/Fundamental.
+*   **Escola Dom Helder Câmara (2019-2020):** Professor de Artes com foco em metodologias criativas.
+
+### Projetos de Formação & Cursos Livres
+*   **Projeto Abarca (Porto Iracema, 2023):** Professor de Teatro em laboratórios de formação itinerantes (Itapipoca, Vicente Pinzón, Genibaú).
+*   **Percurso Básico de Teatro (Porto Iracema, 2023):** Formação inicial em teatro para jovens e adultos.
+*   **Projeto Garimpo de Talentos (2016-2018):** Formação de jovens artistas no Centro Cultural Belchior e Teatro Antonieta Noronha.
+
+### Pesquisa & Tradição
+*   **Grupo Miraira (IFCE):** Atuação como pesquisador de cultura popular, com vivências em Reisado e danças dramáticas.
+*   **Encontro Mestres do Mundo:** Participação em colóquios e ações de catalogação de saberes tradicionais (Edições 2016, 2019, 2022).
+
+---
+
+## 5. TRAJETÓRIA ARTÍSTICA (TIMELINE)
+**Título da Seção:** OUTRAS ATUAÇÕES
+
+*   **Irreversível:** Ator (Dir. Caique Melo).
+*   **Santo Bordel de Tiatira:** Ator.
+*   **A Serpente:** Ator.
+*   **Avaliação Cultural:** Jurado do Ciclo Carnavalesco (2020) e Ciclo Junino (2023) de Fortaleza.
+*   **Produção Cultural:** Coordenação de projetos na Província do Bié (Angola, 2024).
+
+---
+
+## 6. COLETIVO FAROL NOVO
+**Título da Seção:** PLATAFORMA DE PESQUISA
+
+Fundado em 2022 por Rafael Semino e Gabriel França, o Coletivo Farol Novo é um núcleo de investigação cênica nascido no Laboratório de Criação da Escola Porto Iracema das Artes. O grupo se dedica à pesquisa continuada sobre **mito, oralidade e o tempo espiralar**, tendo como obras centrais o espetáculo "Exu Não Vem Hoje" e o projeto musical-teatral "Vão" (com a integração do músico Zeis).
+
+**Membros:** Rafael Semino, Felipe Marques, Gabriel França, Zeis.
+
+---
+
+## 7. CONTATO
+*   **E-mail:** seminorafael5@gmail.com
+*   **Instagram:** [@coletivofarolnovo](https://instagram.com/coletivofarolnovo)
+*   **Territórios de Atuação:** Fortaleza (CE), Itapipoca (CE), Luanda (Angola).
