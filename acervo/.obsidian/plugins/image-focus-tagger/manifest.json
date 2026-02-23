@@ -1,0 +1,9 @@
+{
+    "id": "image-focus-tagger",
+    "name": "Image Focus Tagger",
+    "version": "1.0.0",
+    "minAppVersion": "0.15.0",
+    "description": "Click on natively open images to automatically copy XMP Focus coordinates (normalized) to your clipboard.",
+    "author": "Antigravity",
+    "isDesktopOnly": true
+}

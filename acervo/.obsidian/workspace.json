@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "9b7173467c054f36",
+    "type": "split",
+    "children": [
+      {
+        "id": "0fad41d4cfa548e5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "51db4c1a83c9558f",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "media/images/agent-grupo-miraira-002.png"
+              },
+              "icon": "lucide-image",
+              "title": "agent-grupo-miraira-002"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fd13a5dfbf1ad575",
+    "type": "split",
+    "children": [
+      {
+        "id": "c96eca115687763a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e72ec760f916f356",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d94799a314e47eb5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f92db2e0ae317b6b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6d4cd056c6e882b7",
+    "type": "split",
+    "children": [
+      {
+        "id": "5be5c5c3a2d7f340",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7d1dd5b422a2de2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "media/images/agent-grupo-miraira-002.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for agent-grupo-miraira-002"
+            }
+          },
+          {
+            "id": "e80dfd18671923d7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "entities/participations/participation-ator-teatro.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from participation-ator-teatro"
+            }
+          },
+          {
+            "id": "73c5ed4f323ab491",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0e950fdc50711c07",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "9f5a21ea1fe01778",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "media/images/agent-gabriel-franca-001.jpeg",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of agent-gabriel-franca-001"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "51db4c1a83c9558f",
+  "lastOpenFiles": [
+    "entities/agents/agent-test-schema.md",
+    "entities/records/record-record-rebordose-imdb.md",
+    "entities/records/record-record-mestres-do-mundo-catalogo.md",
+    "entities/records/record-record-habite-se-livro.md",
+    "entities/records/record-record-cheiro-queijo-youtube.md",
+    "db.sqlite-journal",
+    "cli/find_corrupt.go",
+    "cli/find_corrupt.py",
+    "entities/agents/agent-foo.md",
+    "cli/test_unmarshal.go",
+    "cli/patch_names.py",
+    "cli/fix_names.py",
+    "entities/participations/participation-rafael-astronauta.md",
+    "entities/works/work-astronauta.md",
+    "entities/participations/participation-rafael-noite-alegria.md",
+    "entities/works/work-noite-de-alegria.md",
+    "entities/participations/participation-rafael-irreversivel.md",
+    "entities/participations/participation-prof-percurso-basico.md",
+    "entities/events/event-percurso-basico-teatro.md",
+    "entities/participations/participation-prof-aceleracao.md",
+    "entities/events/event-aceleracao-idoso.md",
+    "entities/participations/participation-prof-hugo-sadrack.md",
+    "entities/agents/agent-escola-hugo-sadrack.md",
+    "entities/participations/participation-prof-paulo-petrola.md",
+    "entities/agents/agent-escola-paulo-petrola.md",
+    "entities/participations/participation-rafael-bolsa-ccbj.md",
+    "entities/events/event-laboratorio-pesquisa-ccbj.md",
+    "entities/agents/agent-ccbj.md",
+    "entities/participations/participation-rafael-pos-ufba.md",
+    "entities/events/event-pos-teatro-oprimido.md",
+    "entities/agents/agent-ufba.md",
+    "entities/participations/participation-rafael-licenciatura-ifce.md",
+    "cli/run_mass_ingest.py",
+    "cli/fix_media_url.py",
+    "cli/fix_all_participations.py",
+    "cli/fix_participations.py",
+    "cli/temp_insta/2023-10-07_16-11-45_UTC.jpg",
+    "media/images/record-fnt-guaramiranga-2024-004.jpeg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_10.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_9.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_8.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_7.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_6.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_5.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_4.jpg",
+    "cli/temp_insta/2024-08-30_21-44-23_UTC_3.jpg",
+    "Untitled.canvas"
+  ]
+}
