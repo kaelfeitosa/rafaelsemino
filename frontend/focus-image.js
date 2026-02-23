@@ -134,6 +134,31 @@ class FocusImage extends HTMLElement {
         this.abortController = null;
     }
 
+    static parseFallbackPosition(pos) {
+        if (!pos) return { x: "50%", y: "50%" };
+
+        const parts = pos.trim().split(/\s+/);
+        let x = null;
+        let y = null;
+
+        parts.forEach(p => {
+            if (p === "left") x = "0%";
+            else if (p === "right") x = "100%";
+            else if (p === "top") y = "0%";
+            else if (p === "bottom") y = "100%";
+            else if (p === "center") {
+                if (x === null) x = "50%";
+                else y = "50%";
+            } else {
+                // Assume percentage or length value
+                if (x === null) x = p;
+                else y = p;
+            }
+        });
+
+        return { x: x || "50%", y: y || "50%" };
+    }
+
     connectedCallback() {
         this.render();
     }
@@ -221,13 +246,10 @@ class FocusImage extends HTMLElement {
                 img.style.objectPosition = `${xPct} ${yPct}`;
             } else {
                 // If metadata fetch failed or no focus found, keep fallback
-                // but we might want to recalculate debug marker position if needed
-                xPct = "50%"; yPct = "50%";
-                if (fallback.includes("%")) {
-                    const parts = fallback.split(" ");
-                    xPct = parts[0] || "50%";
-                    yPct = parts[1] || "50%";
-                }
+                // Calculate debug marker position based on fallback
+                const parsed = FocusImage.parseFallbackPosition(fallback);
+                xPct = parsed.x;
+                yPct = parsed.y;
             }
 
             if (debug) {
