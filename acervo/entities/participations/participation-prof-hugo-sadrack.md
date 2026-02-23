@@ -6,5 +6,6 @@ notes: null
 role: Professor de Artes
 type: participation
 work: null
+title: Professor de Artes na Escola Mário Hugo Sadrak
 ---
 Detalhes específicos da participação.

@@ -2,6 +2,7 @@
 id: event-laboratorio-teatro-porto-iracema
 type: event
 name: Laboratorio Teatro Porto Iracema
+location: Fortaleza - CE (Porto Iracema das Artes)
 date: '2024-01-01'
 tags:
 - event

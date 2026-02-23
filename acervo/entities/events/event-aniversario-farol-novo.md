@@ -2,6 +2,7 @@
 id: event-aniversario-farol-novo
 type: event
 name: Aniversario Farol Novo
+location: Fortaleza - CE
 date: '2024-01-01'
 tags:
 - event

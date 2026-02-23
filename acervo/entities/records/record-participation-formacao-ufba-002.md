@@ -5,7 +5,7 @@ title: "Registro Documental: Formacao Ufba"
 date: 2024-01-01
 path: "/acervo/media/images/participation-formacao-ufba-002.jpeg"
 related_to:
-- '[[participation-formacao-ufba]]'
+- '[[participation-rafael-pos-ufba]]'
 tags: [foto, participation, memoria]
 ---
 Especialização em Teatro do Oprimido (UFBA).

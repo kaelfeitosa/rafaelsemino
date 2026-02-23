@@ -2,6 +2,7 @@
 id: event-projeto-abarca-itapipoca
 type: event
 name: Projeto Abarca Itapipoca
+location: Itapipoca - CE
 date: '2024-01-01'
 tags:
 - event

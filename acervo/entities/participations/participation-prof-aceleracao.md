@@ -6,5 +6,6 @@ notes: null
 role: Professor/Diretor
 type: participation
 work: null
+title: Docência em Projeto de Aceleração da Aprendizagem
 ---
 Detalhes específicos da participação.

@@ -7,5 +7,5 @@ event: "[[event-hub-cultural-porto-dragao-2022]]"
 role: Ator e Sonoplasta
 description: Co-fundador e construtor da partitura física e sonora.
 date: '2024-01-01'
-title: Gabriel Exu
+title: Atuação e Sonoplastia em Exu Não Vem Hoje
 ---
