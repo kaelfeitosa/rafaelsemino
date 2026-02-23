@@ -16,7 +16,8 @@
             if (src.includes("#wide")) return { x: 0.5, y: 0.2 };
             if (src.includes("#tall")) return { x: 0.8, y: 0.5 };
 
-            return originalRead(src);
+            // Force null for fallback testing (skips network/parsing)
+            return null;
         };
     </script>
     <style>
@@ -162,11 +163,44 @@
 
         <!-- EXPLICIT FALLBACK -->
         <div class="container">
-            <h2>6. Metadata Fail -> Explicit Fallback</h2>
+            <h2>6. Metadata Fail -> Explicit Fallback (Percentage)</h2>
             <div class="test-box standard">
                 <focus-image src="images/acervo/acervo_pendente_050.jpg" fallback="10% 90%" debug></focus-image>
             </div>
             <p>Should use <code>10% 90%</code> if metadata fails.</p>
+        </div>
+
+        <!-- FALLBACK WITH KEYWORDS -->
+        <div class="container">
+            <h2>7. Fallback "left top"</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg" fallback="left top" debug></focus-image>
+            </div>
+            <p>Should align marker to top-left (0, 0).</p>
+        </div>
+
+        <div class="container">
+            <h2>8. Fallback "right bottom"</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg" fallback="right bottom" debug></focus-image>
+            </div>
+            <p>Should align marker to bottom-right (100%, 100%).</p>
+        </div>
+
+        <div class="container">
+            <h2>9. Fallback "center"</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg" fallback="center" debug></focus-image>
+            </div>
+            <p>Should align marker to center (50%, 50%).</p>
+        </div>
+
+        <div class="container">
+            <h2>10. Fallback "top"</h2>
+            <div class="test-box standard">
+                <focus-image src="images/acervo/acervo_pendente_050.jpg" fallback="top" debug></focus-image>
+            </div>
+            <p>Should align marker to top-center (50%, 0%).</p>
         </div>
     </div>
 

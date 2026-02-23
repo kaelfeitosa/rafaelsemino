@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -8,6 +8,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
+    <script src="focus-image.js"></script>
     <style>
         :root {
             --black: #000000;
@@ -140,7 +141,7 @@
                 border-bottom: 1pt solid #000 !important;
             }
 
-            .card-img img {
+            .card-img focus-image {
                 filter: grayscale(100%) brightness(1.1) !important;
             }
 
@@ -422,15 +423,15 @@
             border-bottom: 2px solid var(--black);
         }
 
-        .card-img img {
+        .card-img focus-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* fit="cover" is default in component */
             filter: grayscale(100%) contrast(1.1);
             transition: all 0.6s var(--ease);
         }
 
-        .card:hover .card-img img {
+        .card:hover .card-img focus-image {
             filter: grayscale(0) contrast(1);
             transform: scale(1.05);
         }
@@ -725,15 +726,15 @@
             border: 4px solid var(--black);
         }
 
-        .img-stack img {
+        .img-stack focus-image {
             width: 100%;
             height: 400px;
-            object-fit: cover;
+            /* fit="cover" default */
             filter: grayscale(1) contrast(1.2);
 
         }
 
-        .img-stack img:hover {
+        .img-stack focus-image:hover {
             filter: grayscale(0) contrast(1);
         }
 
@@ -768,15 +769,15 @@
             flex: 0 0 calc((100% - 4px) / 3);
         }
 
-        .carousel-slide img {
+        .carousel-slide focus-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* fit="cover" default */
             filter: grayscale(1) contrast(1.2);
             transition: filter 0.3s;
         }
 
-        .carousel-slide img:hover {
+        .carousel-slide focus-image:hover {
             filter: grayscale(0) contrast(1);
         }
 
@@ -1293,8 +1294,8 @@
             <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
-                        <img src="images/acervo/acervo_pendente_055.jpg">
-                        <img src="images/acervo/acervo_pendente_056.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_055.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_056.jpg"></focus-image>
                     </div>
                     <div class="card-content card-content--large-padding profile-text">
                         <p class="profile-intro">Minha trajetória articula <strong>criação artística, pesquisa
@@ -1399,9 +1400,9 @@
                 <!-- PROJETO: EXU NÃO VEM HOJE -->
                 <div class="card woodcut-border">
                     <div class="img-stack img-stack--cols-3">
-                        <img src="images/acervo/acervo_pendente_083.jpg">
-                        <img src="images/acervo/teatro_exu_nao_vem_hoje_044.jpg">
-                        <img src="images/acervo/acervo_pendente_085.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_083.jpg"></focus-image>
+                        <focus-image src="images/acervo/teatro_exu_nao_vem_hoje_044.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_085.jpg"></focus-image>
                     </div>
                     <div class="card-content">
                         <span class="card-tag">Espetáculos: Rito e Participação</span>
@@ -1439,8 +1440,8 @@
                 <!-- PROJETO: VÃO -->
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
-                        <img src="images/acervo/acervo_pendente_037.jpg">
-                        <img src="images/acervo/acervo_pendente_088.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_037.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_088.jpg"></focus-image>
                     </div>
                     <div class="card-content">
                         <span class="card-tag card-tag--red">Teatro e Música</span>
@@ -1473,8 +1474,8 @@
                 <!-- PROJETO: CONTOS DE EXU -->
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
-                        <img src="images/acervo/acervo_pendente_079.jpg">
-                        <img src="images/acervo/acervo_pendente_080.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_079.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_080.jpg"></focus-image>
                     </div>
                     <div class="card-content">
                         <span class="card-tag card-tag--red">Pesquisa e Literatura</span>
@@ -1513,9 +1514,9 @@
             <div class="catalog-grid catalog-grid--single-col gap-60">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-3">
-                        <img src="images/acervo/acervo_pendente_061.jpg">
-                        <img src="images/acervo/acervo_pendente_064.jpg">
-                        <img src="images/acervo/acervo_pendente_065.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_061.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_064.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_065.jpg"></focus-image>
                     </div>
                     <div class="card-content card-content--medium-padding">
                         <span class="card-tag card-tag--red">REPERTÓRIO & PERFORMANCE</span>
@@ -1565,8 +1566,8 @@
 
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
-                        <img src="images/acervo/acervo_pendente_009.jpg">
-                        <img src="images/acervo/acervo_pendente_010.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_009.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_010.jpg"></focus-image>
                     </div>
                     <div class="card-content">
                         <span class="card-tag card-tag--red">Tradição</span>
@@ -1591,10 +1592,10 @@
                 <div class="card woodcut-border">
                     <div class="carousel-container carousel-container--cols-2">
                         <div class="carousel-wrapper">
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_011.jpg"></div>
-                            <div class="carousel-slide"><img src="images/acervo/audiovisual_rebordose_012.jpg"></div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_013.jpg"></div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_014.jpg"></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_011.jpg"></focus-image></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/audiovisual_rebordose_012.jpg"></focus-image></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_013.jpg"></focus-image></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_014.jpg"></focus-image></div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
                         <button class="carousel-btn carousel-btn--next">&#10095;</button>
@@ -1638,12 +1639,12 @@
                 <div class="card woodcut-border card--light">
                     <div class="carousel-container carousel-container--cols-3">
                         <div class="carousel-wrapper">
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_015.jpg"></div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_016.jpg"></div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_017.jpg"></div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_018.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_015.jpg"></focus-image></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_016.jpg"></focus-image></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_017.jpg"></focus-image></div>
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_018.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_019.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_019.jpg"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -1688,11 +1689,11 @@
                 <div class="card woodcut-border">
                     <div class="carousel-container carousel-container--cols-2">
                         <div class="carousel-wrapper">
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_020.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_020.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_001.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_001.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/popular_mestres_mundo_002.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/popular_mestres_mundo_002.jpg"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -1725,11 +1726,11 @@
                 <div class="card woodcut-border card--light">
                     <div class="carousel-container carousel-container--cols-2">
                         <div class="carousel-wrapper">
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_003.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_003.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_004.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_004.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_005.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_005.jpg"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -1765,11 +1766,11 @@
                 <div class="card woodcut-border">
                     <div class="carousel-container carousel-container--cols-2">
                         <div class="carousel-wrapper">
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_006.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_006.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_007.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_007.jpg"></focus-image>
                             </div>
-                            <div class="carousel-slide"><img src="images/acervo/acervo_pendente_008.jpg">
+                            <div class="carousel-slide"><focus-image src="images/acervo/acervo_pendente_008.jpg"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -1856,8 +1857,8 @@
                 <div class="catalog-grid catalog-grid--single-col">
                     <div class="card woodcut-border card--light">
                         <div class="img-stack img-stack--cols-2">
-                            <img src="images/acervo/acervo_pendente_069.jpg">
-                            <img src="images/acervo/acervo_pendente_091.jpg">
+                            <focus-image src="images/acervo/acervo_pendente_069.jpg"></focus-image>
+                            <focus-image src="images/acervo/acervo_pendente_091.jpg"></focus-image>
                         </div>
                         <div class="card-content">
                             <span class="card-tag card-tag--red">Projeto ABARCA</span>
@@ -1921,9 +1922,9 @@
             <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border">
                     <div class="img-stack img-stack--cols-3">
-                        <img src="images/acervo/acervo_pendente_025.jpg">
-                        <img src="images/acervo/acervo_pendente_030.jpg">
-                        <img src="images/acervo/acervo_pendente_035.jpg">
+                        <focus-image src="images/acervo/acervo_pendente_025.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_030.jpg"></focus-image>
+                        <focus-image src="images/acervo/acervo_pendente_035.jpg"></focus-image>
                     </div>
                     <div class="card-content card-content--large-padding">
                         <span class="card-tag">FUNDADO EM 2022</span>
