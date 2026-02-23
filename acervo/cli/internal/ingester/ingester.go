@@ -29,7 +29,9 @@ func applyArgs(data map[string]interface{}, args []string) {
 				}
 			}
 
-			// Also try to detect boolean from value string
+			// Also try to detect boolean from value string.
+			// Only convert to boolean if it was already a boolean (to update it)
+			// OR if the key didn't exist (assuming "true"/"false" means bool for new fields).
 			valLower := strings.ToLower(val)
 			if (valLower == "true" || valLower == "false") && (isBool || data[key] == nil) {
 				data[key] = (valLower == "true")

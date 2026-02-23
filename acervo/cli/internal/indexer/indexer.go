@@ -20,6 +20,16 @@ func cleanWikilink(s string) string {
 	return s
 }
 
+func isFeatured(v interface{}) bool {
+	if val, ok := v.(bool); ok {
+		return val
+	}
+	if val, ok := v.(string); ok {
+		return strings.ToLower(val) == "true"
+	}
+	return false
+}
+
 func Reindex(entitiesDir, dbPath string) error {
 	os.Remove(dbPath)
 	db, err := sql.Open("sqlite", dbPath)
@@ -78,9 +88,7 @@ func Reindex(entitiesDir, dbPath string) error {
 			absolutePath, _ := filepath.Abs(path)
 
 			featured := 0
-			if val, ok := data["featured"].(bool); ok && val {
-				featured = 1
-			} else if val, ok := data["featured"].(string); ok && strings.ToLower(val) == "true" {
+			if isFeatured(data["featured"]) {
 				featured = 1
 			}
 
