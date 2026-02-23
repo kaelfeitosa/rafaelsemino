@@ -1,47 +1,68 @@
 # Relatório de Auditoria de Entidades - Rodada 2
 
-Este relatório lista as inconsistências residuais identificadas após a primeira rodada de correções. O foco está em entidades com títulos genéricos, metadados incompletos ou nomes de participação ambíguos.
+Este relatório lista as inconsistências residuais identificadas após a primeira rodada de correções e propõe ações baseadas na busca por evidências nos textos extraídos.
 
-## 1. Obras com Metadados Incompletos ou Títulos Genéricos
+## 1. Obras sem Evidência Documental (Provável Lixo/Teste)
 
 ### `work-astronauta`
-- **Diagnóstico:** Metadados placeholder (`status: em-andamento | concluida...`, `year: null`). Título "Astronauta" é vago.
-- **Justificativa:** Parece ser um template ou esboço não preenchido. Sem ano ou descrição, não agrega valor documental.
-- **Sugestão:** Verificar se existe documentação de uma obra chamada "Astronauta". Caso contrário, considerar como rascunho e excluir ou marcar para preenchimento futuro.
+- **Diagnóstico:** Título "Astronauta". Metadados vazios.
+- **Evidência:** Nenhuma menção encontrada nos textos extraídos (`grep` retornou vazio).
+- **Ação:** **Excluir** o arquivo `acervo/entities/works/work-astronauta.md`.
+- **Justificativa:** Entidade órfã sem lastro documental.
 
 ### `work-grafo`
-- **Diagnóstico:** Título "Grafo" é extremamente genérico. Descrição diz "Pesquisa acadêmica e reflexões sobre teatro".
-- **Justificativa:** Se for uma tese ou artigo, deve ter o título real da publicação. "Grafo" pode ser um erro de importação ou referência à estrutura de dados.
-- **Sugestão:** Renomear para o título real da pesquisa (ex: "Título da Tese/Artigo") ou excluir se for apenas um nó de teste de estrutura.
+- **Diagnóstico:** Título "Grafo". Descrição genérica de pesquisa.
+- **Evidência:** Nenhuma menção encontrada nos textos extraídos (`grep` retornou vazio).
+- **Ação:** **Excluir** o arquivo `acervo/entities/works/work-grafo.md`.
+- **Justificativa:** Entidade órfã sem lastro documental. Possivelmente um teste de estrutura de dados.
+
+## 2. Obras com Títulos Confirmados
 
 ### `work-300-reais`
-- **Diagnóstico:** Título curto. Descrição aponta para "Performance encenada no FIDA (2015)".
-- **Justificativa:** O título pode ser real, mas verificar se é completo.
-- **Sugestão:** Manter, mas adicionar contexto se possível (ex: "Performance 300 Reais").
+- **Diagnóstico:** Título curto "300 Reais".
+- **Evidência:** Encontrado em `portfólio_semino_antigo.docx.txt`: "300 Reais, 2014".
+- **Ação:** Manter. Atualizar descrição para **"Performance teatral apresentada em 2014."**
 
-## 2. Participações com Títulos Ambíguos ou "De Trabalho"
+## 3. Correção de Títulos de Participação (Informais -> Formais)
 
 ### `participation-gabriel-exu`
-- **Diagnóstico:** Título "Gabriel Exu". Parece um apelido ou nome de arquivo, não um título de entidade de participação formal.
-- **Justificativa:** Participações devem descrever a ação (ex: "Atuação em Exu Não Vem Hoje"). O título atual mistura o agente com a obra de forma informal.
-- **Sugestão:** Renomear título para **"Atuação e Sonoplastia em Exu Não Vem Hoje"**.
+- **Diagnóstico:** Título informal "Gabriel Exu".
+- **Evidência:** Refere-se à atuação de Gabriel França no espetáculo "Exu Não Vem Hoje".
+- **Ação:** Renomear `title` para **"Atuação e Sonoplastia em Exu Não Vem Hoje"**.
 
 ### `participation-rafael-exu`
-- **Diagnóstico:** Título "Rafael Exu". Similar ao anterior.
-- **Justificativa:** Informalidade no título da entidade.
-- **Sugestão:** Renomear título para **"Atuação em Exu Não Vem Hoje"**.
+- **Diagnóstico:** Título informal "Rafael Exu".
+- **Evidência:** Refere-se à atuação de Rafael Semino no espetáculo "Exu Não Vem Hoje".
+- **Ação:** Renomear `title` para **"Atuação e Co-fundação de Exu Não Vem Hoje"**.
 
-### `participation-zeis-vao` & `participation-rafael-vao`
-- **Diagnóstico:** Títulos "Zeis Vao" e "Rafael Vao".
-- **Justificativa:** Mesmo padrão informal.
-- **Sugestão:** Renomear para **"Direção Musical e Performance em Vão"** e **"Atuação e Criação em Vão"**, respectivamente.
+### `participation-zeis-vao`
+- **Diagnóstico:** Título informal "Zeis Vao".
+- **Evidência:** Zeis compôs a trilha e atuou em "Vão".
+- **Ação:** Renomear `title` para **"Direção Musical e Performance em Vão"**.
 
-## 3. Participações Genéricas (Professores)
+### `participation-rafael-vao`
+- **Diagnóstico:** Título informal "Rafael Vao".
+- **Evidência:** Rafael Semino atuou e criou "Vão".
+- **Ação:** Renomear `title` para **"Atuação e Criação em Vão"**.
 
-### `participation-prof-aceleracao`, `participation-prof-hugo-sadrack`, etc.
-- **Diagnóstico:** Títulos "N/A" ou implícitos no ID.
-- **Justificativa:** IDs como `participation-prof-aceleracao` são claros para devs, mas títulos descritivos ajudam na busca e visualização.
-- **Sugestão:** Adicionar títulos explícitos como **"Docência no Projeto Aceleração"**, **"Professor de Artes na Escola Hugo Sadrack"**.
+## 4. Formalização de Participações de Ensino
 
-## Conclusão
-A estrutura está mais limpa, mas a nomenclatura de participações e algumas obras ainda carece de formalidade e precisão documental. As ações acima visam polir esses detalhes para garantir um acervo profissional e semântico.
+### `participation-prof-hugo-sadrack`
+- **Diagnóstico:** Título ausente/implícito.
+- **Evidência:** `curriculo_rafael_semino.pdf.txt`: "Escola Mário Hugo Sadrak do Vale — Professor de Artes".
+- **Ação:** Definir `title` como **"Professor de Artes na Escola Mário Hugo Sadrak"**.
+
+### `participation-prof-paulo-petrola`
+- **Diagnóstico:** Título ausente/implícito.
+- **Evidência:** `curriculo_rafael_semino.pdf.txt`: "Escola Paulo Petrola — Professor de Artes".
+- **Ação:** Definir `title` como **"Professor de Artes na Escola Paulo Petrola"**.
+
+### `participation-prof-aceleracao`
+- **Diagnóstico:** Título ausente/implícito. "Aceleração" não encontrado nos textos.
+- **Justificativa:** Pode se referir a "Projeto de Aceleração da Aprendizagem" (comum em escolas públicas).
+- **Ação:** Definir `title` como **"Docência em Projeto de Aceleração da Aprendizagem"**. Manter nota de revisão se não houver certeza do vínculo institucional.
+
+## Resumo das Ações
+1.  **Excluir:** `work-astronauta`, `work-grafo`.
+2.  **Renomear Títulos:** `participation-gabriel-exu`, `participation-rafael-exu`, `participation-zeis-vao`, `participation-rafael-vao`.
+3.  **Definir Títulos:** `participation-prof-hugo-sadrack`, `participation-prof-paulo-petrola`, `participation-prof-aceleracao`.
