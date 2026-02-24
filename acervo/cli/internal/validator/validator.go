@@ -5,15 +5,13 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
+
+	"acervo/internal/domain"
 
 	"gopkg.in/yaml.v3"
 )
-
-type Entity struct {
-	ID   string `yaml:"id"`
-	Type string `yaml:"type"`
-}
 
 func ValidateEntities(entitiesDir string) error {
 	return filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
@@ -26,51 +24,92 @@ func ValidateEntities(entitiesDir string) error {
 				return err
 			}
 
-			// Extract YAML frontmatter
 			parts := bytes.SplitN(content, []byte("---"), 3)
 			if len(parts) < 3 {
 				return fmt.Errorf("ERRO: %s não possui frontmatter YAML válido", path)
 			}
 
-			var entity struct {
-				ID    string `yaml:"id"`
-				Type  string `yaml:"type"`
-				Title string `yaml:"title"`
-				Name  string `yaml:"name"`
-				Date  string `yaml:"date"`
-				Agent    string `yaml:"agent"`
-				Path     string `yaml:"path"`
-				URL      string `yaml:"url"`
-				Featured bool   `yaml:"featured"`
+			// Robust entity type detection based on parent directory name
+			rel, err := filepath.Rel(entitiesDir, path)
+			if err != nil {
+				return fmt.Errorf("ERRO: falha ao obter caminho relativo para %s: %w", path, err)
 			}
-			if err := yaml.Unmarshal(parts[1], &entity); err != nil {
-				return fmt.Errorf("ERRO: %s tem YAML inválido: %w", path, err)
-			}
+			parentDir := filepath.Base(filepath.Dir(rel))
 
-			if entity.ID == "" || entity.Type == "" {
-				return fmt.Errorf("ERRO: %s sem id ou type", path)
-			}
-
-			switch entity.Type {
-			case "agent":
-				if entity.Name == "" {
-					return fmt.Errorf("ERRO: %s (agent) sem name", path)
+			if parentDir == "agents" {
+				var agent domain.Agent
+				if err := yaml.Unmarshal(parts[1], &agent); err != nil {
+					return fmt.Errorf("ERRO: Agent em %s tem YAML inválido: %w", path, err)
 				}
-			case "event":
-				if entity.Name == "" {
-					return fmt.Errorf("ERRO: %s (event) sem name", path)
+				if agent.ID == "" {
+					return fmt.Errorf("ERRO: Agent %s sem id", path)
 				}
-			case "work":
-				if entity.Title == "" {
-					return fmt.Errorf("ERRO: %s (work) sem title", path)
+				if agent.Name == "" {
+					return fmt.Errorf("ERRO: Agent %s sem name", agent.ID)
 				}
-			case "participation":
-				if entity.Agent == "" {
-					return fmt.Errorf("ERRO: %s (participation) sem agent", path)
+				if agent.Kind != "person" && agent.Kind != "collective" {
+					return fmt.Errorf("ERRO: Agent %s com kind inválido: '%s'. Deve ser 'person' ou 'collective'", agent.ID, agent.Kind)
 				}
-			case "record":
-				if entity.Path == "" && entity.URL == "" {
-					return fmt.Errorf("ERRO: %s (record) sem path e sem url", path)
+			} else if parentDir == "works" {
+				var work domain.Work
+				if err := yaml.Unmarshal(parts[1], &work); err != nil {
+					return fmt.Errorf("ERRO: Work em %s tem YAML inválido: %w", path, err)
+				}
+				if work.ID == "" {
+					return fmt.Errorf("ERRO: Work %s sem id", path)
+				}
+				if work.Title == "" {
+					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
+				}
+				validWorkTypes := map[string]bool{
+					"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
+				}
+				if work.Type == "" || !validWorkTypes[work.Type] {
+					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: teatro | jogo | filme | roteiro | performance | outro", work.ID, work.Type)
+				}
+			} else if parentDir == "actions" {
+				var action domain.Action
+				if err := yaml.Unmarshal(parts[1], &action); err != nil {
+					return fmt.Errorf("ERRO: Action em %s tem YAML inválido: %w", path, err)
+				}
+				if action.ID == "" {
+					return fmt.Errorf("ERRO: Action %s sem id", path)
+				}
+				if action.Title == "" {
+					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
+				}
+				validActionKinds := map[string]bool{
+					"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
+				}
+				if action.Kind == "" || !validActionKinds[action.Kind] {
+					return fmt.Errorf("ERRO: Action %s tem kind inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Kind)
+				}
+				validContextKinds := map[string]bool{
+					"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
+				}
+				if action.Context.Kind != "" && !validContextKinds[action.Context.Kind] {
+					return fmt.Errorf("ERRO: Action %s tem context.kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Context.Kind)
+				}
+				if action.PerformedBy == "" {
+					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
+				}
+				if action.MyRole == "" {
+					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
+				}
+				if action.Context.Label == "" {
+					return fmt.Errorf("ERRO: Action %s sem context.label", action.ID)
+				}
+				if action.DateStart == "" {
+					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)
+				}
+				dateRegex := regexp.MustCompile(`^\d{4}(-\d{2})?(-\d{2})?$`)
+				if !dateRegex.MatchString(action.DateStart) {
+					return fmt.Errorf("ERRO: Action %s tem formato de date_start inválido: '%s'", action.ID, action.DateStart)
+				}
+				if action.DateEnd != "" {
+					if !dateRegex.MatchString(action.DateEnd) {
+						return fmt.Errorf("ERRO: Action %s tem formato de date_end inválido: '%s'", action.ID, action.DateEnd)
+					}
 				}
 			}
 		}

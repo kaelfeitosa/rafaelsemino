@@ -1,14 +1,16 @@
 ---
-id: work-o-caso-da-casa
-type: work
-title: O Caso da Casa
-created_by: "[[agent-rafael-semino]]"
-language: teatro
-year: 2013
+attachments:
+    - caption: 'Registro Documental: O Caso Da Casa'
+      role: documentation
+      src: work-o-caso-da-casa-001.png
+      type: image
 description: Montagem teatral.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+id: work-o-caso-da-casa
+title: O Caso da Casa
+type: teatro
+year: 2013
 ---
+
+
 Atuação e Direção em 2013.
+

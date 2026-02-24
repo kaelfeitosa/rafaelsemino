@@ -1,14 +1,20 @@
 ---
-id: work-rua-azusa
-type: work
-title: Rua Azusa
-created_by: "[[agent-cia-del-artes]]"
-language: teatro
-year: 2018
+attachments:
+    - caption: 'Registro Documental: Rua Azusa'
+      role: documentation
+      src: work-rua-azusa-001.png
+      type: image
+    - caption: 'Registro Documental: Rua Azusa'
+      role: documentation
+      src: work-rua-azusa-002.png
+      type: image
 description: Espetáculo teatral realizado pela Cia Del Artes.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+id: work-rua-azusa
+title: Rua Azusa
+type: teatro
+year: 2018
 ---
+
+
 Montagem apresentada durante 2018.
+

@@ -1,13 +1,9 @@
 ---
-affiliations: []
-birth_year: null
+description: ""
 id: agent-escola-paulo-petrola
+kind: collective
 name: Escola Paulo Petrola
-notes: null
-roles:
-    - ator
-    - dramaturgo
-    - diretor
-type: agent
 ---
+
+
 Biografia curta ou observações.

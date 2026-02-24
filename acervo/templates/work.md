@@ -1,12 +1,9 @@
 ---
-id: work-<slug>
-type: work
-title: <Título da obra>
-created_by: agent-<id>
-language: teatro | audiovisual | game | texto | misto
-year:
-description:
-tags: []
-status: em-andamento | concluida | arquivada
+id: {{.ID}}
+title: {{.Title}}
+type: {{.Type}}
+description: {{.Description}}
+year: {{.Year}}
+attachments: []
 ---
-Notas de processo, versões, decisões artísticas.
+{{.ContentBody}}

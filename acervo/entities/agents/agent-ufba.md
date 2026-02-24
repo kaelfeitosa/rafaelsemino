@@ -1,13 +1,9 @@
 ---
-affiliations: []
-birth_year: null
+description: ""
 id: agent-ufba
+kind: collective
 name: UFBA - Universidade Federal da Bahia
-notes: null
-roles:
-    - ator
-    - dramaturgo
-    - diretor
-type: agent
 ---
+
+
 Biografia curta ou observações.

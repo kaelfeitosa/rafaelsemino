@@ -1,14 +1,16 @@
 ---
-id: work-asu
-type: work
-title: Asu
-created_by: "[[agent-rafael-semino]]"
-language: teatro
-year: 2017
+attachments:
+    - caption: 'Registro Documental: Asu'
+      role: documentation
+      src: work-asu-001.png
+      type: image
 description: Espetáculo teatral de grupo.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+id: work-asu
+title: Asu
+type: teatro
+year: 2017
 ---
+
+
 Montagem teatral.
+

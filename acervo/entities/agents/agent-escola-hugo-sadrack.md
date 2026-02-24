@@ -1,13 +1,9 @@
 ---
-affiliations: []
-birth_year: null
+description: ""
 id: agent-escola-hugo-sadrack
+kind: collective
 name: Escola Hugo Sadrack do Vale
-notes: null
-roles:
-    - ator
-    - dramaturgo
-    - diretor
-type: agent
 ---
+
+
 Biografia curta ou observações.

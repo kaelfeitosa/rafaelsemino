@@ -1,14 +1,20 @@
 ---
-id: work-santo-bordel-de-tiatira
-type: work
-title: Santo Bordel de Tiatira
-created_by: "[[agent-rafael-semino]]"
-language: teatro
-year: 2017
+attachments:
+    - caption: 'Registro Documental: Santo Bordel De Tiatira'
+      role: documentation
+      src: work-santo-bordel-de-tiatira-002.png
+      type: image
+    - caption: 'Registro Documental: Santo Bordel De Tiatira'
+      role: documentation
+      src: work-santo-bordel-de-tiatira-001.png
+      type: image
 description: Espetáculo de teatro.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+id: work-santo-bordel-de-tiatira
+title: Santo Bordel de Tiatira
+type: teatro
+year: 2017
 ---
+
+
 Apresentado em 2017.
+

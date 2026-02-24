@@ -1,15 +1,24 @@
 ---
-id: work-300-reais
-type: work
-title: 300 Reais
-created_by: "[[agent-rafael-semino]]"
-language: teatro
-year: 2015
+attachments:
+    - caption: 'Registro Documental: 300 Reais'
+      role: documentation
+      src: work-300-reais-002.png
+      type: image
+    - caption: 'Registro Documental: 300 Reais'
+      role: documentation
+      src: work-300-reais-001.png
+      type: image
+    - caption: 'Registro Documental: 300 Reais'
+      role: documentation
+      src: work-300-reais-003.png
+      type: image
 description: Performance encenada no FIDA (2015).
-tags:
-- teatro
-- performance
-status: arquivada
-date: '2024-01-01'
+id: work-300-reais
+title: 300 Reais
+type: performance
+year: 2015
 ---
+
+
 Performance teatral.
+

@@ -1,117 +1,196 @@
 package ingester
 
 import (
+	"acervo/internal/domain"
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"gopkg.in/yaml.v3"
 )
 
-func applyArgs(data map[string]interface{}, args []string) {
-	for _, a := range args {
-		parts := strings.SplitN(a, "=", 2)
-		if len(parts) == 2 {
-			key := strings.TrimSpace(parts[0])
-			val := strings.TrimSpace(parts[1])
+func Create(entityType string, slug string, args []string) error {
+	// Security: Sanitize inputs to prevent path traversal
+	entityType = filepath.Base(entityType)
+	slug = filepath.Base(slug)
 
-			// Check if the field is a slice or boolean in the template/existing data
-			isSlice := false
-			isBool := false
-			if v, ok := data[key]; ok {
-				switch v.(type) {
-				case []interface{}, []string:
-					isSlice = true
-				case bool:
-					isBool = true
-				}
-			}
-
-			// Also try to detect boolean from value string.
-			// Only convert to boolean if it was already a boolean (to update it)
-			// OR if the key didn't exist (assuming "true"/"false" means bool for new fields).
-			valLower := strings.ToLower(val)
-			if (valLower == "true" || valLower == "false") && (isBool || data[key] == nil) {
-				data[key] = (valLower == "true")
-			} else if isSlice {
-				// Strip surrounding brackets if present
-				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
-					val = strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
-				}
-				if val == "" {
-					data[key] = []string{}
-				} else {
-					items := strings.Split(val, ",")
-					var arr []string
-					for i := range items {
-						arr = append(arr, strings.TrimSpace(items[i]))
-					}
-					data[key] = arr
-				}
-			} else {
-				data[key] = val
-			}
-		}
-	}
-}
-
-func Create(entityType, slug string, args []string) error {
-	templatePath := fmt.Sprintf("../templates/%s.md", entityType)
-	content, err := os.ReadFile(templatePath)
-	if err != nil {
-		return fmt.Errorf("template não encontrado para %s", entityType)
-	}
-
-	parts := bytes.SplitN(content, []byte("---"), 3)
-	if len(parts) < 3 {
-		return fmt.Errorf("template mal formatado")
-	}
-
-	var data map[string]interface{}
-	if err := yaml.Unmarshal(parts[1], &data); err != nil {
-		return err
+	// Validate entityType against allow-list
+	allowedTypes := map[string]bool{"action": true, "work": true, "agent": true}
+	if !allowedTypes[entityType] {
+		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
 	}
 
 	id := fmt.Sprintf("%s-%s", entityType, slug)
-	data["id"] = id
-	data["type"] = entityType
+	var frontmatter interface{}
+	var body string = "Detalhes específicos."
 
-	applyArgs(data, args)
-
-	newYaml, err := yaml.Marshal(data)
-	if err != nil {
-		return err
+	// Helper to ensure wikilink format
+	toWikilink := func(s string) string {
+		s = strings.TrimSpace(s)
+		if s == "" {
+			return ""
+		}
+		if !strings.HasPrefix(s, "[[") {
+			s = "[[" + s
+		}
+		if !strings.HasSuffix(s, "]]") {
+			s = s + "]]"
+		}
+		return s
 	}
 
-	body := string(parts[2])
-
-	// If it's a record, ensure we append the embed natively
-	if entityType == "record" {
-		if p, ok := data["path"].(string); ok && p != "" && !strings.Contains(p, "<arquivo>") {
-			filename := filepath.Base(p)
-			embed := fmt.Sprintf("![[%s]]", filename)
-			if !strings.Contains(body, embed) {
-				body = strings.TrimSpace(body) + "\n\n" + embed + "\n"
-			}
+	// Parse args into a map for easier access
+	argMap := make(map[string]string)
+	for _, arg := range args {
+		kv := strings.SplitN(arg, "=", 2)
+		if len(kv) == 2 {
+			argMap[strings.TrimSpace(kv[0])] = strings.TrimSpace(kv[1])
 		}
 	}
 
+	switch entityType {
+	case "action":
+		data := &domain.Action{
+			ID: id,
+		}
+		for key, val := range argMap {
+			switch key {
+			case "title":
+				data.Title = val
+			case "kind":
+				data.Kind = val
+			case "performed_by":
+				data.PerformedBy = toWikilink(val)
+			case "my_role":
+				data.MyRole = val
+			case "work_id":
+				data.WorkID = toWikilink(val)
+			case "context_label":
+				data.Context.Label = val
+			case "context_kind":
+				data.Context.Kind = val
+			case "context_location":
+				data.Context.Location = val
+			case "context_year":
+				if val != "" {
+					y, err := strconv.Atoi(val)
+					if err != nil {
+						return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
+					}
+					data.Context.Year = y
+				}
+			case "date_start":
+				data.DateStart = val
+			case "date_end":
+				data.DateEnd = val
+			case "description":
+				data.Description = val
+			case "featured":
+				data.Featured = (strings.ToLower(val) == "true")
+			case "collaborators":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Collaborators); err != nil {
+						return fmt.Errorf("falha ao analisar collaborators (esperado JSON): %w", err)
+					}
+				}
+			case "attachments":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
+						return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
+					}
+				}
+			}
+		}
+		frontmatter = data
+	case "agent":
+		data := &domain.Agent{
+			ID: id,
+		}
+		for key, val := range argMap {
+			switch key {
+			case "name":
+				data.Name = val
+			case "kind":
+				data.Kind = val
+			case "description":
+				data.Description = val
+			case "founded_by_me":
+				data.FoundedByMe = (strings.ToLower(val) == "true")
+			case "active_since":
+				if val != "" {
+					y, err := strconv.Atoi(val)
+					if err != nil {
+						return fmt.Errorf("valor inválido para active_since: '%s' não é um número", val)
+					}
+					data.ActiveSince = y
+				}
+			case "featured":
+				data.Featured = (strings.ToLower(val) == "true")
+			}
+		}
+		frontmatter = data
+	case "work":
+		data := &domain.Work{
+			ID: id,
+		}
+		for key, val := range argMap {
+			switch key {
+			case "title":
+				data.Title = val
+			case "type":
+				data.Type = val
+			case "description":
+				data.Description = val
+			case "year":
+				if val != "" {
+					y, err := strconv.Atoi(val)
+					if err != nil {
+						return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
+					}
+					data.Year = y
+				}
+			case "featured":
+				data.Featured = (strings.ToLower(val) == "true")
+			}
+		}
+		frontmatter = data
+	}
+
+	yamlData, err := yaml.Marshal(frontmatter)
+	if err != nil {
+		return fmt.Errorf("failed to marshal YAML: %w", err)
+	}
+
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
-	os.MkdirAll(targetDir, 0755)
+	if err := os.MkdirAll(targetDir, 0755); err != nil {
+		return err
+	}
 
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
+	finalContent := fmt.Sprintf("---\n%s---\n%s\n", string(yamlData), body)
 
-	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, strings.TrimSpace(body))
-	err = os.WriteFile(targetPath, []byte(finalContent), 0644)
-	if err == nil {
-		fmt.Printf("✅ Entidade criada: %s\n", id)
+	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
+		return err
 	}
-	return err
+
+	fmt.Printf("✅ Entidade criada: %s\n", targetPath)
+	return nil
 }
 
-func Update(entityType, id string, args []string) error {
+func Update(entityType string, id string, args []string) error {
+	// Security: Sanitize inputs
+	entityType = filepath.Base(entityType)
+	id = filepath.Base(id)
+
+	allowedTypes := map[string]bool{"action": true, "work": true, "agent": true}
+	if !allowedTypes[entityType] {
+		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
+	}
+
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
 
@@ -130,7 +209,10 @@ func Update(entityType, id string, args []string) error {
 		return err
 	}
 
-	applyArgs(data, args)
+	// Update allows generic key setting
+	if err := applyArgs(data, args); err != nil {
+		return err
+	}
 
 	newYaml, err := yaml.Marshal(data)
 	if err != nil {
@@ -138,9 +220,53 @@ func Update(entityType, id string, args []string) error {
 	}
 
 	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, strings.TrimSpace(string(parts[2])))
-	err = os.WriteFile(targetPath, []byte(finalContent), 0644)
-	if err == nil {
-		fmt.Printf("✅ Entidade atualizada: %s\n", id)
+	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
+		return err
 	}
-	return err
+
+	fmt.Printf("✅ Entidade atualizada: %s\n", id)
+	return nil
+}
+func applyArgs(data map[string]interface{}, args []string) error {
+	for _, arg := range args {
+		kv := strings.SplitN(arg, "=", 2)
+		if len(kv) == 2 {
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+
+			// Validate year/context_year
+			if key == "year" || key == "context_year" || key == "active_since" {
+				if val != "" {
+					if _, err := strconv.Atoi(val); err != nil {
+						return fmt.Errorf("valor inválido para %s: '%s' não é um número", key, val)
+					}
+				}
+			}
+
+			// Handle JSON for structured data (starts with [ or {)
+			if (strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]")) ||
+				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
+				var jsonVal interface{}
+				if err := json.Unmarshal([]byte(val), &jsonVal); err != nil {
+					return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err)
+				}
+				data[key] = jsonVal
+				continue
+			}
+
+			vLower := strings.ToLower(val)
+			isBoolField := (key == "founded_by_me" || key == "featured")
+			if existing, ok := data[key]; ok {
+				if _, isBool := existing.(bool); isBool {
+					isBoolField = true
+				}
+			}
+
+			if isBoolField && (vLower == "true" || vLower == "false") {
+				data[key] = (vLower == "true")
+			} else {
+				data[key] = val
+			}
+		}
+	}
+	return nil
 }

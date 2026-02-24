@@ -1,10 +1,10 @@
 ---
-id: agent-<slug>
-type: agent
-name: <Nome completo>
-roles: [ator, dramaturgo, diretor]
-affiliations: []
-birth_year:
-notes:
+id: {{.ID}}
+name: {{.Name}}
+kind: {{.Kind}}
+description: {{.Description}}
+founded_by_me: {{.FoundedByMe}}
+active_since: {{.ActiveSince}}
+links: []
 ---
-Biografia curta ou observações.
+{{.ContentBody}}

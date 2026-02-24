@@ -1,14 +1,16 @@
 ---
-id: work-sociedade-o-circo
-type: work
-title: Sociedade, o Circo
-created_by: "[[agent-rafael-semino]]"
-language: teatro
-year: 2012
+attachments:
+    - caption: 'Registro Documental: Sociedade O Circo'
+      role: documentation
+      src: work-sociedade-o-circo-001.png
+      type: image
 description: Espetáculo teatral.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+id: work-sociedade-o-circo
+title: Sociedade, o Circo
+type: teatro
+year: 2012
 ---
+
+
 Montado durante o início da carreira.
+

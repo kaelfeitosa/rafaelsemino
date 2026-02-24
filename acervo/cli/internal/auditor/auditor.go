@@ -7,104 +7,95 @@ import (
 	"path/filepath"
 	"strings"
 
+	"acervo/internal/domain"
+	"acervo/internal/utils"
+
 	"gopkg.in/yaml.v3"
 )
 
-func cleanWikilink(s string) string {
-	s = strings.TrimPrefix(s, "[[")
-	s = strings.TrimSuffix(s, "]]")
-	return s
-}
-
 func Audit(entitiesDir string) error {
-	participations := make(map[string]bool)
-	recordsWithRelated := make(map[string]bool)
-	allEntities := make(map[string]bool)
-	relations := make(map[string][]string) // source -> []targets
+	agents := make(map[string]bool)
+	works := make(map[string]bool)
+	var allActions []domain.Action
 
-	filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
+	// Single pass walk to collect all entities and actions
+	err := filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
+			return err
+		}
+		if info.IsDir() || !strings.HasSuffix(info.Name(), ".md") {
 			return nil
 		}
-		if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
-			content, err := os.ReadFile(path)
-			if err != nil {
-				return nil
+
+		content, err := os.ReadFile(path)
+		if err != nil {
+			return fmt.Errorf("failed to read file %s: %w", path, err)
+		}
+
+		parts := bytes.SplitN(content, []byte("---"), 3)
+		if len(parts) < 3 {
+			return nil
+		}
+
+		relPath, err := filepath.Rel(entitiesDir, path)
+		if err != nil {
+			fmt.Printf("[WARNING] Falha ao obter caminho relativo para %s: %v\n", path, err)
+			return nil
+		}
+		parentDir := filepath.Base(filepath.Dir(relPath))
+
+		if parentDir == "agents" {
+			var agent struct {
+				ID string `yaml:"id"`
 			}
-
-			parts := bytes.SplitN(content, []byte("---"), 3)
-			if len(parts) < 3 {
-				return nil
+			if err := yaml.Unmarshal(parts[1], &agent); err == nil {
+				agents[agent.ID] = true
+			} else {
+				fmt.Printf("[WARNING] Falha ao analisar Agent em %s: %v\n", path, err)
 			}
-
-			var data map[string]interface{}
-			if err := yaml.Unmarshal(parts[1], &data); err != nil {
-				return nil
+		} else if parentDir == "works" {
+			var work struct {
+				ID string `yaml:"id"`
 			}
-
-			typ, _ := data["type"].(string)
-			id, _ := data["id"].(string)
-
-			if id != "" {
-				allEntities[id] = true
+			if err := yaml.Unmarshal(parts[1], &work); err == nil {
+				works[work.ID] = true
+			} else {
+				fmt.Printf("[WARNING] Falha ao analisar Work em %s: %v\n", path, err)
 			}
-
-			if typ == "participation" {
-				participations[id] = true
-			}
-
-			// Map related_to
-			if rel, ok := data["related_to"]; ok {
-				if relStr, okStr := rel.(string); okStr && relStr != "" {
-					cleanRel := cleanWikilink(relStr)
-					relations[id] = append(relations[id], cleanRel)
-					if typ == "record" {
-						recordsWithRelated[cleanRel] = true
-					}
-				} else if relList, okList := rel.([]interface{}); okList {
-					for _, item := range relList {
-						if target, isStr := item.(string); isStr && target != "" {
-							cleanTarget := cleanWikilink(target)
-							relations[id] = append(relations[id], cleanTarget)
-							if typ == "record" {
-								recordsWithRelated[cleanTarget] = true
-							}
-						}
-					}
-				}
+		} else if parentDir == "actions" {
+			var action domain.Action
+			if err := yaml.Unmarshal(parts[1], &action); err == nil {
+				allActions = append(allActions, action)
+			} else {
+				fmt.Printf("[WARNING] Falha ao analisar Action em %s: %v\n", path, err)
 			}
 		}
 		return nil
 	})
 
-	fmt.Println("=== ACERVO STRUCTURAL AUDIT ===")
+	if err != nil {
+		return err
+	}
 
-	// 1. Broken Links Check
 	brokenLinks := 0
-	for sourceID, targets := range relations {
-		for _, targetID := range targets {
-			if !allEntities[targetID] {
-				fmt.Printf("[BROKEN LINK] %s aponta para %s que não existe!\n", sourceID, targetID)
-				brokenLinks++
-			}
+	// Validate relations using collected data
+	for _, action := range allActions {
+		pb := utils.CleanWikilink(action.PerformedBy)
+		if pb != "" && !agents[pb] {
+			fmt.Printf("[BROKEN LINK] Action %s aponta para Agent %s inexistente\n", action.ID, pb)
+			brokenLinks++
+		}
+
+		wid := utils.CleanWikilink(action.WorkID)
+		if wid != "" && !works[wid] {
+			fmt.Printf("[BROKEN LINK] Action %s aponta para Work %s inexistente\n", action.ID, wid)
+			brokenLinks++
 		}
 	}
 
-	// 2. Participations without records
-	fmt.Println("\nParticipations sem records:")
-	unrecorded := 0
-	for pid := range participations {
-		if !recordsWithRelated[pid] {
-			fmt.Println(" -", pid)
-			unrecorded++
-		}
-	}
-
-	fmt.Printf("\nResultado Final: %d broken links, %d participations sem arquivo.\n", brokenLinks, unrecorded)
-
+	fmt.Printf("=== AUDIT REPORT ===\nBroken Links: %d\n", brokenLinks)
 	if brokenLinks > 0 {
-		return fmt.Errorf("o Grafo do Acervo contém links quebrados intransponíveis")
+		return fmt.Errorf("audit failed with broken links")
 	}
-
 	return nil
 }
