@@ -23,7 +23,7 @@ The optimization tool requires `cwebp` (Google WebP tools) to be installed on yo
 2.  **Reference in HTML:**
     *   In `frontend/index.html`, reference the *future* optimized file in `images/optimized/`.
     *   Example: `<img src="images/optimized/work-exu-nao-vem-hoje-001.webp">`
-    *   **Note:** The builder handles filename normalization (e.g., matching `_` in HTML to `-` in source), so you can use `work_exu_nao_vem_hoje_001.webp` if preferred, but keeping them consistent is better.
+    *   **Note:** The builder **always** handles filename normalization. It treats underscores (`_`) in the HTML `src` as hyphens (`-`) when looking up the source file. This means `work_exu_nao_vem_hoje_001.webp` in HTML will correctly map to `work-exu-nao-vem-hoje-001.jpeg` in the source directory.
 
 3.  **Run Builder:**
     *   Run the CLI command from `acervo/cli`:

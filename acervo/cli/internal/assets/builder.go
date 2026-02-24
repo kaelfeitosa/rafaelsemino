@@ -38,7 +38,7 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 	}
 
 	if len(refs) == 0 {
-		fmt.Println("No optimized images found in HTML.")
+		fmt.Printf("No optimized images found in HTML file: %s.\n", htmlPath)
 		return nil
 	}
 
@@ -64,7 +64,7 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 
 		sourcePath := findSourceFile(sourceMap, baseName)
 		if sourcePath == "" {
-			fmt.Printf("⚠️  Source not found for: %s\n", baseName)
+			fmt.Printf("⚠️  Source not found for: '%s' in directory '%s'\n", baseName, sourceDir)
 			continue
 		}
 
@@ -157,14 +157,18 @@ func isUpToDate(src, dest string) bool {
 	return destInfo.ModTime().After(srcInfo.ModTime())
 }
 
-func optimizeImage(cwebpCmd, srcPath, destPath string) error {
+func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 	// 1. Decode config to check width
 	srcFile, err := os.Open(srcPath)
 	if err != nil {
 		return err
 	}
-	// Defer closing immediately to ensure resource cleanup
-	defer srcFile.Close()
+	// Defer closing with error handling
+	defer func() {
+		if cerr := srcFile.Close(); cerr != nil && err == nil {
+			err = fmt.Errorf("closing source file: %w", cerr)
+		}
+	}()
 
 	// We only need to decode config, not the whole image
 	config, _, err := image.DecodeConfig(srcFile)
