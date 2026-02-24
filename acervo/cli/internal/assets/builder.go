@@ -3,8 +3,8 @@ package assets
 import (
 	"fmt"
 	"image"
-	"image/jpeg"
-	"image/png"
+	_ "image/jpeg"
+	_ "image/png"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -40,6 +40,12 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 		return fmt.Errorf("creating output dir: %w", err)
 	}
 
+	// Create source map once
+	sourceMap, err := buildSourceMap(sourceDir)
+	if err != nil {
+		return fmt.Errorf("building source map: %w", err)
+	}
+
 	for _, ref := range refs {
 		if !strings.Contains(ref, "images/optimized/") {
 			continue
@@ -48,7 +54,7 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 		filename := filepath.Base(ref)
 		baseName := strings.TrimSuffix(filename, filepath.Ext(filename))
 
-		sourcePath := findSourceFile(sourceDir, baseName)
+		sourcePath := findSourceFile(sourceMap, baseName)
 		if sourcePath == "" {
 			fmt.Printf("⚠️  Source not found for: %s\n", baseName)
 			continue
@@ -94,37 +100,34 @@ func scanHTMLForImages(path string) ([]string, error) {
 	return refs, nil
 }
 
-func findSourceFile(dir, baseName string) string {
-	exts := []string{".jpg", ".jpeg", ".png"}
-
-	// 1. Try exact match
-	for _, ext := range exts {
-		path := filepath.Join(dir, baseName+ext)
-		if _, err := os.Stat(path); err == nil {
-			return path
-		}
-	}
-
-	// 2. Try normalized match (hyphens vs underscores)
+// buildSourceMap scans the source directory and creates a map of normalized filenames to full paths
+func buildSourceMap(dir string) (map[string]string, error) {
 	files, err := os.ReadDir(dir)
 	if err != nil {
-		return ""
+		return nil, err
 	}
 
-	normalizedTarget := strings.ReplaceAll(baseName, "_", "-")
-
+	sourceMap := make(map[string]string)
 	for _, f := range files {
 		if f.IsDir() {
 			continue
 		}
+
 		fBase := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
+		// Normalized key: replace underscores with hyphens
 		fNorm := strings.ReplaceAll(fBase, "_", "-")
 
-		if fNorm == normalizedTarget {
-			return filepath.Join(dir, f.Name())
-		}
+		sourceMap[fNorm] = filepath.Join(dir, f.Name())
 	}
+	return sourceMap, nil
+}
 
+func findSourceFile(sourceMap map[string]string, baseName string) string {
+	// Normalized lookup
+	normalizedBase := strings.ReplaceAll(baseName, "_", "-")
+	if path, ok := sourceMap[normalizedBase]; ok {
+		return path
+	}
 	return ""
 }
 
@@ -147,7 +150,6 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) error {
 		return err
 	}
 	// We only need to decode config, not the whole image
-	// But image.DecodeConfig needs registered formats
 	config, _, err := image.DecodeConfig(srcFile)
 	srcFile.Close()
 
@@ -178,12 +180,4 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) error {
 	}
 
 	return nil
-}
-
-// Side-effect imports to register formats for DecodeConfig
-func init() {
-	// Register formats is handled by blank imports in import block
-	// but image/jpeg and image/png must be there
-	_ = jpeg.Decode
-	_ = png.Decode
 }

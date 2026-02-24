@@ -146,9 +146,21 @@ func main() {
 		Use:   "build-assets",
 		Short: "Scans HTML for images and generates optimized WebP assets using cwebp",
 		Run: func(cmd *cobra.Command, args []string) {
-			htmlPath, _ := cmd.Flags().GetString("html")
-			sourceDir := "../media/images"
-			outputDir := "../../frontend/images/optimized"
+			htmlPath, err := cmd.Flags().GetString("html")
+			if err != nil {
+				fmt.Println("❌ Erro ao ler flag --html:", err)
+				os.Exit(1)
+			}
+			sourceDir, err := cmd.Flags().GetString("source")
+			if err != nil {
+				fmt.Println("❌ Erro ao ler flag --source:", err)
+				os.Exit(1)
+			}
+			outputDir, err := cmd.Flags().GetString("output")
+			if err != nil {
+				fmt.Println("❌ Erro ao ler flag --output:", err)
+				os.Exit(1)
+			}
 
 			fmt.Println("🚀 Iniciando otimização de assets...")
 			if err := assets.BuildAssets(htmlPath, sourceDir, outputDir); err != nil {
@@ -159,6 +171,8 @@ func main() {
 		},
 	}
 	buildAssetsCmd.Flags().String("html", "../../frontend/index.html", "Path to HTML file to scan")
+	buildAssetsCmd.Flags().String("source", "../media/images", "Directory containing source master images")
+	buildAssetsCmd.Flags().String("output", "../../frontend/images/optimized", "Directory to output optimized WebP assets")
 
 	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd)
 
