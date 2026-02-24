@@ -1,4 +1,4 @@
-REGRAS
+# Visão Geral do Acervo
 - Nunca alterar IDs existentes
 - Nunca inferir relações implícitas
 - Nunca editar arquivos em /registros

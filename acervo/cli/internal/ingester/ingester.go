@@ -2,6 +2,7 @@ package ingester
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -205,8 +206,15 @@ func applyArgs(data map[string]interface{}, args []string) {
 				}
 			}
 
-			// Handle Array format [a, b, c]
-			if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
+			// Handle JSON for structured data (starts with [ or {)
+			if (strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]")) ||
+				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
+				var jsonVal interface{}
+				if err := json.Unmarshal([]byte(val), &jsonVal); err == nil {
+					data[key] = jsonVal
+					continue
+				}
+				// Fallback to custom parsing if JSON fails (e.g. simple list [a,b])
 				val = strings.TrimPrefix(val, "[")
 				val = strings.TrimSuffix(val, "]")
 				parts := strings.Split(val, ",")
@@ -229,7 +237,7 @@ func applyArgs(data map[string]interface{}, args []string) {
 			if isBoolField && (vLower == "true" || vLower == "false") {
 				data[key] = (vLower == "true")
 			} else if strings.Contains(val, ",") {
-				// Handle structured slices
+				// Handle legacy structured slices (backwards compatibility)
 				parts := strings.Split(val, ",")
 				var slice []interface{}
 				for _, p := range parts {
@@ -258,7 +266,6 @@ func applyArgs(data map[string]interface{}, args []string) {
 							}
 							slice = append(slice, obj)
 						default:
-							// Unknown structured key, treat as string
 							slice = append(slice, p)
 						}
 					} else {

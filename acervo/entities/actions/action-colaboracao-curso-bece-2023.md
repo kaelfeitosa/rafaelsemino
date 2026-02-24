@@ -1,5 +1,6 @@
 ---
 attachments: []
+collaborators: '[{"name":"JSON'
 context:
     kind: curso
     label: Curso Protagonismo Negro na Cultura Pop (BECE)

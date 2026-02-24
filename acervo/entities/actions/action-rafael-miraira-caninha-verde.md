@@ -9,7 +9,7 @@ context:
   label: Encontro Mestres do Mundo (2016)
   kind: outro
   location: Fortaleza, CE
-date_start: '2020'
+date_start: '2016'
 description: Apresentação de dança dramática de Caninha Verde com o Grupo Mira Ira.
 attachments: []
 ---
