@@ -1,13 +1,15 @@
 ---
-date_end: null
-date_start: YYYY-MM-DD
-description: null
-event_type: apresentacao | festival | mostra | residencia | oficina | premio
 id: event-laboratorio-pesquisa-ccbj
-location: null
-name: Laboratório de Pesquisa CCBJ
-organizers:
-    - '[agent-ccbj]'
 type: event
+name: Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
+date: "2022-01-01"
+location: Fortaleza, CE (CCBJ)
+description: Laboratório de pesquisa no Centro Cultural Bom Jardim, focado no desenvolvimento de 'Exu Não Vem Hoje'.
+organizers:
+- "[[agent-ccbj]]"
+tags:
+- laboratorio
+- pesquisa
+- ccbj
 ---
-Observações logísticas, links, contatos.
+Laboratório de pesquisa realizado no Centro Cultural Bom Jardim (CCBJ), com foco no desenvolvimento e pesquisa para a obra "Exu não vem hoje".
