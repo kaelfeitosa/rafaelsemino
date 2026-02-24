@@ -9,26 +9,16 @@ import (
 	"path/filepath"
 	"strings"
 
+	"acervo/internal/domain"
+
 	"gopkg.in/yaml.v3"
 	_ "modernc.org/sqlite"
 )
-
-type EntityMap map[string]interface{}
 
 func cleanWikilink(s string) string {
 	s = strings.TrimPrefix(s, "[[")
 	s = strings.TrimSuffix(s, "]]")
 	return s
-}
-
-func isFeatured(v interface{}) bool {
-	if val, ok := v.(bool); ok {
-		return val
-	}
-	if val, ok := v.(string); ok {
-		return strings.ToLower(val) == "true"
-	}
-	return false
 }
 
 func Reindex(entitiesDir, dbPath string) error {
@@ -73,65 +63,68 @@ func Reindex(entitiesDir, dbPath string) error {
 				return nil
 			}
 
-			var data EntityMap
-			if err := yaml.Unmarshal(parts[1], &data); err != nil {
-				return err
-			}
-
-			id, _ := data["id"].(string)
-
-			// Determine Type
-			typ := ""
-			if strings.Contains(path, "/agents/") {
-				typ = "agent"
-			} else if strings.Contains(path, "/works/") {
-				typ = "work"
-			} else if strings.Contains(path, "/actions/") {
-				typ = "action"
-			}
-
-			title := ""
-			if val, ok := data["title"].(string); ok {
-				title = val
-			} else if val, ok := data["name"].(string); ok {
-				title = val
-			}
+			var id, typ, title string
+			var featured int
+			var jsonData []byte
 
 			absolutePath, _ := filepath.Abs(path)
 
-			featured := 0
-			if isFeatured(data["featured"]) {
-				featured = 1
+			if strings.Contains(path, "/agents/") {
+				var data domain.Agent
+				if err := yaml.Unmarshal(parts[1], &data); err != nil {
+					return err
+				}
+				id = data.ID
+				typ = "agent"
+				title = data.Name
+				if data.Featured {
+					featured = 1
+				}
+				jsonData, _ = json.Marshal(data)
+
+			} else if strings.Contains(path, "/works/") {
+				var data domain.Work
+				if err := yaml.Unmarshal(parts[1], &data); err != nil {
+					return err
+				}
+				id = data.ID
+				typ = "work"
+				title = data.Title
+				if data.Featured {
+					featured = 1
+				}
+				jsonData, _ = json.Marshal(data)
+
+				if cb := cleanWikilink(data.CreatedBy); cb != "" {
+					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cb)
+				}
+
+			} else if strings.Contains(path, "/actions/") {
+				var data domain.Action
+				if err := yaml.Unmarshal(parts[1], &data); err != nil {
+					return err
+				}
+				id = data.ID
+				typ = "action"
+				title = data.Title
+				if data.Featured {
+					featured = 1
+				}
+				jsonData, _ = json.Marshal(data)
+
+				if pb := cleanWikilink(data.PerformedBy); pb != "" {
+					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb)
+				}
+				if wid := cleanWikilink(data.WorkID); wid != "" {
+					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid)
+				}
 			}
 
-			// Store as proper JSON
-			jsonData, err := json.Marshal(data)
-			if err != nil {
-				// Fallback to empty JSON object if marshalling fails
-				jsonData = []byte("{}")
-			}
-
-			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, absolutePath, featured, string(jsonData))
-			if err != nil {
-				return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
-			}
-
-			// Index Relations
-			switch typ {
-			case "action":
-				if pb, ok := data["performed_by"].(string); ok && pb != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", cleanWikilink(pb))
+			if id != "" {
+				_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, absolutePath, featured, string(jsonData))
+				if err != nil {
+					return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
 				}
-				if wid, ok := data["work_id"].(string); ok && wid != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", cleanWikilink(wid))
-				}
-			case "work":
-				// Any relations for Work? Maybe created_by if it exists in frontmatter
-				if cb, ok := data["created_by"].(string); ok && cb != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cleanWikilink(cb))
-				}
-			case "agent":
-				// founded_by_me, etc.
 			}
 		}
 		return nil

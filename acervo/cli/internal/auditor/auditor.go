@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"acervo/internal/domain"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -33,17 +35,18 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
-		var data struct {
+		// Simple ID extraction
+		var base struct {
 			ID string `yaml:"id"`
 		}
-		yaml.Unmarshal(parts[1], &data)
+		yaml.Unmarshal(parts[1], &base)
 
 		if strings.Contains(path, "/agents/") {
-			agents[data.ID] = true
+			agents[base.ID] = true
 		} else if strings.Contains(path, "/works/") {
-			works[data.ID] = true
+			works[base.ID] = true
 		} else if strings.Contains(path, "/actions/") {
-			actions[data.ID] = true
+			actions[base.ID] = true
 		}
 		return nil
 	})
@@ -56,15 +59,17 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
+		content, _ := os.ReadFile(path)
+		parts := bytes.SplitN(content, []byte("---"), 3)
+		if len(parts) < 3 {
+			return nil
+		}
+
 		if strings.Contains(path, "/actions/") {
-			content, _ := os.ReadFile(path)
-			parts := bytes.SplitN(content, []byte("---"), 3)
-			var action struct {
-				ID          string `yaml:"id"`
-				PerformedBy string `yaml:"performed_by"`
-				WorkID      string `yaml:"work_id"`
+			var action domain.Action
+			if err := yaml.Unmarshal(parts[1], &action); err != nil {
+				return nil
 			}
-			yaml.Unmarshal(parts[1], &action)
 
 			pb := cleanWikilink(action.PerformedBy)
 			if pb != "" && !agents[pb] {

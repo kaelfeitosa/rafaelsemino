@@ -17,12 +17,12 @@ import (
 func main() {
 	var rootCmd = &cobra.Command{
 		Use:   "acervo",
-		Short: "Acervo CLI for managing the event-centric database",
+		Short: "Acervo CLI for managing the editorial portfolio database (Action-centric)",
 	}
 
 	var validateCmd = &cobra.Command{
 		Use:   "validate",
-		Short: "Validates all markdown entities",
+		Short: "Validates all markdown entities (Actions, Works, Agents)",
 		Run: func(cmd *cobra.Command, args []string) {
 			if err := validator.ValidateEntities("../entities"); err != nil {
 				fmt.Println("❌ Validation failed:", err)
@@ -34,7 +34,7 @@ func main() {
 
 	var verifyCmd = &cobra.Command{
 		Use:   "verify",
-		Short: "Executes both strict Syntax Validation and Relational Graph Auditing",
+		Short: "Executes strict Syntax Validation and Graph Integrity Auditing",
 		Run: func(cmd *cobra.Command, args []string) {
 			if err := validator.ValidateEntities("../entities"); err != nil {
 				fmt.Println("❌ Validation failed:", err)
@@ -74,7 +74,7 @@ func main() {
 
 	var ingestCreateCmd = &cobra.Command{
 		Use:   "create [entityType] [slug] [key=value...]",
-		Short: "Creates a new markdown entity strictly from acervo/templates",
+		Short: "Creates a new markdown entity strictly from templates (action, work, agent)",
 		Args:  cobra.MinimumNArgs(2),
 		Run: func(cmd *cobra.Command, args []string) {
 			entityType := args[0]

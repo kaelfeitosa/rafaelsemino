@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"acervo/internal/domain"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -26,65 +28,45 @@ func ValidateEntities(entitiesDir string) error {
 				return fmt.Errorf("ERRO: %s não possui frontmatter YAML válido", path)
 			}
 
-			var base struct {
-				ID   string `yaml:"id"`
-				Type string `yaml:"type,omitempty"` // Legacy check, can be removed or kept for safety
-			}
-			if err := yaml.Unmarshal(parts[1], &base); err != nil {
-				return fmt.Errorf("ERRO: %s tem YAML inválido: %w", path, err)
-			}
-
-			if base.ID == "" {
-				return fmt.Errorf("ERRO: %s sem id", path)
-			}
-
-			// Identify type by folder or content structure
+			// Validate based on Entity Type inferred from path or structure
 			if strings.Contains(path, "/agents/") {
-				var agent struct {
-					Name string `yaml:"name"`
-					Kind string `yaml:"kind"`
-				}
+				var agent domain.Agent
 				if err := yaml.Unmarshal(parts[1], &agent); err != nil {
-					return err
+					return fmt.Errorf("ERRO: Agent em %s tem YAML inválido: %w", path, err)
+				}
+				if agent.ID == "" {
+					return fmt.Errorf("ERRO: Agent %s sem id", path)
 				}
 				if agent.Name == "" {
-					return fmt.Errorf("ERRO: Agent %s sem name", base.ID)
+					return fmt.Errorf("ERRO: Agent %s sem name", agent.ID)
 				}
 				if agent.Kind != "person" && agent.Kind != "collective" {
-					// Soft warning or error? Enforce schema.
-					// return fmt.Errorf("ERRO: Agent %s com kind inválido: %s", base.ID, agent.Kind)
+					return fmt.Errorf("ERRO: Agent %s com kind inválido: %s (esperado: person, collective)", agent.ID, agent.Kind)
 				}
 			} else if strings.Contains(path, "/works/") {
-				var work struct {
-					Title string `yaml:"title"`
-				}
+				var work domain.Work
 				if err := yaml.Unmarshal(parts[1], &work); err != nil {
-					return err
+					return fmt.Errorf("ERRO: Work em %s tem YAML inválido: %w", path, err)
+				}
+				if work.ID == "" {
+					return fmt.Errorf("ERRO: Work %s sem id", path)
 				}
 				if work.Title == "" {
-					return fmt.Errorf("ERRO: Work %s sem title", base.ID)
+					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
 				}
 			} else if strings.Contains(path, "/actions/") {
-				var action struct {
-					Title       string `yaml:"title"`
-					PerformedBy string `yaml:"performed_by"`
-					MyRole      string `yaml:"my_role"`
-					Context     struct {
-						Label string `yaml:"label"`
-					} `yaml:"context"`
-				}
+				var action domain.Action
 				if err := yaml.Unmarshal(parts[1], &action); err != nil {
-					return err
+					return fmt.Errorf("ERRO: Action em %s tem YAML inválido: %w", path, err)
+				}
+				if action.ID == "" {
+					return fmt.Errorf("ERRO: Action %s sem id", path)
 				}
 				if action.PerformedBy == "" {
-					return fmt.Errorf("ERRO: Action %s sem performed_by", base.ID)
+					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
 				}
 				if action.MyRole == "" {
-					return fmt.Errorf("ERRO: Action %s sem my_role", base.ID)
-				}
-				if action.Context.Label == "" {
-					// Ideally context should be present
-					// return fmt.Errorf("ERRO: Action %s sem context.label", base.ID)
+					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
 				}
 			}
 		}

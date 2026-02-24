@@ -1,8 +1,16 @@
 ---
 id: work-constelacao
-title: Constelação
 type: work
-description: Processo criativo de residência/performance desenvolvido em 2023.
+title: Constelação
+created_by: '[[agent-rafael-semino]]'
+language: performance
 year: 2023
+description: Processo criativo de residência/performance desenvolvido em 2023.
+tags:
+- performance
+- residencia
+- processo-criativo
+status: concluida
+date: '2023-10-26'
 ---
 Notas de processo, versões, decisões artísticas.

@@ -10,54 +10,16 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func applyArgs(data map[string]interface{}, args []string) {
-	for _, a := range args {
-		parts := strings.SplitN(a, "=", 2)
-		if len(parts) == 2 {
-			key := strings.TrimSpace(parts[0])
-			val := strings.TrimSpace(parts[1])
+// Ingester remains relatively dynamic because it needs to apply KV args to templates
+// which might not map 1:1 to domain structs without heavy reflection logic.
+// However, we ensure it respects the folder structure.
 
-			// Check if the field is a slice or boolean in the template/existing data
-			isSlice := false
-			isBool := false
-			if v, ok := data[key]; ok {
-				switch v.(type) {
-				case []interface{}, []string:
-					isSlice = true
-				case bool:
-					isBool = true
-				}
-			}
-
-			// Also try to detect boolean from value string.
-			// Only convert to boolean if it was already a boolean (to update it)
-			// OR if the key didn't exist (assuming "true"/"false" means bool for new fields).
-			valLower := strings.ToLower(val)
-			if (valLower == "true" || valLower == "false") && (isBool || data[key] == nil) {
-				data[key] = (valLower == "true")
-			} else if isSlice {
-				// Strip surrounding brackets if present
-				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
-					val = strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
-				}
-				if val == "" {
-					data[key] = []string{}
-				} else {
-					items := strings.Split(val, ",")
-					var arr []string
-					for i := range items {
-						arr = append(arr, strings.TrimSpace(items[i]))
-					}
-					data[key] = arr
-				}
-			} else {
-				data[key] = val
-			}
-		}
+func Create(entityType string, slug string, args []string) error {
+	targetDir := fmt.Sprintf("../entities/%ss", entityType)
+	if err := os.MkdirAll(targetDir, 0755); err != nil {
+		return err
 	}
-}
 
-func Create(entityType, slug string, args []string) error {
 	templatePath := fmt.Sprintf("../templates/%s.md", entityType)
 	content, err := os.ReadFile(templatePath)
 	if err != nil {
@@ -76,7 +38,6 @@ func Create(entityType, slug string, args []string) error {
 
 	id := fmt.Sprintf("%s-%s", entityType, slug)
 	data["id"] = id
-	data["type"] = entityType
 
 	applyArgs(data, args)
 
@@ -85,33 +46,19 @@ func Create(entityType, slug string, args []string) error {
 		return err
 	}
 
-	body := string(parts[2])
-
-	// If it's a record, ensure we append the embed natively
-	if entityType == "record" {
-		if p, ok := data["path"].(string); ok && p != "" && !strings.Contains(p, "<arquivo>") {
-			filename := filepath.Base(p)
-			embed := fmt.Sprintf("![[%s]]", filename)
-			if !strings.Contains(body, embed) {
-				body = strings.TrimSpace(body) + "\n\n" + embed + "\n"
-			}
-		}
-	}
-
-	targetDir := fmt.Sprintf("../entities/%ss", entityType)
-	os.MkdirAll(targetDir, 0755)
+	body := strings.TrimSpace(string(parts[2]))
+	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, body)
 
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
-
-	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, strings.TrimSpace(body))
-	err = os.WriteFile(targetPath, []byte(finalContent), 0644)
-	if err == nil {
-		fmt.Printf("✅ Entidade criada: %s\n", id)
+	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
+		return err
 	}
-	return err
+
+	fmt.Printf("✅ Entidade criada: %s\n", targetPath)
+	return nil
 }
 
-func Update(entityType, id string, args []string) error {
+func Update(entityType string, id string, args []string) error {
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
 
@@ -138,9 +85,26 @@ func Update(entityType, id string, args []string) error {
 	}
 
 	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, strings.TrimSpace(string(parts[2])))
-	err = os.WriteFile(targetPath, []byte(finalContent), 0644)
-	if err == nil {
-		fmt.Printf("✅ Entidade atualizada: %s\n", id)
+	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
+		return err
 	}
-	return err
+
+	fmt.Printf("✅ Entidade atualizada: %s\n", id)
+	return nil
+}
+
+func applyArgs(data map[string]interface{}, args []string) {
+	for _, arg := range args {
+		kv := strings.SplitN(arg, "=", 2)
+		if len(kv) == 2 {
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+			if val == "true" {
+				data[key] = true
+			} else if val == "false" {
+				data[key] = false
+			} else {
+				data[key] = val
+			}
+		}
+	}
 }
