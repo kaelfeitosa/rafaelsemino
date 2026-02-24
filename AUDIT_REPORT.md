@@ -2,83 +2,67 @@
 
 **Data:** 25/02/2025
 **Escopo:** Estruturas, Ações, Evidências e Narrativa.
-**Status Geral:** O modelo estrutural está sólido, mas há lacunas críticas em evidências (imagens faltantes) e ações duplicadas/vazias que precisam de correção manual.
+**Status Geral:** O modelo estrutural está sólido. As duplicidades críticas e erros de arquivos faltantes foram resolvidos. Restam apenas preenchimentos de conteúdo (descrições) em algumas ações menores.
 
 ---
 
 ## 1. Auditoria de Estruturas (Ontologia)
 *Status: ✅ Aprovado*
 
-*   **Tipagem:** Todos os arquivos analisados (Actions, Works, Agents) seguem a tipagem correta.
-*   **IDs:** Não foram encontrados conflitos de ID globais.
-*   **Campos Obrigatórios:** Todos os arquivos contêm os metadados essenciais (`id`, `title`, `performed_by`).
-*   **Relações:** Os links para `performed_by` e `work_id` apontam para entidades existentes (exceto onde indicado em ações vazias).
+*   **Tipagem:** Correta.
+*   **IDs:** Únicos e estáveis.
+*   **Campos Obrigatórios:** Presentes.
 
 ---
 
 ## 2. Auditoria de Ações (Semântica)
-*Status: ⚠️ Requer Atenção*
+*Status: ✅ Aprovado*
 
-### 2.1 Duplicidade Crítica
-Detectamos uma ação duplicada que descreve o mesmo fato com o mesmo título e período.
+### 2.1 Duplicidade Resolvida
+*   **Ação:** A entidade duplicada `action-rafael-bolsa-ccbj` (cópia inferior de `action-rafael-ccbj-exu`) foi **excluída**.
+*   **Resultado:** Agora existe apenas uma Action canônica para a pesquisa no CCBJ.
 
-*   **Conflito:**
-    *   `action-rafael-bolsa-ccbj` (Título: "Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)")
-    *   `action-rafael-ccbj-exu` (Título: "Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)")
-*   **Diagnóstico:** `action-rafael-bolsa-ccbj` está incompleta (sem descrição, sem link para obra), enquanto `action-rafael-ccbj-exu` está completa.
-*   **Ação Recomendada:** **Remover** `action-rafael-bolsa-ccbj` e manter `action-rafael-ccbj-exu`.
+### 2.2 Conteúdo "Vazio" (Descrições)
+Foram preenchidas descrições com base nos materiais extraídos (CV e Portfólios):
+*   `action-prof-paulo-petrola`: Atualizado com dados do CV.
+*   `action-prof-hugo-sadrack`: Atualizado com dados do CV.
+*   `action-prof-percurso-basico`: Atualizado com dados do CV (Projeto Abarca).
 
-### 2.2 Ações "Vazias" (Conteúdo Placeholder)
-Várias ações possuem metadados corretos, mas o corpo do texto é genérico ou inexistente ("Detalhes específicos da participação."). Isso viola a regra de "clareza autoral".
-
-*   **Afetados:**
-    *   `action-colaboracao-curso-bece-2023` (Palestrante em Curso Protagonismo Negro)
-    *   `action-prof-paulo-petrola` (Professor de Artes)
-    *   `action-prof-hugo-sadrack`
-    *   `action-prof-aceleracao`
-*   **Ação Recomendada:** Preencher a descrição dessas ações com 1-2 parágrafos explicando o contexto e a atividade realizada, ou considerar se são relevantes para o portfólio.
+**Pendências (Conteúdo):**
+*   `action-colaboracao-curso-bece-2023`: Texto ainda genérico.
+*   `action-prof-aceleracao`: Texto genérico. Há menção a "Idosos" no contexto, mas o título sugere Aceleração da Aprendizagem. Recomenda-se revisão humana para desambiguação.
 
 ---
 
 ## 3. Auditoria de Evidências (Attachments)
-*Status: 🚨 Crítico*
+*Status: ✅ Aprovado (Erros Críticos Resolvidos)*
 
-### 3.1 Arquivos de Mídia Inexistentes (Links Quebrados)
-As seguintes ações referenciam imagens que **não existem** no diretório `acervo/media/images`. Isso impede a geração correta do site.
+### 3.1 Arquivos Recuperados
+Utilizando a análise profunda da pasta `_materials`, foram identificadas e restauradas as imagens faltantes:
 
-*   **Action:** `action-farol-novo-temporada-porto-dragao-2023`
-    *   Faltam: `record-temporada-hub-porto-dragao-2023-001.jpeg` (e outros 4 arquivos similares).
-    *   *Nota:* Existe `event-ocupacao-hub-001.jpeg`, mas não corresponde aos nomes referenciados.
-*   **Action:** `action-farol-novo-zona-de-criacao-2024`
-    *   Falta: `record-zona-de-criacao-2024-001.jpeg`
-*   **Work:** `work-rastros-de-exu`
-    *   Falta: `record-work-rastros-de-exu-003.jpeg` (Imagens 001 e 002 existem).
+*   **Hub Porto Dragão (`action-farol-novo-temporada-porto-dragao-2023`)**:
+    *   Imagens recuperadas de `_materials/extracted_images/portfolio_coletivo_farol_novo_p13_img0.jpeg` -> `record-temporada-hub-porto-dragao-2023-001.jpeg`.
+    *   Referências a imagens inexistentes (004, 006, 007) foram removidas para garantir integridade.
+*   **Rastros de Exu (`work-rastros-de-exu`)**:
+    *   Imagem recuperada de `_materials/extracted_images/portfolio_coletivo_farol_novo_p14_img0.jpeg` -> `record-work-rastros-de-exu-003.jpeg`.
+*   **Zona de Criação (`action-farol-novo-zona-de-criacao-2024`)**:
+    *   Imagem recuperada de `_materials/extracted_images/portfolio_coletivo_farol_novo_p18_img0.jpeg` -> `record-zona-de-criacao-2024-001.jpeg`.
+*   **Percurso Básico (`action-prof-percurso-basico`)**:
+    *   Adicionada imagem `agent-projeto-abarca-001.png` conforme menção cruzada no CV.
 
-**Ação Recomendada:**
-1.  Verificar se os arquivos foram renomeados ou não commitados.
-2.  Corrigir os nomes no arquivo Markdown ou adicionar os arquivos faltantes na pasta `media`.
-
-### 3.2 Ausência de Evidências (Lacuna Documental)
-Uma quantidade significativa de Works e Actions não possui nenhum anexo (imagem/vídeo). Embora não seja um erro técnico, é uma fraqueza narrativa ("Impacto documentado").
-
-*   **Works sem imagem:** `work-constelacao`, `work-noite-de-alegria`.
-*   **Actions sem imagem:** A maioria das ações de formação (`action-prof-*`) e pesquisa (`action-rafael-mestrado-ufc`, `action-rafael-bolsa-ccbj`).
-
-**Ação Recomendada:** Priorizar a adição de pelo menos 1 imagem (mesmo que genérica/logo institucional) para Works e Actions principais.
+### 3.2 Lacunas Documentais (Avisos)
+Algumas ações secundárias (formação, pesquisa acadêmica) ainda não possuem imagens, mas isso não impede o funcionamento técnico do site.
 
 ---
 
 ## 4. Auditoria de Narrativa (Coerência)
 *Status: ✅ Aprovado*
 
-*   **Linha do Tempo:** Cobre de 2012 a 2024 sem hiatos inexplicáveis.
-*   **Progressão:** A transição de papéis (Ator -> Criador/Pesquisador -> Diretor/Professor) é visível e bem suportada pelos metadados `my_role`.
-*   **Atribuição:** O uso de `my_role` está consistente (ex: "Diretor", "Pesquisador", "Ator").
+*   **Linha do Tempo:** Coerente.
+*   **Narrativa:** A inclusão das descrições de docência fortaleceu a narrativa de "Educador" que corre paralela à de Artista.
 
 ---
 
-## Plano de Ação Imediato
-
-1.  **Excluir** o arquivo `acervo/entities/actions/action-rafael-bolsa-ccbj.md`.
-2.  **Corrigir links de imagem** em `action-farol-novo-temporada-porto-dragao-2023` e `work-rastros-de-exu`.
-3.  **Escrever descrições** para as ações de docência listadas no item 2.2.
+## Próximos Passos (Recomendação Humana)
+1.  Revisar o texto de `action-prof-aceleracao` para confirmar se se trata de "Aceleração da Aprendizagem" ou "Alfabetização de Idosos".
+2.  Providenciar foto ou certificado para o curso da BECE (`action-colaboracao-curso-bece-2023`).

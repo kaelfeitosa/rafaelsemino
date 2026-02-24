@@ -4,21 +4,9 @@ attachments:
       role: documentation
       src: record-temporada-hub-porto-dragao-2023-001.jpeg
       type: image
-    - caption: Últimas apresentações Exu
-      role: documentation
-      src: record-temporada-hub-porto-dragao-2023-006.jpeg
-      type: image
     - caption: Convite Temporada Exu
       role: documentation
       src: record-temporada-hub-porto-dragao-2023-003.jpeg
-      type: image
-    - caption: Pôster Oficial Temporada Exu
-      role: documentation
-      src: record-temporada-hub-porto-dragao-2023-007.jpeg
-      type: image
-    - caption: Trechos Ensaio Exu Hub Porto
-      role: documentation
-      src: record-temporada-hub-porto-dragao-2023-004.jpeg
       type: image
 context:
     kind: mostra
@@ -37,4 +25,3 @@ work_id: '[[work-exu-nao-vem-hoje]]'
 
 
 Detalhes específicos da participação.
-

@@ -1,10 +1,15 @@
 ---
+attachments:
+    - caption: Projeto Abarca e Percurso Básico de Teatro
+      role: documentation
+      src: agent-projeto-abarca-001.png
+      type: image
 context:
     kind: oficina
     label: Percurso Básico de Teatro
     location: ""
 date_start: "2023"
-description: ""
+description: Atuação como professor do Projeto Abarca e do Percurso Básico de Teatro, desenvolvendo processos pedagógicos voltados à formação artística em diferentes territórios, incluindo Itapipoca, Vicente Pinzón e Genibaú.
 id: action-prof-percurso-basico
 kind: formacao
 my_role: Professor
@@ -14,6 +19,4 @@ work_id: ""
 ---
 
 
-
-Detalhes específicos da participação.
-
+Atuação como professor do Projeto Abarca e do Percurso Básico de Teatro, desenvolvendo processos pedagógicos voltados à formação artística em diferentes territórios, incluindo Itapipoca, Vicente Pinzón e Genibaú.
