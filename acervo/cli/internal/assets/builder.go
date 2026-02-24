@@ -42,6 +42,10 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 		return nil
 	}
 
+	if err := os.MkdirAll(outputDir, 0755); err != nil {
+		return fmt.Errorf("creating output dir: %w", err)
+	}
+
 	// Create source map once
 	sourceMap, err := buildSourceMap(sourceDir)
 	if err != nil {
@@ -52,16 +56,16 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 
 	for _, ref := range refs {
 		// Only process paths starting with the optimization prefix
-		if !strings.Contains(ref, "images/optimized/") {
+		if !strings.HasPrefix(ref, "images/optimized/") {
 			continue
 		}
 
 		// Extract relative path after "images/optimized/"
-		// e.g., "images/optimized/subdir/image.webp" -> "subdir/image.webp"
-		relPath := strings.SplitN(ref, "images/optimized/", 2)[1]
-		if relPath == "" {
+		parts := strings.SplitN(ref, "images/optimized/", 2)
+		if len(parts) < 2 || parts[1] == "" {
 			continue
 		}
+		relPath := parts[1]
 
 		filename := filepath.Base(relPath)
 		baseName := strings.TrimSuffix(filename, filepath.Ext(filename))
@@ -178,12 +182,13 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 	if err != nil {
 		return err
 	}
-	// Defer closing with error handling
+	// Defer closing with combined error handling
 	defer func() {
 		if cerr := srcFile.Close(); cerr != nil {
 			if err == nil {
 				err = fmt.Errorf("closing source file: %w", cerr)
 			} else {
+				// Don't overwrite the primary error, but wrap it
 				err = fmt.Errorf("%w; additionally failed to close source file: %v", err, cerr)
 			}
 		}
