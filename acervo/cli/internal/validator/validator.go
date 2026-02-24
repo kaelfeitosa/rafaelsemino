@@ -28,8 +28,11 @@ func ValidateEntities(entitiesDir string) error {
 				return fmt.Errorf("ERRO: %s não possui frontmatter YAML válido", path)
 			}
 
-			// Validate based on Entity Type inferred from path or structure
-			if strings.Contains(path, "/agents/") {
+			// Robust entity type detection based on parent directory name
+			rel, _ := filepath.Rel(entitiesDir, path)
+			parentDir := filepath.Base(filepath.Dir(rel))
+
+			if parentDir == "agents" {
 				var agent domain.Agent
 				if err := yaml.Unmarshal(parts[1], &agent); err != nil {
 					return fmt.Errorf("ERRO: Agent em %s tem YAML inválido: %w", path, err)
@@ -43,7 +46,7 @@ func ValidateEntities(entitiesDir string) error {
 				if agent.Kind != "person" && agent.Kind != "collective" {
 					return fmt.Errorf("ERRO: Agent %s com kind inválido: '%s'. Deve ser 'person' ou 'collective'", agent.ID, agent.Kind)
 				}
-			} else if strings.Contains(path, "/works/") {
+			} else if parentDir == "works" {
 				var work domain.Work
 				if err := yaml.Unmarshal(parts[1], &work); err != nil {
 					return fmt.Errorf("ERRO: Work em %s tem YAML inválido: %w", path, err)
@@ -54,13 +57,19 @@ func ValidateEntities(entitiesDir string) error {
 				if work.Title == "" {
 					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
 				}
-			} else if strings.Contains(path, "/actions/") {
+			} else if parentDir == "actions" {
 				var action domain.Action
 				if err := yaml.Unmarshal(parts[1], &action); err != nil {
 					return fmt.Errorf("ERRO: Action em %s tem YAML inválido: %w", path, err)
 				}
 				if action.ID == "" {
 					return fmt.Errorf("ERRO: Action %s sem id", path)
+				}
+				if action.Title == "" {
+					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
+				}
+				if action.Kind == "" {
+					return fmt.Errorf("ERRO: Action %s sem kind", action.ID)
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
@@ -70,6 +79,9 @@ func ValidateEntities(entitiesDir string) error {
 				}
 				if action.Context.Label == "" {
 					return fmt.Errorf("ERRO: Action %s sem context.label", action.ID)
+				}
+				if action.DateStart == "" {
+					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)
 				}
 			}
 		}

@@ -25,7 +25,10 @@ func Audit(entitiesDir string) error {
 
 	// Single pass walk to collect all entities and actions
 	err := filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() || !strings.HasSuffix(info.Name(), ".md") {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() || !strings.HasSuffix(info.Name(), ".md") {
 			return nil
 		}
 

@@ -10,6 +10,7 @@ context:
   kind: outro
   location: Fortaleza, CE
   year: null
+date_start: '2020'
 description: Apresentação de dança dramática de Reisado com o Grupo Mira Ira.
 attachments: []
 ---

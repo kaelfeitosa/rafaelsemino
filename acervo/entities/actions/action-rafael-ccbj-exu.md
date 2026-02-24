@@ -10,6 +10,7 @@ context:
   kind: outro
   location: Fortaleza, CE (CCBJ)
   year: null
+date_start: '2023'
 description: Laboratório de pesquisa - Exu não vem hoje (300h).
 attachments: []
 ---

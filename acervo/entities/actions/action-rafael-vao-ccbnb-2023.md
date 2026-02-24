@@ -1,16 +1,16 @@
 ---
 id: action-rafael-vao-ccbnb-2023
-title: diretor | ator | roteirista | palestrante em Palco CCBNB 2023
+title: Ator em Palco CCBNB 2023
 kind: exibicao
 performed_by: agent-rafael-semino
-my_role: diretor | ator | roteirista | palestrante
+my_role: Ator
 work_id: work-vao
 context:
   label: Palco CCBNB 2023
   kind: mostra
   location: null
   year: null
-date_start: null
+date_start: '2023'
 description: ''
 attachments:
 - type: image

@@ -1,16 +1,16 @@
 ---
 id: action-farol-novo-zona-de-criacao-2024
-title: diretor | ator | roteirista | palestrante em Programa Zona de Criação (YouTube)
+title: Diretor em Programa Zona de Criação (YouTube)
 kind: exibicao
 performed_by: agent-coletivo-farol-novo
-my_role: diretor | ator | roteirista | palestrante
+my_role: Diretor
 work_id: ''
 context:
   label: Programa Zona de Criação (YouTube)
   kind: residencia
   location: null
   year: null
-date_start: null
+date_start: '2024'
 description: ''
 attachments:
 - type: image

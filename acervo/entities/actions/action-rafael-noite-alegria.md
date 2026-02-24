@@ -10,6 +10,7 @@ context:
   kind: outro
   location: null
   year: null
+date_start: '2022'
 description: ''
 attachments: []
 ---

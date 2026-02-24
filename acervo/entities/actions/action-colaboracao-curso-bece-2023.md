@@ -10,7 +10,7 @@ context:
   kind: curso
   location: null
   year: null
-date_start: null
+date_start: '2023'
 description: ''
 attachments: []
 ---

@@ -77,9 +77,11 @@ func Reindex(entitiesDir, dbPath string) error {
 			var featured int
 			var jsonData []byte
 
-			absolutePath, _ := filepath.Abs(path)
+			// Robust entity type detection based on parent directory name
+			rel, _ := filepath.Rel(entitiesDir, path)
+			parentDir := filepath.Base(filepath.Dir(rel))
 
-			if strings.Contains(path, "/agents/") {
+			if parentDir == "agents" {
 				var data domain.Agent
 				if err := yaml.Unmarshal(parts[1], &data); err != nil {
 					return err
@@ -90,9 +92,12 @@ func Reindex(entitiesDir, dbPath string) error {
 				if data.Featured {
 					featured = 1
 				}
-				jsonData, _ = json.Marshal(data)
+				jsonData, err = json.Marshal(data)
+				if err != nil {
+					return fmt.Errorf("failed to marshal agent %s: %w", id, err)
+				}
 
-			} else if strings.Contains(path, "/works/") {
+			} else if parentDir == "works" {
 				var data domain.Work
 				if err := yaml.Unmarshal(parts[1], &data); err != nil {
 					return err
@@ -103,7 +108,10 @@ func Reindex(entitiesDir, dbPath string) error {
 				if data.Featured {
 					featured = 1
 				}
-				jsonData, _ = json.Marshal(data)
+				jsonData, err = json.Marshal(data)
+				if err != nil {
+					return fmt.Errorf("failed to marshal work %s: %w", id, err)
+				}
 
 				if cb := cleanWikilink(data.CreatedBy); cb != "" {
 					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cb); err != nil {
@@ -111,7 +119,7 @@ func Reindex(entitiesDir, dbPath string) error {
 					}
 				}
 
-			} else if strings.Contains(path, "/actions/") {
+			} else if parentDir == "actions" {
 				var data domain.Action
 				if err := yaml.Unmarshal(parts[1], &data); err != nil {
 					return err
@@ -122,7 +130,10 @@ func Reindex(entitiesDir, dbPath string) error {
 				if data.Featured {
 					featured = 1
 				}
-				jsonData, _ = json.Marshal(data)
+				jsonData, err = json.Marshal(data)
+				if err != nil {
+					return fmt.Errorf("failed to marshal action %s: %w", id, err)
+				}
 
 				if pb := cleanWikilink(data.PerformedBy); pb != "" {
 					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb); err != nil {
@@ -137,6 +148,7 @@ func Reindex(entitiesDir, dbPath string) error {
 			}
 
 			if id != "" {
+				absolutePath, _ := filepath.Abs(path)
 				_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, absolutePath, featured, string(jsonData))
 				if err != nil {
 					return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)

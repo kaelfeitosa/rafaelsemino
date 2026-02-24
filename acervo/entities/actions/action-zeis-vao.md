@@ -10,6 +10,7 @@ context:
   kind: outro
   location: Fortaleza, CE
   year: null
+date_start: '2023'
 description: Responsável pelo núcleo "Encruzilhada" no qual as canções baseiam a dramaturgia
   do Vão.
 attachments: []

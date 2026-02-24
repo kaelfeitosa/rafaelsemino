@@ -1,16 +1,16 @@
 ---
 id: action-farol-novo-constelacao
-title: diretor | ator | roteirista | palestrante em Residência de Criação Colaborativa
+title: Diretor em Residência de Criação Colaborativa
 kind: exibicao
 performed_by: agent-coletivo-farol-novo
-my_role: diretor | ator | roteirista | palestrante
+my_role: Diretor
 work_id: work-constelacao
 context:
   label: Residência de Criação Colaborativa
   kind: mostra
   location: null
   year: null
-date_start: null
+date_start: '2023'
 description: ''
 attachments:
 - type: image

@@ -37,7 +37,16 @@ type IngesterData struct {
 }
 
 func Create(entityType string, slug string, args []string) error {
-	// Map "action" to "actions" folder, etc.
+	// Security: Sanitize inputs to prevent path traversal
+	entityType = filepath.Base(entityType)
+	slug = filepath.Base(slug)
+
+	// Validate entityType against allow-list
+	allowedTypes := map[string]bool{"action": true, "work": true, "agent": true}
+	if !allowedTypes[entityType] {
+		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
+	}
+
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
 	if err := os.MkdirAll(targetDir, 0755); err != nil {
 		return err
@@ -63,7 +72,6 @@ func Create(entityType string, slug string, args []string) error {
 	}
 
 	// Simple args parsing to populate struct fields
-	// This is a basic mapping; for a robust CLI, use flags or a proper mapper.
 	for _, arg := range args {
 		kv := strings.SplitN(arg, "=", 2)
 		if len(kv) == 2 {
@@ -122,6 +130,15 @@ func Create(entityType string, slug string, args []string) error {
 }
 
 func Update(entityType string, id string, args []string) error {
+	// Security: Sanitize inputs
+	entityType = filepath.Base(entityType)
+	id = filepath.Base(id)
+
+	allowedTypes := map[string]bool{"action": true, "work": true, "agent": true}
+	if !allowedTypes[entityType] {
+		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
+	}
+
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
 
@@ -150,6 +167,14 @@ func Update(entityType string, id string, args []string) error {
 				data[key] = true
 			} else if vLower == "false" {
 				data[key] = false
+			} else if strings.Contains(val, ",") {
+				// Handle slices (e.g., collaborators=Name|Role,Name2|Role2)
+				// Here we just split by comma, and potentially by | for complex objects
+				items := strings.Split(val, ",")
+				for i := range items {
+					items[i] = strings.TrimSpace(items[i])
+				}
+				data[key] = items
 			} else {
 				data[key] = val
 			}

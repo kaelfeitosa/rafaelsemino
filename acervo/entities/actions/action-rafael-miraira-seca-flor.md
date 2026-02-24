@@ -10,6 +10,7 @@ context:
   kind: outro
   location: Fortaleza, CE
   year: null
+date_start: '2020'
 description: Participação na criação e apresentação do espetáculo Seca Flor (referenciado
   também como Flor do Deserto).
 attachments: []

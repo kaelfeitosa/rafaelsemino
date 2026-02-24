@@ -1,17 +1,16 @@
 ---
 id: action-farol-novo-fnt-guaramiranga-2024
-title: diretor | ator | roteirista | palestrante em 30º Festival Nordestino de Teatro
-  de Guaramiranga
+title: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga
 kind: exibicao
 performed_by: agent-coletivo-farol-novo
-my_role: diretor | ator | roteirista | palestrante
+my_role: Diretor
 work_id: work-exu-nao-vem-hoje
 context:
   label: 30º Festival Nordestino de Teatro de Guaramiranga
   kind: festival
   location: null
   year: null
-date_start: null
+date_start: '2024'
 description: ''
 attachments:
 - type: image
