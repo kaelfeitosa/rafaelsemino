@@ -42,10 +42,6 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 		return nil
 	}
 
-	if err := os.MkdirAll(outputDir, 0755); err != nil {
-		return fmt.Errorf("creating output dir: %w", err)
-	}
-
 	// Create source map once
 	sourceMap, err := buildSourceMap(sourceDir)
 	if err != nil {
@@ -55,11 +51,19 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 	var buildErrors []string
 
 	for _, ref := range refs {
+		// Only process paths starting with the optimization prefix
 		if !strings.Contains(ref, "images/optimized/") {
 			continue
 		}
 
-		filename := filepath.Base(ref)
+		// Extract relative path after "images/optimized/"
+		// e.g., "images/optimized/subdir/image.webp" -> "subdir/image.webp"
+		relPath := strings.SplitN(ref, "images/optimized/", 2)[1]
+		if relPath == "" {
+			continue
+		}
+
+		filename := filepath.Base(relPath)
 		baseName := strings.TrimSuffix(filename, filepath.Ext(filename))
 
 		sourcePath := findSourceFile(sourceMap, baseName)
@@ -68,17 +72,24 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 			continue
 		}
 
-		destPath := filepath.Join(outputDir, filename)
+		destPath := filepath.Join(outputDir, relPath)
+
+		// Ensure destination directory exists
+		if err := os.MkdirAll(filepath.Dir(destPath), 0755); err != nil {
+			buildErrors = append(buildErrors, fmt.Sprintf("creating dir for %s: %v", relPath, err))
+			continue
+		}
+
 		if isUpToDate(sourcePath, destPath) {
 			continue
 		}
 
-		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), filename)
+		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), relPath)
 		if err := optimizeImage(cwebpPath, sourcePath, destPath); err != nil {
-			fmt.Printf("❌ Error optimizing %s: %v\n", filename, err)
-			buildErrors = append(buildErrors, fmt.Sprintf("optimizing %s: %v", filename, err))
+			fmt.Printf("❌ Error optimizing %s: %v\n", relPath, err)
+			buildErrors = append(buildErrors, fmt.Sprintf("optimizing %s: %v", relPath, err))
 		} else {
-			fmt.Printf("✅ Optimized: %s\n", filename)
+			fmt.Printf("✅ Optimized: %s\n", relPath)
 		}
 	}
 
@@ -97,14 +108,14 @@ func scanHTMLForImages(path string) ([]string, error) {
 
 	// Updated regex to handle whitespace around '='
 	re := regexp.MustCompile(`src\s*=\s*["']([^"']+)["']`)
-	matches := re.FindAllStringSubmatch(string(content), -1)
+	matches := re.FindAllSubmatch(content, -1)
 
 	var refs []string
 	seen := make(map[string]bool)
 
 	for _, match := range matches {
 		if len(match) > 1 {
-			ref := match[1]
+			ref := string(match[1])
 			if !seen[ref] {
 				refs = append(refs, ref)
 				seen[ref] = true
@@ -130,6 +141,10 @@ func buildSourceMap(dir string) (map[string]string, error) {
 		fBase := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
 		// Normalized key: replace underscores with hyphens
 		fNorm := strings.ReplaceAll(fBase, "_", "-")
+
+		if existing, ok := sourceMap[fNorm]; ok {
+			return nil, fmt.Errorf("filename collision: %s and %s both map to %s", filepath.Base(existing), f.Name(), fNorm)
+		}
 
 		sourceMap[fNorm] = filepath.Join(dir, f.Name())
 	}
@@ -163,13 +178,12 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 	if err != nil {
 		return err
 	}
-	// Defer closing with combined error handling
+	// Defer closing with error handling
 	defer func() {
 		if cerr := srcFile.Close(); cerr != nil {
 			if err == nil {
 				err = fmt.Errorf("closing source file: %w", cerr)
 			} else {
-				// Don't overwrite the primary error, but wrap it
 				err = fmt.Errorf("%w; additionally failed to close source file: %v", err, cerr)
 			}
 		}
