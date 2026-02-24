@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Mestrado em Artes
   kind: curso
-  location: null
-  year: null
 date_start: '2022'
 description: ''
 attachments: []

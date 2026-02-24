@@ -9,7 +9,6 @@ context:
   label: Laboratório de Criação em Teatro - Porto Iracema (2022)
   kind: outro
   location: Fortaleza, CE (Porto Iracema das Artes)
-  year: null
 date_start: '2022'
 description: 'Criação em tempo espiralar: Exu e suas encruzilhadas (346h).'
 attachments: []

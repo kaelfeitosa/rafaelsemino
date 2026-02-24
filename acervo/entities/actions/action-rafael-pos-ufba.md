@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Pós-graduação em Teatro do Oprimido
   kind: curso
-  location: null
-  year: null
 date_start: '2021'
 description: ''
 attachments:

@@ -8,8 +8,6 @@ work_id: work-irreversivel
 context:
   label: Porto Iracema das Artes
   kind: outro
-  location: null
-  year: null
 date_start: '2022'
 description: ''
 attachments: []

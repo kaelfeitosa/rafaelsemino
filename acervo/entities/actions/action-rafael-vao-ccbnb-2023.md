@@ -8,8 +8,6 @@ work_id: work-vao
 context:
   label: Palco CCBNB 2023
   kind: mostra
-  location: null
-  year: null
 date_start: '2023'
 description: ''
 attachments:

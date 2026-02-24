@@ -9,7 +9,6 @@ context:
   label: Laboratório de Teatro - Porto Iracema das Artes (2022)
   kind: outro
   location: Fortaleza, CE
-  year: null
 date_start: '2022'
 description: Espectáculo "Vão" desenvolvido a partir do Prêmio Amarrações Estéticas
   do Porto Iracema das Artes.

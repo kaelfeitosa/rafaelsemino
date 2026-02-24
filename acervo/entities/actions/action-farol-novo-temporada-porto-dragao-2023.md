@@ -8,8 +8,6 @@ work_id: work-exu-nao-vem-hoje
 context:
   label: Temporada Hub Porto Dragão 2023
   kind: mostra
-  location: null
-  year: null
 date_start: '2023-01'
 description: ''
 attachments:

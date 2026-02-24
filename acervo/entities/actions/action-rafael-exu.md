@@ -9,7 +9,6 @@ context:
   label: Temporada Hub Cultural Porto Dragão
   kind: outro
   location: Fortaleza, CE
-  year: null
 date_start: '2023'
 description: Atuação contínua e imersiva na temporada e fundação do espetáculo.
 attachments: []

@@ -113,12 +113,6 @@ func Reindex(entitiesDir, dbPath string) error {
 					return fmt.Errorf("failed to marshal work %s: %w", id, err)
 				}
 
-				if cb := cleanWikilink(data.CreatedBy); cb != "" {
-					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cb); err != nil {
-						return fmt.Errorf("failed to insert relation created_by for %s: %w", id, err)
-					}
-				}
-
 			} else if parentDir == "actions" {
 				var data domain.Action
 				if err := yaml.Unmarshal(parts[1], &data); err != nil {

@@ -9,7 +9,6 @@ context:
   label: Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
   kind: outro
   location: Fortaleza, CE (CCBJ)
-  year: null
 date_start: '2023'
 description: ''
 attachments: []

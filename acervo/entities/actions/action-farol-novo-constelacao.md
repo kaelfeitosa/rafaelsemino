@@ -8,8 +8,6 @@ work_id: work-constelacao
 context:
   label: Residência de Criação Colaborativa
   kind: mostra
-  location: null
-  year: null
 date_start: '2023'
 description: ''
 attachments:

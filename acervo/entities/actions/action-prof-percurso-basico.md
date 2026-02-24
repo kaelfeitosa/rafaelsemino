@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Percurso Básico de Teatro
   kind: oficina
-  location: null
-  year: null
 date_start: '2023'
 description: ''
 attachments: []

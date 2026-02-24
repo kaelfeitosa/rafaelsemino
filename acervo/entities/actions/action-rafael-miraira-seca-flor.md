@@ -9,7 +9,6 @@ context:
   label: Encontro Mestres do Mundo (2016)
   kind: outro
   location: Fortaleza, CE
-  year: null
 date_start: '2020'
 description: Participação na criação e apresentação do espetáculo Seca Flor (referenciado
   também como Flor do Deserto).

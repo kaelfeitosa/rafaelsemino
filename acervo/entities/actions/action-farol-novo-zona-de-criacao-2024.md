@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Programa Zona de Criação (YouTube)
   kind: residencia
-  location: null
-  year: null
 date_start: '2024'
 description: ''
 attachments:

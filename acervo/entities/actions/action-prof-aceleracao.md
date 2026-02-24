@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Programa de Aceleração do Idoso
   kind: oficina
-  location: null
-  year: null
 date_start: '2024'
 description: ''
 attachments: []

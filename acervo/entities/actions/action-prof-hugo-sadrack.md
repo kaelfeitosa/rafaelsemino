@@ -8,7 +8,6 @@ work_id: ''
 context:
   label: Docência na Escola Hugo Sadrack
   kind: oficina
-  location: null
   year: 2021
 date_start: '2021-01-01'
 description: ''

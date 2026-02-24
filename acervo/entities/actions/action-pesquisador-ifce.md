@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Licenciatura em Teatro
   kind: residencia
-  location: null
-  year: null
 date_start: '2023'
 description: Atuação como pesquisador no Grupo Miraira durante a licenciatura.
 attachments:

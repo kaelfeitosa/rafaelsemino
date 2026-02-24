@@ -8,8 +8,6 @@ work_id: work-exu-nao-vem-hoje
 context:
   label: 30º Festival Nordestino de Teatro de Guaramiranga
   kind: festival
-  location: null
-  year: null
 date_start: '2024'
 description: ''
 attachments:

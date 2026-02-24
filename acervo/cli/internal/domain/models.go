@@ -1,14 +1,14 @@
 package domain
 
 type Agent struct {
-	ID          string   `yaml:"id"`
-	Name        string   `yaml:"name"`
-	Kind        string   `yaml:"kind"` // person | collective
-	Description string   `yaml:"description,omitempty"`
-	FoundedByMe bool     `yaml:"founded_by_me,omitempty"`
-	ActiveSince int      `yaml:"active_since,omitempty"`
-	Links       []Link   `yaml:"links,omitempty"`
-	Featured    bool     `yaml:"featured,omitempty"`
+	ID          string `yaml:"id"`
+	Name        string `yaml:"name"`
+	Kind        string `yaml:"kind"` // person | collective
+	Description string `yaml:"description,omitempty"`
+	FoundedByMe bool   `yaml:"founded_by_me,omitempty"`
+	ActiveSince int    `yaml:"active_since,omitempty"`
+	Links       []Link `yaml:"links,omitempty"`
+	Featured    bool   `yaml:"featured,omitempty"`
 }
 
 type Link struct {
@@ -23,7 +23,6 @@ type Work struct {
 	Description string       `yaml:"description,omitempty"`
 	Year        int          `yaml:"year,omitempty"`
 	Attachments []Attachment `yaml:"attachments,omitempty"`
-	CreatedBy   string       `yaml:"created_by,omitempty"`
 	Featured    bool         `yaml:"featured,omitempty"`
 }
 
@@ -50,7 +49,7 @@ type Collaborator struct {
 type Action struct {
 	ID            string         `yaml:"id"`
 	Title         string         `yaml:"title"`
-	Kind          string         `yaml:"kind"` // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
+	Kind          string         `yaml:"kind"`         // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
 	PerformedBy   string         `yaml:"performed_by"` // Agent.id
 	MyRole        string         `yaml:"my_role"`
 	WorkID        string         `yaml:"work_id,omitempty"` // Work.id

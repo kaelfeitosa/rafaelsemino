@@ -48,6 +48,8 @@ func Audit(entitiesDir string) error {
 			}
 			if err := yaml.Unmarshal(parts[1], &agent); err == nil {
 				agents[agent.ID] = true
+			} else {
+				fmt.Printf("[WARNING] Falha ao analisar Agent em %s: %v\n", path, err)
 			}
 		} else if strings.Contains(path, "/works/") {
 			var work struct {
@@ -55,11 +57,15 @@ func Audit(entitiesDir string) error {
 			}
 			if err := yaml.Unmarshal(parts[1], &work); err == nil {
 				works[work.ID] = true
+			} else {
+				fmt.Printf("[WARNING] Falha ao analisar Work em %s: %v\n", path, err)
 			}
 		} else if strings.Contains(path, "/actions/") {
 			var action domain.Action
 			if err := yaml.Unmarshal(parts[1], &action); err == nil {
 				allActions = append(allActions, action)
+			} else {
+				fmt.Printf("[WARNING] Falha ao analisar Action em %s: %v\n", path, err)
 			}
 		}
 		return nil

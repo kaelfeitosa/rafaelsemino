@@ -8,7 +8,6 @@ work_id: ''
 context:
   label: Docência na Escola Paulo Petrola
   kind: oficina
-  location: null
   year: 2020
 date_start: '2020-01-01'
 description: ''

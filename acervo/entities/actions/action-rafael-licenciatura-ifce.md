@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Licenciatura em Teatro
   kind: curso
-  location: null
-  year: null
 date_start: '2019'
 description: ''
 attachments: []

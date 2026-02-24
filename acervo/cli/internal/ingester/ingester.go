@@ -158,28 +158,7 @@ func Update(entityType string, id string, args []string) error {
 	}
 
 	// Update allows generic key setting
-	for _, arg := range args {
-		kv := strings.SplitN(arg, "=", 2)
-		if len(kv) == 2 {
-			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
-			vLower := strings.ToLower(val)
-			if vLower == "true" {
-				data[key] = true
-			} else if vLower == "false" {
-				data[key] = false
-			} else if strings.Contains(val, ",") {
-				// Handle slices (e.g., collaborators=Name|Role,Name2|Role2)
-				// Here we just split by comma, and potentially by | for complex objects
-				items := strings.Split(val, ",")
-				for i := range items {
-					items[i] = strings.TrimSpace(items[i])
-				}
-				data[key] = items
-			} else {
-				data[key] = val
-			}
-		}
-	}
+	applyArgs(data, args)
 
 	newYaml, err := yaml.Marshal(data)
 	if err != nil {
@@ -193,4 +172,77 @@ func Update(entityType string, id string, args []string) error {
 
 	fmt.Printf("✅ Entidade atualizada: %s\n", id)
 	return nil
+}
+func applyArgs(data map[string]interface{}, args []string) {
+	for _, arg := range args {
+		kv := strings.SplitN(arg, "=", 2)
+		if len(kv) == 2 {
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+
+			// Handle Array format [a, b, c]
+			if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
+				val = strings.TrimPrefix(val, "[")
+				val = strings.TrimSuffix(val, "]")
+				parts := strings.Split(val, ",")
+				var slice []string
+				for _, p := range parts {
+					slice = append(slice, strings.TrimSpace(p))
+				}
+				data[key] = slice
+				continue
+			}
+
+			vLower := strings.ToLower(val)
+			// Smart bool parsing: only if existing value is bool OR it's a known boolean field
+			isBoolField := (key == "founded_by_me" || key == "featured")
+			if existing, ok := data[key]; ok {
+				if _, isBool := existing.(bool); isBool {
+					isBoolField = true
+				}
+			}
+
+			if isBoolField && (vLower == "true" || vLower == "false") {
+				data[key] = (vLower == "true")
+			} else if strings.Contains(val, ",") {
+				// Handle structured slices
+				parts := strings.Split(val, ",")
+				var slice []interface{}
+				for _, p := range parts {
+					p = strings.TrimSpace(p)
+					if strings.Contains(p, "|") {
+						objParts := strings.Split(p, "|")
+						obj := make(map[string]string)
+						if key == "collaborators" {
+							obj["name"] = objParts[0]
+							if len(objParts) > 1 {
+								obj["role"] = objParts[1]
+							}
+						} else if key == "attachments" {
+							obj["type"] = objParts[0]
+							if len(objParts) > 1 {
+								obj["role"] = objParts[1]
+							}
+							if len(objParts) > 2 {
+								obj["src"] = objParts[2]
+							}
+							if len(objParts) > 3 {
+								obj["caption"] = objParts[3]
+							}
+						} else {
+							obj["value"] = objParts[0]
+							if len(objParts) > 1 {
+								obj["role"] = objParts[1]
+							}
+						}
+						slice = append(slice, obj)
+					} else {
+						slice = append(slice, p)
+					}
+				}
+				data[key] = slice
+			} else {
+				data[key] = val
+			}
+		}
+	}
 }

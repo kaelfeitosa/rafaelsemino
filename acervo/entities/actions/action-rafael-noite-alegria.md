@@ -8,8 +8,6 @@ work_id: work-noite-de-alegria
 context:
   label: Grupo Miraira
   kind: outro
-  location: null
-  year: null
 date_start: '2022'
 description: ''
 attachments: []

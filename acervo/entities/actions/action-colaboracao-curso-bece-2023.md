@@ -8,8 +8,6 @@ work_id: ''
 context:
   label: Curso Protagonismo Negro na Cultura Pop (BECE)
   kind: curso
-  location: null
-  year: null
 date_start: '2023'
 description: ''
 attachments: []
