@@ -145,6 +145,10 @@ func main() {
 	var buildAssetsCmd = &cobra.Command{
 		Use:   "build-assets",
 		Short: "Scans HTML for images and generates optimized WebP assets using cwebp",
+		Long: `Scans the specified HTML file for 'images/optimized/' references and generates
+WebP assets from source master images.
+Default paths assume the command is run from 'acervo/cli'.
+Use absolute paths or adjust flags if running from elsewhere.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			htmlPath, err := cmd.Flags().GetString("html")
 			if err != nil {
@@ -170,9 +174,9 @@ func main() {
 			fmt.Println("✅ Assets otimizados com sucesso.")
 		},
 	}
-	buildAssetsCmd.Flags().String("html", "../../frontend/index.html", "Path to HTML file to scan")
-	buildAssetsCmd.Flags().String("source", "../media/images", "Directory containing source master images")
-	buildAssetsCmd.Flags().String("output", "../../frontend/images/optimized", "Directory to output optimized WebP assets")
+	buildAssetsCmd.Flags().String("html", "../../frontend/index.html", "Path to HTML file to scan (relative to execution dir or absolute)")
+	buildAssetsCmd.Flags().String("source", "../media/images", "Directory containing source master images (relative to execution dir or absolute)")
+	buildAssetsCmd.Flags().String("output", "../../frontend/images/optimized", "Directory to output optimized WebP assets (relative to execution dir or absolute)")
 
 	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd)
 

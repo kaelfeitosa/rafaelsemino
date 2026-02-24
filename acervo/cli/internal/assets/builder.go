@@ -13,6 +13,12 @@ import (
 	"strings"
 )
 
+const (
+	WebPQuality     = "80"
+	WebPMetadata    = "xmp"
+	MaxImageWidth   = 1920
+)
+
 // BuildAssets scans HTML files for optimized image references and generates them
 func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 	// Check for cwebp availability
@@ -149,31 +155,30 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) error {
 	if err != nil {
 		return err
 	}
+	// Defer closing immediately to ensure resource cleanup
+	defer srcFile.Close()
+
 	// We only need to decode config, not the whole image
 	config, _, err := image.DecodeConfig(srcFile)
-	srcFile.Close()
-
 	if err != nil {
 		return fmt.Errorf("decoding image config: %w", err)
 	}
 
-	maxWidth := 1920
 	args := []string{
-		"-q", "80",          // Quality 80
-		"-metadata", "xmp",  // Copy XMP metadata
-		"-quiet",            // Reduce noise
+		"-q", WebPQuality,
+		"-metadata", WebPMetadata,
+		"-quiet",
 	}
 
-	if config.Width > maxWidth {
+	if config.Width > MaxImageWidth {
 		// Calculate height to maintain aspect ratio (0 = auto)
-		args = append(args, "-resize", strconv.Itoa(maxWidth), "0")
+		args = append(args, "-resize", strconv.Itoa(MaxImageWidth), "0")
 	}
 
 	args = append(args, srcPath, "-o", destPath)
 
 	// Execute cwebp
 	cmd := exec.Command(cwebpCmd, args...)
-	// Capture stderr for debugging if it fails
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("cwebp failed: %v\nOutput: %s", err, string(output))
