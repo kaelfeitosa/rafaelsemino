@@ -163,10 +163,15 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 	if err != nil {
 		return err
 	}
-	// Defer closing with error handling
+	// Defer closing with combined error handling
 	defer func() {
-		if cerr := srcFile.Close(); cerr != nil && err == nil {
-			err = fmt.Errorf("closing source file: %w", cerr)
+		if cerr := srcFile.Close(); cerr != nil {
+			if err == nil {
+				err = fmt.Errorf("closing source file: %w", cerr)
+			} else {
+				// Don't overwrite the primary error, but wrap it
+				err = fmt.Errorf("%w; additionally failed to close source file: %v", err, cerr)
+			}
 		}
 	}()
 
