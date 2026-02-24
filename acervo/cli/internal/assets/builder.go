@@ -75,9 +75,8 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 
 		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), filename)
 		if err := optimizeImage(cwebpPath, sourcePath, destPath); err != nil {
-			errorMsg := fmt.Sprintf("optimizing %s: %v", filename, err)
-			fmt.Printf("❌ Error %s\n", errorMsg)
-			buildErrors = append(buildErrors, errorMsg)
+			fmt.Printf("❌ Error optimizing %s: %v\n", filename, err)
+			buildErrors = append(buildErrors, fmt.Sprintf("optimizing %s: %v", filename, err))
 		} else {
 			fmt.Printf("✅ Optimized: %s\n", filename)
 		}
