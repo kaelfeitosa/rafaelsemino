@@ -3,6 +3,7 @@ package indexer
 import (
 	"bytes"
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -38,13 +39,15 @@ func Reindex(entitiesDir, dbPath string) error {
 	}
 	defer db.Close()
 
+	// New Schema compatible with the Action-centric model
 	if _, err := db.Exec(`
 		CREATE TABLE entities(
 			id TEXT PRIMARY KEY,
 			type TEXT,
 			title TEXT,
 			path TEXT,
-			featured INTEGER DEFAULT 0
+			featured INTEGER DEFAULT 0,
+			json_data TEXT
 		);
 		CREATE TABLE relations(
 			src TEXT,
@@ -67,7 +70,7 @@ func Reindex(entitiesDir, dbPath string) error {
 
 			parts := bytes.SplitN(content, []byte("---"), 3)
 			if len(parts) < 3 {
-				return nil // Skip empty files or wrong formats
+				return nil
 			}
 
 			var data EntityMap
@@ -76,7 +79,16 @@ func Reindex(entitiesDir, dbPath string) error {
 			}
 
 			id, _ := data["id"].(string)
-			typ, _ := data["type"].(string)
+
+			// Determine Type
+			typ := ""
+			if strings.Contains(path, "/agents/") {
+				typ = "agent"
+			} else if strings.Contains(path, "/works/") {
+				typ = "work"
+			} else if strings.Contains(path, "/actions/") {
+				typ = "action"
+			}
 
 			title := ""
 			if val, ok := data["title"].(string); ok {
@@ -92,48 +104,34 @@ func Reindex(entitiesDir, dbPath string) error {
 				featured = 1
 			}
 
-			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?)", id, typ, title, absolutePath, featured)
+			// Store as proper JSON
+			jsonData, err := json.Marshal(data)
+			if err != nil {
+				// Fallback to empty JSON object if marshalling fails
+				jsonData = []byte("{}")
+			}
+
+			_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, absolutePath, featured, string(jsonData))
 			if err != nil {
 				return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
 			}
 
+			// Index Relations
 			switch typ {
-			case "event":
-				if orgs, ok := data["organizers"]; ok {
-					if orgList, okList := orgs.([]interface{}); okList {
-						for _, item := range orgList {
-							if target, isStr := item.(string); isStr && target != "" {
-								db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "organizer", cleanWikilink(target))
-							}
-						}
-					}
+			case "action":
+				if pb, ok := data["performed_by"].(string); ok && pb != "" {
+					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", cleanWikilink(pb))
+				}
+				if wid, ok := data["work_id"].(string); ok && wid != "" {
+					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", cleanWikilink(wid))
 				}
 			case "work":
-				if c, ok := data["created_by"].(string); ok && c != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cleanWikilink(c))
+				// Any relations for Work? Maybe created_by if it exists in frontmatter
+				if cb, ok := data["created_by"].(string); ok && cb != "" {
+					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cleanWikilink(cb))
 				}
-			case "participation":
-				if a, ok := data["agent"].(string); ok && a != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "agent", cleanWikilink(a))
-				}
-				if e, ok := data["event"].(string); ok && e != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "event", cleanWikilink(e))
-				}
-				if w, ok := data["work"].(string); ok && w != "" && w != "null" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work", cleanWikilink(w))
-				}
-			case "record":
-				if rel, ok := data["related_to"]; ok {
-					if relStr, okStr := rel.(string); okStr && relStr != "" {
-						db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "related_to", cleanWikilink(relStr))
-					} else if relList, okList := rel.([]interface{}); okList {
-						for _, item := range relList {
-							if target, isStr := item.(string); isStr && target != "" {
-								db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "related_to", cleanWikilink(target))
-							}
-						}
-					}
-				}
+			case "agent":
+				// founded_by_me, etc.
 			}
 		}
 		return nil

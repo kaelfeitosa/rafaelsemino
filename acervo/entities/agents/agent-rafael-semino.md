@@ -1,23 +1,9 @@
 ---
 id: agent-rafael-semino
-type: agent
 name: Francisco Rafael da Silva Semino
-roles:
-- ator
-- professor
-- pesquisador
-- dramaturgo
-- produtor
-affiliations:
-- agent-coletivo-farol-novo
-- agent-porto-iracema
-- agent-grupo-miraira
-- agent-cia-del-artes
-- agent-black-heroes
-birth_year: 1995
+kind: person
 description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, professor
   e pesquisador de Teatro
-date: '2024-01-01'
 ---
 Francisco Rafael da Silva Semino atua há mais de dez anos no campo das artes cênicas como Ator, Diretor, Dramaturgo, Produtor, Pesquisador e Professor de Teatro.
 

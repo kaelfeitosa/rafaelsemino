@@ -1,21 +1,10 @@
 ---
 id: work-exu-nao-vem-hoje
-type: work
 title: Exu Não Vem Hoje
-created_by: "[[agent-coletivo-farol-novo]]"
-language: teatro
-year: 2022
+type: work
 description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo
   a pesquisa de mestrado para o palco.
-tags:
-- mito
-- oralidade
-- interativo
-- ancestralidade
-- teatro
-- pesquisa
-status: concluida
-date: '2024-01-01'
+year: 2022
 ---
 ## O Espetáculo
 Primeira obra cênica de fôlego materializada pelo Coletivo Farol Novo. A concepção primária partiu do desejo dos fundadores, Rafael Semino e Gabriel França, de transportar para o teatro uma investigação densa sobre o tempo, o mito e a oralidade.
