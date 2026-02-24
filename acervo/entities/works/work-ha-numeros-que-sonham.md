@@ -20,5 +20,4 @@ year: 2019
 ---
 
 
-Experiência em atuação audiovisual na direção de Jennifer Vieira (2019), o obra compõe o acervo histórico das produções formativas do ator.
-
+Produção audiovisual independente explorando poéticas visuais (Imagens de apoio em destaque). Experiência em atuação audiovisual sob direção de Jennifer Vieira (2019).
