@@ -53,7 +53,13 @@ func Reindex(entitiesDir, dbPath string) error {
 		return err
 	}
 
-	return filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
+	tx, err := db.Begin()
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+
+	err = filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -129,12 +135,12 @@ func Reindex(entitiesDir, dbPath string) error {
 				}
 
 				if pb := utils.CleanWikilink(data.PerformedBy); pb != "" {
-					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb); err != nil {
+					if _, err := tx.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb); err != nil {
 						return fmt.Errorf("failed to insert relation performed_by for %s: %w", id, err)
 					}
 				}
 				if wid := utils.CleanWikilink(data.WorkID); wid != "" {
-					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid); err != nil {
+					if _, err := tx.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid); err != nil {
 						return fmt.Errorf("failed to insert relation work_id for %s: %w", id, err)
 					}
 				}
@@ -145,7 +151,7 @@ func Reindex(entitiesDir, dbPath string) error {
 				if err != nil {
 					return fmt.Errorf("falha ao obter caminho relativo para %s: %w", path, err)
 				}
-				_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, relPath, featured, string(jsonData))
+				_, err = tx.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, relPath, featured, string(jsonData))
 				if err != nil {
 					return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
 				}
@@ -153,4 +159,8 @@ func Reindex(entitiesDir, dbPath string) error {
 		}
 		return nil
 	})
+	if err != nil {
+		return err
+	}
+	return tx.Commit()
 }
