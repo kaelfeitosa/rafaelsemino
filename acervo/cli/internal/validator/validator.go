@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"acervo/internal/domain"
@@ -82,6 +83,15 @@ func ValidateEntities(entitiesDir string) error {
 				}
 				if action.DateStart == "" {
 					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)
+				}
+				dateRegex := regexp.MustCompile(`^\d{4}(-\d{2})?(-\d{2})?$`)
+				if !dateRegex.MatchString(action.DateStart) {
+					return fmt.Errorf("ERRO: Action %s tem formato de date_start inválido: '%s'", action.ID, action.DateStart)
+				}
+				if action.DateEnd != "" {
+					if !dateRegex.MatchString(action.DateEnd) {
+						return fmt.Errorf("ERRO: Action %s tem formato de date_end inválido: '%s'", action.ID, action.DateEnd)
+					}
 				}
 			}
 		}

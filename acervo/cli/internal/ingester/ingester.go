@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"text/template"
 
@@ -98,6 +99,11 @@ func Create(entityType string, slug string, args []string) error {
 			case "context_location":
 				data.Context.Location = val
 			case "context_year":
+				if val != "" {
+					if _, err := strconv.Atoi(val); err != nil {
+						return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
+					}
+				}
 				data.Context.Year = val
 			case "date_start":
 				data.DateStart = val
@@ -106,10 +112,20 @@ func Create(entityType string, slug string, args []string) error {
 			case "type":
 				data.Type = val
 			case "year":
+				if val != "" {
+					if _, err := strconv.Atoi(val); err != nil {
+						return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
+					}
+				}
 				data.Year = val
 			case "founded_by_me":
 				data.FoundedByMe = (strings.ToLower(val) == "true")
 			case "active_since":
+				if val != "" {
+					if _, err := strconv.Atoi(val); err != nil {
+						return fmt.Errorf("valor inválido para active_since: '%s' não é um número", val)
+					}
+				}
 				data.ActiveSince = val
 			}
 		}
@@ -179,6 +195,16 @@ func applyArgs(data map[string]interface{}, args []string) {
 		if len(kv) == 2 {
 			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
 
+			// Validate year/context_year
+			if key == "year" || key == "context_year" || key == "active_since" {
+				if val != "" {
+					if _, err := strconv.Atoi(val); err != nil {
+						fmt.Printf("[WARNING] Valor inválido para %s: '%s' não é um número. Ignorando.\n", key, val)
+						continue
+					}
+				}
+			}
+
 			// Handle Array format [a, b, c]
 			if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
 				val = strings.TrimPrefix(val, "[")
@@ -193,7 +219,6 @@ func applyArgs(data map[string]interface{}, args []string) {
 			}
 
 			vLower := strings.ToLower(val)
-			// Smart bool parsing: only if existing value is bool OR it's a known boolean field
 			isBoolField := (key == "founded_by_me" || key == "featured")
 			if existing, ok := data[key]; ok {
 				if _, isBool := existing.(bool); isBool {
@@ -211,13 +236,16 @@ func applyArgs(data map[string]interface{}, args []string) {
 					p = strings.TrimSpace(p)
 					if strings.Contains(p, "|") {
 						objParts := strings.Split(p, "|")
-						obj := make(map[string]string)
-						if key == "collaborators" {
+						switch key {
+						case "collaborators":
+							obj := make(map[string]string)
 							obj["name"] = objParts[0]
 							if len(objParts) > 1 {
 								obj["role"] = objParts[1]
 							}
-						} else if key == "attachments" {
+							slice = append(slice, obj)
+						case "attachments":
+							obj := make(map[string]string)
 							obj["type"] = objParts[0]
 							if len(objParts) > 1 {
 								obj["role"] = objParts[1]
@@ -228,13 +256,11 @@ func applyArgs(data map[string]interface{}, args []string) {
 							if len(objParts) > 3 {
 								obj["caption"] = objParts[3]
 							}
-						} else {
-							obj["value"] = objParts[0]
-							if len(objParts) > 1 {
-								obj["role"] = objParts[1]
-							}
+							slice = append(slice, obj)
+						default:
+							// Unknown structured key, treat as string
+							slice = append(slice, p)
 						}
-						slice = append(slice, obj)
 					} else {
 						slice = append(slice, p)
 					}
