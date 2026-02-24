@@ -1,7 +1,7 @@
 ---
 id: work-sociedade-o-circo
 title: Sociedade, o Circo
-type: work
+type: teatro
 description: Espetáculo teatral.
 year: 2012
 attachments:
@@ -11,3 +11,4 @@ attachments:
   caption: 'Registro Documental: Sociedade O Circo'
 ---
 Montado durante o início da carreira.
+

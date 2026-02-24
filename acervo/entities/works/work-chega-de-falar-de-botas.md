@@ -1,7 +1,7 @@
 ---
 id: work-chega-de-falar-de-botas
 title: Chega de Falar de Botas
-type: work
+type: teatro
 description: Montagem de Teatro.
 year: 2015
 attachments:
@@ -23,3 +23,4 @@ attachments:
   caption: 'Registro Documental: Chega De Falar De Botas'
 ---
 Atuação e Direção.
+

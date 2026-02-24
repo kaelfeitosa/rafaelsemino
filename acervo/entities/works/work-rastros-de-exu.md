@@ -1,7 +1,7 @@
 ---
 id: work-rastros-de-exu
 title: Rastros de Exu
-type: work
+type: teatro
 description: Série audiovisual / documentação poética derivada dos processos cênicos
   do espetáculo.
 year: 2023
@@ -20,3 +20,4 @@ attachments:
   caption: 'Registro Documental: Rastros De Exu'
 ---
 Projeto audiovisual que capta a zona de criação e desdobramentos de "Exu Não Vem Hoje".
+

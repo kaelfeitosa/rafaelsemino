@@ -2,7 +2,7 @@
 id: action-prof-paulo-petrola
 title: Professor de Artes na Escola Paulo Petrola
 kind: formacao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Professor de Artes
 work_id: ''
 context:
@@ -14,3 +14,4 @@ description: ''
 attachments: []
 ---
 Detalhes específicos da participação.
+

@@ -1,7 +1,7 @@
 ---
 id: work-rua-azusa
 title: Rua Azusa
-type: work
+type: teatro
 description: Espetáculo teatral realizado pela Cia Del Artes.
 year: 2018
 attachments:
@@ -15,3 +15,4 @@ attachments:
   caption: 'Registro Documental: Rua Azusa'
 ---
 Montagem apresentada durante 2018.
+

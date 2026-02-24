@@ -1,7 +1,7 @@
 ---
 id: work-irreversivel
 title: Irreversível
-type: work
+type: teatro
 description: null
 year: 2022
 attachments:
@@ -11,3 +11,4 @@ attachments:
   caption: 'Registro Documental: Irreversivel'
 ---
 Notas de processo, versões, decisões artísticas.
+

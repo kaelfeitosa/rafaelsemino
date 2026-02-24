@@ -2,7 +2,7 @@
 id: action-prof-hugo-sadrack
 title: Professor de Artes na Escola Mário Hugo Sadrak
 kind: formacao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Professor de Artes
 work_id: ''
 context:
@@ -42,3 +42,4 @@ attachments:
   caption: 'Registro Documental: Jogos Teatrais'
 ---
 Detalhes específicos da participação.
+

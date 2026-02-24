@@ -2,9 +2,9 @@
 id: action-farol-novo-constelacao
 title: Diretor em Residência de Criação Colaborativa
 kind: exibicao
-performed_by: agent-coletivo-farol-novo
+performed_by: '[[agent-coletivo-farol-novo]]'
 my_role: Diretor
-work_id: work-constelacao
+work_id: '[[work-constelacao]]'
 context:
   label: Residência de Criação Colaborativa
   kind: mostra
@@ -17,3 +17,4 @@ attachments:
   caption: Promo Residência Colaborativa Constelação
 ---
 Detalhes específicos da participação.
+

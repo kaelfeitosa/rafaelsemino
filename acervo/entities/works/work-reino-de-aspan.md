@@ -1,7 +1,7 @@
 ---
 id: work-reino-de-aspan
 title: Reino de Aspan
-type: work
+type: teatro
 description: Espetáculo da Cia Del Artes.
 year: 2017
 attachments:
@@ -11,3 +11,4 @@ attachments:
   caption: 'Registro Documental: Reino De Aspan'
 ---
 Apresentado pela Companhia durante o período de 2017-2019.
+

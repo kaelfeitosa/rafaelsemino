@@ -2,9 +2,9 @@
 id: action-farol-novo-temporada-porto-dragao-2023
 title: Diretor em Temporada Hub Porto Dragão 2023
 kind: exibicao
-performed_by: agent-coletivo-farol-novo
+performed_by: '[[agent-coletivo-farol-novo]]'
 my_role: Diretor
-work_id: work-exu-nao-vem-hoje
+work_id: '[[work-exu-nao-vem-hoje]]'
 context:
   label: Temporada Hub Porto Dragão 2023
   kind: mostra
@@ -33,3 +33,4 @@ attachments:
   caption: Trechos Ensaio Exu Hub Porto
 ---
 Detalhes específicos da participação.
+

@@ -1,7 +1,7 @@
 ---
 id: work-de-louco-todo-mundo-tem-um-pouco
 title: De Louco, Todo Mundo Tem Um Pouco
-type: work
+type: teatro
 description: Espetáculo teatral de grupo.
 year: 2017
 attachments:
@@ -39,3 +39,4 @@ attachments:
   caption: 'Registro Documental: De Louco'
 ---
 Montagem de 2017.
+

@@ -1,6 +1,7 @@
 package ingester
 
 import (
+	"acervo/internal/domain"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -8,7 +9,6 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"text/template"
 
 	"gopkg.in/yaml.v3"
 )
@@ -49,96 +49,147 @@ func Create(entityType string, slug string, args []string) error {
 		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
 	}
 
+	id := fmt.Sprintf("%s-%s", entityType, slug)
+	var frontmatter interface{}
+	var body string = "Detalhes específicos."
+
+	// Helper to ensure wikilink format
+	toWikilink := func(s string) string {
+		s = strings.TrimSpace(s)
+		if s == "" {
+			return ""
+		}
+		if !strings.HasPrefix(s, "[[") {
+			s = "[[" + s
+		}
+		if !strings.HasSuffix(s, "]]") {
+			s = s + "]]"
+		}
+		return s
+	}
+
+	switch entityType {
+	case "action":
+		data := &domain.Action{
+			ID: id,
+		}
+		for _, arg := range args {
+			kv := strings.SplitN(arg, "=", 2)
+			if len(kv) == 2 {
+				key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+				switch key {
+				case "title":
+					data.Title = val
+				case "kind":
+					data.Kind = val
+				case "performed_by":
+					data.PerformedBy = toWikilink(val)
+				case "my_role":
+					data.MyRole = val
+				case "work_id":
+					data.WorkID = toWikilink(val)
+				case "context_label":
+					data.Context.Label = val
+				case "context_kind":
+					data.Context.Kind = val
+				case "context_location":
+					data.Context.Location = val
+				case "context_year":
+					if val != "" {
+						y, err := strconv.Atoi(val)
+						if err != nil {
+							return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
+						}
+						data.Context.Year = y
+					}
+				case "date_start":
+					data.DateStart = val
+				case "date_end":
+					data.DateEnd = val
+				case "description":
+					data.Description = val
+				case "featured":
+					data.Featured = (strings.ToLower(val) == "true")
+				}
+			}
+		}
+		frontmatter = data
+	case "agent":
+		data := &domain.Agent{
+			ID: id,
+		}
+		for _, arg := range args {
+			kv := strings.SplitN(arg, "=", 2)
+			if len(kv) == 2 {
+				key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+				switch key {
+				case "name":
+					data.Name = val
+				case "kind":
+					data.Kind = val
+				case "description":
+					data.Description = val
+				case "founded_by_me":
+					data.FoundedByMe = (strings.ToLower(val) == "true")
+				case "active_since":
+					if val != "" {
+						y, err := strconv.Atoi(val)
+						if err != nil {
+							return fmt.Errorf("valor inválido para active_since: '%s' não é um número", val)
+						}
+						data.ActiveSince = y
+					}
+				case "featured":
+					data.Featured = (strings.ToLower(val) == "true")
+				}
+			}
+		}
+		frontmatter = data
+	case "work":
+		data := &domain.Work{
+			ID: id,
+		}
+		for _, arg := range args {
+			kv := strings.SplitN(arg, "=", 2)
+			if len(kv) == 2 {
+				key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+				switch key {
+				case "title":
+					data.Title = val
+				case "type":
+					data.Type = val
+				case "description":
+					data.Description = val
+				case "year":
+					if val != "" {
+						y, err := strconv.Atoi(val)
+						if err != nil {
+							return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
+						}
+						data.Year = y
+					}
+				case "featured":
+					data.Featured = (strings.ToLower(val) == "true")
+				}
+			}
+		}
+		frontmatter = data
+	}
+
+	yamlData, err := yaml.Marshal(frontmatter)
+	if err != nil {
+		return fmt.Errorf("failed to marshal YAML: %w", err)
+	}
+
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
 	if err := os.MkdirAll(targetDir, 0755); err != nil {
 		return err
 	}
 
-	templatePath := fmt.Sprintf("../templates/%s.md", entityType)
-	tmplContent, err := os.ReadFile(templatePath)
-	if err != nil {
-		return fmt.Errorf("template não encontrado para %s", entityType)
-	}
-
-	// Parse template
-	tmpl, err := template.New(entityType).Parse(string(tmplContent))
-	if err != nil {
-		return fmt.Errorf("invalid template syntax: %w", err)
-	}
-
-	// Prepare data
-	id := fmt.Sprintf("%s-%s", entityType, slug)
-	data := IngesterData{
-		ID:          id,
-		ContentBody: "Detalhes aqui.", // Default body
-	}
-
-	// Simple args parsing to populate struct fields
-	for _, arg := range args {
-		kv := strings.SplitN(arg, "=", 2)
-		if len(kv) == 2 {
-			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
-			switch key {
-			case "title":
-				data.Title = val
-			case "name":
-				data.Name = val
-			case "kind":
-				data.Kind = val
-			case "description":
-				data.Description = val
-			case "performed_by":
-				data.PerformedBy = val
-			case "my_role":
-				data.MyRole = val
-			case "work_id":
-				data.WorkID = val
-			case "context_label":
-				data.Context.Label = val
-			case "context_kind":
-				data.Context.Kind = val
-			case "context_location":
-				data.Context.Location = val
-			case "context_year":
-				if val != "" {
-					if _, err := strconv.Atoi(val); err != nil {
-						return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
-					}
-				}
-				data.Context.Year = val
-			case "date_start":
-				data.DateStart = val
-			case "date_end":
-				data.DateEnd = val
-			case "type":
-				data.Type = val
-			case "year":
-				if val != "" {
-					if _, err := strconv.Atoi(val); err != nil {
-						return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
-					}
-				}
-				data.Year = val
-			case "founded_by_me":
-				data.FoundedByMe = (strings.ToLower(val) == "true")
-			case "active_since":
-				if val != "" {
-					if _, err := strconv.Atoi(val); err != nil {
-						return fmt.Errorf("valor inválido para active_since: '%s' não é um número", val)
-					}
-				}
-				data.ActiveSince = val
-			}
-		}
-	}
-
-	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, data); err != nil {
-		return fmt.Errorf("failed to execute template: %w", err)
-	}
-
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
-	if err := os.WriteFile(targetPath, buf.Bytes(), 0644); err != nil {
+	finalContent := fmt.Sprintf("---\n%s---\n%s\n", string(yamlData), body)
+
+	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
 		return err
 	}
 

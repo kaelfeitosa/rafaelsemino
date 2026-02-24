@@ -2,7 +2,7 @@
 id: action-prof-percurso-basico
 title: Professor em Percurso Básico de Teatro
 kind: formacao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Professor
 work_id: ''
 context:
@@ -13,3 +13,4 @@ description: ''
 attachments: []
 ---
 Detalhes específicos da participação.
+

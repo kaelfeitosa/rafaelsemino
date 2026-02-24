@@ -2,7 +2,7 @@
 id: action-rafael-bolsa-ccbj
 title: Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
 kind: outro
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Pesquisador
 work_id: ''
 context:
@@ -14,3 +14,4 @@ description: ''
 attachments: []
 ---
 Detalhes específicos da participação.
+

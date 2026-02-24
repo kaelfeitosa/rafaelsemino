@@ -2,7 +2,7 @@
 id: action-rafael-mestrado-ufc
 title: Mestrando em Mestrado em Artes
 kind: outro
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Mestrando
 work_id: ''
 context:
@@ -13,3 +13,4 @@ description: ''
 attachments: []
 ---
 Detalhes específicos da participação.
+

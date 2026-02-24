@@ -1,7 +1,7 @@
 ---
 id: work-asu
 title: Asu
-type: work
+type: teatro
 description: Espetáculo teatral de grupo.
 year: 2017
 attachments:
@@ -11,3 +11,4 @@ attachments:
   caption: 'Registro Documental: Asu'
 ---
 Montagem teatral.
+

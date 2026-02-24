@@ -2,7 +2,7 @@
 id: action-pesquisador-ifce
 title: Pesquisador Ifce
 kind: outro
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Pesquisador
 work_id: ''
 context:
@@ -21,3 +21,4 @@ attachments:
   caption: 'Registro Documental: Pesquisador Ifce'
 ---
 Participação como pesquisador no IFCE.
+

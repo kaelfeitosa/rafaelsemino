@@ -2,7 +2,7 @@
 id: action-prof-aceleracao
 title: Docência em Projeto de Aceleração da Aprendizagem
 kind: formacao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Professor/Diretor
 work_id: ''
 context:
@@ -13,3 +13,4 @@ description: ''
 attachments: []
 ---
 Detalhes específicos da participação.
+

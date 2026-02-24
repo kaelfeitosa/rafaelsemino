@@ -2,9 +2,9 @@
 id: action-rafael-vao-ccbnb-2023
 title: Ator em Palco CCBNB 2023
 kind: exibicao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Ator
-work_id: work-vao
+work_id: '[[work-vao]]'
 context:
   label: Palco CCBNB 2023
   kind: mostra
@@ -21,3 +21,4 @@ attachments:
   caption: Promo Vão no Palco CCBNB
 ---
 Detalhes específicos da participação.
+

@@ -1,7 +1,7 @@
 ---
 id: work-300-reais
 title: 300 Reais
-type: work
+type: performance
 description: Performance encenada no FIDA (2015).
 year: 2015
 attachments:
@@ -19,3 +19,4 @@ attachments:
   caption: 'Registro Documental: 300 Reais'
 ---
 Performance teatral.
+

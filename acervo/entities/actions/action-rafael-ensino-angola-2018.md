@@ -2,7 +2,7 @@
 id: action-rafael-ensino-angola-2018
 title: Ensino de Artes e Cinema em Angola
 kind: formacao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Professor e Produtor
 work_id: ''
 context:
@@ -21,3 +21,4 @@ attachments:
   caption: 'Registro Documental: Projeto Angola Bie'
 ---
 Ministração de cursos de teatro e cinema e atuação na Escola Sebastiana Garcia.
+

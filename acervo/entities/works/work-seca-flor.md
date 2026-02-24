@@ -1,7 +1,7 @@
 ---
 id: work-seca-flor
 title: Seca Flor
-type: work
+type: teatro
 description: Cultura popular e manifestações periféricas sob o guarda-chuva do Grupo
   Mira Ira. Também conhecido ou referenciado como "Flor do Deserto".
 year: 2016
@@ -16,3 +16,4 @@ attachments:
   caption: 'Registro Documental: Seca Flor'
 ---
 Uma das atuações performáticas mais extensas no currículo inicial de Rafael, voltado ao Reisado e às tradições cearenses. O espetáculo é por vezes citado como "Flor do Deserto" em registros de memória do artista.
+

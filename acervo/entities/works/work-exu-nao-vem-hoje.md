@@ -1,7 +1,7 @@
 ---
 id: work-exu-nao-vem-hoje
 title: Exu Não Vem Hoje
-type: work
+type: teatro
 description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo
   a pesquisa de mestrado para o palco.
 year: 2022
@@ -53,3 +53,4 @@ Primeira obra cênica de fôlego materializada pelo Coletivo Farol Novo. A conce
 A peça mergulha na força matriz e nos rastros arquetípicos de Exu, propondo uma encenação que foge do palco tradicional: o público não é mero observador, mas é intensamente convidado à participação coletiva. Os espectadores assumem personagens, dançam e dissolvem ativamente a barreira física com os atores.
 
 A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica da Escola Porto Iracema das Artes (2022). O processo criativo também pavimentou as bases técnicas periféricas do coletivo, integrando Felipe Marques na operação profunda de som e luz, configurando um ambiente teatral vivo e pulsante.
+

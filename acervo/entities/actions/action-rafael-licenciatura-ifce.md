@@ -2,7 +2,7 @@
 id: action-rafael-licenciatura-ifce
 title: Graduando em Licenciatura em Teatro
 kind: outro
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Graduando
 work_id: ''
 context:
@@ -13,3 +13,4 @@ description: ''
 attachments: []
 ---
 Detalhes específicos da participação.
+

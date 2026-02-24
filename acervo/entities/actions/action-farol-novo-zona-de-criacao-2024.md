@@ -2,7 +2,7 @@
 id: action-farol-novo-zona-de-criacao-2024
 title: Diretor em Programa Zona de Criação (YouTube)
 kind: exibicao
-performed_by: agent-coletivo-farol-novo
+performed_by: '[[agent-coletivo-farol-novo]]'
 my_role: Diretor
 work_id: ''
 context:
@@ -17,3 +17,4 @@ attachments:
   caption: Destaque Zona de Criação
 ---
 Detalhes específicos da participação.
+

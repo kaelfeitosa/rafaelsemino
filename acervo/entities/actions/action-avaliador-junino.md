@@ -2,7 +2,7 @@
 id: action-avaliador-junino
 title: Avaliador Junino
 kind: avaliacao
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Avaliador
 work_id: ''
 context:
@@ -24,3 +24,4 @@ attachments:
   caption: 'Registro Documental: Avaliador Junino'
 ---
 Atuação de Rafael Semino como avaliador junino no estado do Ceará durante o ano de 2023.
+

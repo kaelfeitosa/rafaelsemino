@@ -1,7 +1,7 @@
 ---
 id: work-rebordose
 title: Rebordose
-type: work
+type: teatro
 description: Curta-metragem dirigido por Darlan Souza onde Rafael Semino atua.
 year: 2024
 attachments:
@@ -15,3 +15,4 @@ attachments:
   caption: 'Registro Documental: Rebordose'
 ---
 Dois amigos tentam manter juntos uma quitinete na periferia de Fortaleza quando acontecem "uns B.O." (problemas inesperados). O curta foi dirigido por Darlan Souza em 2024 e compõe o portfólio audiovisual de Rafael Semino.
+

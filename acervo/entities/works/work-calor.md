@@ -1,7 +1,7 @@
 ---
 id: work-calor
 title: Calor
-type: work
+type: performance
 description: Performance encenada e protagonizada em 2019.
 year: 2019
 attachments:
@@ -11,3 +11,4 @@ attachments:
   caption: 'Registro Documental: Calor'
 ---
 Performance teatral de atuação e criação.
+

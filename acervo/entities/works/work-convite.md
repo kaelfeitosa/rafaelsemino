@@ -1,7 +1,7 @@
 ---
 id: work-convite
 title: Convite
-type: work
+type: teatro
 description: Espetáculo teatral encenado em 2017.
 year: 2013
 attachments:
@@ -11,3 +11,4 @@ attachments:
   caption: 'Registro Documental: Convite'
 ---
 Realizado em 2017 (início em 2013).
+

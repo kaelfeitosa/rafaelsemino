@@ -1,7 +1,7 @@
 ---
 id: work-ha-numeros-que-sonham
 title: Há números que sonham
-type: work
+type: teatro
 description: Curta-metragem dirigido por Jennifer Vieira.
 year: 2019
 attachments:
@@ -19,3 +19,4 @@ attachments:
   caption: 'Registro Documental: Ha Numeros Que Sonham'
 ---
 Experiência em atuação audiovisual na direção de Jennifer Vieira (2019), o obra compõe o acervo histórico das produções formativas do ator.
+

@@ -58,6 +58,12 @@ func ValidateEntities(entitiesDir string) error {
 				if work.Title == "" {
 					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
 				}
+				validWorkTypes := map[string]bool{
+					"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
+				}
+				if work.Type == "" || !validWorkTypes[work.Type] {
+					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: teatro | jogo | filme | roteiro | performance | outro", work.ID, work.Type)
+				}
 			} else if parentDir == "actions" {
 				var action domain.Action
 				if err := yaml.Unmarshal(parts[1], &action); err != nil {

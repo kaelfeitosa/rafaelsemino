@@ -1,7 +1,7 @@
 ---
 id: work-a-serpente
 title: A Serpente (Montagem 2014)
-type: work
+type: teatro
 description: Montagem do texto de Nelson Rodrigues, realizada em 2014 com direção/atuação
   de Rafael Semino.
 year: 2014
@@ -12,3 +12,4 @@ attachments:
   caption: 'Registro Documental: A Serpente'
 ---
 Peça montada. Atuação e Direção.
+

@@ -1,7 +1,7 @@
 ---
 id: work-santo-bordel-de-tiatira
 title: Santo Bordel de Tiatira
-type: work
+type: teatro
 description: Espetáculo de teatro.
 year: 2017
 attachments:
@@ -15,3 +15,4 @@ attachments:
   caption: 'Registro Documental: Santo Bordel De Tiatira'
 ---
 Apresentado em 2017.
+

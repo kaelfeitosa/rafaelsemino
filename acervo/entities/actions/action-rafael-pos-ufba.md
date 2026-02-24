@@ -2,7 +2,7 @@
 id: action-rafael-pos-ufba
 title: Pós-graduando em Pós-graduação em Teatro do Oprimido
 kind: outro
-performed_by: agent-rafael-semino
+performed_by: '[[agent-rafael-semino]]'
 my_role: Pós-graduando
 work_id: ''
 context:
@@ -21,3 +21,4 @@ attachments:
   caption: 'Registro Documental: Formacao Ufba'
 ---
 Detalhes específicos da participação.
+
