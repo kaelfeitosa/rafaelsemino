@@ -2,11 +2,11 @@
 attachments:
     - caption: Estreia de Exu Não Vem Hoje
       role: documentation
-      src: record-temporada-hub-porto-dragao-2023-001.jpeg
+      src: work-exu-nao-vem-hoje-002.jpeg
       type: image
     - caption: Convite Temporada Exu
       role: documentation
-      src: record-temporada-hub-porto-dragao-2023-003.jpeg
+      src: event-ocupacao-hub-001.jpeg
       type: image
 context:
     kind: mostra

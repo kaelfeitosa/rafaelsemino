@@ -2,7 +2,7 @@
 attachments:
     - caption: Destaque Zona de Criação
       role: documentation
-      src: record-zona-de-criacao-2024-001.jpeg
+      src: work-rastros-de-exu-002.jpeg
       type: image
 context:
     kind: residencia
@@ -21,4 +21,3 @@ work_id: ""
 
 
 Detalhes específicos da participação.
-

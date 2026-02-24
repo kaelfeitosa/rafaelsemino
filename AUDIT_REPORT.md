@@ -37,18 +37,17 @@ Foram preenchidas descrições com base nos materiais extraídos (CV e Portfóli
 ## 3. Auditoria de Evidências (Attachments)
 *Status: ✅ Aprovado (Erros Críticos Resolvidos)*
 
-### 3.1 Arquivos Recuperados
-Utilizando a análise profunda da pasta `_materials`, foram identificadas e restauradas as imagens faltantes:
+### 3.1 Arquivos Recuperados e Deduplicados
+Foi identificado que as imagens referenciadas nos metadados originais já existiam no acervo, mas com nomes diferentes. Os links quebrados foram corrigidos apontando para os arquivos existentes:
 
 *   **Hub Porto Dragão (`action-farol-novo-temporada-porto-dragao-2023`)**:
-    *   Imagens recuperadas de `_materials/extracted_images/portfolio_coletivo_farol_novo_p13_img0.jpeg` -> `record-temporada-hub-porto-dragao-2023-001.jpeg`.
-    *   Referências a imagens inexistentes (004, 006, 007) foram removidas para garantir integridade.
+    *   Aponta agora para `work-exu-nao-vem-hoje-002.jpeg` (Exu) e `event-ocupacao-hub-001.jpeg` (Hub).
 *   **Rastros de Exu (`work-rastros-de-exu`)**:
-    *   Imagem recuperada de `_materials/extracted_images/portfolio_coletivo_farol_novo_p14_img0.jpeg` -> `record-work-rastros-de-exu-003.jpeg`.
+    *   Aponta agora para `work-rastros-de-exu-001.jpeg`.
 *   **Zona de Criação (`action-farol-novo-zona-de-criacao-2024`)**:
-    *   Imagem recuperada de `_materials/extracted_images/portfolio_coletivo_farol_novo_p18_img0.jpeg` -> `record-zona-de-criacao-2024-001.jpeg`.
+    *   Aponta agora para `work-rastros-de-exu-002.jpeg`.
 *   **Percurso Básico (`action-prof-percurso-basico`)**:
-    *   Adicionada imagem `agent-projeto-abarca-001.png` conforme menção cruzada no CV.
+    *   Aponta para `agent-projeto-abarca-001.png` (já existente).
 
 ### 3.2 Lacunas Documentais (Avisos)
 Algumas ações secundárias (formação, pesquisa acadêmica) ainda não possuem imagens, mas isso não impede o funcionamento técnico do site.
