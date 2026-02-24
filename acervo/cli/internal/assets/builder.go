@@ -52,6 +52,8 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 		return fmt.Errorf("building source map: %w", err)
 	}
 
+	var buildErrors []string
+
 	for _, ref := range refs {
 		if !strings.Contains(ref, "images/optimized/") {
 			continue
@@ -73,10 +75,16 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 
 		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), filename)
 		if err := optimizeImage(cwebpPath, sourcePath, destPath); err != nil {
-			fmt.Printf("❌ Error optimizing %s: %v\n", filename, err)
+			errorMsg := fmt.Sprintf("optimizing %s: %v", filename, err)
+			fmt.Printf("❌ Error %s\n", errorMsg)
+			buildErrors = append(buildErrors, errorMsg)
 		} else {
 			fmt.Printf("✅ Optimized: %s\n", filename)
 		}
+	}
+
+	if len(buildErrors) > 0 {
+		return fmt.Errorf("encountered %d error(s) during asset build:\n- %s", len(buildErrors), strings.Join(buildErrors, "\n- "))
 	}
 
 	return nil
@@ -88,7 +96,8 @@ func scanHTMLForImages(path string) ([]string, error) {
 		return nil, err
 	}
 
-	re := regexp.MustCompile(`src=["']([^"']+)["']`)
+	// Updated regex to handle whitespace around '='
+	re := regexp.MustCompile(`src\s*=\s*["']([^"']+)["']`)
 	matches := re.FindAllStringSubmatch(string(content), -1)
 
 	var refs []string
