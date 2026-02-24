@@ -14,5 +14,6 @@ work_id: '[[work-exu-nao-vem-hoje]]'
 ---
 
 
+
 Participação como pesquisador no Laboratório de Pesquisa do Centro Cultural Bom Jardim (CCBJ), com carga horária de 300 horas, focado no desenvolvimento do espetáculo "Exu não vem hoje".
 

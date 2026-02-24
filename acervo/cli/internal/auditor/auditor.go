@@ -42,7 +42,11 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
-		relPath, _ := filepath.Rel(entitiesDir, path)
+		relPath, err := filepath.Rel(entitiesDir, path)
+		if err != nil {
+			fmt.Printf("[WARNING] Falha ao obter caminho relativo para %s: %v\n", path, err)
+			return nil
+		}
 		parentDir := filepath.Base(filepath.Dir(relPath))
 
 		if parentDir == "agents" {

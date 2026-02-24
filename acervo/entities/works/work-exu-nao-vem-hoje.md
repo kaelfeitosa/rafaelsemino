@@ -47,6 +47,7 @@ type: teatro
 year: 2022
 ---
 
+
 ## O Espetáculo
 Primeira obra cênica de fôlego materializada pelo Coletivo Farol Novo. A concepção primária partiu do desejo dos fundadores, Rafael Semino e Gabriel França, de transportar para o teatro uma investigação densa sobre o tempo, o mito e a oralidade.
 

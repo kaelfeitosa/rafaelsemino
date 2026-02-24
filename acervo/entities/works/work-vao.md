@@ -47,6 +47,7 @@ type: teatro
 year: 2023
 ---
 
+
 Espetáculo nascido do cruzamento interdisciplinar fomentado pelo Prêmio "Amarrações Estéticas" da Escola Porto Iracema das Artes, em 2023.
 
 A gênese de "Vão" ocorreu quando Zeis (Músico), que estava desenvolvendo o projeto sonoro "Encruzilhada" no Laboratório de Música, foi convidado para integrar o Coletivo Farol Novo, que acabara de gestar "Exu Não Vem Hoje". 

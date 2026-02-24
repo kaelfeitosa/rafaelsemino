@@ -30,7 +30,10 @@ func ValidateEntities(entitiesDir string) error {
 			}
 
 			// Robust entity type detection based on parent directory name
-			rel, _ := filepath.Rel(entitiesDir, path)
+			rel, err := filepath.Rel(entitiesDir, path)
+			if err != nil {
+				return fmt.Errorf("ERRO: falha ao obter caminho relativo para %s: %w", path, err)
+			}
 			parentDir := filepath.Base(filepath.Dir(rel))
 
 			if parentDir == "agents" {

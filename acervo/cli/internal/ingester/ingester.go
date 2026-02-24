@@ -85,6 +85,18 @@ func Create(entityType string, slug string, args []string) error {
 					data.Description = val
 				case "featured":
 					data.Featured = (strings.ToLower(val) == "true")
+				case "collaborators":
+					if val != "" {
+						if err := json.Unmarshal([]byte(val), &data.Collaborators); err != nil {
+							return fmt.Errorf("falha ao analisar collaborators (esperado JSON): %w", err)
+						}
+					}
+				case "attachments":
+					if val != "" {
+						if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
+							return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
+						}
+					}
 				}
 			}
 		}
@@ -262,43 +274,6 @@ func applyArgs(data map[string]interface{}, args []string) {
 
 			if isBoolField && (vLower == "true" || vLower == "false") {
 				data[key] = (vLower == "true")
-			} else if strings.Contains(val, ",") {
-				// Handle legacy structured slices (backwards compatibility)
-				parts := strings.Split(val, ",")
-				var slice []interface{}
-				for _, p := range parts {
-					p = strings.TrimSpace(p)
-					if strings.Contains(p, "|") {
-						objParts := strings.Split(p, "|")
-						switch key {
-						case "collaborators":
-							obj := make(map[string]string)
-							obj["name"] = objParts[0]
-							if len(objParts) > 1 {
-								obj["role"] = objParts[1]
-							}
-							slice = append(slice, obj)
-						case "attachments":
-							obj := make(map[string]string)
-							obj["type"] = objParts[0]
-							if len(objParts) > 1 {
-								obj["role"] = objParts[1]
-							}
-							if len(objParts) > 2 {
-								obj["src"] = objParts[2]
-							}
-							if len(objParts) > 3 {
-								obj["caption"] = objParts[3]
-							}
-							slice = append(slice, obj)
-						default:
-							slice = append(slice, p)
-						}
-					} else {
-						slice = append(slice, p)
-					}
-				}
-				data[key] = slice
 			} else {
 				data[key] = val
 			}

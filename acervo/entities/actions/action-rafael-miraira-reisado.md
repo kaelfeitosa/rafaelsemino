@@ -14,5 +14,6 @@ work_id: ""
 ---
 
 
+
 Rafael Semino realizou apresentações da dança dramática de Reisado com o Grupo Mira Ira durante o Encontro Mestres do Mundo.
 

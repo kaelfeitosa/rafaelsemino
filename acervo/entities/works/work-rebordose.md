@@ -15,5 +15,6 @@ type: teatro
 year: 2024
 ---
 
+
 Dois amigos tentam manter juntos uma quitinete na periferia de Fortaleza quando acontecem "uns B.O." (problemas inesperados). O curta foi dirigido por Darlan Souza em 2024 e compõe o portfólio audiovisual de Rafael Semino.
 

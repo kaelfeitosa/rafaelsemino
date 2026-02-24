@@ -6,5 +6,6 @@ type: performance
 year: 2023
 ---
 
+
 Notas de processo, versões, decisões artísticas.
 

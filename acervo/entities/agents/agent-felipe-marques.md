@@ -5,6 +5,7 @@ kind: person
 name: Felipe Rodrigues Marques
 ---
 
+
 Felipe Rodrigues atua profissionalmente na área teatral e audiovisual da cidade de Fortaleza desde 2019. 
 
 Possui ampla expertise técnica e artística. Integrou a montagem fundacional do Coletivo Farol Novo no limiar da estreia de "Exu Não Vem Hoje", assumindo a engenharia técnica e de maquinária cênica do espetáculo. Além de sua atuação no Coletivo Farol Novo, Felipe é parceiro do "Espaço de Técnicas Criativas LABOR" e integrante efetivo da "Cia. Co.Vil".

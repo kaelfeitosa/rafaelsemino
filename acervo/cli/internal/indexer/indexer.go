@@ -78,7 +78,11 @@ func Reindex(entitiesDir, dbPath string) error {
 			var jsonData []byte
 
 			// Robust entity type detection based on parent directory name
-			rel, _ := filepath.Rel(entitiesDir, path)
+			rel, err := filepath.Rel(entitiesDir, path)
+			if err != nil {
+				fmt.Printf("[WARNING] Falha ao obter caminho relativo para %s: %v\n", path, err)
+				return nil
+			}
 			parentDir := filepath.Base(filepath.Dir(rel))
 
 			if parentDir == "agents" {
@@ -142,7 +146,10 @@ func Reindex(entitiesDir, dbPath string) error {
 			}
 
 			if id != "" {
-				relPath, _ := filepath.Rel(entitiesDir, path)
+				relPath, err := filepath.Rel(entitiesDir, path)
+				if err != nil {
+					return fmt.Errorf("falha ao obter caminho relativo para %s: %w", path, err)
+				}
 				_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, relPath, featured, string(jsonData))
 				if err != nil {
 					return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)

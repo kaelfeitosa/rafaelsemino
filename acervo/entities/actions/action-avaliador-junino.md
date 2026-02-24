@@ -24,5 +24,6 @@ work_id: ""
 ---
 
 
+
 Atuação de Rafael Semino como avaliador junino no estado do Ceará durante o ano de 2023.
 
