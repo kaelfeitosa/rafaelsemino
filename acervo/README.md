@@ -1,14 +1,5 @@
 # Visão Geral do Acervo
-- Nunca alterar IDs existentes
-- Nunca inferir relações implícitas
-- Nunca editar arquivos em /registros
-- Nunca usar visualização como fonte da verdade
 
-PERMISSÕES
-- Criar novas entidades a partir de templates
-- Atualizar YAML existente
-- Reindexar db.sqlite
-- Gerar relatórios e auditorias
+Este diretório contém os dados editoriais (Markdown) e as ferramentas CLI para gerenciamento do acervo.
 
-FLUXO
-scan → ingest → normalize → validate → reindex → audit
+Para uma visão geral do modelo de dados e das regras de manutenção, consulte o arquivo `AGENTS.md` na raiz do repositório.
