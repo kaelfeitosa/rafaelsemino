@@ -2,40 +2,41 @@
 
 Bem-vindo(a) ao repositório do portfólio e acervo cultural de Rafael Semino, focado na preservação de sua trajetória de vida nas artes cênicas, pesquisa, docência e produção audiovisual.
 
-O projeto evoluiu de uma simples página estática para um **Motor de Dados Culturais e Semânticos**, operando com uma clara Separação de Responsabilidades (Separation of Concerns).
+O projeto opera como um **Motor de Dados Culturais e Semânticos**, garantindo que toda a linha do tempo e catalogação editorial permaneçam imutáveis, versionadas e prontas para consumo.
 
 ## 🚀 Arquitetura do Projeto
 
 O repositório está estruturado em duas camadas principais:
 
 ### 1. Camada Web (`/frontend`)
-Responsável pela exibição e interface com o usuário final.
-- **`index.html`**: Master do Portfólio.
-- **`assets/`**: Estilizações CSS e lógicas JS estáticas.
-- **`images/`**: Imagens isoladas da interface visual (icones, logos).
+Responsável pela exibição e interface com o usuário final. Aqui os dados do acervo são consumidos e apresentados em um portfólio moderno e interativo.
 
 ### 2. Camada de Dados (`/acervo`)
-O "Cérebro" do projeto. Funciona como um CMS Nativo completamente rastreável via Git. Toda a história e catálogo artístico de Rafael Semino estão mapeados semanticamente aqui.
+O "Cérebro" do projeto. Funciona como um banco de dados editorial em Markdown. Toda a história artística de Rafael Semino está mapeada semanticamente aqui.
 
-- **`entities/`**: Arquivos Markdown (`.md`) puros que servem como "Nós" de dados para **Agents** (Pessoas/Organizações), **Works** (Obras/Espetáculos), **Events** (Festivais) e **Participations** (Atuações Específicas).
-- **`data/records/`**: Cada foto/mídia do acervo original possui um Record `.md` exclusivo. Ele mapeia a mídia à entidade correta, injetando *Contexto Textual* e *Geolocalização* exatos no momento em que a foto foi tirada.
-- **`media/images/`**: Onde as fotos canônicas e renomeadas semanticamente estão abrigadas.
+- **`entities/`**: Arquivos Markdown puros que servem como "Nós" da rede:
+    - **Actions**: O que Rafael fez (atuações, aulas, direções, criações). É o núcleo do sistema.
+    - **Works**: As obras artísticas associadas às ações (espetáculos, livros, curtas).
+    - **Agents**: Rafael Semino e os coletivos/instituições com quem colaborou.
+- **Evidências**: Documentos e mídias (fotos, vídeos, PDFs) são anexados diretamente às Actions e Works, provendo sustentação factual à narrativa.
 
 ### 🧠 Motor em Go (`/acervo/cli`)
-Para garantir escabilidade e buscas indexadas (Search/API), o projeto possui uma Command-Line Interface construída em **Go**. Ela lê todo o seu histórico em Markdown e tece um `db.sqlite` relacional e ultrarrápido.
+Para garantir integridade e velocidade de busca, o projeto possui uma Command-Line Interface (CLI) em **Go**. Ela transforma os arquivos Markdown em um banco de dados relacional SQLite (`db.sqlite`).
 
-#### Como utilizar os Comandos do Motor:
-1. Abra o terminal e navegue: `cd acervo/cli`
-2. Compile/Rode o atualizador de Índice:
+#### Comandos Principais:
+1. **Sincronizar Banco:**
    ```bash
-   go run . reindex
+   cd acervo/cli
+   go run main.go reindex
    ```
-   *Isso força o robô a reler todas as Entidades Markdown e atualizar o `db.sqlite` principal.*
-3. Valide a Saúde do Grafo:
+2. **Validar Dados:**
    ```bash
-   go run . audit
+   go run main.go validate
    ```
-   *Checa imediatamente se há quebra de links ou entidades sem descrição.*
+3. **Verificar Integridade:**
+   ```bash
+   go run main.go verify
+   ```
 
 ---
-Desenvolvido para garantir que toda a linha do tempo e catalogação etnográfica permaneça imutável, versionada e pronta para ser consumida por APIs no futuro.
+Para detalhes técnicos sobre o modelo editorial e regras de manutenção, consulte o arquivo [AGENTS.md](AGENTS.md).

@@ -3,23 +3,32 @@ description: How to validate, reindex, and audit the Acervo
 ---
 # Workflow: Validate and Reindex Acervo
 
-Run this workflow whenever you make bulk changes or want to ensure the Acervo is in a healthy state.
+Run this workflow whenever you make changes or want to ensure the Acervo is in a healthy state.
 
-## 1. Unified Verification & Reindexing
-You do not need to run `validate` or `audit` manually. The `reindex` command automatically chains these processes in a strict succession:
-1. Syntactic Schema Validation
-2. Relational Graph Auditing
-3. SQLite DB Generation
-
+## 1. Syntactic Validation
+Check if all entities follow the mandatory fields and date formats.
 ```bash
 // turbo
-cd acervo/cli && go clean -cache && go run . reindex
+cd acervo/cli && go run main.go validate
 ```
 
-## 2. Fixing Blockers
-If `reindex` halts due to a missing relation or broken schema, use the CLI update engine to patch the faulty Markdown entity:
+## 2. Relational Audit & DB Generation
+The `reindex` command generates the `db.sqlite` cache and runs a mandatory link check.
 ```bash
 // turbo
-cd acervo/cli && go run . ingest update <id> [key=value...]
+cd acervo/cli && go run main.go reindex
 ```
-*Note: Always use Obsidian Wikilinks if updating relational fields like `related_to`!*
+
+## 3. Full Graph Verification
+Perform a deep audit of the entire graph relations.
+```bash
+// turbo
+cd acervo/cli && go run main.go verify
+```
+
+## 4. Fixing Blockers
+If any command fails, use the CLI update engine to patch the faulty Markdown entity:
+```bash
+// turbo
+cd acervo/cli && go run main.go ingest update <id> [key=value...]
+```

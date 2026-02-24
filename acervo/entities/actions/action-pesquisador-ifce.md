@@ -18,7 +18,7 @@ id: action-pesquisador-ifce
 kind: outro
 my_role: Pesquisador
 performed_by: '[[agent-rafael-semino]]'
-title: Pesquisador Ifce
+title: Pesquisador no IFCE
 work_id: ""
 ---
 

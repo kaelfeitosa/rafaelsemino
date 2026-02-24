@@ -19,7 +19,7 @@ id: action-avaliador-junino
 kind: avaliacao
 my_role: Avaliador
 performed_by: '[[agent-rafael-semino]]'
-title: Avaliador Junino
+title: Avaliador do Ciclo Junino
 work_id: ""
 ---
 

@@ -1,58 +1,59 @@
-# Visão Geral do Repositório e Ferramentas
+# Visão Geral do Repositório e Ferramentas (ADR)
 
-## Estrutura do Repositório
+## Axioma Fundamental
+Este sistema descreve a trajetória profissional de Rafael Semino, a partir do seu ponto de vista, apresentando ações que realizou, individualmente ou por meio de coletivos, associadas a obras, em determinados contextos, com evidências que sustentam essa narrativa.
 
-Este repositório contém o portfólio profissional de Rafael Semino.
+### Implicações Diretas
+- O sistema **não é institucional**.
+- O sistema **não é neutro**.
+- O sistema **não descreve tudo**.
+- O sistema **assume autoria e recorte**.
 
-### Diretórios Principais
+## Modelo de Dados (`acervo`)
 
-- `acervo/`: Fonte da verdade dos dados (banco de dados editorial).
-- `frontend/`: Código fonte do site estático (HTML/CSS/JS).
-- `_materials/`: Documentos brutos (PDFs, DOCX) usados para extração de texto.
+### 1. Agent (Pessoa ou Coletivo)
+**Regras:**
+- Rafael Semino é um Agent do tipo `person`.
+- Coletivos são Agent do tipo `collective`.
+- Agents não têm histórico interno nem conhecem Actions diretamente.
+- Não há hierarquia entre Agents.
 
-### Modelo de Dados (`acervo`)
+### 2. Work (Obra Artística)
+**Regras:**
+- Work não age e não tem autoria interna.
+- Autoria e atuação acontecem exclusivamente na **Action**.
 
-O acervo segue um modelo editorial focado em **Ações** (Actions), **Obras** (Works) e **Agentes** (Agents).
+### 3. Action (Núcleo do Sistema)
+Representa o que "Eu fiz". Toda Action vira um item visível no portfólio.
 
-1.  **Actions (`acervo/entities/actions`)**:
-    -   Representam fatos concretos da trajetória (e.g., "Atuação em Vão", "Professor no Projeto Abarca").
-    -   Substituem os antigos conceitos de `Participation` e `Event`.
-    -   Possuem campos obrigatórios: `performed_by` (quem fez), `my_role` (papel editorial), `context` (onde/quando).
+**Regras Absolutas:**
+- Toda Action representa algo que **Eu fiz**.
+- Não existe Action sem `my_role`.
+- Não existe Action "do coletivo" sem Rafael envolvido.
+- Action descreve a atuação de Rafael.
 
-2.  **Works (`acervo/entities/works`)**:
-    -   Representam as obras artísticas em si (e.g., espetáculo "Vão", livro "Contos de Exu").
-    -   Não possuem autoria interna; a autoria é definida pelas Actions que criaram a obra.
+### 4. Context & Attachments (Valores Embedados)
+- **Context**: Existe apenas dentro da Action (festival, mostra, curso, etc).
+- **Attachment**: Evidência visual ou documental (imagem, vídeo, pdf). Não possui ID próprio e não existe fora de Action ou Work.
 
-3.  **Agents (`acervo/entities/agents`)**:
-    -   Pessoas ou Coletivos.
-    -   Campo `kind` define se é `person` ou `collective`.
+## Relações Válidas
+- `Action.performed_by` → `Agent`
+- `Action.work_id` → `Work`
+*Nenhuma outra relação é permitida.*
 
-### Ferramentas CLI (`acervo/cli`)
+## Regras Editoriais
+1. **Se não vira card, não entra.**
+2. O sistema responde "o que eu fiz", não "o que aconteceu".
+3. Coletivos podem agir, mas sempre com papel explícito de Rafael.
+4. Clareza narrativa > normalização de dados.
 
+## Ferramentas CLI (`acervo/cli`)
 O repositório inclui uma ferramenta CLI em Go para gerenciar o acervo.
 
-- **Reindexar Banco de Dados:**
-  ```bash
-  cd acervo/cli
-  go run main.go reindex
-  ```
-  Isso lê os arquivos Markdown em `acervo/entities` e recria o arquivo `acervo/db.sqlite`.
+- **Sincronização:** `go run main.go reindex` (atualiza o `db.sqlite`).
+- **Verificação:** `go run main.go verify` (valida sintaxe e links).
+- **Ingestão:** `go run main.go ingest create action [slug] ...`
 
-- **Verificar Integridade:**
-  ```bash
-  cd acervo/cli
-  go run main.go verify
-  ```
-  Isso executa validações sintáticas (campos obrigatórios) e semânticas (links quebrados).
-
-- **Criar Nova Entidade:**
-  ```bash
-  cd acervo/cli
-  go run main.go ingest create action [slug] title="Título" performed_by="[[agent-rafael-semino]]" ...
-  ```
-
-### Regras de Manutenção
-
-1.  **Nunca edite o `db.sqlite` manualmente.** Ele é derivado dos arquivos Markdown.
-2.  **Imagens:** Use o componente `<focus-image>` no frontend. O CLI possui o comando `set-focus` para ajustar o ponto de foco (XMP).
-3.  **Migração 2024:** O sistema foi migrado de um modelo `Event/Participation` para `Action/Work`. Não crie pastas antigas (`events`, `participations`, `records`).
+## Decisões Arquiteturais
+- O sistema é focado em **atuação editorial**, não em registros históricos exaustivos.
+- Entidades são propositais e reduzidas para garantir manutenibilidade e clareza narrativa no portfólio.
