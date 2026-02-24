@@ -1,4 +1,4 @@
-# Visão Geral do Repositório e Ferramentas (ADR)
+# Guia do Acervo e Modelo de Dados
 
 ## Axioma Fundamental
 Este sistema descreve a trajetória profissional de Rafael Semino, a partir do seu ponto de vista, apresentando ações que realizou, individualmente ou por meio de coletivos, associadas a obras, em determinados contextos, com evidências que sustentam essa narrativa.

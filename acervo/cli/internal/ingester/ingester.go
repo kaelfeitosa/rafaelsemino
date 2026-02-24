@@ -43,59 +43,64 @@ func Create(entityType string, slug string, args []string) error {
 		return s
 	}
 
+	// Parse args into a map for easier access
+	argMap := make(map[string]string)
+	for _, arg := range args {
+		kv := strings.SplitN(arg, "=", 2)
+		if len(kv) == 2 {
+			argMap[strings.TrimSpace(kv[0])] = strings.TrimSpace(kv[1])
+		}
+	}
+
 	switch entityType {
 	case "action":
 		data := &domain.Action{
 			ID: id,
 		}
-		for _, arg := range args {
-			kv := strings.SplitN(arg, "=", 2)
-			if len(kv) == 2 {
-				key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
-				switch key {
-				case "title":
-					data.Title = val
-				case "kind":
-					data.Kind = val
-				case "performed_by":
-					data.PerformedBy = toWikilink(val)
-				case "my_role":
-					data.MyRole = val
-				case "work_id":
-					data.WorkID = toWikilink(val)
-				case "context_label":
-					data.Context.Label = val
-				case "context_kind":
-					data.Context.Kind = val
-				case "context_location":
-					data.Context.Location = val
-				case "context_year":
-					if val != "" {
-						y, err := strconv.Atoi(val)
-						if err != nil {
-							return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
-						}
-						data.Context.Year = y
+		for key, val := range argMap {
+			switch key {
+			case "title":
+				data.Title = val
+			case "kind":
+				data.Kind = val
+			case "performed_by":
+				data.PerformedBy = toWikilink(val)
+			case "my_role":
+				data.MyRole = val
+			case "work_id":
+				data.WorkID = toWikilink(val)
+			case "context_label":
+				data.Context.Label = val
+			case "context_kind":
+				data.Context.Kind = val
+			case "context_location":
+				data.Context.Location = val
+			case "context_year":
+				if val != "" {
+					y, err := strconv.Atoi(val)
+					if err != nil {
+						return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
 					}
-				case "date_start":
-					data.DateStart = val
-				case "date_end":
-					data.DateEnd = val
-				case "description":
-					data.Description = val
-				case "featured":
-					data.Featured = (strings.ToLower(val) == "true")
-				case "collaborators":
-					if val != "" {
-						if err := json.Unmarshal([]byte(val), &data.Collaborators); err != nil {
-							return fmt.Errorf("falha ao analisar collaborators (esperado JSON): %w", err)
-						}
+					data.Context.Year = y
+				}
+			case "date_start":
+				data.DateStart = val
+			case "date_end":
+				data.DateEnd = val
+			case "description":
+				data.Description = val
+			case "featured":
+				data.Featured = (strings.ToLower(val) == "true")
+			case "collaborators":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Collaborators); err != nil {
+						return fmt.Errorf("falha ao analisar collaborators (esperado JSON): %w", err)
 					}
-				case "attachments":
-					if val != "" {
-						if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
-							return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
-						}
+				}
+			case "attachments":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
+						return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
 					}
 				}
 			}
@@ -105,30 +110,26 @@ func Create(entityType string, slug string, args []string) error {
 		data := &domain.Agent{
 			ID: id,
 		}
-		for _, arg := range args {
-			kv := strings.SplitN(arg, "=", 2)
-			if len(kv) == 2 {
-				key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
-				switch key {
-				case "name":
-					data.Name = val
-				case "kind":
-					data.Kind = val
-				case "description":
-					data.Description = val
-				case "founded_by_me":
-					data.FoundedByMe = (strings.ToLower(val) == "true")
-				case "active_since":
-					if val != "" {
-						y, err := strconv.Atoi(val)
-						if err != nil {
-							return fmt.Errorf("valor inválido para active_since: '%s' não é um número", val)
-						}
-						data.ActiveSince = y
+		for key, val := range argMap {
+			switch key {
+			case "name":
+				data.Name = val
+			case "kind":
+				data.Kind = val
+			case "description":
+				data.Description = val
+			case "founded_by_me":
+				data.FoundedByMe = (strings.ToLower(val) == "true")
+			case "active_since":
+				if val != "" {
+					y, err := strconv.Atoi(val)
+					if err != nil {
+						return fmt.Errorf("valor inválido para active_since: '%s' não é um número", val)
 					}
-				case "featured":
-					data.Featured = (strings.ToLower(val) == "true")
+					data.ActiveSince = y
 				}
+			case "featured":
+				data.Featured = (strings.ToLower(val) == "true")
 			}
 		}
 		frontmatter = data
@@ -136,28 +137,24 @@ func Create(entityType string, slug string, args []string) error {
 		data := &domain.Work{
 			ID: id,
 		}
-		for _, arg := range args {
-			kv := strings.SplitN(arg, "=", 2)
-			if len(kv) == 2 {
-				key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
-				switch key {
-				case "title":
-					data.Title = val
-				case "type":
-					data.Type = val
-				case "description":
-					data.Description = val
-				case "year":
-					if val != "" {
-						y, err := strconv.Atoi(val)
-						if err != nil {
-							return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
-						}
-						data.Year = y
+		for key, val := range argMap {
+			switch key {
+			case "title":
+				data.Title = val
+			case "type":
+				data.Type = val
+			case "description":
+				data.Description = val
+			case "year":
+				if val != "" {
+					y, err := strconv.Atoi(val)
+					if err != nil {
+						return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
 					}
-				case "featured":
-					data.Featured = (strings.ToLower(val) == "true")
+					data.Year = y
 				}
+			case "featured":
+				data.Featured = (strings.ToLower(val) == "true")
 			}
 		}
 		frontmatter = data
@@ -213,7 +210,9 @@ func Update(entityType string, id string, args []string) error {
 	}
 
 	// Update allows generic key setting
-	applyArgs(data, args)
+	if err := applyArgs(data, args); err != nil {
+		return err
+	}
 
 	newYaml, err := yaml.Marshal(data)
 	if err != nil {
@@ -228,7 +227,7 @@ func Update(entityType string, id string, args []string) error {
 	fmt.Printf("✅ Entidade atualizada: %s\n", id)
 	return nil
 }
-func applyArgs(data map[string]interface{}, args []string) {
+func applyArgs(data map[string]interface{}, args []string) error {
 	for _, arg := range args {
 		kv := strings.SplitN(arg, "=", 2)
 		if len(kv) == 2 {
@@ -238,8 +237,7 @@ func applyArgs(data map[string]interface{}, args []string) {
 			if key == "year" || key == "context_year" || key == "active_since" {
 				if val != "" {
 					if _, err := strconv.Atoi(val); err != nil {
-						fmt.Printf("[WARNING] Valor inválido para %s: '%s' não é um número. Ignorando.\n", key, val)
-						continue
+						return fmt.Errorf("valor inválido para %s: '%s' não é um número", key, val)
 					}
 				}
 			}
@@ -248,19 +246,10 @@ func applyArgs(data map[string]interface{}, args []string) {
 			if (strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]")) ||
 				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
 				var jsonVal interface{}
-				if err := json.Unmarshal([]byte(val), &jsonVal); err == nil {
-					data[key] = jsonVal
-					continue
+				if err := json.Unmarshal([]byte(val), &jsonVal); err != nil {
+					return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err)
 				}
-				// Fallback to custom parsing if JSON fails (e.g. simple list [a,b])
-				val = strings.TrimPrefix(val, "[")
-				val = strings.TrimSuffix(val, "]")
-				parts := strings.Split(val, ",")
-				var slice []string
-				for _, p := range parts {
-					slice = append(slice, strings.TrimSpace(p))
-				}
-				data[key] = slice
+				data[key] = jsonVal
 				continue
 			}
 
@@ -279,4 +268,5 @@ func applyArgs(data map[string]interface{}, args []string) {
 			}
 		}
 	}
+	return nil
 }

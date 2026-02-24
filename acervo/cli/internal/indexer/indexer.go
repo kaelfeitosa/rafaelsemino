@@ -10,16 +10,11 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
+	"acervo/internal/utils"
 
 	"gopkg.in/yaml.v3"
 	_ "modernc.org/sqlite"
 )
-
-func cleanWikilink(s string) string {
-	s = strings.TrimPrefix(s, "[[")
-	s = strings.TrimSuffix(s, "]]")
-	return s
-}
 
 func isFeatured(v interface{}) bool {
 	if val, ok := v.(bool); ok {
@@ -133,12 +128,12 @@ func Reindex(entitiesDir, dbPath string) error {
 					return fmt.Errorf("failed to marshal action %s: %w", id, err)
 				}
 
-				if pb := cleanWikilink(data.PerformedBy); pb != "" {
+				if pb := utils.CleanWikilink(data.PerformedBy); pb != "" {
 					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb); err != nil {
 						return fmt.Errorf("failed to insert relation performed_by for %s: %w", id, err)
 					}
 				}
-				if wid := cleanWikilink(data.WorkID); wid != "" {
+				if wid := utils.CleanWikilink(data.WorkID); wid != "" {
 					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid); err != nil {
 						return fmt.Errorf("failed to insert relation work_id for %s: %w", id, err)
 					}

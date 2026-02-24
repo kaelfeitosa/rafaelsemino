@@ -78,8 +78,17 @@ func ValidateEntities(entitiesDir string) error {
 				if action.Title == "" {
 					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
 				}
-				if action.Kind == "" {
-					return fmt.Errorf("ERRO: Action %s sem kind", action.ID)
+				validActionKinds := map[string]bool{
+					"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
+				}
+				if action.Kind == "" || !validActionKinds[action.Kind] {
+					return fmt.Errorf("ERRO: Action %s tem kind inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Kind)
+				}
+				validContextKinds := map[string]bool{
+					"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
+				}
+				if action.Context.Kind != "" && !validContextKinds[action.Context.Kind] {
+					return fmt.Errorf("ERRO: Action %s tem context.kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Context.Kind)
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)

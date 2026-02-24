@@ -8,15 +8,10 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
+	"acervo/internal/utils"
 
 	"gopkg.in/yaml.v3"
 )
-
-func cleanWikilink(s string) string {
-	s = strings.TrimPrefix(s, "[[")
-	s = strings.TrimSuffix(s, "]]")
-	return s
-}
 
 func Audit(entitiesDir string) error {
 	agents := make(map[string]bool)
@@ -85,13 +80,13 @@ func Audit(entitiesDir string) error {
 	brokenLinks := 0
 	// Validate relations using collected data
 	for _, action := range allActions {
-		pb := cleanWikilink(action.PerformedBy)
+		pb := utils.CleanWikilink(action.PerformedBy)
 		if pb != "" && !agents[pb] {
 			fmt.Printf("[BROKEN LINK] Action %s aponta para Agent %s inexistente\n", action.ID, pb)
 			brokenLinks++
 		}
 
-		wid := cleanWikilink(action.WorkID)
+		wid := utils.CleanWikilink(action.WorkID)
 		if wid != "" && !works[wid] {
 			fmt.Printf("[BROKEN LINK] Action %s aponta para Work %s inexistente\n", action.ID, wid)
 			brokenLinks++
