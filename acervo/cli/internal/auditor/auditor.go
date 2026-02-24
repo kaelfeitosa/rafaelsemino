@@ -29,7 +29,11 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
-		content, _ := os.ReadFile(path)
+		content, err := os.ReadFile(path)
+		if err != nil {
+			return fmt.Errorf("failed to read file %s: %w", path, err)
+		}
+
 		parts := bytes.SplitN(content, []byte("---"), 3)
 		if len(parts) < 3 {
 			return nil
@@ -39,7 +43,10 @@ func Audit(entitiesDir string) error {
 		var base struct {
 			ID string `yaml:"id"`
 		}
-		yaml.Unmarshal(parts[1], &base)
+		if err := yaml.Unmarshal(parts[1], &base); err != nil {
+			// Don't error here, let validator handle syntax, just skip
+			return nil
+		}
 
 		if strings.Contains(path, "/agents/") {
 			agents[base.ID] = true
@@ -59,7 +66,11 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
-		content, _ := os.ReadFile(path)
+		content, err := os.ReadFile(path)
+		if err != nil {
+			return fmt.Errorf("failed to read file %s: %w", path, err)
+		}
+
 		parts := bytes.SplitN(content, []byte("---"), 3)
 		if len(parts) < 3 {
 			return nil

@@ -1,17 +1,10 @@
 ---
 id: agent-coletivo-farol-novo
-type: agent
 name: Coletivo Farol Novo
-roles:
-- coletivo
-- produtora
-affiliations:
-- agent-porto-iracema
-birth_year: 2022
+kind: collective
 description: Fundado em 2022 no Laboratório de Criação do Porto Iracema por Rafael
   Semino e Gabriel França para pesquisar mito, oralidade e o tempo na periferia.
-date: '2024-01-01'
-kind: collective
+founded_by_me: true
 ---
 O Coletivo Farol Novo surgiu em 2022 dentro do Laboratório de Criação em Teatro da Escola Porto Iracema das Artes. Foi inicialmente fundado por Rafael Semino e Gabriel França com o intuito de desenvolver uma peça ("Exu não vem hoje") que abordasse questões sobre o tempo, mito e oralidade, trazendo à cena uma estética imersa na periferia.
 

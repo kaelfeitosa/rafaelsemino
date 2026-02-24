@@ -1,21 +1,51 @@
 ---
 id: work-vao
-type: work
 title: Vão
-created_by: '[[agent-coletivo-farol-novo]]'
-language: misto
-year: 2023
+type: work
 description: Espetáculo nascido do cruzamento entre teatro e música dentro da escola
   Porto Iracema (Prêmio Amarrações Estéticas).
-tags:
-- musica
-- teatro
-- colaboracao
-- mito
-- memoria
-- tempo
-status: concluida
-date: '2024-01-01'
+year: 2023
+attachments:
+- type: image
+  role: documentation
+  src: work-vao-005.jpeg
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-001.jpeg
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-008.png
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-003.jpeg
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-004.jpeg
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-007.png
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-006.jpeg
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-010.png
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-009.png
+  caption: 'Registro Documental: Vao'
+- type: image
+  role: documentation
+  src: work-vao-002.jpeg
+  caption: 'Registro Documental: Vao'
 ---
 Espetáculo nascido do cruzamento interdisciplinar fomentado pelo Prêmio "Amarrações Estéticas" da Escola Porto Iracema das Artes, em 2023.
 

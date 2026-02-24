@@ -1,15 +1,21 @@
 ---
 id: work-ha-numeros-que-sonham
-type: work
 title: Há números que sonham
-created_by: '[[agent-rafael-semino]]'
-language: audiovisual
-year: 2019
+type: work
 description: Curta-metragem dirigido por Jennifer Vieira.
-tags:
-- audiovisual
-- roteiro
-status: concluida
-date: '2024-01-01'
+year: 2019
+attachments:
+- type: image
+  role: documentation
+  src: work-ha-numeros-que-sonham-002.png
+  caption: 'Registro Documental: Ha Numeros Que Sonham'
+- type: image
+  role: documentation
+  src: work-ha-numeros-que-sonham-001.jpeg
+  caption: 'Registro Documental: Ha Numeros Que Sonham'
+- type: image
+  role: documentation
+  src: work-ha-numeros-que-sonham-003.png
+  caption: 'Registro Documental: Ha Numeros Que Sonham'
 ---
 Experiência em atuação audiovisual na direção de Jennifer Vieira (2019), o obra compõe o acervo histórico das produções formativas do ator.

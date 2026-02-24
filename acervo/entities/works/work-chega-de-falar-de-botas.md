@@ -1,14 +1,25 @@
 ---
 id: work-chega-de-falar-de-botas
-type: work
 title: Chega de Falar de Botas
-created_by: '[[agent-rafael-semino]]'
-language: teatro
-year: 2015
+type: work
 description: Montagem de Teatro.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+year: 2015
+attachments:
+- type: image
+  role: documentation
+  src: work-chega-de-falar-de-botas-002.png
+  caption: 'Registro Documental: Chega De Falar De Botas'
+- type: image
+  role: documentation
+  src: work-chega-de-falar-de-botas-003.png
+  caption: 'Registro Documental: Chega De Falar De Botas'
+- type: image
+  role: documentation
+  src: work-chega-de-falar-de-botas-004.png
+  caption: 'Registro Documental: Chega De Falar De Botas'
+- type: image
+  role: documentation
+  src: work-chega-de-falar-de-botas-001.png
+  caption: 'Registro Documental: Chega De Falar De Botas'
 ---
 Atuação e Direção.

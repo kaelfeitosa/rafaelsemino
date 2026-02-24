@@ -21,6 +21,16 @@ func cleanWikilink(s string) string {
 	return s
 }
 
+func isFeatured(v interface{}) bool {
+	if val, ok := v.(bool); ok {
+		return val
+	}
+	if val, ok := v.(string); ok {
+		return strings.ToLower(val) == "true"
+	}
+	return false
+}
+
 func Reindex(entitiesDir, dbPath string) error {
 	os.Remove(dbPath)
 	db, err := sql.Open("sqlite", dbPath)
@@ -96,7 +106,9 @@ func Reindex(entitiesDir, dbPath string) error {
 				jsonData, _ = json.Marshal(data)
 
 				if cb := cleanWikilink(data.CreatedBy); cb != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cb)
+					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "created_by", cb); err != nil {
+						return fmt.Errorf("failed to insert relation created_by for %s: %w", id, err)
+					}
 				}
 
 			} else if strings.Contains(path, "/actions/") {
@@ -113,10 +125,14 @@ func Reindex(entitiesDir, dbPath string) error {
 				jsonData, _ = json.Marshal(data)
 
 				if pb := cleanWikilink(data.PerformedBy); pb != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb)
+					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb); err != nil {
+						return fmt.Errorf("failed to insert relation performed_by for %s: %w", id, err)
+					}
 				}
 				if wid := cleanWikilink(data.WorkID); wid != "" {
-					db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid)
+					if _, err := db.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid); err != nil {
+						return fmt.Errorf("failed to insert relation work_id for %s: %w", id, err)
+					}
 				}
 			}
 

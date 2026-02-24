@@ -6,51 +6,114 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"text/template"
 
 	"gopkg.in/yaml.v3"
 )
 
-// Ingester remains relatively dynamic because it needs to apply KV args to templates
-// which might not map 1:1 to domain structs without heavy reflection logic.
-// However, we ensure it respects the folder structure.
+// IngesterData holds all potential fields for template rendering
+type IngesterData struct {
+	ID          string
+	Title       string
+	Name        string
+	Kind        string
+	Description string
+	PerformedBy string
+	MyRole      string
+	WorkID      string
+	Context     struct {
+		Label    string
+		Kind     string
+		Location string
+		Year     string // Keep as string for template, can be parsed later or left empty
+	}
+	DateStart   string
+	DateEnd     string
+	Type        string
+	Year        string
+	FoundedByMe bool
+	ActiveSince string
+	ContentBody string
+}
 
 func Create(entityType string, slug string, args []string) error {
+	// Map "action" to "actions" folder, etc.
 	targetDir := fmt.Sprintf("../entities/%ss", entityType)
 	if err := os.MkdirAll(targetDir, 0755); err != nil {
 		return err
 	}
 
 	templatePath := fmt.Sprintf("../templates/%s.md", entityType)
-	content, err := os.ReadFile(templatePath)
+	tmplContent, err := os.ReadFile(templatePath)
 	if err != nil {
 		return fmt.Errorf("template não encontrado para %s", entityType)
 	}
 
-	parts := bytes.SplitN(content, []byte("---"), 3)
-	if len(parts) < 3 {
-		return fmt.Errorf("template mal formatado")
-	}
-
-	var data map[string]interface{}
-	if err := yaml.Unmarshal(parts[1], &data); err != nil {
-		return err
-	}
-
-	id := fmt.Sprintf("%s-%s", entityType, slug)
-	data["id"] = id
-
-	applyArgs(data, args)
-
-	newYaml, err := yaml.Marshal(data)
+	// Parse template
+	tmpl, err := template.New(entityType).Parse(string(tmplContent))
 	if err != nil {
-		return err
+		return fmt.Errorf("invalid template syntax: %w", err)
 	}
 
-	body := strings.TrimSpace(string(parts[2]))
-	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, body)
+	// Prepare data
+	id := fmt.Sprintf("%s-%s", entityType, slug)
+	data := IngesterData{
+		ID:          id,
+		ContentBody: "Detalhes aqui.", // Default body
+	}
+
+	// Simple args parsing to populate struct fields
+	// This is a basic mapping; for a robust CLI, use flags or a proper mapper.
+	for _, arg := range args {
+		kv := strings.SplitN(arg, "=", 2)
+		if len(kv) == 2 {
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+			switch key {
+			case "title":
+				data.Title = val
+			case "name":
+				data.Name = val
+			case "kind":
+				data.Kind = val
+			case "description":
+				data.Description = val
+			case "performed_by":
+				data.PerformedBy = val
+			case "my_role":
+				data.MyRole = val
+			case "work_id":
+				data.WorkID = val
+			case "context_label":
+				data.Context.Label = val
+			case "context_kind":
+				data.Context.Kind = val
+			case "context_location":
+				data.Context.Location = val
+			case "context_year":
+				data.Context.Year = val
+			case "date_start":
+				data.DateStart = val
+			case "date_end":
+				data.DateEnd = val
+			case "type":
+				data.Type = val
+			case "year":
+				data.Year = val
+			case "founded_by_me":
+				data.FoundedByMe = (val == "true")
+			case "active_since":
+				data.ActiveSince = val
+			}
+		}
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, data); err != nil {
+		return fmt.Errorf("failed to execute template: %w", err)
+	}
 
 	targetPath := filepath.Join(targetDir, fmt.Sprintf("%s.md", id))
-	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
+	if err := os.WriteFile(targetPath, buf.Bytes(), 0644); err != nil {
 		return err
 	}
 
@@ -77,23 +140,7 @@ func Update(entityType string, id string, args []string) error {
 		return err
 	}
 
-	applyArgs(data, args)
-
-	newYaml, err := yaml.Marshal(data)
-	if err != nil {
-		return err
-	}
-
-	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, strings.TrimSpace(string(parts[2])))
-	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
-		return err
-	}
-
-	fmt.Printf("✅ Entidade atualizada: %s\n", id)
-	return nil
-}
-
-func applyArgs(data map[string]interface{}, args []string) {
+	// Update allows generic key setting
 	for _, arg := range args {
 		kv := strings.SplitN(arg, "=", 2)
 		if len(kv) == 2 {
@@ -107,4 +154,17 @@ func applyArgs(data map[string]interface{}, args []string) {
 			}
 		}
 	}
+
+	newYaml, err := yaml.Marshal(data)
+	if err != nil {
+		return err
+	}
+
+	finalContent := fmt.Sprintf("---\n%s---\n%s", newYaml, strings.TrimSpace(string(parts[2])))
+	if err := os.WriteFile(targetPath, []byte(finalContent), 0644); err != nil {
+		return err
+	}
+
+	fmt.Printf("✅ Entidade atualizada: %s\n", id)
+	return nil
 }

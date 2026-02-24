@@ -1,12 +1,13 @@
 ---
-created_by: '[[agent-rafael-semino]]'
-description: null
 id: work-irreversivel
-language: teatro
-status: em-andamento | concluida | arquivada
-tags: []
 title: Irreversível
 type: work
+description: null
 year: 2022
+attachments:
+- type: image
+  role: documentation
+  src: work-irreversivel-001.png
+  caption: 'Registro Documental: Irreversivel'
 ---
 Notas de processo, versões, decisões artísticas.

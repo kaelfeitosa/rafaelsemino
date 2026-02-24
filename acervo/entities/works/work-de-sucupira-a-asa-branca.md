@@ -1,14 +1,17 @@
 ---
 id: work-de-sucupira-a-asa-branca
-type: work
 title: De Sucupira à Asa Branca
-created_by: '[[agent-rafael-semino]]'
-language: teatro
-year: 2016
+type: work
 description: Montagem teatral em 2016.
-tags:
-- teatro
-status: arquivada
-date: '2024-01-01'
+year: 2016
+attachments:
+- type: image
+  role: documentation
+  src: work-de-sucupira-001.png
+  caption: 'Registro Documental: De Sucupira'
+- type: image
+  role: documentation
+  src: work-de-sucupira-002.png
+  caption: 'Registro Documental: De Sucupira'
 ---
 Peça teatral apresentada em 2016.

@@ -41,7 +41,7 @@ func ValidateEntities(entitiesDir string) error {
 					return fmt.Errorf("ERRO: Agent %s sem name", agent.ID)
 				}
 				if agent.Kind != "person" && agent.Kind != "collective" {
-					return fmt.Errorf("ERRO: Agent %s com kind inválido: %s (esperado: person, collective)", agent.ID, agent.Kind)
+					return fmt.Errorf("ERRO: Agent %s com kind inválido: '%s'. Deve ser 'person' ou 'collective'", agent.ID, agent.Kind)
 				}
 			} else if strings.Contains(path, "/works/") {
 				var work domain.Work
@@ -67,6 +67,9 @@ func ValidateEntities(entitiesDir string) error {
 				}
 				if action.MyRole == "" {
 					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
+				}
+				if action.Context.Label == "" {
+					return fmt.Errorf("ERRO: Action %s sem context.label", action.ID)
 				}
 			}
 		}

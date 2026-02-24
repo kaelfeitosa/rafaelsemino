@@ -1,17 +1,8 @@
 ---
 id: agent-gabriel-franca
-type: agent
 name: Gabriel França
-roles:
-- ator
-- sonoplasta
-- pesquisador
-affiliations:
-- agent-coletivo-farol-novo
-birth_year: null
-description: Iniciou no teatro em 2016 (Princípios básicos do Teatro José de Alencar)
-date: '2024-01-01'
 kind: person
+description: Iniciou no teatro em 2016 (Princípios básicos do Teatro José de Alencar)
 ---
 Gabriel iniciou sua jornada na investigação das linguagens teatrais em 2016, através do renomado curso "Princípios Básicos de Teatro", do emblemático Theatro José de Alencar em Fortaleza.
 

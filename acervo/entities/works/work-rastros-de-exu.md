@@ -1,17 +1,22 @@
 ---
 id: work-rastros-de-exu
-type: work
 title: Rastros de Exu
-created_by: '[[agent-coletivo-farol-novo]]'
-language: audiovisual
-year: 2023
+type: work
 description: Série audiovisual / documentação poética derivada dos processos cênicos
   do espetáculo.
-tags:
-- audiovisual
-- documentacao
-- expansao
-status: concluida
-date: '2024-01-01'
+year: 2023
+attachments:
+- type: image
+  role: documentation
+  src: work-rastros-de-exu-001.jpeg
+  caption: 'Registro Documental: Rastros De Exu'
+- type: image
+  role: documentation
+  src: record-work-rastros-de-exu-003.jpeg
+  caption: Terceiro episódio Rastros de Exu
+- type: image
+  role: documentation
+  src: work-rastros-de-exu-002.jpeg
+  caption: 'Registro Documental: Rastros De Exu'
 ---
 Projeto audiovisual que capta a zona de criação e desdobramentos de "Exu Não Vem Hoje".
