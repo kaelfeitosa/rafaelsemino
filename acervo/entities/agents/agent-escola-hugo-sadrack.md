@@ -1,7 +1,8 @@
 ---
+description: ""
 id: agent-escola-hugo-sadrack
-name: Escola Hugo Sadrack do Vale
 kind: collective
-description: ''
+name: Escola Hugo Sadrack do Vale
 ---
+
 Biografia curta ou observações.

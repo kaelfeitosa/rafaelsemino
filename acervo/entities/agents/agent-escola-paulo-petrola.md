@@ -1,7 +1,8 @@
 ---
+description: ""
 id: agent-escola-paulo-petrola
-name: Escola Paulo Petrola
 kind: collective
-description: ''
+name: Escola Paulo Petrola
 ---
+
 Biografia curta ou observações.

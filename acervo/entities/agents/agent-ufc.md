@@ -1,7 +1,8 @@
 ---
+description: ""
 id: agent-ufc
-name: UFC - Universidade Federal do Ceará
 kind: collective
-description: ''
+name: UFC - Universidade Federal do Ceará
 ---
+
 Biografia curta ou observações.

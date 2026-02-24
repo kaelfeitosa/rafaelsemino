@@ -1,16 +1,18 @@
 ---
-id: action-rafael-mestrado-ufc
-title: Mestrando em Mestrado em Artes
-kind: outro
-performed_by: '[[agent-rafael-semino]]'
-my_role: Mestrando
-work_id: ''
 context:
-  label: Mestrado em Artes
-  kind: curso
-date_start: '2022'
-description: ''
-attachments: []
+    kind: curso
+    label: Mestrado em Artes
+    location: ""
+date_start: "2022"
+description: ""
+id: action-rafael-mestrado-ufc
+kind: outro
+my_role: Mestrando
+performed_by: '[[agent-rafael-semino]]'
+title: Mestrando em Mestrado em Artes
+work_id: ""
 ---
+
+
 Detalhes específicos da participação.
 

@@ -1,17 +1,19 @@
 ---
-id: action-prof-paulo-petrola
-title: Professor de Artes na Escola Paulo Petrola
-kind: formacao
-performed_by: '[[agent-rafael-semino]]'
-my_role: Professor de Artes
-work_id: ''
 context:
-  label: Docência na Escola Paulo Petrola
-  kind: oficina
-  year: 2020
-date_start: '2020-01-01'
-description: ''
-attachments: []
+    kind: oficina
+    label: Docência na Escola Paulo Petrola
+    location: ""
+    year: 2020
+date_start: "2020-01-01"
+description: ""
+id: action-prof-paulo-petrola
+kind: formacao
+my_role: Professor de Artes
+performed_by: '[[agent-rafael-semino]]'
+title: Professor de Artes na Escola Paulo Petrola
+work_id: ""
 ---
+
+
 Detalhes específicos da participação.
 

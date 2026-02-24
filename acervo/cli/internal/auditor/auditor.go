@@ -42,7 +42,10 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
-		if strings.Contains(path, "/agents/") {
+		relPath, _ := filepath.Rel(entitiesDir, path)
+		parentDir := filepath.Base(filepath.Dir(relPath))
+
+		if parentDir == "agents" {
 			var agent struct {
 				ID string `yaml:"id"`
 			}
@@ -51,7 +54,7 @@ func Audit(entitiesDir string) error {
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Agent em %s: %v\n", path, err)
 			}
-		} else if strings.Contains(path, "/works/") {
+		} else if parentDir == "works" {
 			var work struct {
 				ID string `yaml:"id"`
 			}
@@ -60,7 +63,7 @@ func Audit(entitiesDir string) error {
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Work em %s: %v\n", path, err)
 			}
-		} else if strings.Contains(path, "/actions/") {
+		} else if parentDir == "actions" {
 			var action domain.Action
 			if err := yaml.Unmarshal(parts[1], &action); err == nil {
 				allActions = append(allActions, action)

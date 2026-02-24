@@ -1,7 +1,8 @@
 ---
+description: ""
 id: agent-ufba
-name: UFBA - Universidade Federal da Bahia
 kind: collective
-description: ''
+name: UFBA - Universidade Federal da Bahia
 ---
+
 Biografia curta ou observações.

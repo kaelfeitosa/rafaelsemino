@@ -13,31 +13,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// IngesterData holds all potential fields for template rendering
-type IngesterData struct {
-	ID          string
-	Title       string
-	Name        string
-	Kind        string
-	Description string
-	PerformedBy string
-	MyRole      string
-	WorkID      string
-	Context     struct {
-		Label    string
-		Kind     string
-		Location string
-		Year     string // Keep as string for template, can be parsed later or left empty
-	}
-	DateStart   string
-	DateEnd     string
-	Type        string
-	Year        string
-	FoundedByMe bool
-	ActiveSince string
-	ContentBody string
-}
-
 func Create(entityType string, slug string, args []string) error {
 	// Security: Sanitize inputs to prevent path traversal
 	entityType = filepath.Base(entityType)

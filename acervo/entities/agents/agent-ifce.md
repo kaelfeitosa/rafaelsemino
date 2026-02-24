@@ -1,7 +1,8 @@
 ---
+description: ""
 id: agent-ifce
-name: IFCE - Instituto Federal do Ceará
 kind: collective
-description: ''
+name: IFCE - Instituto Federal do Ceará
 ---
+
 Biografia curta ou observações.

@@ -142,8 +142,8 @@ func Reindex(entitiesDir, dbPath string) error {
 			}
 
 			if id != "" {
-				absolutePath, _ := filepath.Abs(path)
-				_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, absolutePath, featured, string(jsonData))
+				relPath, _ := filepath.Rel(entitiesDir, path)
+				_, err = db.Exec("INSERT INTO entities VALUES(?,?,?,?,?,?)", id, typ, title, relPath, featured, string(jsonData))
 				if err != nil {
 					return fmt.Errorf("falha ao inserir entidade %s: %w", id, err)
 				}
