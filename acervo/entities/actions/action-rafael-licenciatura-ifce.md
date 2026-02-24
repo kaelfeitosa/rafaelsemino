@@ -7,7 +7,7 @@ my_role: Graduando
 work_id: ''
 context:
   label: Licenciatura em Teatro
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: curso
   location: null
   year: null
 date_start: null

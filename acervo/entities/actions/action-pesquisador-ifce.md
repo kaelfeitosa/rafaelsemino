@@ -7,7 +7,7 @@ my_role: Pesquisador
 work_id: ''
 context:
   label: Licenciatura em Teatro
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: residencia
   location: null
   year: null
 date_start: null

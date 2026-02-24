@@ -7,7 +7,7 @@ my_role: Professor/Diretor
 work_id: ''
 context:
   label: Programa de Aceleração do Idoso
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: oficina
   location: null
   year: null
 date_start: null

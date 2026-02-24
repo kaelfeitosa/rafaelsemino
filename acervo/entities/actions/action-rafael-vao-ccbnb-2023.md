@@ -7,7 +7,7 @@ my_role: diretor | ator | roteirista | palestrante
 work_id: work-vao
 context:
   label: Palco CCBNB 2023
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: mostra
   location: null
   year: null
 date_start: null

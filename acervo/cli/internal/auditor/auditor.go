@@ -21,46 +21,9 @@ func cleanWikilink(s string) string {
 func Audit(entitiesDir string) error {
 	agents := make(map[string]bool)
 	works := make(map[string]bool)
-	actions := make(map[string]bool)
+	var allActions []domain.Action
 
-	// Collect all IDs first
-	filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() || !strings.HasSuffix(info.Name(), ".md") {
-			return nil
-		}
-
-		content, err := os.ReadFile(path)
-		if err != nil {
-			return fmt.Errorf("failed to read file %s: %w", path, err)
-		}
-
-		parts := bytes.SplitN(content, []byte("---"), 3)
-		if len(parts) < 3 {
-			return nil
-		}
-
-		// Simple ID extraction
-		var base struct {
-			ID string `yaml:"id"`
-		}
-		if err := yaml.Unmarshal(parts[1], &base); err != nil {
-			// Don't error here, let validator handle syntax, just skip
-			return nil
-		}
-
-		if strings.Contains(path, "/agents/") {
-			agents[base.ID] = true
-		} else if strings.Contains(path, "/works/") {
-			works[base.ID] = true
-		} else if strings.Contains(path, "/actions/") {
-			actions[base.ID] = true
-		}
-		return nil
-	})
-
-	brokenLinks := 0
-
-	// Check relations
+	// Single pass walk to collect all entities and actions
 	err := filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil || info.IsDir() || !strings.HasSuffix(info.Name(), ".md") {
 			return nil
@@ -76,30 +39,47 @@ func Audit(entitiesDir string) error {
 			return nil
 		}
 
-		if strings.Contains(path, "/actions/") {
+		if strings.Contains(path, "/agents/") {
+			var agent struct {
+				ID string `yaml:"id"`
+			}
+			if err := yaml.Unmarshal(parts[1], &agent); err == nil {
+				agents[agent.ID] = true
+			}
+		} else if strings.Contains(path, "/works/") {
+			var work struct {
+				ID string `yaml:"id"`
+			}
+			if err := yaml.Unmarshal(parts[1], &work); err == nil {
+				works[work.ID] = true
+			}
+		} else if strings.Contains(path, "/actions/") {
 			var action domain.Action
-			if err := yaml.Unmarshal(parts[1], &action); err != nil {
-				return nil
-			}
-
-			pb := cleanWikilink(action.PerformedBy)
-			if pb != "" && !agents[pb] {
-				fmt.Printf("[BROKEN LINK] Action %s aponta para Agent %s inexistente\n", action.ID, pb)
-				brokenLinks++
-			}
-
-			wid := cleanWikilink(action.WorkID)
-			if wid != "" && !works[wid] {
-				fmt.Printf("[BROKEN LINK] Action %s aponta para Work %s inexistente\n", action.ID, wid)
-				brokenLinks++
+			if err := yaml.Unmarshal(parts[1], &action); err == nil {
+				allActions = append(allActions, action)
 			}
 		}
-
 		return nil
 	})
 
 	if err != nil {
 		return err
+	}
+
+	brokenLinks := 0
+	// Validate relations using collected data
+	for _, action := range allActions {
+		pb := cleanWikilink(action.PerformedBy)
+		if pb != "" && !agents[pb] {
+			fmt.Printf("[BROKEN LINK] Action %s aponta para Agent %s inexistente\n", action.ID, pb)
+			brokenLinks++
+		}
+
+		wid := cleanWikilink(action.WorkID)
+		if wid != "" && !works[wid] {
+			fmt.Printf("[BROKEN LINK] Action %s aponta para Work %s inexistente\n", action.ID, wid)
+			brokenLinks++
+		}
 	}
 
 	fmt.Printf("=== AUDIT REPORT ===\nBroken Links: %d\n", brokenLinks)

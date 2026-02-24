@@ -7,7 +7,7 @@ my_role: diretor | ator | roteirista | palestrante
 work_id: ''
 context:
   label: Programa Zona de Criação (YouTube)
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: residencia
   location: null
   year: null
 date_start: null

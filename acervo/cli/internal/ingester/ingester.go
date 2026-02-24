@@ -100,7 +100,7 @@ func Create(entityType string, slug string, args []string) error {
 			case "year":
 				data.Year = val
 			case "founded_by_me":
-				data.FoundedByMe = (val == "true")
+				data.FoundedByMe = (strings.ToLower(val) == "true")
 			case "active_since":
 				data.ActiveSince = val
 			}
@@ -145,9 +145,10 @@ func Update(entityType string, id string, args []string) error {
 		kv := strings.SplitN(arg, "=", 2)
 		if len(kv) == 2 {
 			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
-			if val == "true" {
+			vLower := strings.ToLower(val)
+			if vLower == "true" {
 				data[key] = true
-			} else if val == "false" {
+			} else if vLower == "false" {
 				data[key] = false
 			} else {
 				data[key] = val

@@ -1,7 +1,7 @@
 ---
 id: agent-ccbj
 name: CCBJ - Centro Cultural Bom Jardim
-kind: person
+kind: collective
 description: ''
 ---
 Biografia curta ou observações.

@@ -1,7 +1,7 @@
 ---
 id: agent-ufba
 name: UFBA - Universidade Federal da Bahia
-kind: person
+kind: collective
 description: ''
 ---
 Biografia curta ou observações.

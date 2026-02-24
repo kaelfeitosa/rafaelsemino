@@ -7,7 +7,7 @@ my_role: diretor | ator | roteirista | palestrante
 work_id: work-exu-nao-vem-hoje
 context:
   label: Temporada Hub Porto Dragão 2023
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: mostra
   location: null
   year: null
 date_start: null

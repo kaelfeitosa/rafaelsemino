@@ -7,7 +7,7 @@ my_role: Mestrando
 work_id: ''
 context:
   label: Mestrado em Artes
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: curso
   location: null
   year: null
 date_start: null

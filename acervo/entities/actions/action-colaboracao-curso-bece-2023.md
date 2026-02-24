@@ -1,14 +1,13 @@
 ---
 id: action-colaboracao-curso-bece-2023
-title: diretor | ator | roteirista | palestrante em Curso Protagonismo Negro na Cultura
-  Pop (BECE)
-kind: exibicao
-performed_by: agent-coletivo-farol-novo
-my_role: diretor | ator | roteirista | palestrante
+title: Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE)
+kind: formacao
+performed_by: agent-rafael-semino
+my_role: Palestrante
 work_id: ''
 context:
   label: Curso Protagonismo Negro na Cultura Pop (BECE)
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: curso
   location: null
   year: null
 date_start: null

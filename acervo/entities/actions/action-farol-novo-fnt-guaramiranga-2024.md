@@ -8,7 +8,7 @@ my_role: diretor | ator | roteirista | palestrante
 work_id: work-exu-nao-vem-hoje
 context:
   label: 30º Festival Nordestino de Teatro de Guaramiranga
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: festival
   location: null
   year: null
 date_start: null

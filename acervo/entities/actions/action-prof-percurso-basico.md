@@ -7,7 +7,7 @@ my_role: Professor
 work_id: ''
 context:
   label: Percurso Básico de Teatro
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: oficina
   location: null
   year: null
 date_start: null

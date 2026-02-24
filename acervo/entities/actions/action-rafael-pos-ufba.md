@@ -7,7 +7,7 @@ my_role: Pós-graduando
 work_id: ''
 context:
   label: Pós-graduação em Teatro do Oprimido
-  kind: apresentacao | festival | mostra | residencia | oficina | premio
+  kind: curso
   location: null
   year: null
 date_start: null
