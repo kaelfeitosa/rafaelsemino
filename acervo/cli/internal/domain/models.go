@@ -42,8 +42,8 @@ type Collaborator struct {
 type Action struct {
 	ID            string         `yaml:"id"`
 	Title         string         `yaml:"title"`
-	Type          string         `yaml:"type"` // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
-	Kind          string         `yaml:"kind"` // festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro
+	Category      string         `yaml:"category"` // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
+	Format        string         `yaml:"format"`   // festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro
 	Label         string         `yaml:"label"`
 	Location      string         `yaml:"location,omitempty"`
 	PerformedBy   string         `yaml:"performed_by"` // Agent.id

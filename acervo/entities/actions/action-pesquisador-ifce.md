@@ -1,23 +1,24 @@
 ---
 id: action-pesquisador-ifce
 title: Pesquisador no IFCE
-type: outro
-kind: residencia
+category: outro
+format: residencia
 label: Licenciatura em Teatro
 performed_by: '[[agent-rafael-semino]]'
 my_role: Pesquisador
 date_start: "2023"
 description: Atuação como pesquisador no Grupo Miraira durante a licenciatura.
 attachments:
-    - type: image
+    - caption: 'Registro Documental: Pesquisador Ifce'
       role: documentation
       src: participation-pesquisador-ifce-001.jpeg
-      caption: 'Registro Documental: Pesquisador Ifce'
-    - type: image
+      type: image
+    - caption: 'Registro Documental: Pesquisador Ifce'
       role: documentation
       src: participation-pesquisador-ifce-002.jpeg
-      caption: 'Registro Documental: Pesquisador Ifce'
+      type: image
 ---
+
 
 
 

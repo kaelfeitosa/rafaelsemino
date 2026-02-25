@@ -1,8 +1,8 @@
 ---
 id: action-rafael-miraira-seca-flor
 title: Criador e Intérprete em Encontro Mestres do Mundo (2016)
-type: outro
-kind: outro
+category: outro
+format: outro
 label: Encontro Mestres do Mundo (2016)
 location: Fortaleza, CE
 performed_by: '[[agent-rafael-semino]]'
@@ -11,6 +11,7 @@ work_id: '[[work-seca-flor]]'
 date_start: "2016"
 description: Participação na criação e apresentação do espetáculo Seca Flor (referenciado também como Flor do Deserto).
 ---
+
 
 
 

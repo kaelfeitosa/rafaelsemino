@@ -1,8 +1,8 @@
 ---
 id: action-rafael-exu
 title: Atuação e Co-fundação de Exu Não Vem Hoje
-type: exibicao
-kind: outro
+category: exibicao
+format: outro
 label: Temporada Hub Cultural Porto Dragão
 location: Fortaleza, CE
 performed_by: '[[agent-rafael-semino]]'

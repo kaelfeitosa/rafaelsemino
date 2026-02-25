@@ -1,23 +1,24 @@
 ---
 id: action-farol-novo-temporada-porto-dragao-2023
 title: Diretor em Temporada Hub Porto Dragão 2023
-type: exibicao
-kind: mostra
+category: exibicao
+format: mostra
 label: Temporada Hub Porto Dragão 2023
 performed_by: '[[agent-coletivo-farol-novo]]'
 my_role: Diretor
 work_id: '[[work-exu-nao-vem-hoje]]'
 date_start: 2023-01
 attachments:
-    - type: image
+    - caption: Estreia de Exu Não Vem Hoje
       role: documentation
       src: work-exu-nao-vem-hoje-002.jpeg
-      caption: Estreia de Exu Não Vem Hoje
-    - type: image
+      type: image
+    - caption: Convite Temporada Exu
       role: documentation
       src: event-ocupacao-hub-001.jpeg
-      caption: Convite Temporada Exu
+      type: image
 ---
+
 
 
 

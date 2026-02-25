@@ -1,8 +1,8 @@
 ---
 id: action-rafael-ensino-angola-2018
 title: Ensino de Artes e Cinema em Angola
-type: formacao
-kind: outro
+category: formacao
+format: outro
 label: Intercâmbio Cultural e Educativo em Angola
 location: Província do Bié, Angola
 performed_by: '[[agent-rafael-semino]]'
@@ -11,11 +11,12 @@ date_start: "2018-10-01"
 date_end: "2018-11-30"
 description: Atuação como professor voluntário de Artes e Cinema em Angola, Província do Bié.
 attachments:
-    - type: image
+    - caption: 'Registro Documental: Projeto Angola Bie'
       role: documentation
       src: participation-projeto-angola-bie-001.jpeg
-      caption: 'Registro Documental: Projeto Angola Bie'
+      type: image
 ---
+
 
 
 

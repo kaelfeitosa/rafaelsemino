@@ -1,8 +1,8 @@
 ---
 id: action-rafael-ccbj-exu
 title: Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
-type: outro
-kind: outro
+category: outro
+format: outro
 label: Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
 location: Fortaleza, CE (CCBJ)
 performed_by: '[[agent-rafael-semino]]'
@@ -11,6 +11,7 @@ work_id: '[[work-exu-nao-vem-hoje]]'
 date_start: "2023"
 description: Laboratório de pesquisa - Exu não vem hoje (300h).
 ---
+
 
 
 

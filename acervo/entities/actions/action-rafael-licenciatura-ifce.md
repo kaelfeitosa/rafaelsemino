@@ -1,13 +1,14 @@
 ---
 id: action-rafael-licenciatura-ifce
 title: Graduando em Licenciatura em Teatro
-type: outro
-kind: curso
+category: outro
+format: curso
 label: Licenciatura em Teatro
 performed_by: '[[agent-rafael-semino]]'
 my_role: Graduando
 date_start: "2019"
 ---
+
 
 
 

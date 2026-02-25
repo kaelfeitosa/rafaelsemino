@@ -61,10 +61,10 @@ func Create(entityType string, slug string, args []string) error {
 			switch key {
 			case "title":
 				data.Title = val
-			case "type":
-				data.Type = val
-			case "kind":
-				data.Kind = val
+			case "category":
+				data.Category = val
+			case "format":
+				data.Format = val
 			case "label":
 				data.Label = val
 			case "location":

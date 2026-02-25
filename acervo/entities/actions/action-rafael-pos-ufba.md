@@ -1,22 +1,23 @@
 ---
 id: action-rafael-pos-ufba
 title: Pós-graduando em Pós-graduação em Teatro do Oprimido
-type: outro
-kind: curso
+category: outro
+format: curso
 label: Pós-graduação em Teatro do Oprimido
 performed_by: '[[agent-rafael-semino]]'
 my_role: Pós-graduando
 date_start: "2021"
 attachments:
-    - type: image
+    - caption: 'Registro Documental: Formacao Ufba'
       role: documentation
       src: participation-formacao-ufba-002.jpeg
-      caption: 'Registro Documental: Formacao Ufba'
-    - type: image
+      type: image
+    - caption: 'Registro Documental: Formacao Ufba'
       role: documentation
       src: participation-formacao-ufba-001.jpeg
-      caption: 'Registro Documental: Formacao Ufba'
+      type: image
 ---
+
 
 
 

@@ -1,8 +1,8 @@
 ---
 id: action-zeis-vao
 title: Direção Musical e Performance em Vão
-type: criacao
-kind: outro
+category: criacao
+format: outro
 label: Laboratório de Música - Porto Iracema das Artes (2023)
 location: Fortaleza, CE
 performed_by: '[[agent-zeis]]'

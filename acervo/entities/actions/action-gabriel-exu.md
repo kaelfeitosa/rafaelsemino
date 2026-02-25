@@ -1,8 +1,8 @@
 ---
 id: action-gabriel-exu
 title: Atuação e Sonoplastia em Exu Não Vem Hoje
-type: exibicao
-kind: outro
+category: exibicao
+format: outro
 label: Temporada Hub Cultural Porto Dragão
 location: Fortaleza, CE
 performed_by: '[[agent-gabriel-franca]]'

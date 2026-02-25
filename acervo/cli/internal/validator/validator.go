@@ -17,10 +17,10 @@ var (
 	validWorkTypes = map[string]bool{
 		"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
 	}
-	validActionTypes = map[string]bool{
+	validActionCategories = map[string]bool{
 		"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
 	}
-	validContextKinds = map[string]bool{
+	validActionFormats = map[string]bool{
 		"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
 	}
 )
@@ -87,11 +87,11 @@ func ValidateEntities(entitiesDir string) error {
 				if action.Title == "" {
 					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
 				}
-				if action.Type == "" || !validActionTypes[action.Type] {
-					return fmt.Errorf("ERRO: Action %s tem type inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Type)
+				if action.Category == "" || !validActionCategories[action.Category] {
+					return fmt.Errorf("ERRO: Action %s tem category inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Category)
 				}
-				if action.Kind != "" && !validContextKinds[action.Kind] {
-					return fmt.Errorf("ERRO: Action %s tem kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Kind)
+				if action.Format != "" && !validActionFormats[action.Format] {
+					return fmt.Errorf("ERRO: Action %s tem format inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Format)
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
