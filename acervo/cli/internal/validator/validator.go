@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 
 	"acervo/internal/domain"
@@ -24,6 +25,15 @@ var (
 		"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
 	}
 )
+
+func getKeys(m map[string]bool) string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return strings.Join(keys, " | ")
+}
 
 func ValidateEntities(entitiesDir string) error {
 	return filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
@@ -74,7 +84,7 @@ func ValidateEntities(entitiesDir string) error {
 					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
 				}
 				if work.Type == "" || !validWorkTypes[work.Type] {
-					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: teatro | jogo | filme | roteiro | performance | outro", work.ID, work.Type)
+					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: %s", work.ID, work.Type, getKeys(validWorkTypes))
 				}
 			} else if parentDir == "actions" {
 				var action domain.Action
@@ -88,10 +98,10 @@ func ValidateEntities(entitiesDir string) error {
 					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
 				}
 				if action.Category == "" || !validActionCategories[action.Category] {
-					return fmt.Errorf("ERRO: Action %s tem category inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Category)
+					return fmt.Errorf("ERRO: Action %s tem category inválido: '%s'. Tipos permitidos: %s", action.ID, action.Category, getKeys(validActionCategories))
 				}
 				if action.Format == "" || !validActionFormats[action.Format] {
-					return fmt.Errorf("ERRO: Action %s tem format inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Format)
+					return fmt.Errorf("ERRO: Action %s tem format inválido: '%s'. Tipos permitidos: %s", action.ID, action.Format, getKeys(validActionFormats))
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
