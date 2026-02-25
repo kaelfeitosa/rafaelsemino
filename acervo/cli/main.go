@@ -9,6 +9,7 @@ import (
 	"acervo/internal/indexer"
 	"acervo/internal/ingester"
 	"acervo/internal/metadata"
+	"acervo/internal/reposter"
 	"acervo/internal/setup"
 	"acervo/internal/validator"
 
@@ -168,7 +169,44 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 	buildAssetsCmd.Flags().StringVar(&sourceDir, "source", "../media/images", "Directory containing source master images (relative to execution dir or absolute)")
 	buildAssetsCmd.Flags().StringVar(&outputDir, "output", "../../frontend/images/optimized", "Directory to output optimized WebP assets (relative to execution dir or absolute)")
 
-	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd)
+	var (
+		repo        string
+		pullNumber  string
+		reviewID    string
+		mentionUser string
+		token       string
+	)
+
+	var repostReviewCmd = &cobra.Command{
+		Use:   "repost-review",
+		Short: "Reposts a GitHub PR review with a specific user mention",
+		Run: func(cmd *cobra.Command, args []string) {
+			if token == "" {
+				token = os.Getenv("USER_PAT")
+			}
+			if token == "" {
+				fmt.Fprintln(os.Stderr, "Error: USER_PAT environment variable or --token must be set")
+				os.Exit(1)
+			}
+
+			rep := reposter.NewReviewReposter(token, repo, pullNumber)
+			if err := rep.RepostReview(reviewID, mentionUser); err != nil {
+				fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+				os.Exit(1)
+			}
+			fmt.Println("✅ Review reposted successfully.")
+		},
+	}
+	repostReviewCmd.Flags().StringVar(&repo, "repo", "", "GitHub repository (owner/repo)")
+	repostReviewCmd.Flags().StringVar(&pullNumber, "pull-number", "", "Pull request number")
+	repostReviewCmd.Flags().StringVar(&reviewID, "review-id", "", "ID of the review to repost")
+	repostReviewCmd.Flags().StringVar(&mentionUser, "mention-user", "@jules", "User to mention in the reposted review")
+	repostReviewCmd.Flags().StringVar(&token, "token", "", "GitHub PAT (optional, uses USER_PAT env var if not set)")
+	repostReviewCmd.MarkFlagRequired("repo")
+	repostReviewCmd.MarkFlagRequired("pull-number")
+	repostReviewCmd.MarkFlagRequired("review-id")
+
+	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
