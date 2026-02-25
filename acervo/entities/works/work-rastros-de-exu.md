@@ -6,7 +6,7 @@ attachments:
       type: image
     - caption: Terceiro episódio Rastros de Exu
       role: documentation
-      src: record-work-rastros-de-exu-003.jpeg
+      src: work-rastros-de-exu-001.jpeg
       type: image
     - caption: 'Registro Documental: Rastros De Exu'
       role: documentation
@@ -21,4 +21,3 @@ year: 2023
 
 
 Projeto audiovisual que capta a zona de criação e desdobramentos de "Exu Não Vem Hoje".
-

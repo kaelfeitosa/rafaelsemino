@@ -34,7 +34,7 @@ context:
     location: ""
     year: 2021
 date_start: "2021-01-01"
-description: ""
+description: Ministração das disciplinas de Artes, Jogos e Africanidade e História da Arte para turmas do 9º ano do Ensino Fundamental e 1º e 2º anos do Ensino Médio.
 id: action-prof-hugo-sadrack
 kind: formacao
 my_role: Professor de Artes
@@ -44,6 +44,4 @@ work_id: ""
 ---
 
 
-
-Detalhes específicos da participação.
-
+Ministração das disciplinas de Artes, Jogos e Africanidade e História da Arte para turmas do 9º ano do Ensino Fundamental e 1º e 2º anos do Ensino Médio.
