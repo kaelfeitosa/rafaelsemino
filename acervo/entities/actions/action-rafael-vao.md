@@ -9,7 +9,7 @@ performed_by: '[[agent-rafael-semino]]'
 my_role: Colaborador Criativo
 work_id: '[[work-vao]]'
 date_start: "2022"
-description: Espectáculo "Vão" desenvolvido a partir do Prêmio Amarrações Estéticas do Porto Iracema das Artes.
+description: Espectáculo "Vão" desenvolvido a partir do Prêmio Amarrações Estéticas do Porto Iracema das Artes. Em 2022, em parceria com o artista Zéis, Rafael Semino foi contemplado com o prêmio, que incentiva a colaboração entre diferentes projetos e grupos dos laboratórios artísticos residentes, culminando no desenvolvimento conjunto do espetáculo.
 collaborators:
   - name: Zéis
     role: Músico / Diretor Musical
