@@ -1,17 +1,15 @@
 ---
-context:
-    kind: outro
-    label: Porto Iracema das Artes
-    location: ""
-date_start: "2022"
-description: ""
 id: action-rafael-irreversivel
-kind: exibicao
-my_role: Ator
-performed_by: '[[agent-rafael-semino]]'
 title: Ator em Irreversível
+type: exibicao
+kind: outro
+label: Porto Iracema das Artes
+performed_by: '[[agent-rafael-semino]]'
+my_role: Ator
 work_id: '[[work-irreversivel]]'
+date_start: "2022"
 ---
+
 
 
 

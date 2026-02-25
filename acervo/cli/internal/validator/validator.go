@@ -78,17 +78,17 @@ func ValidateEntities(entitiesDir string) error {
 				if action.Title == "" {
 					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
 				}
-				validActionKinds := map[string]bool{
+				validActionTypes := map[string]bool{
 					"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
 				}
-				if action.Kind == "" || !validActionKinds[action.Kind] {
-					return fmt.Errorf("ERRO: Action %s tem kind inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Kind)
+				if action.Type == "" || !validActionTypes[action.Type] {
+					return fmt.Errorf("ERRO: Action %s tem type inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Type)
 				}
 				validContextKinds := map[string]bool{
 					"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
 				}
-				if action.Context.Kind != "" && !validContextKinds[action.Context.Kind] {
-					return fmt.Errorf("ERRO: Action %s tem context.kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Context.Kind)
+				if action.Kind != "" && !validContextKinds[action.Kind] {
+					return fmt.Errorf("ERRO: Action %s tem kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Kind)
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
@@ -96,8 +96,8 @@ func ValidateEntities(entitiesDir string) error {
 				if action.MyRole == "" {
 					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
 				}
-				if action.Context.Label == "" {
-					return fmt.Errorf("ERRO: Action %s sem context.label", action.ID)
+				if action.Label == "" {
+					return fmt.Errorf("ERRO: Action %s sem label", action.ID)
 				}
 				if action.DateStart == "" {
 					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)

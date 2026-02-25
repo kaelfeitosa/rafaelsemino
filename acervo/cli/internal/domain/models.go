@@ -26,13 +26,6 @@ type Work struct {
 	Featured    bool         `yaml:"featured,omitempty"`
 }
 
-type Context struct {
-	Label    string `yaml:"label"`
-	Kind     string `yaml:"kind"` // festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro
-	Location string `yaml:"location,omitempty"`
-	Year     int    `yaml:"year,omitempty"`
-}
-
 type Attachment struct {
 	Type    string `yaml:"type"` // image | video | pdf | link
 	Role    string `yaml:"role"` // documentation | clipping | press | certificate | contract | outro
@@ -49,11 +42,13 @@ type Collaborator struct {
 type Action struct {
 	ID            string         `yaml:"id"`
 	Title         string         `yaml:"title"`
-	Kind          string         `yaml:"kind"`         // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
+	Type          string         `yaml:"type"` // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
+	Kind          string         `yaml:"kind"` // festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro
+	Label         string         `yaml:"label"`
+	Location      string         `yaml:"location,omitempty"`
 	PerformedBy   string         `yaml:"performed_by"` // Agent.id
 	MyRole        string         `yaml:"my_role"`
 	WorkID        string         `yaml:"work_id,omitempty"` // Work.id
-	Context       Context        `yaml:"context"`
 	DateStart     string         `yaml:"date_start"`
 	DateEnd       string         `yaml:"date_end,omitempty"`
 	Description   string         `yaml:"description,omitempty"`
