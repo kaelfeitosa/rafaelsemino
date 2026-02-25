@@ -87,8 +87,8 @@ func ValidateEntities(entitiesDir string) error {
 				validContextKinds := map[string]bool{
 					"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
 				}
-				if action.Context.Kind != "" && !validContextKinds[action.Context.Kind] {
-					return fmt.Errorf("ERRO: Action %s tem context.kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Context.Kind)
+				if action.ContextKind != "" && !validContextKinds[action.ContextKind] {
+					return fmt.Errorf("ERRO: Action %s tem context_kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.ContextKind)
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
@@ -96,8 +96,8 @@ func ValidateEntities(entitiesDir string) error {
 				if action.MyRole == "" {
 					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
 				}
-				if action.Context.Label == "" {
-					return fmt.Errorf("ERRO: Action %s sem context.label", action.ID)
+				if action.ContextLabel == "" {
+					return fmt.Errorf("ERRO: Action %s sem context_label", action.ID)
 				}
 				if action.DateStart == "" {
 					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)
