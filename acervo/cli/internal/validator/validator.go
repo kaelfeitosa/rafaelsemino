@@ -90,7 +90,7 @@ func ValidateEntities(entitiesDir string) error {
 				if action.Category == "" || !validActionCategories[action.Category] {
 					return fmt.Errorf("ERRO: Action %s tem category inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Category)
 				}
-				if action.Format != "" && !validActionFormats[action.Format] {
+				if action.Format == "" || !validActionFormats[action.Format] {
 					return fmt.Errorf("ERRO: Action %s tem format inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Format)
 				}
 				if action.PerformedBy == "" {
