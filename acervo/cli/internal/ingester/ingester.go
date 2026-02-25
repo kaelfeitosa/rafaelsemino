@@ -72,12 +72,6 @@ func Create(entityType string, slug string, args []string) error {
 				data.MyRole = val
 			case "work_id":
 				data.WorkID = toWikilink(val)
-			case "context_label":
-				data.Label = val
-			case "context_kind":
-				data.Kind = val
-			case "context_location":
-				data.Location = val
 			case "date_start":
 				data.DateStart = val
 			case "date_end":
