@@ -70,18 +70,18 @@ func Create(entityType string, slug string, args []string) error {
 			case "work_id":
 				data.WorkID = toWikilink(val)
 			case "context_label":
-				data.Context.Label = val
+				data.ContextLabel = val
 			case "context_kind":
-				data.Context.Kind = val
+				data.ContextKind = val
 			case "context_location":
-				data.Context.Location = val
+				data.ContextLocation = val
 			case "context_year":
 				if val != "" {
 					y, err := strconv.Atoi(val)
 					if err != nil {
 						return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
 					}
-					data.Context.Year = y
+					data.ContextYear = y
 				}
 			case "date_start":
 				data.DateStart = val
