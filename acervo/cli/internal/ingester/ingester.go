@@ -43,21 +43,18 @@ func Create(entityType string, slug string, args []string) error {
 		return s
 	}
 
-	// Parse args into a map for easier access
-	argMap := make(map[string]string)
-	for _, arg := range args {
-		kv := strings.SplitN(arg, "=", 2)
-		if len(kv) == 2 {
-			argMap[strings.TrimSpace(kv[0])] = strings.TrimSpace(kv[1])
-		}
-	}
-
 	switch entityType {
 	case "action":
 		data := &domain.Action{
 			ID: id,
 		}
-		for key, val := range argMap {
+		for _, arg := range args {
+			kv := strings.SplitN(arg, "=", 2)
+			if len(kv) != 2 {
+				continue
+			}
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+
 			switch key {
 			case "title":
 				data.Title = val
@@ -108,7 +105,13 @@ func Create(entityType string, slug string, args []string) error {
 		data := &domain.Agent{
 			ID: id,
 		}
-		for key, val := range argMap {
+		for _, arg := range args {
+			kv := strings.SplitN(arg, "=", 2)
+			if len(kv) != 2 {
+				continue
+			}
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+
 			switch key {
 			case "name":
 				data.Name = val
@@ -135,7 +138,13 @@ func Create(entityType string, slug string, args []string) error {
 		data := &domain.Work{
 			ID: id,
 		}
-		for key, val := range argMap {
+		for _, arg := range args {
+			kv := strings.SplitN(arg, "=", 2)
+			if len(kv) != 2 {
+				continue
+			}
+			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
+
 			switch key {
 			case "title":
 				data.Title = val
