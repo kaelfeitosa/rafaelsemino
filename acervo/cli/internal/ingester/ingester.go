@@ -61,28 +61,20 @@ func Create(entityType string, slug string, args []string) error {
 			switch key {
 			case "title":
 				data.Title = val
-			case "kind":
-				data.Kind = val
+			case "category":
+				data.Category = val
+			case "format":
+				data.Format = val
+			case "label":
+				data.Label = val
+			case "location":
+				data.Location = val
 			case "performed_by":
 				data.PerformedBy = toWikilink(val)
 			case "my_role":
 				data.MyRole = val
 			case "work_id":
 				data.WorkID = toWikilink(val)
-			case "context_label":
-				data.Context.Label = val
-			case "context_kind":
-				data.Context.Kind = val
-			case "context_location":
-				data.Context.Location = val
-			case "context_year":
-				if val != "" {
-					y, err := strconv.Atoi(val)
-					if err != nil {
-						return fmt.Errorf("valor inválido para context_year: '%s' não é um número", val)
-					}
-					data.Context.Year = y
-				}
 			case "date_start":
 				data.DateStart = val
 			case "date_end":
@@ -233,8 +225,8 @@ func applyArgs(data map[string]interface{}, args []string) error {
 		if len(kv) == 2 {
 			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
 
-			// Validate year/context_year
-			if key == "year" || key == "context_year" || key == "active_since" {
+			// Validate year
+			if key == "year" || key == "active_since" {
 				if val != "" {
 					if _, err := strconv.Atoi(val); err != nil {
 						return fmt.Errorf("valor inválido para %s: '%s' não é um número", key, val)

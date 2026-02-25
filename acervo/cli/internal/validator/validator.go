@@ -6,12 +6,34 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 
 	"acervo/internal/domain"
 
 	"gopkg.in/yaml.v3"
 )
+
+var (
+	validWorkTypes = map[string]bool{
+		"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
+	}
+	validActionCategories = map[string]bool{
+		"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
+	}
+	validActionFormats = map[string]bool{
+		"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
+	}
+)
+
+func getKeys(m map[string]bool) string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return strings.Join(keys, " | ")
+}
 
 func ValidateEntities(entitiesDir string) error {
 	return filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
@@ -61,11 +83,8 @@ func ValidateEntities(entitiesDir string) error {
 				if work.Title == "" {
 					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
 				}
-				validWorkTypes := map[string]bool{
-					"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
-				}
 				if work.Type == "" || !validWorkTypes[work.Type] {
-					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: teatro | jogo | filme | roteiro | performance | outro", work.ID, work.Type)
+					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: %s", work.ID, work.Type, getKeys(validWorkTypes))
 				}
 			} else if parentDir == "actions" {
 				var action domain.Action
@@ -78,17 +97,11 @@ func ValidateEntities(entitiesDir string) error {
 				if action.Title == "" {
 					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
 				}
-				validActionKinds := map[string]bool{
-					"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
+				if action.Category == "" || !validActionCategories[action.Category] {
+					return fmt.Errorf("ERRO: Action %s tem category inválido: '%s'. Tipos permitidos: %s", action.ID, action.Category, getKeys(validActionCategories))
 				}
-				if action.Kind == "" || !validActionKinds[action.Kind] {
-					return fmt.Errorf("ERRO: Action %s tem kind inválido: '%s'. Tipos permitidos: criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro", action.ID, action.Kind)
-				}
-				validContextKinds := map[string]bool{
-					"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
-				}
-				if action.Context.Kind != "" && !validContextKinds[action.Context.Kind] {
-					return fmt.Errorf("ERRO: Action %s tem context.kind inválido: '%s'. Tipos permitidos: festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro", action.ID, action.Context.Kind)
+				if action.Format == "" || !validActionFormats[action.Format] {
+					return fmt.Errorf("ERRO: Action %s tem format inválido: '%s'. Tipos permitidos: %s", action.ID, action.Format, getKeys(validActionFormats))
 				}
 				if action.PerformedBy == "" {
 					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
@@ -96,8 +109,8 @@ func ValidateEntities(entitiesDir string) error {
 				if action.MyRole == "" {
 					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
 				}
-				if action.Context.Label == "" {
-					return fmt.Errorf("ERRO: Action %s sem context.label", action.ID)
+				if action.Label == "" {
+					return fmt.Errorf("ERRO: Action %s sem label", action.ID)
 				}
 				if action.DateStart == "" {
 					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)

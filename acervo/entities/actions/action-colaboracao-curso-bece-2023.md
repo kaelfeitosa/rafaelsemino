@@ -1,17 +1,15 @@
 ---
-context:
-    kind: curso
-    label: Curso Protagonismo Negro na Cultura Pop (BECE)
-    location: ""
-date_start: "2023"
-description: ""
 id: action-colaboracao-curso-bece-2023
-kind: formacao
-my_role: Palestrante
-performed_by: '[[agent-rafael-semino]]'
 title: Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE)
-work_id: ""
+category: formacao
+format: curso
+label: Curso Protagonismo Negro na Cultura Pop (BECE)
+performed_by: '[[agent-rafael-semino]]'
+my_role: Palestrante
+date_start: "2023"
 ---
+
+
 
 
 

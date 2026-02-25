@@ -1,17 +1,17 @@
 ---
-context:
-    kind: outro
-    label: Laboratório de Criação em Teatro - Porto Iracema (2022)
-    location: Fortaleza, CE (Porto Iracema das Artes)
+id: action-rafael-porto-iracema-2022
+title: Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema (2022)
+category: outro
+format: outro
+label: Laboratório de Criação em Teatro - Porto Iracema (2022)
+location: Fortaleza, CE (Porto Iracema das Artes)
+performed_by: '[[agent-rafael-semino]]'
+my_role: Pesquisador/Aluno
 date_start: "2022"
 description: 'Criação em tempo espiralar: Exu e suas encruzilhadas (346h).'
-id: action-rafael-porto-iracema-2022
-kind: outro
-my_role: Pesquisador/Aluno
-performed_by: '[[agent-rafael-semino]]'
-title: Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema (2022)
-work_id: ""
 ---
+
+
 
 
 

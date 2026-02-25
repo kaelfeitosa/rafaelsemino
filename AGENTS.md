@@ -26,15 +26,21 @@ Este sistema descreve a trajetória profissional de Rafael Semino, a partir do s
 ### 3. Action (Núcleo do Sistema)
 Representa o que "Eu fiz". Toda Action vira um item visível no portfólio.
 
+**Campos Principais:**
+- **Category** (`category`): Tipo da ação (criacao, exibicao, formacao, avaliacao, curadoria, premiacao, outro).
+- **Format** (`format`): Formato do contexto (festival, mostra, curso, oficina, residencia, premiacao, entrevista, outro).
+- **Label** (`label`): Nome do evento ou contexto (ex: "Festival de Curitiba 2023").
+- **Location** (`location`): Local físico (cidade/estado).
+
 **Regras Absolutas:**
 - Toda Action representa algo que **Eu fiz**.
 - Não existe Action sem `my_role`.
 - Não existe Action "do coletivo" sem Rafael envolvido.
 - Action descreve a atuação de Rafael.
 
-### 4. Context & Attachments (Valores Embedados)
-- **Context**: Existe apenas dentro da Action (festival, mostra, curso, etc).
+### 4. Attachments (Evidências)
 - **Attachment**: Evidência visual ou documental (imagem, vídeo, pdf). Não possui ID próprio e não existe fora de Action ou Work.
+- As imagens listadas em `attachments` também devem aparecer no corpo do Markdown para visualização em editores.
 
 ## Relações Válidas
 - `Action.performed_by` → `Agent`

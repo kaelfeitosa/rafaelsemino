@@ -1,17 +1,18 @@
 ---
-context:
-    kind: outro
-    label: Laboratório de Teatro - Porto Iracema das Artes (2022)
-    location: Fortaleza, CE
+id: action-rafael-vao
+title: Atuação e Criação em Vão
+category: outro
+format: outro
+label: Laboratório de Teatro - Porto Iracema das Artes (2022)
+location: Fortaleza, CE
+performed_by: '[[agent-rafael-semino]]'
+my_role: Colaborador Criativo
+work_id: '[[work-vao]]'
 date_start: "2022"
 description: Espectáculo "Vão" desenvolvido a partir do Prêmio Amarrações Estéticas do Porto Iracema das Artes.
-id: action-rafael-vao
-kind: outro
-my_role: Colaborador Criativo
-performed_by: '[[agent-rafael-semino]]'
-title: Atuação e Criação em Vão
-work_id: '[[work-vao]]'
 ---
+
+
 
 
 
