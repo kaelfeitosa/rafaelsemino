@@ -17,6 +17,8 @@ Meu trabalho se constrói em processos coletivos, atravessando espetáculos, liv
 - Pesquisa de teatro
 - Ensino e mediação cultural
 
+Também atua como Produtor Cultural e Coordenador da Área de Formação e Ensino no coletivo Black Heroes.
+
 ### Graduação e Titulações Pessoais
 Graduado em Licenciatura em Teatro (2022) pelo Instituto Federal de Ciência, Educação e Tecnologia do Ceará (IFCE), e Mestre em Artes pela UFC (Universidade Federal do Ceará, 2023), com ênfase em teatro, pedagogia do corpo, ritual e ancestralidade. Atualmente cursando a especialização em Teatro do Oprimido pela UFBA (Universidade Federal da Bahia).
 
