@@ -10,22 +10,16 @@ my_role: Dramaturgia e Direção
 date_start: "2023-06-01"
 description: Dramaturgia e direção da peça de São João da Escola Santa Cecília, Fortaleza (2023 e 2024).
 attachments:
-  - caption: "Direção de São João na Escola Santa Cecília"
+  - caption: "Direção de São João na Escola Santa Cecília - Registro de Cena 1"
     role: documentation
     src: action-direcao-sao-joao-santa-cecilia-001.jpeg
     type: image
-  - caption: "Direção de São João na Escola Santa Cecília"
+  - caption: "Direção de São João na Escola Santa Cecília - Registro de Cena 2"
     role: documentation
     src: action-direcao-sao-joao-santa-cecilia-002.jpeg
     type: image
 ---
 
+![Direção de São João na Escola Santa Cecília - Registro de Cena 1](../../media/images/action-direcao-sao-joao-santa-cecilia-001.jpeg)
 
-
-
-
-Dramaturgia e direção da peça de São João da Escola Santa Cecília, Fortaleza (2023 e 2024).
-
-![Direção de São João na Escola Santa Cecília](../../media/images/action-direcao-sao-joao-santa-cecilia-001.jpeg)
-
-![Direção de São João na Escola Santa Cecília](../../media/images/action-direcao-sao-joao-santa-cecilia-002.jpeg)
+![Direção de São João na Escola Santa Cecília - Registro de Cena 2](../../media/images/action-direcao-sao-joao-santa-cecilia-002.jpeg)
