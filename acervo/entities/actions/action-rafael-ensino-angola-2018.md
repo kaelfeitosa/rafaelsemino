@@ -13,7 +13,7 @@ description: Atuação como professor voluntário de Artes e Cinema em Angola, P
 attachments:
     - caption: 'Registro Documental: Projeto Angola Bie'
       role: documentation
-      src: participation-projeto-angola-bie-001.jpeg
+      src: action-rafael-ensino-angola-2018-registro.jpeg
       type: image
 ---
 
@@ -24,4 +24,4 @@ attachments:
 Ministração de cursos de teatro e cinema e atuação na Escola Sebastiana Garcia.
 
 
-![Registro Documental: Projeto Angola Bie](../../media/images/participation-projeto-angola-bie-001.jpeg)
+![Registro Documental: Projeto Angola Bie](../../media/images/action-rafael-ensino-angola-2018-registro.jpeg)

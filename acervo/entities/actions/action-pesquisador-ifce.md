@@ -11,11 +11,11 @@ description: Atuação como pesquisador no Grupo Miraira durante a licenciatura.
 attachments:
     - caption: 'Registro Documental: Pesquisador Ifce'
       role: documentation
-      src: participation-pesquisador-ifce-001.jpeg
+      src: action-pesquisador-ifce-registro.jpeg
       type: image
     - caption: 'Registro Documental: Pesquisador Ifce'
       role: documentation
-      src: participation-pesquisador-ifce-002.jpeg
+      src: action-pesquisador-ifce-doc.jpeg
       type: image
 ---
 
@@ -26,6 +26,6 @@ attachments:
 Participação como pesquisador no IFCE.
 
 
-![Registro Documental: Pesquisador Ifce](../../media/images/participation-pesquisador-ifce-001.jpeg)
+![Registro Documental: Pesquisador Ifce](../../media/images/action-pesquisador-ifce-registro.jpeg)
 
-![Registro Documental: Pesquisador Ifce](../../media/images/participation-pesquisador-ifce-002.jpeg)
+![Registro Documental: Pesquisador Ifce](../../media/images/action-pesquisador-ifce-doc.jpeg)

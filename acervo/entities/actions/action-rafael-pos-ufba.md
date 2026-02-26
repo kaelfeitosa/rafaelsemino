@@ -10,11 +10,11 @@ date_start: "2021"
 attachments:
     - caption: 'Registro Documental: Formacao Ufba'
       role: documentation
-      src: participation-formacao-ufba-002.jpeg
+      src: action-rafael-pos-ufba-pos.jpeg
       type: image
     - caption: 'Registro Documental: Formacao Ufba'
       role: documentation
-      src: participation-formacao-ufba-001.jpeg
+      src: action-rafael-pos-ufba-doc.jpeg
       type: image
 ---
 
@@ -25,6 +25,6 @@ attachments:
 Detalhes específicos da participação.
 
 
-![Registro Documental: Formacao Ufba](../../media/images/participation-formacao-ufba-002.jpeg)
+![Registro Documental: Formacao Ufba](../../media/images/action-rafael-pos-ufba-pos.jpeg)
 
-![Registro Documental: Formacao Ufba](../../media/images/participation-formacao-ufba-001.jpeg)
+![Registro Documental: Formacao Ufba](../../media/images/action-rafael-pos-ufba-doc.jpeg)

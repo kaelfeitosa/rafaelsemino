@@ -11,7 +11,7 @@ date_start: "2023"
 attachments:
     - caption: Promo Residência Colaborativa Constelação
       role: documentation
-      src: record-constelacao-2023-001.jpeg
+      src: action-farol-novo-constelacao-promo-residencia.jpeg
       type: image
 ---
 
@@ -22,4 +22,4 @@ attachments:
 Detalhes específicos da participação.
 
 
-![Promo Residência Colaborativa Constelação](../../media/images/record-constelacao-2023-001.jpeg)
+![Promo Residência Colaborativa Constelação](../../media/images/action-farol-novo-constelacao-promo-residencia.jpeg)

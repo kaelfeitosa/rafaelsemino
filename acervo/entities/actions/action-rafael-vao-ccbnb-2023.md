@@ -11,11 +11,11 @@ date_start: "2023"
 attachments:
     - caption: Espetáculo Vão - Palco CCBNB
       role: documentation
-      src: record-ccbnb-2023-001.jpeg
+      src: action-rafael-vao-ccbnb-2023-espetaculo-vao.jpeg
       type: image
     - caption: Promo Vão no Palco CCBNB
       role: documentation
-      src: record-ccbnb-2023-002.jpeg
+      src: action-rafael-vao-ccbnb-2023-promo-vao.jpeg
       type: image
 ---
 
@@ -26,6 +26,6 @@ attachments:
 Detalhes específicos da participação.
 
 
-![Espetáculo Vão - Palco CCBNB](../../media/images/record-ccbnb-2023-001.jpeg)
+![Espetáculo Vão - Palco CCBNB](../../media/images/action-rafael-vao-ccbnb-2023-espetaculo-vao.jpeg)
 
-![Promo Vão no Palco CCBNB](../../media/images/record-ccbnb-2023-002.jpeg)
+![Promo Vão no Palco CCBNB](../../media/images/action-rafael-vao-ccbnb-2023-promo-vao.jpeg)

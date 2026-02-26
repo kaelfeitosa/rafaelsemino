@@ -10,7 +10,7 @@ date_start: "2024"
 attachments:
     - caption: Destaque Zona de Criação
       role: documentation
-      src: work-rastros-de-exu-002.jpeg
+      src: work-destaque-zona-de-criacao.png
       type: image
 ---
 
@@ -20,4 +20,4 @@ attachments:
 
 Detalhes específicos da participação.
 
-![Destaque Zona de Criação](../../media/images/work-rastros-de-exu-002.jpeg)
+![Destaque Zona de Criação](../../media/images/work-destaque-zona-de-criacao.png)

@@ -12,11 +12,11 @@ description: Atuação de Rafael Semino como avaliador em festivais e quadrilhas
 attachments:
     - caption: 'Registro Documental: Avaliador Junino'
       role: documentation
-      src: participation-avaliador-junino-002.jpeg
+      src: action-avaliador-junino-002.jpeg
       type: image
     - caption: 'Registro Documental: Avaliador Junino'
       role: documentation
-      src: participation-avaliador-junino-001.jpeg
+      src: action-avaliador-junino-001.jpeg
       type: image
 ---
 
@@ -27,6 +27,6 @@ attachments:
 Atuação de Rafael Semino como avaliador junino no estado do Ceará durante o ano de 2023.
 
 
-![Registro Documental: Avaliador Junino](../../media/images/participation-avaliador-junino-002.jpeg)
+![Registro Documental: Avaliador Junino](../../media/images/action-avaliador-junino-002.jpeg)
 
-![Registro Documental: Avaliador Junino](../../media/images/participation-avaliador-junino-001.jpeg)
+![Registro Documental: Avaliador Junino](../../media/images/action-avaliador-junino-001.jpeg)

@@ -11,7 +11,7 @@ date_start: "2024"
 attachments:
     - caption: Exu no Palco Ceará (FNT)
       role: documentation
-      src: record-fnt-guaramiranga-2024-002.jpeg
+      src: action-farol-novo-fnt-guaramiranga-2024-exu-palco-ceara.jpeg
       type: image
 ---
 
@@ -22,4 +22,4 @@ attachments:
 Detalhes específicos da participação.
 
 
-![Exu no Palco Ceará (FNT)](../../media/images/record-fnt-guaramiranga-2024-002.jpeg)
+![Exu no Palco Ceará (FNT)](../../media/images/action-farol-novo-fnt-guaramiranga-2024-exu-palco-ceara.jpeg)

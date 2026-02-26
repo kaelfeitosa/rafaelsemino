@@ -11,11 +11,11 @@ date_start: 2023-01
 attachments:
     - caption: Estreia de Exu Não Vem Hoje
       role: documentation
-      src: work-exu-nao-vem-hoje-002.jpeg
+      src: work-exu-nao-vem-hoje-estreia.png
       type: image
     - caption: Convite Temporada Exu
       role: documentation
-      src: event-ocupacao-hub-001.jpeg
+      src: action-farol-novo-temporada-porto-dragao-2023-ocupacao-hub.jpeg
       type: image
 ---
 
@@ -25,6 +25,6 @@ attachments:
 
 Detalhes específicos da participação.
 
-![Estreia de Exu Não Vem Hoje](../../media/images/work-exu-nao-vem-hoje-002.jpeg)
+![Estreia de Exu Não Vem Hoje](../../media/images/work-exu-nao-vem-hoje-estreia.png)
 
-![Convite Temporada Exu](../../media/images/event-ocupacao-hub-001.jpeg)
+![Convite Temporada Exu](../../media/images/action-farol-novo-temporada-porto-dragao-2023-ocupacao-hub.jpeg)
