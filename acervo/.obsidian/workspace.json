@@ -13,10 +13,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "media/images/agent-grupo-miraira-002.png"
+                "file": "media/images/work-vao-010.png"
               },
               "icon": "lucide-image",
-              "title": "agent-grupo-miraira-002"
+              "title": "work-vao-010"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "media/images/agent-grupo-miraira-002.png",
+                "file": "media/images/work-vao-010.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for agent-grupo-miraira-002"
+              "title": "Backlinks for work-vao-010"
             }
           },
           {
@@ -182,6 +182,22 @@
   },
   "active": "51db4c1a83c9558f",
   "lastOpenFiles": [
+    "media/images/work-vao-009.png",
+    "media/images/work-vao-008.png",
+    "media/images/work-vao-007.png",
+    "media/images/work-vao-006.jpeg",
+    "media/images/work-vao-005.jpeg",
+    "media/images/work-vao-004.jpeg",
+    "media/images/work-vao-003.jpeg",
+    "media/images/work-vao-003.jpeg.tmp",
+    "media/images/work-vao-002.jpeg",
+    "media/images/work-vao-001.jpeg",
+    "media/images/work-trapo-preto-002.jpeg",
+    "media/images/work-trapo-preto-001.png",
+    "media/images/action-farol-novo-fnt-guaramiranga-2024-doc-003.jpeg.tmp",
+    "media/images/action-farol-novo-constelacao-promo-residencia.jpeg.tmp",
+    "media/images/action-direcao-sao-joao-santa-cecilia-002.jpeg.tmp",
+    "media/images/action-colaboracao-curso-bece-2023-002.jpeg.tmp",
     "entities/agents/agent-test-schema.md",
     "entities/records/record-record-rebordose-imdb.md",
     "entities/records/record-record-mestres-do-mundo-catalogo.md",
@@ -193,7 +209,6 @@
     "entities/agents/agent-foo.md",
     "cli/test_unmarshal.go",
     "cli/patch_names.py",
-    "cli/fix_names.py",
     "entities/participations/participation-rafael-astronauta.md",
     "entities/works/work-astronauta.md",
     "entities/participations/participation-rafael-noite-alegria.md",
@@ -213,21 +228,6 @@
     "entities/participations/participation-rafael-pos-ufba.md",
     "entities/events/event-pos-teatro-oprimido.md",
     "entities/agents/agent-ufba.md",
-    "entities/participations/participation-rafael-licenciatura-ifce.md",
-    "cli/run_mass_ingest.py",
-    "cli/fix_media_url.py",
-    "cli/fix_all_participations.py",
-    "cli/fix_participations.py",
-    "cli/temp_insta/2023-10-07_16-11-45_UTC.jpg",
-    "media/images/record-fnt-guaramiranga-2024-004.jpeg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_10.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_9.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_8.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_7.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_6.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_5.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_4.jpg",
-    "cli/temp_insta/2024-08-30_21-44-23_UTC_3.jpg",
     "Untitled.canvas"
   ]
 }
