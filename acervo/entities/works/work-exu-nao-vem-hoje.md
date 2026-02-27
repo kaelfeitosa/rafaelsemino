@@ -6,10 +6,6 @@ attachments:
       type: image
     - caption: 'Registro Documental: Exu Nao Vem Hoje'
       role: documentation
-      src: work-exu-nao-vem-hoje-003.jpeg
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
       src: work-exu-nao-vem-hoje-009.jpeg
       type: image
     - caption: 'Registro Documental: Exu Nao Vem Hoje'
@@ -27,10 +23,6 @@ attachments:
     - caption: 'Registro Documental: Exu Nao Vem Hoje'
       role: documentation
       src: work-exu-nao-vem-hoje-008.jpeg
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-010.jpeg
       type: image
     - caption: 'Registro Documental: Exu Nao Vem Hoje'
       role: documentation

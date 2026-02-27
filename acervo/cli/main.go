@@ -44,7 +44,7 @@ func main() {
 			}
 			fmt.Println("✅ Validação Sintática OK")
 
-			if err := auditor.Audit("../entities", "../media/images"); err != nil {
+			if err := auditor.Audit("../entities", "../media/images", "../../frontend/index.html"); err != nil {
 				fmt.Println("❌ Audit failed:", err)
 				os.Exit(1)
 			}
@@ -61,7 +61,7 @@ func main() {
 				fmt.Println("❌ Validation blocked reindex:", err)
 				os.Exit(1)
 			}
-			if err := auditor.Audit("../entities", "../media/images"); err != nil {
+			if err := auditor.Audit("../entities", "../media/images", "../../frontend/index.html"); err != nil {
 				fmt.Println("❌ Audit blocked reindex:", err)
 				os.Exit(1)
 			}

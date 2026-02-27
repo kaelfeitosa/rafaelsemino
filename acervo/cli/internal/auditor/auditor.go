@@ -13,7 +13,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func Audit(entitiesDir string, imagesDir string) error {
+func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	agents := make(map[string]bool)
 	works := make(map[string]bool)
 	actions := make(map[string]bool)
@@ -106,17 +106,51 @@ func Audit(entitiesDir string, imagesDir string) error {
 		}
 	}
 
-	// Image Auditing
-	fmt.Println("--- IMAGE AUDIT ---")
+	// 2. Entity Image Audit (Markdown Attachments)
+	fmt.Println("--- ENTITY IMAGE AUDIT ---")
 	missingImages := 0
 	for img := range referencedImages {
 		imgPath := filepath.Join(imagesDir, img)
 		if _, err := os.Stat(imgPath); os.IsNotExist(err) {
-			fmt.Printf("[MISSING IMAGE] Imagem referenciada não existe: %s\n", img)
+			fmt.Printf("[MISSING IMAGE] Imagem referenciada em entitidade não existe: %s\n", img)
 			missingImages++
 		}
 	}
 
+	// 3. Frontend Asset Audit (index.html References)
+	fmt.Println("--- FRONTEND ASSET AUDIT ---")
+	missingMasters := 0
+	htmlContent, err := os.ReadFile(htmlPath)
+	if err == nil {
+		findRefs := func(content string) []string {
+			var refs []string
+			parts := strings.Split(content, "images/optimized/")
+			for i := 1; i < len(parts); i++ {
+				end := strings.IndexAny(parts[i], ` "'>`)
+				if end != -1 {
+					refs = append(refs, parts[i][:end])
+				}
+			}
+			return refs
+		}
+
+		refs := findRefs(string(htmlContent))
+		sourceMap, _ := buildHeuristicSourceMap(imagesDir)
+
+		for _, ref := range refs {
+			baseName := strings.TrimSuffix(ref, filepath.Ext(ref))
+			normalizedBase := strings.ReplaceAll(baseName, "_", "-")
+			if _, ok := sourceMap[normalizedBase]; !ok {
+				fmt.Printf("[MISSING MASTER] Referência em index.html: %s (Nenhum master encontrado em %s)\n", ref, imagesDir)
+				missingMasters++
+			}
+		}
+	} else {
+		fmt.Printf("[WARNING] Falha ao ler index.html para auditoria de assets: %v\n", err)
+	}
+
+	// 4. Dangling & Naming Audit
+	fmt.Println("--- DANGLING & NAMING AUDIT ---")
 	danglingImages := 0
 	namingViolations := 0
 	imageFiles, err := os.ReadDir(imagesDir)
@@ -127,59 +161,18 @@ func Audit(entitiesDir string, imagesDir string) error {
 			}
 			name := f.Name()
 
-			// 1. Check if referenced
+			// Check if referenced in entities
 			if !referencedImages[name] {
 				fmt.Printf("[DANGLING IMAGE] Imagem não referenciada por nenhuma entidade: %s\n", name)
 				danglingImages++
 			}
 
-			// 2. Check naming convention
+			// Check naming convention
 			validPrefix := false
 			expectedPrefixes := []string{"action-", "work-", "agent-"}
 			for _, p := range expectedPrefixes {
 				if strings.HasPrefix(name, p) {
 					validPrefix = true
-					// Check if it matches a known entity ID
-					parts := strings.Split(name, "-")
-					if len(parts) >= 2 {
-						// This is heuristic, but let's see if we can find a matching ID
-						// e.g. action-slug-001.jpeg -> action-slug
-						// Find longest matching prefix that is an ID
-						match := false
-						currentPrefix := ""
-						for i := 0; i < len(parts)-1; i++ {
-							if i == 0 {
-								currentPrefix = parts[i]
-							} else {
-								currentPrefix += "-" + parts[i]
-							}
-							if p == "action-" && actions[currentPrefix] {
-								match = true
-								break
-							}
-							if p == "work-" && works[currentPrefix] {
-								match = true
-								break
-							}
-							if p == "agent-" && agents[currentPrefix] {
-								match = true
-								break
-							}
-						}
-
-						// Special case: if name starts with a valid ID entirely (minus extension)
-						idWithoutExt := strings.TrimSuffix(name, filepath.Ext(name))
-						if actions[idWithoutExt] || works[idWithoutExt] || agents[idWithoutExt] {
-							match = true
-						}
-
-						if !match {
-							// Try to see if it's a "test" or "doc" or something
-							// We'll be strict for now as requested
-							fmt.Printf("[NAMING WARNING] Imagem %s não parece seguir o ID de nenhuma entidade conhecida\n", name)
-							namingViolations++
-						}
-					}
 					break
 				}
 			}
@@ -192,12 +185,31 @@ func Audit(entitiesDir string, imagesDir string) error {
 
 	fmt.Printf("=== AUDIT REPORT ===\n")
 	fmt.Printf("Broken Links: %d\n", brokenLinks)
-	fmt.Printf("Missing Images: %d\n", missingImages)
+	fmt.Printf("Missing Images (Entities): %d\n", missingImages)
+	fmt.Printf("Missing Masters (Frontend): %d\n", missingMasters)
 	fmt.Printf("Dangling Images: %d\n", danglingImages)
 	fmt.Printf("Naming Violations: %d\n", namingViolations)
 
-	if brokenLinks > 0 || missingImages > 0 {
+	if brokenLinks > 0 || missingImages > 0 || missingMasters > 0 {
 		return fmt.Errorf("audit failed with reference errors")
 	}
 	return nil
+}
+
+// buildHeuristicSourceMap is a helper for the auditor
+func buildHeuristicSourceMap(dir string) (map[string]string, error) {
+	files, err := os.ReadDir(dir)
+	if err != nil {
+		return nil, err
+	}
+	sourceMap := make(map[string]string)
+	for _, f := range files {
+		if f.IsDir() {
+			continue
+		}
+		fBase := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
+		fNorm := strings.ReplaceAll(fBase, "_", "-")
+		sourceMap[fNorm] = f.Name()
+	}
+	return sourceMap, nil
 }

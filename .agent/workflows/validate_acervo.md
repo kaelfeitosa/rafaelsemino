@@ -20,7 +20,10 @@ cd acervo/cli && go run main.go reindex
 ```
 
 ## 3. Full Graph Verification
-Perform a deep audit of the entire graph relations.
+Perform a deep audit of the entire graph relations and asset consistency.
+- **Relational Audit**: Checks links between Agents, Works, and Actions.
+- **Entity Asset Audit**: Verifies that images referenced in Markdown exist in the acervo.
+- **Frontend Asset Audit**: Verifies that `images/optimized/` references in `index.html` have corresponding masters in the acervo.
 ```bash
 // turbo
 cd acervo/cli && go run main.go verify
