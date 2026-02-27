@@ -99,6 +99,7 @@ func SyncImages(entitiesDir string, mode string) error {
 							}
 							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", caption, srcStr)
 							changed = true
+							bodyImages[srcStr] = true // Prevent duplicates from multiple YAML entries for the same src
 						}
 					}
 				}
