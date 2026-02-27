@@ -18,3 +18,5 @@ year: 2016
 
 Peça teatral apresentada em 2016.
 
+![Registro Documental: De Sucupira](../../media/images/work-de-sucupira-001.png)
+![Registro Documental: De Sucupira](../../media/images/work-de-sucupira-002.png)

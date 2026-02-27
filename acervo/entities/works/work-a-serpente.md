@@ -14,3 +14,4 @@ year: 2014
 
 Peça montada. Atuação e Direção.
 
+![Registro Documental: A Serpente](../../media/images/work-a-serpente-001.png)

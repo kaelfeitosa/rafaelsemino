@@ -1,14 +1,15 @@
 package domain
 
 type Agent struct {
-	ID          string `yaml:"id"`
-	Name        string `yaml:"name"`
-	Kind        string `yaml:"kind"` // person | collective
-	Description string `yaml:"description,omitempty"`
-	FoundedByMe bool   `yaml:"founded_by_me,omitempty"`
-	ActiveSince int    `yaml:"active_since,omitempty"`
-	Links       []Link `yaml:"links,omitempty"`
-	Featured    bool   `yaml:"featured,omitempty"`
+	ID          string       `yaml:"id"`
+	Name        string       `yaml:"name"`
+	Kind        string       `yaml:"kind"` // person | collective
+	Description string       `yaml:"description,omitempty"`
+	FoundedByMe bool         `yaml:"founded_by_me,omitempty"`
+	ActiveSince int          `yaml:"active_since,omitempty"`
+	Links       []Link       `yaml:"links,omitempty"`
+	Attachments []Attachment `yaml:"attachments,omitempty"`
+	Featured    bool         `yaml:"featured,omitempty"`
 }
 
 type Link struct {

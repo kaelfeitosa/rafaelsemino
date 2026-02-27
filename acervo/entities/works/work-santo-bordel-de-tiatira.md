@@ -18,3 +18,5 @@ year: 2017
 
 Apresentado em 2017.
 
+![Registro Documental: Santo Bordel De Tiatira](../../media/images/work-santo-bordel-de-tiatira-002.png)
+![Registro Documental: Santo Bordel De Tiatira](../../media/images/work-santo-bordel-de-tiatira-001.png)

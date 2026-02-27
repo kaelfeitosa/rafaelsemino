@@ -18,3 +18,5 @@ year: 2018
 
 Montagem apresentada durante 2018.
 
+![Registro Documental: Rua Azusa](../../media/images/work-rua-azusa-001.png)
+![Registro Documental: Rua Azusa](../../media/images/work-rua-azusa-002.png)

@@ -14,3 +14,4 @@ year: 2017
 
 Montagem teatral.
 
+![Registro Documental: Asu](../../media/images/work-asu-001.png)
