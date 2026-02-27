@@ -158,6 +158,11 @@ func validateAttachmentsSync(path string, attachments []domain.Attachment, body 
 	wikiMatches := wikiImageRegex.FindAllStringSubmatch(bodyStr, -1)
 	for _, match := range wikiMatches {
 		imgSrc := match[1]
+		// Normalize Obsidian embed targets (e.g., "folder/image.jpg|300")
+		if idx := strings.Index(imgSrc, "|"); idx != -1 {
+			imgSrc = imgSrc[:idx]
+		}
+		imgSrc = filepath.Base(imgSrc)
 		bodyImages[imgSrc] = true
 	}
 
