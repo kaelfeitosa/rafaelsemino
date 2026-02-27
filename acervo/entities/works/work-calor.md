@@ -14,3 +14,4 @@ year: 2019
 
 Performance teatral de atuação e criação.
 
+![Registro Documental: Calor](../../media/images/work-calor-001.png)

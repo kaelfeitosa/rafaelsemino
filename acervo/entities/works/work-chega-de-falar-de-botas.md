@@ -26,3 +26,7 @@ year: 2015
 
 Atuação e Direção.
 
+![Registro Documental: Chega De Falar De Botas](../../media/images/work-chega-de-falar-de-botas-002.png)
+![Registro Documental: Chega De Falar De Botas](../../media/images/work-chega-de-falar-de-botas-003.png)
+![Registro Documental: Chega De Falar De Botas](../../media/images/work-chega-de-falar-de-botas-004.png)
+![Registro Documental: Chega De Falar De Botas](../../media/images/work-chega-de-falar-de-botas-001.png)

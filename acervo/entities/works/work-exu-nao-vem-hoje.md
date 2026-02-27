@@ -59,3 +59,14 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - Cine Teatro São Luís – apresentação única
 - Hub Cultural Porto Dragão – temporada
 - Festival Nordestino de Teatro de Guaramiranga – apresentação única
+
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-006.png)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-003.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-009.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-002.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-001.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-005.png)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-008.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-010.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-004.jpeg)
+![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-007.jpeg)

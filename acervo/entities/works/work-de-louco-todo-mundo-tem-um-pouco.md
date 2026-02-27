@@ -42,3 +42,11 @@ year: 2017
 
 Montagem de 2017.
 
+![Registro Documental: De Louco](../../media/images/work-de-louco-002.jpeg)
+![Registro Documental: De Louco](../../media/images/work-de-louco-007.png)
+![Registro Documental: De Louco](../../media/images/work-de-louco-004.jpeg)
+![Registro Documental: De Louco](../../media/images/work-de-louco-001.jpeg)
+![Registro Documental: De Louco](../../media/images/work-de-louco-006.png)
+![Registro Documental: De Louco](../../media/images/work-de-louco-005.jpeg)
+![Registro Documental: De Louco](../../media/images/work-de-louco-003.jpeg)
+![Registro Documental: De Louco](../../media/images/work-de-louco-008.png)

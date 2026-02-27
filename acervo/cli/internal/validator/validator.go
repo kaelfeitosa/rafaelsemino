@@ -15,6 +15,9 @@ import (
 )
 
 var (
+	mdImageRegex   = regexp.MustCompile(`!\[(.*?)\]\((.*?)\)`)
+	wikiImageRegex = regexp.MustCompile(`!\[\[(.*?)\]\]`)
+
 	validWorkTypes = map[string]bool{
 		"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
 	}
@@ -72,6 +75,9 @@ func ValidateEntities(entitiesDir string) error {
 				if agent.Kind != "person" && agent.Kind != "collective" {
 					return fmt.Errorf("ERRO: Agent %s com kind inválido: '%s'. Deve ser 'person' ou 'collective'", agent.ID, agent.Kind)
 				}
+				if err := validateAttachmentsSync(path, agent.Attachments, parts[2]); err != nil {
+					return err
+				}
 			} else if parentDir == "works" {
 				var work domain.Work
 				if err := yaml.Unmarshal(parts[1], &work); err != nil {
@@ -85,6 +91,9 @@ func ValidateEntities(entitiesDir string) error {
 				}
 				if work.Type == "" || !validWorkTypes[work.Type] {
 					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: %s", work.ID, work.Type, getKeys(validWorkTypes))
+				}
+				if err := validateAttachmentsSync(path, work.Attachments, parts[2]); err != nil {
+					return err
 				}
 			} else if parentDir == "actions" {
 				var action domain.Action
@@ -124,8 +133,49 @@ func ValidateEntities(entitiesDir string) error {
 						return fmt.Errorf("ERRO: Action %s tem formato de date_end inválido: '%s'", action.ID, action.DateEnd)
 					}
 				}
+				if err := validateAttachmentsSync(path, action.Attachments, parts[2]); err != nil {
+					return err
+				}
 			}
 		}
 		return nil
 	})
+}
+
+func validateAttachmentsSync(path string, attachments []domain.Attachment, body []byte) error {
+	bodyStr := string(body)
+	bodyImages := make(map[string]bool)
+
+	// Standard markdown images: ![alt](path)
+	mdMatches := mdImageRegex.FindAllStringSubmatch(bodyStr, -1)
+	for _, match := range mdMatches {
+		imgSrc := match[2]
+		imgSrc = filepath.Base(imgSrc)
+		bodyImages[imgSrc] = true
+	}
+
+	// Obsidian Wiki links: ![[image.jpg]]
+	wikiMatches := wikiImageRegex.FindAllStringSubmatch(bodyStr, -1)
+	for _, match := range wikiMatches {
+		imgSrc := match[1]
+		bodyImages[imgSrc] = true
+	}
+
+	yamlImages := make(map[string]bool)
+	for _, att := range attachments {
+		if att.Type == "image" && att.Src != "" {
+			yamlImages[att.Src] = true
+			if !bodyImages[att.Src] {
+				return fmt.Errorf("ERRO (%s): Imagem '%s' está em attachments YAML mas não no corpo do Markdown. Execute 'acervo sync-images --mode=yaml-to-body'", path, att.Src)
+			}
+		}
+	}
+
+	for imgSrc := range bodyImages {
+		if !yamlImages[imgSrc] {
+			return fmt.Errorf("ERRO (%s): Imagem '%s' está no corpo do Markdown mas não no attachments YAML. Execute 'acervo sync-images --mode=body-to-yaml'", path, imgSrc)
+		}
+	}
+
+	return nil
 }

@@ -21,3 +21,7 @@ year: 2019
 
 
 Produção audiovisual independente explorando poéticas visuais (Imagens de apoio em destaque). Experiência em atuação audiovisual sob direção de Jennifer Vieira (2019).
+
+![Registro Documental: Ha Numeros Que Sonham](../../media/images/work-ha-numeros-que-sonham-002.png)
+![Registro Documental: Ha Numeros Que Sonham](../../media/images/work-ha-numeros-que-sonham-001.jpeg)
+![Registro Documental: Ha Numeros Que Sonham](../../media/images/work-ha-numeros-que-sonham-003.png)

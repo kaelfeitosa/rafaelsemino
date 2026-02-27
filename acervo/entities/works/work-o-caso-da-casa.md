@@ -14,3 +14,4 @@ year: 2013
 
 Atuação e Direção em 2013.
 
+![Registro Documental: O Caso Da Casa](../../media/images/work-o-caso-da-casa-001.png)
