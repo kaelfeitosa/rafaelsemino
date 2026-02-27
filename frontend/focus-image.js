@@ -10,7 +10,19 @@ class MetadataReader {
             const headers = { "Range": "bytes=0-65535" };
             const response = await fetch(src, { headers, signal });
 
-            if (!response.ok && response.status !== 206) return null;
+            if (!response.ok && response.status !== 206 && response.status !== 416) return null;
+            
+            // Se for 416, o arquivo é menor que o range solicitado. Tenta buscar o arquivo inteiro.
+            if (response.status === 416) {
+                const fullResponse = await fetch(src, { signal });
+                if (!fullResponse.ok) return null;
+                const fullBuffer = await fullResponse.arrayBuffer();
+                const fullView = new DataView(fullBuffer);
+                let xmpString = "";
+                if (MetadataReader.isJPEG(fullView)) xmpString = MetadataReader.extractXMPFromJPEG(fullView);
+                else if (MetadataReader.isPNG(fullView)) xmpString = MetadataReader.extractXMPFromPNG(fullView);
+                return xmpString ? MetadataReader.parseXMPFocus(xmpString) : null;
+            }
 
             const buffer = await response.arrayBuffer();
             const view = new DataView(buffer);
