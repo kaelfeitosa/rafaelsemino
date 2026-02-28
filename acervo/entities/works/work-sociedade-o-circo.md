@@ -14,3 +14,4 @@ year: 2012
 
 Montado durante o início da carreira.
 
+![Registro Documental: Sociedade O Circo](../../media/images/work-sociedade-o-circo-001.png)

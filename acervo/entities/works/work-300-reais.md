@@ -22,3 +22,6 @@ year: 2015
 
 Performance teatral.
 
+![Registro Documental: 300 Reais](../../media/images/work-300-reais-002.png)
+![Registro Documental: 300 Reais](../../media/images/work-300-reais-001.png)
+![Registro Documental: 300 Reais](../../media/images/work-300-reais-003.png)

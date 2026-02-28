@@ -14,3 +14,4 @@ year: 2017
 
 Apresentado pela Companhia durante o período de 2017-2019.
 
+![Registro Documental: Reino De Aspan](../../media/images/work-reino-de-aspan-001.png)

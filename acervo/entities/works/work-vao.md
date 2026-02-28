@@ -54,3 +54,13 @@ A gênese de "Vão" ocorreu quando Zeis (Músico), que estava desenvolvendo o pr
 
 O encontro revelou interesses dramatúrgicos profundos em comum: as investigações sobre o tempo e a presença dos mitos. Da fusão dessa dramaturgia periférica do teatro com as canções prévias e inéditas de Zeis, materializou-se a obra cênico-musical "Vão", que consolidou a nova formação permanente do Coletivo.
 
+![Registro Documental: Vao](../../media/images/work-vao-005.jpeg)
+![Registro Documental: Vao](../../media/images/work-vao-001.jpeg)
+![Registro Documental: Vao](../../media/images/work-vao-008.png)
+![Registro Documental: Vao](../../media/images/work-vao-003.jpeg)
+![Registro Documental: Vao](../../media/images/work-vao-004.jpeg)
+![Registro Documental: Vao](../../media/images/work-vao-007.png)
+![Registro Documental: Vao](../../media/images/work-vao-006.jpeg)
+![Registro Documental: Vao](../../media/images/work-vao-010.png)
+![Registro Documental: Vao](../../media/images/work-vao-009.png)
+![Registro Documental: Vao](../../media/images/work-vao-002.jpeg)
