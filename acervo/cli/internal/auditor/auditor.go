@@ -66,7 +66,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				allWorks = append(allWorks, work)
 				for _, att := range work.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+						referencedImages[filepath.Base(att.Src)] = true
 					}
 				}
 			} else {
@@ -79,7 +79,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				allActions = append(allActions, action)
 				for _, att := range action.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+						referencedImages[filepath.Base(att.Src)] = true
 					}
 				}
 			} else {
@@ -162,7 +162,10 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	ignoredEnv := os.Getenv("ACERVO_IGNORE_IMAGES")
 	if ignoredEnv != "" {
 		for _, img := range strings.Split(ignoredEnv, ",") {
-			ignoredImages[strings.TrimSpace(img)] = true
+			trimmedImg := strings.TrimSpace(img)
+			if trimmedImg != "" {
+				ignoredImages[trimmedImg] = true
+			}
 		}
 	} else {
 		// Default to ignoring the protected test artifact
