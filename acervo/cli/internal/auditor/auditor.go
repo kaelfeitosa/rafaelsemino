@@ -164,6 +164,11 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 			}
 			name := f.Name()
 
+			// Skip protected test artifact
+			if name == "test-robust.jpeg" {
+				continue
+			}
+
 			// Check if referenced in entities
 			if !referencedImages[name] {
 				fmt.Printf("[DANGLING IMAGE] Imagem não referenciada por nenhuma entidade: %s\n", name)
