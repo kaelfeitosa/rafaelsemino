@@ -22,6 +22,6 @@ year: 2023
 
 Projeto audiovisual que capta a zona de criação e desdobramentos de "Exu Não Vem Hoje".
 
-![Registro Documental: Rastros De Exu](../../media/images/work-rastros-de-exu-001.jpeg)
+![Terceiro episódio Rastros de Exu](../../media/images/work-rastros-de-exu-001.jpeg)
 ![Terceiro episódio Rastros de Exu](../../media/images/work-rastros-de-exu-001.jpeg)
 ![Registro Documental: Rastros De Exu](../../media/images/work-rastros-de-exu-002.jpeg)

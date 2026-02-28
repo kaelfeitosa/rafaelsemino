@@ -17,15 +17,15 @@ attachments:
     role: documentation
     src: action-pesquisador-ifce-doc.jpeg
     type: image
-  - caption: agent-grupo-miraira-001.png
+  - caption: Pesquisador no IFCE, imagem 3
     role: documentation
     src: agent-grupo-miraira-001.png
     type: image
-  - caption: agent-grupo-miraira-002.png
+  - caption: Pesquisador no IFCE, imagem 4
     role: documentation
     src: agent-grupo-miraira-002.png
     type: image
-  - caption: agent-grupo-miraira-003.png
+  - caption: Pesquisador no IFCE, imagem 5
     role: documentation
     src: agent-grupo-miraira-003.png
     type: image
@@ -42,6 +42,6 @@ Participação como pesquisador no IFCE.
 
 ![Registro Documental: Pesquisador Ifce](../../media/images/action-pesquisador-ifce-doc.jpeg)
 
-![agent-grupo-miraira-001.png](../../media/images/agent-grupo-miraira-001.png)
-![agent-grupo-miraira-002.png](../../media/images/agent-grupo-miraira-002.png)
-![agent-grupo-miraira-003.png](../../media/images/agent-grupo-miraira-003.png)
+![Pesquisador no IFCE, imagem 3](../../media/images/agent-grupo-miraira-001.png)
+![Pesquisador no IFCE, imagem 4](../../media/images/agent-grupo-miraira-002.png)
+![Pesquisador no IFCE, imagem 5](../../media/images/agent-grupo-miraira-003.png)

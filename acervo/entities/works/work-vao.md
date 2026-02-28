@@ -40,11 +40,12 @@ attachments:
     role: documentation
     src: work-vao-002.jpeg
     type: image
-  - caption: action-apresentacao-centro-cultural-nordeste-001.jpeg
+  - caption: Vão, imagem 11
     role: documentation
     src: action-apresentacao-centro-cultural-nordeste-001.jpeg
     type: image
-description: Espetáculo nascido do cruzamento entre teatro e música dentro da escola Porto Iracema (Prêmio Amarrações Estéticas).
+description: Espetáculo nascido do cruzamento entre teatro e música dentro da
+  escola Porto Iracema (Prêmio Amarrações Estéticas).
 id: work-vao
 title: Vão
 type: teatro
@@ -69,4 +70,4 @@ O encontro revelou interesses dramatúrgicos profundos em comum: as investigaç�
 ![Registro Documental: Vao](../../media/images/work-vao-009.png)
 ![Registro Documental: Vao](../../media/images/work-vao-002.jpeg)
 
-![action-apresentacao-centro-cultural-nordeste-001.jpeg](../../media/images/action-apresentacao-centro-cultural-nordeste-001.jpeg)
+![Vão, imagem 11](../../media/images/action-apresentacao-centro-cultural-nordeste-001.jpeg)

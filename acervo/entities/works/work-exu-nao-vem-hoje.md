@@ -24,11 +24,12 @@ attachments:
     role: documentation
     src: work-exu-nao-vem-hoje-007.jpeg
     type: image
-  - caption: work-exu-nao-vem-hoje-convite-temporada.jpeg
+  - caption: Exu Não Vem Hoje, imagem 7
     role: documentation
     src: work-exu-nao-vem-hoje-convite-temporada.jpeg
     type: image
-description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo a pesquisa de mestrado para o palco.
+description: Peça teatral apresentada ao final do Laboratório do Porto Iracema,
+  transpondo a pesquisa de mestrado para o palco.
 id: work-exu-nao-vem-hoje
 title: Exu Não Vem Hoje
 type: teatro
@@ -55,4 +56,4 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-004.jpeg)
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-007.jpeg)
 
-![work-exu-nao-vem-hoje-convite-temporada.jpeg](../../media/images/work-exu-nao-vem-hoje-convite-temporada.jpeg)
+![Exu Não Vem Hoje, imagem 7](../../media/images/work-exu-nao-vem-hoje-convite-temporada.jpeg)

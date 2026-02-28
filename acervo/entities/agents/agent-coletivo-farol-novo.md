@@ -1,27 +1,28 @@
 ---
-description: Fundado em 2022 no Laboratório de Criação do Porto Iracema para pesquisar mito, oralidade e o tempo na periferia.
+description: Fundado em 2022 no Laboratório de Criação do Porto Iracema para
+  pesquisar mito, oralidade e o tempo na periferia.
 founded_by_me: true
 id: agent-coletivo-farol-novo
 kind: collective
 name: Coletivo Farol Novo
 attachments:
-  - caption: agent-coletivo-farol-novo-aniversario-001.jpeg
+  - caption: Coletivo Farol Novo, imagem 1
     role: documentation
     src: agent-coletivo-farol-novo-aniversario-001.jpeg
     type: image
-  - caption: agent-coletivo-farol-novo-aniversario-002.jpeg
+  - caption: Coletivo Farol Novo, imagem 2
     role: documentation
     src: agent-coletivo-farol-novo-aniversario-002.jpeg
     type: image
-  - caption: agent-felipe-marques-001.jpeg
+  - caption: Coletivo Farol Novo, imagem 3
     role: documentation
     src: agent-felipe-marques-001.jpeg
     type: image
-  - caption: agent-gabriel-franca-001.jpeg
+  - caption: Coletivo Farol Novo, imagem 4
     role: documentation
     src: agent-gabriel-franca-001.jpeg
     type: image
-  - caption: agent-zeis-001.jpeg
+  - caption: Coletivo Farol Novo, imagem 5
     role: documentation
     src: agent-zeis-001.jpeg
     type: image
@@ -36,8 +37,8 @@ Em 2023, após vencerem o prêmio "Amarrações Estéticas" da Escola Porto Irac
 
 Hoje, celebrando seus três primeiros anos de vida, o Coletivo Farol Novo é marcado pelo desejo profundo de conceber dramaturgias coletivas e um teatro que dissolva a barreira entre palco e plateia, onde os espectadores convergem ativamente com os atores.
 
-![agent-coletivo-farol-novo-aniversario-001.jpeg](../../media/images/agent-coletivo-farol-novo-aniversario-001.jpeg)
-![agent-coletivo-farol-novo-aniversario-002.jpeg](../../media/images/agent-coletivo-farol-novo-aniversario-002.jpeg)
-![agent-felipe-marques-001.jpeg](../../media/images/agent-felipe-marques-001.jpeg)
-![agent-gabriel-franca-001.jpeg](../../media/images/agent-gabriel-franca-001.jpeg)
-![agent-zeis-001.jpeg](../../media/images/agent-zeis-001.jpeg)
+![Coletivo Farol Novo, imagem 1](../../media/images/agent-coletivo-farol-novo-aniversario-001.jpeg)
+![Coletivo Farol Novo, imagem 2](../../media/images/agent-coletivo-farol-novo-aniversario-002.jpeg)
+![Coletivo Farol Novo, imagem 3](../../media/images/agent-felipe-marques-001.jpeg)
+![Coletivo Farol Novo, imagem 4](../../media/images/agent-gabriel-franca-001.jpeg)
+![Coletivo Farol Novo, imagem 5](../../media/images/agent-zeis-001.jpeg)

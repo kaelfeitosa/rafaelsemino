@@ -1,38 +1,39 @@
 ---
-description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, professor e pesquisador de Teatro
+description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator,
+  professor e pesquisador de Teatro
 id: agent-rafael-semino
 kind: person
 name: Francisco Rafael da Silva Semino
 attachments:
-  - caption: action-produtor-cultural-001.png
+  - caption: Francisco Rafael da Silva Semino, imagem 1
     role: documentation
     src: action-produtor-cultural-001.png
     type: image
-  - caption: agent-rafael-semino-001.jpeg
+  - caption: Francisco Rafael da Silva Semino, imagem 2
     role: documentation
     src: agent-rafael-semino-001.jpeg
     type: image
-  - caption: agent-rafael-semino-perfil-academico.jpeg
+  - caption: Francisco Rafael da Silva Semino, imagem 3
     role: documentation
     src: agent-rafael-semino-perfil-academico.jpeg
     type: image
-  - caption: agent-rafael-semino-perfil-portifolio-001.jpeg
+  - caption: Francisco Rafael da Silva Semino, imagem 4
     role: documentation
     src: agent-rafael-semino-perfil-portifolio-001.jpeg
     type: image
-  - caption: agent-rafael-semino-perfil-portifolio-002.jpeg
+  - caption: Francisco Rafael da Silva Semino, imagem 5
     role: documentation
     src: agent-rafael-semino-perfil-portifolio-002.jpeg
     type: image
-  - caption: work-blackheroes-001.jpeg
+  - caption: Francisco Rafael da Silva Semino, imagem 6
     role: documentation
     src: work-blackheroes-001.jpeg
     type: image
-  - caption: work-blackheroes-002.jpeg
+  - caption: Francisco Rafael da Silva Semino, imagem 7
     role: documentation
     src: work-blackheroes-002.jpeg
     type: image
-  - caption: work-blackheroes-003.png
+  - caption: Francisco Rafael da Silva Semino, imagem 8
     role: documentation
     src: work-blackheroes-003.png
     type: image
@@ -61,11 +62,11 @@ Sua trajetória profissional abrange forte atuação no ensino de teatro e artes
 ### Audiovisual e Criação Literária
 Além do palco, Rafael acumula experiências como roteirista, produtor, assistente de produção e de direção audiovisual. É também autor da obra literária/infantil "Contos de Exu", que derivou das experimentações cênicas e investigações do corpo e ancestralidade forjados dentro do Laboratório de Criação Cênica em 2022.
 
-![action-produtor-cultural-001.png](../../media/images/action-produtor-cultural-001.png)
-![agent-rafael-semino-001.jpeg](../../media/images/agent-rafael-semino-001.jpeg)
-![agent-rafael-semino-perfil-academico.jpeg](../../media/images/agent-rafael-semino-perfil-academico.jpeg)
-![agent-rafael-semino-perfil-portifolio-001.jpeg](../../media/images/agent-rafael-semino-perfil-portifolio-001.jpeg)
-![agent-rafael-semino-perfil-portifolio-002.jpeg](../../media/images/agent-rafael-semino-perfil-portifolio-002.jpeg)
-![work-blackheroes-001.jpeg](../../media/images/work-blackheroes-001.jpeg)
-![work-blackheroes-002.jpeg](../../media/images/work-blackheroes-002.jpeg)
-![work-blackheroes-003.png](../../media/images/work-blackheroes-003.png)
+![Francisco Rafael da Silva Semino, imagem 1](../../media/images/action-produtor-cultural-001.png)
+![Francisco Rafael da Silva Semino, imagem 2](../../media/images/agent-rafael-semino-001.jpeg)
+![Francisco Rafael da Silva Semino, imagem 3](../../media/images/agent-rafael-semino-perfil-academico.jpeg)
+![Francisco Rafael da Silva Semino, imagem 4](../../media/images/agent-rafael-semino-perfil-portifolio-001.jpeg)
+![Francisco Rafael da Silva Semino, imagem 5](../../media/images/agent-rafael-semino-perfil-portifolio-002.jpeg)
+![Francisco Rafael da Silva Semino, imagem 6](../../media/images/work-blackheroes-001.jpeg)
+![Francisco Rafael da Silva Semino, imagem 7](../../media/images/work-blackheroes-002.jpeg)
+![Francisco Rafael da Silva Semino, imagem 8](../../media/images/work-blackheroes-003.png)
