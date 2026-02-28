@@ -14,6 +14,11 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+var (
+	re     = regexp.MustCompile(`!\[.*?\]\((.*?)\)`)
+	reWiki = regexp.MustCompile(`!\[\[(.*?)\]\]`)
+)
+
 func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	agents := make(map[string]bool)
 	works := make(map[string]bool)
@@ -90,7 +95,6 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 
 		// Also parse markdown body for referenced images
 		if len(parts) == 3 {
-			re := regexp.MustCompile(`!\[.*?\]\((.*?)\)`)
 			matches := re.FindAllSubmatch(parts[2], -1)
 			for _, match := range matches {
 				if len(match) > 1 {
@@ -105,7 +109,6 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 			}
 
 			// Handle obsidian wiki image syntax: ![[image.jpg]] or ![[image.jpg|300]]
-			reWiki := regexp.MustCompile(`!\[\[(.*?)\]\]`)
 			matchesWiki := reWiki.FindAllSubmatch(parts[2], -1)
 			for _, match := range matchesWiki {
 				if len(match) > 1 {
