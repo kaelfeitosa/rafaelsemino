@@ -9,3 +9,4 @@ year: 2015
 **Antígona** foi uma peça teatral com direção de Fran Teixeira, desenvolvida a partir do curso "Laboratório de Criação Teatral" (45h) na Escola Porto Iracema das Artes em 2015.
 
 Rafael Semino atuou neste projeto como parte de sua trajetória de formação e práticas no ator.
+

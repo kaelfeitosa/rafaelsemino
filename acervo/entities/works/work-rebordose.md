@@ -29,6 +29,22 @@ attachments:
 
 Dois amigos tentam manter juntos uma quitinete na periferia de Fortaleza quando acontecem "uns B.O." (problemas inesperados). O curta foi dirigido por Darlan Souza em 2024 e compõe o portfólio audiovisual de Rafael Semino, que atuou no elenco da obra.
 
+(../../media/images/work-rebordose/work-rebordose-001.jpeg)
+
+(../../media/images/work-rebordose/work-rebordose-002.jpeg)
+
+(../../media/images/work-rebordose/work-rebordose-003.jpeg)
+
+(../../media/images/work-rebordose/work-rebordose-004.jpeg)
+
+(../../media/images/work-rebordose/work-rebordose-005.jpeg)
+
+(../../media/images/work-rebordose/work-rebordose-001.jpeg)
+(../../media/images/work-rebordose/work-rebordose-002.jpeg)
+(../../media/images/work-rebordose/work-rebordose-003.jpeg)
+(../../media/images/work-rebordose/work-rebordose-004.jpeg)
+(../../media/images/work-rebordose/work-rebordose-005.jpeg)
+
 ![Rebordose, imagem 1](../../media/images/work-rebordose/work-rebordose-001.jpeg)
 
 ![Rebordose, imagem 2](../../media/images/work-rebordose/work-rebordose-002.jpeg)
@@ -39,8 +55,3 @@ Dois amigos tentam manter juntos uma quitinete na periferia de Fortaleza quando 
 
 ![Rebordose, imagem 5](../../media/images/work-rebordose/work-rebordose-005.jpeg)
 
-![Rebordose, imagem 1](../../media/images/work-rebordose/work-rebordose-001.jpeg)
-![Rebordose, imagem 2](../../media/images/work-rebordose/work-rebordose-002.jpeg)
-![Rebordose, imagem 3](../../media/images/work-rebordose/work-rebordose-003.jpeg)
-![Rebordose, imagem 4](../../media/images/work-rebordose/work-rebordose-004.jpeg)
-![Rebordose, imagem 5](../../media/images/work-rebordose/work-rebordose-005.jpeg)

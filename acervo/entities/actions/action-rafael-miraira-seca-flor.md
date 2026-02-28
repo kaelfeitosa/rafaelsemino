@@ -13,3 +13,4 @@ description: Rafael Semino atuou como pesquisador no Grupo de Pesquisa Miraira d
 ---
 
 Rafael Semino participou do processo de criação e apresentou o espetáculo "Seca Flor" (também chamado de "Flor do Deserto") com o Grupo Mira Ira, durante o Encontro Mestres do Mundo.
+

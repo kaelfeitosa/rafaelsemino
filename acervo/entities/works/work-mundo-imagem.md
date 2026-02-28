@@ -7,3 +7,4 @@ year: 2024
 ---
 
 A websérie "Mundo-Imagem" é uma produção da Escola Porto Iracema das Artes, lançada em setembro de 2024. A obra visa explorar o universo audiovisual de forma acessível e didática através de 11 episódios. A direção original do material formativo ocorreu sob comando de Isaac Pipano (2023). Rafael Semino integrou o projeto atuando no elenco.
+

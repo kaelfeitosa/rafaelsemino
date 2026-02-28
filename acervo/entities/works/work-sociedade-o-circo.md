@@ -17,10 +17,15 @@ attachments:
 
 Montado durante o início da carreira.
 
-![Sociedade O Circo, imagem 1](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
+(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
 
-![Sociedade O Circo, imagem 2](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)
+(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)
 
+
+(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
+(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)
 
 ![Sociedade, o Circo, imagem 1](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
+
 ![Sociedade, o Circo, imagem 2](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)
+

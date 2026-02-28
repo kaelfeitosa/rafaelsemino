@@ -23,12 +23,19 @@ Projeto audiovisual criado como desdobramento do espetáculo "Exu Não Vem Hoje"
 
 O programa "Zona de Criação" tem como objetivo principal oferecer suporte técnico a artistas que experimentam novos formatos e linguagens documentais para reverberar e impulsionar suas obras:
 
+(../../media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg)
+
+(../../media/images/work-rastros-de-exu/work-rastros-de-exu-002.jpeg)
+
+(../../media/images/work-rastros-de-exu/work-rastros-de-exu-003.jpeg)
+
+(../../media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg)
+(../../media/images/work-rastros-de-exu/work-rastros-de-exu-002.jpeg)
+(../../media/images/work-rastros-de-exu/work-rastros-de-exu-003.jpeg)
+
 ![Rastros de Exu, imagem 1](../../media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg)
 
 ![Rastros de Exu, imagem 2](../../media/images/work-rastros-de-exu/work-rastros-de-exu-002.jpeg)
 
 ![Rastros de Exu, imagem 3](../../media/images/work-rastros-de-exu/work-rastros-de-exu-003.jpeg)
 
-![Rastros de Exu, imagem 1](../../media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg)
-![Rastros de Exu, imagem 2](../../media/images/work-rastros-de-exu/work-rastros-de-exu-002.jpeg)
-![Rastros de Exu, imagem 3](../../media/images/work-rastros-de-exu/work-rastros-de-exu-003.jpeg)

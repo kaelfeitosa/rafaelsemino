@@ -15,6 +15,9 @@ attachments:
 
 Rafael Semino assinou a direção deste espetáculo.
 
-![Cala-me os Olhos, imagem 1](../../media/images/work-cala-me-os-olhos/work-cala-me-os-olhos-001.png)
+(../../media/images/work-cala-me-os-olhos/work-cala-me-os-olhos-001.png)
+
+(../../media/images/work-cala-me-os-olhos/work-cala-me-os-olhos-001.png)
 
 ![Cala-me os Olhos, imagem 1](../../media/images/work-cala-me-os-olhos/work-cala-me-os-olhos-001.png)
+

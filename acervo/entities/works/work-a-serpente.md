@@ -15,6 +15,9 @@ attachments:
 
 A direção do espetáculo foi assinada por Maria Vitória. Rafael Semino participou da montagem como ator, compondo parte do seu percurso de práticas de atuação.
 
-![A Serpente (Montagem 2014), imagem 1](../../media/images/work-a-serpente/work-a-serpente-001.png)
+(../../media/images/work-a-serpente/work-a-serpente-001.png)
+
+(../../media/images/work-a-serpente/work-a-serpente-001.png)
 
 ![A Serpente (Montagem 2014), imagem 1](../../media/images/work-a-serpente/work-a-serpente-001.png)
+

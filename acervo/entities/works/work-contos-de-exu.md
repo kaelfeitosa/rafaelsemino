@@ -19,6 +19,11 @@ Projeto desenvolvido no Laboratório de Criação em Teatro da Escola Porto Irac
 
 Quatro contos baseados em escrevivências e itãs de Exu, consolidando a investigação sobre a corporeidade e a ancestralidade afro-brasileira.
 
+(../../media/images/work-contos-de-exu/work-contos-de-exu-001.png)
+
+(../../media/images/work-contos-de-exu/work-contos-de-exu-002.png)
+
 ![Contos de Exu, imagem 1](../../media/images/work-contos-de-exu/work-contos-de-exu-001.png)
 
 ![Contos de Exu, imagem 2](../../media/images/work-contos-de-exu/work-contos-de-exu-002.png)
+

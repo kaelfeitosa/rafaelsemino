@@ -21,12 +21,19 @@ attachments:
 
 Rafael Semino integrou o projeto assumindo a produção deste espetáculo de teatro musical, apresentado durante o ano de 2018.
 
+(../../media/images/work-rua-azusa/work-rua-azusa-001.png)
+
+(../../media/images/work-rua-azusa/work-rua-azusa-002.png)
+
+(../../media/images/work-rua-azusa/work-rua-azusa-003.png)
+
+(../../media/images/work-rua-azusa/work-rua-azusa-001.png)
+(../../media/images/work-rua-azusa/work-rua-azusa-002.png)
+(../../media/images/work-rua-azusa/work-rua-azusa-003.png)
+
 ![Rua Azusa, imagem 1](../../media/images/work-rua-azusa/work-rua-azusa-001.png)
 
 ![Rua Azusa, imagem 2](../../media/images/work-rua-azusa/work-rua-azusa-002.png)
 
 ![Rua Azusa, imagem 3](../../media/images/work-rua-azusa/work-rua-azusa-003.png)
 
-![Rua Azusa, imagem 1](../../media/images/work-rua-azusa/work-rua-azusa-001.png)
-![Rua Azusa, imagem 2](../../media/images/work-rua-azusa/work-rua-azusa-002.png)
-![Rua Azusa, imagem 3](../../media/images/work-rua-azusa/work-rua-azusa-003.png)

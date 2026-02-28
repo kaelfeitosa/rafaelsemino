@@ -17,9 +17,14 @@ attachments:
 
 Rafael Semino atuou como ator neste projeto, que contou com a direção de Caique Melo. A obra foi apresentada em São Paulo e em Angola.
 
+(../../media/images/work-irreversivel/work-irreversivel-001.png)
+
+(../../media/images/work-irreversivel/work-irreversivel-002.jpeg)
+
+(../../media/images/work-irreversivel/work-irreversivel-001.png)
+(../../media/images/work-irreversivel/work-irreversivel-002.jpeg)
+
 ![Irreversível, imagem 1](../../media/images/work-irreversivel/work-irreversivel-001.png)
 
 ![Irreversível, imagem 2](../../media/images/work-irreversivel/work-irreversivel-002.jpeg)
 
-![Irreversível, imagem 1](../../media/images/work-irreversivel/work-irreversivel-001.png)
-![Irreversível, imagem 2](../../media/images/work-irreversivel/work-irreversivel-002.jpeg)

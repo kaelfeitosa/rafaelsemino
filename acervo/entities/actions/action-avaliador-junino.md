@@ -22,9 +22,14 @@ attachments:
 
 Atuação de Rafael Semino como avaliador junino no estado do Ceará durante o ano de 2023.
 
+(../../media/images/action-avaliador-junino/action-avaliador-junino-001.jpeg)
+
+(../../media/images/action-avaliador-junino/action-avaliador-junino-002.jpeg)
+
+(../../media/images/action-avaliador-junino/action-avaliador-junino-001.jpeg)
+(../../media/images/action-avaliador-junino/action-avaliador-junino-002.jpeg)
+
 ![Avaliador do Ciclo Junino, imagem 1](../../media/images/action-avaliador-junino/action-avaliador-junino-001.jpeg)
 
 ![Avaliador do Ciclo Junino, imagem 2](../../media/images/action-avaliador-junino/action-avaliador-junino-002.jpeg)
 
-![Avaliador do Ciclo Junino, imagem 1](../../media/images/action-avaliador-junino/action-avaliador-junino-001.jpeg)
-![Avaliador do Ciclo Junino, imagem 2](../../media/images/action-avaliador-junino/action-avaliador-junino-002.jpeg)

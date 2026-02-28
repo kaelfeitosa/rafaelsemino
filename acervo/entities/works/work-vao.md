@@ -54,6 +54,37 @@ O encontro revelou interesses dramatúrgicos profundos em comum: as investigaç�
 
 Foi apresentado no CCBN e Porto Dragão.
 
+(../../media/images/work-vao/work-vao-001.jpeg)
+
+(../../media/images/work-vao/work-vao-002.jpeg)
+
+(../../media/images/work-vao/work-vao-003.jpeg)
+
+(../../media/images/work-vao/work-vao-004.jpeg)
+
+(../../media/images/work-vao/work-vao-005.jpeg)
+
+(../../media/images/work-vao/work-vao-006.jpeg)
+
+(../../media/images/work-vao/work-vao-007.png)
+
+(../../media/images/work-vao/work-vao-008.png)
+
+(../../media/images/work-vao/work-vao-009.png)
+
+(../../media/images/work-vao/work-vao-010.png)
+
+(../../media/images/work-vao/work-vao-001.jpeg)
+(../../media/images/work-vao/work-vao-002.jpeg)
+(../../media/images/work-vao/work-vao-003.jpeg)
+(../../media/images/work-vao/work-vao-004.jpeg)
+(../../media/images/work-vao/work-vao-005.jpeg)
+(../../media/images/work-vao/work-vao-006.jpeg)
+(../../media/images/work-vao/work-vao-007.png)
+(../../media/images/work-vao/work-vao-008.png)
+(../../media/images/work-vao/work-vao-009.png)
+(../../media/images/work-vao/work-vao-010.png)
+
 ![Vão, imagem 1](../../media/images/work-vao/work-vao-001.jpeg)
 
 ![Vão, imagem 2](../../media/images/work-vao/work-vao-002.jpeg)
@@ -74,13 +105,3 @@ Foi apresentado no CCBN e Porto Dragão.
 
 ![Vão, imagem 10](../../media/images/work-vao/work-vao-010.png)
 
-![Vão, imagem 1](../../media/images/work-vao/work-vao-001.jpeg)
-![Vão, imagem 2](../../media/images/work-vao/work-vao-002.jpeg)
-![Vão, imagem 3](../../media/images/work-vao/work-vao-003.jpeg)
-![Vão, imagem 4](../../media/images/work-vao/work-vao-004.jpeg)
-![Vão, imagem 5](../../media/images/work-vao/work-vao-005.jpeg)
-![Vão, imagem 6](../../media/images/work-vao/work-vao-006.jpeg)
-![Vão, imagem 7](../../media/images/work-vao/work-vao-007.png)
-![Vão, imagem 8](../../media/images/work-vao/work-vao-008.png)
-![Vão, imagem 9](../../media/images/work-vao/work-vao-009.png)
-![Vão, imagem 10](../../media/images/work-vao/work-vao-010.png)

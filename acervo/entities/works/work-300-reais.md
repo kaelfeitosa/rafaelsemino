@@ -15,4 +15,7 @@ attachments:
 
 A direção da obra foi de Andrea Pires, e Rafael Semino atuou como parte do elenco, inserindo-se em seu percurso de práticas do ator.
 
+(../../media/images/work-300-reais/work-300-reais-001.png)
+
 ![300 Reais, imagem 1](../../media/images/work-300-reais/work-300-reais-001.png)
+

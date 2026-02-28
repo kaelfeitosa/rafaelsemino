@@ -21,9 +21,14 @@ attachments:
 
 Participação como pesquisador no IFCE.
 
+(../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-001.jpeg)
+
+(../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-002.jpeg)
+
+(../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-001.jpeg)
+(../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-002.jpeg)
+
 ![Pesquisador no IFCE, imagem 1](../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-001.jpeg)
 
 ![Pesquisador no IFCE, imagem 2](../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-002.jpeg)
 
-![Pesquisador no IFCE, imagem 1](../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-001.jpeg)
-![Pesquisador no IFCE, imagem 2](../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-002.jpeg)

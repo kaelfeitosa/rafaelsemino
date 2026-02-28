@@ -31,6 +31,19 @@ attachments:
 
 Atuação como professor do Projeto Abarca e do Percurso Básico de Teatro, desenvolvendo processos pedagógicos voltados à formação artística em diferentes territórios, incluindo Itapipoca, Vicente Pinzón e Genibaú.
 
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-001.png)
+
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-002.png)
+
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-003.jpeg)
+
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-004.jpeg)
+
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-001.png)
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-002.png)
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-003.jpeg)
+(../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-004.jpeg)
+
 ![Professor em Percurso Básico de Teatro, imagem 1](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-001.png)
 
 ![Professor em Percurso Básico de Teatro, imagem 2](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-002.png)
@@ -39,7 +52,3 @@ Atuação como professor do Projeto Abarca e do Percurso Básico de Teatro, dese
 
 ![Professor em Percurso Básico de Teatro, imagem 4](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-004.jpeg)
 
-![Professor em Percurso Básico de Teatro, imagem 1](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-001.png)
-![Professor em Percurso Básico de Teatro, imagem 2](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-002.png)
-![Professor em Percurso Básico de Teatro, imagem 3](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-003.jpeg)
-![Professor em Percurso Básico de Teatro, imagem 4](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-004.jpeg)

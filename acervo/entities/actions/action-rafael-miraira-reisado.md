@@ -22,6 +22,11 @@ attachments:
 
 Rafael Semino realizou apresentações da dança dramática de Reisado com o Grupo Mira Ira durante o Encontro Mestres do Mundo.
 
+(../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-001.png)
+
+(../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-002.png)
+
 ![Intérprete (Reisado) na Reitoria e Auditório do IFCE, imagem 1](../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-001.png)
 
 ![Intérprete (Reisado) na Reitoria e Auditório do IFCE, imagem 2](../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-002.png)
+

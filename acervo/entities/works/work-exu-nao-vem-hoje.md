@@ -68,6 +68,43 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - Hub Cultural Porto Dragão – temporada
 - Festival Nordestino de Teatro de Guaramiranga – apresentação única
 
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-005.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-006.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-007.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-008.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.jpeg)
+
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-005.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-006.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-007.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-008.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.jpeg)
+(../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.jpeg)
+
 ![Exu Não Vem Hoje, imagem 1](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.jpeg)
 
 ![Exu Não Vem Hoje, imagem 2](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.jpeg)
@@ -92,15 +129,3 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 
 ![Exu Não Vem Hoje, imagem 12](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.jpeg)
 
-![Exu Não Vem Hoje, imagem 1](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.jpeg)
-![Exu Não Vem Hoje, imagem 2](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.jpeg)
-![Exu Não Vem Hoje, imagem 3](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.jpeg)
-![Exu Não Vem Hoje, imagem 4](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.jpeg)
-![Exu Não Vem Hoje, imagem 5](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-005.jpeg)
-![Exu Não Vem Hoje, imagem 6](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-006.jpeg)
-![Exu Não Vem Hoje, imagem 7](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-007.jpeg)
-![Exu Não Vem Hoje, imagem 8](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-008.jpeg)
-![Exu Não Vem Hoje, imagem 9](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.jpeg)
-![Exu Não Vem Hoje, imagem 10](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.jpeg)
-![Exu Não Vem Hoje, imagem 11](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.jpeg)
-![Exu Não Vem Hoje, imagem 12](../../media/images/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.jpeg)

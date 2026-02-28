@@ -33,7 +33,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		// Handle wiki-style resizing syntax like `image.jpg|300`
 		src = strings.Split(src, "|")[0]
 		if src != "" {
-			referencedImages[filepath.Base(src)] = true
+			referencedImages[src] = true
 		}
 	}
 
@@ -69,7 +69,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				agents[agent.ID] = true
 				for _, att := range agent.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[filepath.Base(att.Src)] = true
+						referencedImages[att.Src] = true
 					}
 				}
 			} else {
@@ -82,7 +82,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				allWorks = append(allWorks, work)
 				for _, att := range work.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[filepath.Base(att.Src)] = true
+						referencedImages[att.Src] = true
 					}
 				}
 			} else {
@@ -95,7 +95,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				allActions = append(allActions, action)
 				for _, att := range action.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[filepath.Base(att.Src)] = true
+						referencedImages[att.Src] = true
 					}
 				}
 			} else {
@@ -231,40 +231,45 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		}
 	}
 
-	imageFiles, err := os.ReadDir(imagesDir)
-	if err == nil {
-		for _, f := range imageFiles {
-			if f.IsDir() {
-				continue
-			}
-			name := f.Name()
+	err = filepath.Walk(imagesDir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
 
-			// Skip specifically ignored artifacts
-			if ignoredImages[name] {
-				continue
-			}
+		relPath, err := filepath.Rel(imagesDir, path)
+		if err != nil {
+			return nil
+		}
 
-			// Check if referenced in entities
-			if !referencedImages[name] {
-				fmt.Printf("[DANGLING IMAGE] Imagem não referenciada por nenhuma entidade: %s\n", name)
-				danglingImages++
-			}
+		relPath = filepath.ToSlash(relPath)
+		name := info.Name()
 
-			// Check naming convention
-			validPrefix := false
-			expectedPrefixes := []string{"action-", "work-", "agent-"}
-			for _, p := range expectedPrefixes {
-				if strings.HasPrefix(name, p) {
-					validPrefix = true
-					break
-				}
-			}
-			if !validPrefix {
-				fmt.Printf("[NAMING ERROR] Imagem %s não possui prefixo válido (action-, work-, agent-)\n", name)
-				namingViolations++
+		if ignoredImages[name] || ignoredImages[relPath] {
+			return nil
+		}
+
+		if !referencedImages[relPath] && !referencedImages[name] {
+			fmt.Printf("[DANGLING IMAGE] Imagem não referenciada por nenhuma entidade: %s\\n", relPath)
+			danglingImages++
+		}
+
+		validPrefix := false
+		expectedPrefixes := []string{"action-", "work-", "agent-"}
+		for _, p := range expectedPrefixes {
+			if strings.HasPrefix(name, p) {
+				validPrefix = true
+				break
 			}
 		}
-	}
+		if !validPrefix {
+			fmt.Printf("[NAMING ERROR] Imagem %s não possui prefixo válido (action-, work-, agent-)\\n", relPath)
+			namingViolations++
+		}
+		return nil
+	})
 
 	fmt.Printf("=== AUDIT REPORT ===\n")
 	fmt.Printf("Broken Links: %d\n", brokenLinks)
@@ -281,18 +286,17 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 
 // buildHeuristicSourceMap is a helper for the auditor
 func buildHeuristicSourceMap(dir string) (map[string]string, error) {
-	files, err := os.ReadDir(dir)
-	if err != nil {
-		return nil, err
-	}
 	sourceMap := make(map[string]string)
-	for _, f := range files {
-		if f.IsDir() {
-			continue
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
 		}
-		fBase := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
-		fNorm := strings.ReplaceAll(fBase, "_", "-")
-		sourceMap[fNorm] = f.Name()
-	}
-	return sourceMap, nil
+		if !info.IsDir() {
+			fBase := strings.TrimSuffix(info.Name(), filepath.Ext(info.Name()))
+			fNorm := strings.ReplaceAll(fBase, "_", "-")
+			sourceMap[fNorm] = info.Name()
+		}
+		return nil
+	})
+	return sourceMap, err
 }
