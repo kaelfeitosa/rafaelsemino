@@ -53,7 +53,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				agents[agent.ID] = true
 				for _, att := range agent.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+						referencedImages[filepath.Base(att.Src)] = true
 					}
 				}
 			} else {
