@@ -111,6 +111,11 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 			for _, match := range matches {
 				if len(match) > 1 {
 					imgSrc := string(match[1])
+					// Skip nested wiki-style images like ![alt](![[path]])
+					// as they are handled by the reWiki regex.
+					if strings.HasPrefix(imgSrc, "![[") {
+						continue
+					}
 					// Also handles nested wiki links like ![alt]([[path]])
 					if strings.HasPrefix(imgSrc, "[[") && strings.HasSuffix(imgSrc, "]]") {
 						imgSrc = strings.TrimSuffix(strings.TrimPrefix(imgSrc, "[["), "]]")
