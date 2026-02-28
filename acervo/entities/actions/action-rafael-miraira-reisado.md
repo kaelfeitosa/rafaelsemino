@@ -3,6 +3,7 @@ id: action-rafael-miraira-reisado
 title: Intérprete (Reisado) na Reitoria e Auditório do IFCE
 category: outro
 format: outro
+label: Mestres do Mundo (2016)
 location: Fortaleza, CE
 performed_by: '[[agent-rafael-semino]]'
 my_role: Intérprete (Reisado)
@@ -23,7 +24,4 @@ Rafael Semino realizou apresentações da dança dramática de Reisado com o Gru
 
 ![Intérprete (Reisado) na Reitoria e Auditório do IFCE, imagem 1](../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-001.png)
 
-![Intérprete (Reisado) na Reitoria e Auditório do IFCE, imagem 2](../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-002.png)
-
-![Intérprete (Reisado) na Reitoria e Auditório do IFCE, imagem 1](../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-001.png)
 ![Intérprete (Reisado) na Reitoria e Auditório do IFCE, imagem 2](../../media/images/action-rafael-miraira-reisado/action-rafael-miraira-reisado-002.png)

@@ -3,6 +3,7 @@ id: action-rafael-miraira-caninha-verde
 title: Intérprete (Caninha Verde) no Mercado dos Peixes
 category: outro
 format: outro
+label: Mestres do Mundo (2016)
 location: Fortaleza, CE
 performed_by: '[[agent-rafael-semino]]'
 my_role: Intérprete (Caninha Verde)

@@ -19,7 +19,7 @@ var (
 	wikiImageRegex = regexp.MustCompile(`!\[\[(.*?)\]\]`)
 
 	validWorkTypes = map[string]bool{
-		"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true,
+		"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true, "audiovisual": true, "livro": true, "empresa": true,
 	}
 	validActionCategories = map[string]bool{
 		"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
@@ -169,8 +169,9 @@ func validateAttachmentsSync(path string, attachments []domain.Attachment, body 
 	yamlImages := make(map[string]bool)
 	for _, att := range attachments {
 		if att.Type == "image" && att.Src != "" {
-			yamlImages[att.Src] = true
-			if !bodyImages[att.Src] {
+			baseSrc := filepath.Base(att.Src)
+			yamlImages[baseSrc] = true
+			if !bodyImages[baseSrc] {
 				return fmt.Errorf("ERRO (%s): Imagem '%s' está em attachments YAML mas não no corpo do Markdown. Execute 'acervo sync-images --mode=yaml-to-body'", path, att.Src)
 			}
 		}

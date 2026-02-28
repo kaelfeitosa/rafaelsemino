@@ -2,7 +2,7 @@
 description: Festival Asu onde o espetáculo O Reino de Aspan foi apresentado.
 id: work-asu
 title: Festival Asu
-type: evento
+type: outro
 year: 2017
 ---
 

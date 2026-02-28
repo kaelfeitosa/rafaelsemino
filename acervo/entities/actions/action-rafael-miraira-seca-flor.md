@@ -3,6 +3,7 @@ id: action-rafael-miraira-seca-flor
 title: Intérprete em Encontro Mestres do Mundo (2016)
 category: outro
 format: outro
+label: Mestres do Mundo (2016)
 location: Fortaleza, CE
 performed_by: '[[agent-rafael-semino]]'
 my_role: Criador e Intérprete

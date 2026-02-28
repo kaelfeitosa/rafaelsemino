@@ -22,6 +22,3 @@ Quatro contos baseados em escrevivências e itãs de Exu, consolidando a investi
 ![Contos de Exu, imagem 1](../../media/images/work-contos-de-exu/work-contos-de-exu-001.png)
 
 ![Contos de Exu, imagem 2](../../media/images/work-contos-de-exu/work-contos-de-exu-002.png)
-
-![Contos de Exu, imagem 1](../../media/images/work-contos-de-exu/work-contos-de-exu-001.png)
-![Contos de Exu, imagem 2](../../media/images/work-contos-de-exu/work-contos-de-exu-002.png)
