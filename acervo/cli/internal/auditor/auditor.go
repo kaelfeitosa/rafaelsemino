@@ -95,26 +95,35 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 
 		// Also parse markdown body for referenced images
 		if len(parts) == 3 {
-			matches := re.FindAllSubmatch(parts[2], -1)
-			for _, match := range matches {
-				if len(match) > 1 {
-					imgSrc := string(match[1])
-					// Handle wiki links e.g., ![[image.jpg|300]] or standard URLs
-					if strings.HasPrefix(imgSrc, "[") && strings.HasSuffix(imgSrc, "]") {
-						imgSrc = strings.TrimPrefix(strings.TrimSuffix(imgSrc, "]"), "[")
-						imgSrc = strings.Split(imgSrc, "|")[0]
-					}
-					referencedImages[filepath.Base(imgSrc)] = true
+			body := parts[2]
+
+			// Helper to process and add image source
+			addImageSrc := func(src string) {
+				// Handle wiki-style resizing syntax like `image.jpg|300`
+				src = strings.Split(src, "|")[0]
+				if src != "" {
+					referencedImages[filepath.Base(src)] = true
 				}
 			}
 
-			// Handle obsidian wiki image syntax: ![[image.jpg]] or ![[image.jpg|300]]
-			matchesWiki := reWiki.FindAllSubmatch(parts[2], -1)
-			for _, match := range matchesWiki {
+			// Handle standard markdown links: ![alt](path)
+			matches := re.FindAllSubmatch(body, -1)
+			for _, match := range matches {
 				if len(match) > 1 {
 					imgSrc := string(match[1])
-					imgSrc = strings.Split(imgSrc, "|")[0]
-					referencedImages[filepath.Base(imgSrc)] = true
+					// Also handles nested wiki links like ![alt]([[path]])
+					if strings.HasPrefix(imgSrc, "[[") && strings.HasSuffix(imgSrc, "]]") {
+						imgSrc = strings.TrimSuffix(strings.TrimPrefix(imgSrc, "[["), "]]")
+					}
+					addImageSrc(imgSrc)
+				}
+			}
+
+			// Handle Obsidian-style wiki links: ![[path]]
+			matchesWiki := reWiki.FindAllSubmatch(body, -1)
+			for _, match := range matchesWiki {
+				if len(match) > 1 {
+					addImageSrc(string(match[1]))
 				}
 			}
 		}
