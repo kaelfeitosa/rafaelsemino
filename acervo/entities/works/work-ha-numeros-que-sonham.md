@@ -2,7 +2,7 @@
 description: Curta-metragem dirigido por Jennifer Vieira.
 id: work-ha-numeros-que-sonham
 title: Há números que sonham
-type: teatro
+type: audiovisual
 year: 2019
 attachments:
   - caption: "Há números que sonham, imagem 1"
@@ -27,7 +27,11 @@ attachments:
     type: image
 ---
 
-Produção audiovisual independente explorando poéticas visuais (Imagens de apoio em destaque). Experiência em atuação audiovisual sob direção de Jennifer Vieira (2019).
+Produção audiovisual independente explorando poéticas visuais. Rafael Semino tem experiência em atuação audiovisual sob direção de Jennifer Vieira (2019).
+
+Na periferia de Fortaleza, Júlia se divide entre ajudar a família, estudar e trabalhar ao mesmo tempo que enfrenta os questionamentos de uma juventude atravessada pela violência.
+
+[Saiba mais sobre o curta "Há números que sonham"](https://portoiracemadasartes.org.br/iii-mostra-filmes-da-porto-apresenta-oito-curtas-metragens-do-preamar-2022/)
 
 ![Há números que sonham, imagem 1](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-001.jpeg)
 
@@ -37,4 +41,10 @@ Produção audiovisual independente explorando poéticas visuais (Imagens de apo
 
 ![Há números que sonham, imagem 4](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-004.jpeg)
 
+![Há números que sonham, imagem 5](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-005.jpeg)
+
+![Há números que sonham, imagem 1](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-001.jpeg)
+![Há números que sonham, imagem 2](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-002.png)
+![Há números que sonham, imagem 3](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png)
+![Há números que sonham, imagem 4](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-004.jpeg)
 ![Há números que sonham, imagem 5](../../media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-005.jpeg)

@@ -23,3 +23,6 @@ Detalhes específicos da participação.
 ![Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 1](../../media/images/action-rafael-pos-ufba/action-rafael-pos-ufba-001.jpeg)
 
 ![Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 2](../../media/images/action-rafael-pos-ufba/action-rafael-pos-ufba-002.jpeg)
+
+![Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 1](../../media/images/action-rafael-pos-ufba/action-rafael-pos-ufba-001.jpeg)
+![Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 2](../../media/images/action-rafael-pos-ufba/action-rafael-pos-ufba-002.jpeg)

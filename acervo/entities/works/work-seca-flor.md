@@ -1,9 +1,11 @@
 ---
-description: Cultura popular e manifestações periféricas sob o guarda-chuva do Grupo Mira Ira. Também conhecido ou referenciado como "Flor do Deserto".
+description: Cultura popular e manifestações do Grupo Mira Ira.
 id: work-seca-flor
-title: Seca Flor
+title: Flor do Deserto
 type: teatro
 year: 2016
 ---
 
-Uma das atuações performáticas mais extensas no currículo inicial de Rafael, voltado ao Reisado e às tradições cearenses. O espetáculo é por vezes citado como "Flor do Deserto" em registros de memória do artista.
+Uma das atuações voltado ao Reisado e às tradições cearenses. Rafael Semino foi ator. 
+
+Flor do Deserto é um espetáculo cênico musical inspirado na obra teatral “O auto do Caldeirão”, de Oswald Barroso. O espetáculo traduz, por meio de metáforas dançantes e musicais, as “Flores” que foram plantadas no Cariri para o mundo, por meio de Padre Cícero Romão e do Beato Zé Lourenço, nas tantas práticas rurais, territórios e movimentos, buscando fazer deste um mundo melhor, um mundo no qual caiba, principalmente, seu povo simples, humilde e romeiro, que possui a virtude da coragem e da resistência humana e busca fazer florir outros jardins de flores em meio ao deserto onde vivem.

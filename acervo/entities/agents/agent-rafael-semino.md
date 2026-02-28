@@ -82,3 +82,13 @@ Além do palco, Rafael acumula experiências como roteirista, produtor, assisten
 ![agent-rafael-semino, imagem 8](../../media/images/agent-rafael-semino/agent-rafael-semino-008.jpeg)
 
 ![agent-rafael-semino, imagem 9](../../media/images/agent-rafael-semino/agent-rafael-semino-009.jpeg)
+
+![agent-rafael-semino, imagem 1](../../media/images/agent-rafael-semino/agent-rafael-semino-001.jpeg)
+![agent-rafael-semino, imagem 2](../../media/images/agent-rafael-semino/agent-rafael-semino-002.jpeg)
+![agent-rafael-semino, imagem 3](../../media/images/agent-rafael-semino/agent-rafael-semino-003.jpeg)
+![agent-rafael-semino, imagem 4](../../media/images/agent-rafael-semino/agent-rafael-semino-004.jpeg)
+![agent-rafael-semino, imagem 5](../../media/images/agent-rafael-semino/agent-rafael-semino-005.jpeg)
+![agent-rafael-semino, imagem 6](../../media/images/agent-rafael-semino/agent-rafael-semino-006.jpeg)
+![agent-rafael-semino, imagem 7](../../media/images/agent-rafael-semino/agent-rafael-semino-007.jpeg)
+![agent-rafael-semino, imagem 8](../../media/images/agent-rafael-semino/agent-rafael-semino-008.jpeg)
+![agent-rafael-semino, imagem 9](../../media/images/agent-rafael-semino/agent-rafael-semino-009.jpeg)

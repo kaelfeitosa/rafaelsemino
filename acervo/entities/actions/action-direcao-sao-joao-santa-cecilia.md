@@ -23,3 +23,6 @@ attachments:
 ![Direção de São João na Escola Santa Cecília, imagem 1](../../media/images/action-direcao-sao-joao-santa-cecilia/action-direcao-sao-joao-santa-cecilia-001.jpeg)
 
 ![Direção de São João na Escola Santa Cecília, imagem 2](../../media/images/action-direcao-sao-joao-santa-cecilia/action-direcao-sao-joao-santa-cecilia-002.jpeg)
+
+![Direção de São João na Escola Santa Cecília, imagem 1](../../media/images/action-direcao-sao-joao-santa-cecilia/action-direcao-sao-joao-santa-cecilia-001.jpeg)
+![Direção de São João na Escola Santa Cecília, imagem 2](../../media/images/action-direcao-sao-joao-santa-cecilia/action-direcao-sao-joao-santa-cecilia-002.jpeg)

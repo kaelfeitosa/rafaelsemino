@@ -20,3 +20,5 @@ attachments:
 Participação como pesquisador no Laboratório de Pesquisa do Centro Cultural Bom Jardim (CCBJ), com carga horária de 300 horas, focado no desenvolvimento do espetáculo "Exu não vem hoje".
 
 ![Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje), imagem 1](../../media/images/action-rafael-ccbj-exu/action-rafael-ccbj-exu-001.jpeg)
+
+![Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje), imagem 1](../../media/images/action-rafael-ccbj-exu/action-rafael-ccbj-exu-001.jpeg)

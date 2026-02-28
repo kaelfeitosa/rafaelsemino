@@ -23,3 +23,6 @@ Detalhes específicos da participação.
 ![Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE), imagem 1](../../media/images/action-colaboracao-curso-bece-2023/action-colaboracao-curso-bece-2023-001.jpeg)
 
 ![Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE), imagem 2](../../media/images/action-colaboracao-curso-bece-2023/action-colaboracao-curso-bece-2023-002.jpeg)
+
+![Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE), imagem 1](../../media/images/action-colaboracao-curso-bece-2023/action-colaboracao-curso-bece-2023-001.jpeg)
+![Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE), imagem 2](../../media/images/action-colaboracao-curso-bece-2023/action-colaboracao-curso-bece-2023-002.jpeg)

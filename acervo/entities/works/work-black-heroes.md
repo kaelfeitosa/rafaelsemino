@@ -25,3 +25,8 @@ Entidade Black Heroes (ID: work-black-heroes).
 ![Black Heroes, imagem 2](../../media/images/work-black-heroes/work-black-heroes-002.jpeg)
 
 ![Black Heroes, imagem 3](../../media/images/work-black-heroes/work-black-heroes-003.png)
+
+
+![Black Heroes, imagem 1](../../media/images/work-black-heroes/work-black-heroes-001.jpeg)
+![Black Heroes, imagem 2](../../media/images/work-black-heroes/work-black-heroes-002.jpeg)
+![Black Heroes, imagem 3](../../media/images/work-black-heroes/work-black-heroes-003.png)

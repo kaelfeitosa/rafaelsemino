@@ -27,3 +27,6 @@ Hoje, celebrando seus três primeiros anos de vida, o Coletivo Farol Novo é mar
 ![agent-coletivo-farol-novo, imagem 1](../../media/images/agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg)
 
 ![agent-coletivo-farol-novo, imagem 2](../../media/images/agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg)
+
+![agent-coletivo-farol-novo, imagem 1](../../media/images/agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg)
+![agent-coletivo-farol-novo, imagem 2](../../media/images/agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg)

@@ -1,6 +1,6 @@
 ---
 id: action-prof-paulo-petrola
-title: Professor de Artes na Escola Paulo Petrola
+title: Professor de Artes na Escola Municipal Paulo Petrola
 category: formacao
 format: oficina
 label: Docência na Escola Paulo Petrola
@@ -10,4 +10,4 @@ date_start: "2020-01-01"
 description: Atuação no Programa Mais Educação, ministrando aulas de teatro e reforço de Português e Matemática no contraturno escolar.
 ---
 
-Atuação no Programa Mais Educação, ministrando aulas de teatro e reforço de Português e Matemática no contraturno escolar.
+Atuação no Programa Mais Educação, ministrando aulas de teatro e reforço de Português e Matemática no contraturno escolar, durante o ano de 2019.

@@ -44,3 +44,9 @@ Ministração de cursos de teatro e cinema e atuação na Escola Sebastiana Garc
 ![Ensino de Artes e Cinema em Angola, imagem 4](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-004.jpeg)
 
 ![Ensino de Artes e Cinema em Angola, imagem 5](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-005.png)
+
+![Ensino de Artes e Cinema em Angola, imagem 1](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-001.png)
+![Ensino de Artes e Cinema em Angola, imagem 2](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-002.png)
+![Ensino de Artes e Cinema em Angola, imagem 3](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-003.png)
+![Ensino de Artes e Cinema em Angola, imagem 4](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-004.jpeg)
+![Ensino de Artes e Cinema em Angola, imagem 5](../../media/images/action-rafael-ensino-angola-2018/action-rafael-ensino-angola-2018-005.png)

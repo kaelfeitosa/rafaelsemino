@@ -9,7 +9,7 @@ my_role: Professor
 date_start: "2023"
 description: Atuação como professor do Projeto Abarca e do Percurso Básico de
   Teatro, desenvolvendo processos pedagógicos voltados à formação artística em
-  diferentes territórios, incluindo Itapipoca, Vicente Pinzón e Genibaú.
+  diferentes territórios, incluindo Itapipoca, Vicente Pinzón e Genibaú, bem como na sede do Porto Iracema das Artes.
 attachments:
   - caption: "Professor em Percurso Básico de Teatro, imagem 1"
     role: documentation
@@ -37,4 +37,9 @@ Atuação como professor do Projeto Abarca e do Percurso Básico de Teatro, dese
 
 ![Professor em Percurso Básico de Teatro, imagem 3](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-003.jpeg)
 
+![Professor em Percurso Básico de Teatro, imagem 4](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-004.jpeg)
+
+![Professor em Percurso Básico de Teatro, imagem 1](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-001.png)
+![Professor em Percurso Básico de Teatro, imagem 2](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-002.png)
+![Professor em Percurso Básico de Teatro, imagem 3](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-003.jpeg)
 ![Professor em Percurso Básico de Teatro, imagem 4](../../media/images/action-prof-percurso-basico/action-prof-percurso-basico-004.jpeg)

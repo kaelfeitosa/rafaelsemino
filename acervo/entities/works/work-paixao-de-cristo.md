@@ -19,3 +19,7 @@ Entidade Paixao De Cristo (ID: work-paixao-de-cristo).
 ![Paixao De Cristo, imagem 1](../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-001.jpeg)
 
 ![Paixao De Cristo, imagem 2](../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-002.jpeg)
+
+
+![Paixao De Cristo, imagem 1](../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-001.jpeg)
+![Paixao De Cristo, imagem 2](../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-002.jpeg)

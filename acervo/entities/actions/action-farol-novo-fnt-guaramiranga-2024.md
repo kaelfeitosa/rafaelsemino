@@ -36,3 +36,8 @@ Detalhes específicos da participação.
 ![Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 3](../../media/images/action-farol-novo-fnt-guaramiranga-2024/action-farol-novo-fnt-guaramiranga-2024-003.jpeg)
 
 ![Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 4](../../media/images/action-farol-novo-fnt-guaramiranga-2024/action-farol-novo-fnt-guaramiranga-2024-004.jpeg)
+
+![Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 1](../../media/images/action-farol-novo-fnt-guaramiranga-2024/action-farol-novo-fnt-guaramiranga-2024-001.jpeg)
+![Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 2](../../media/images/action-farol-novo-fnt-guaramiranga-2024/action-farol-novo-fnt-guaramiranga-2024-002.jpeg)
+![Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 3](../../media/images/action-farol-novo-fnt-guaramiranga-2024/action-farol-novo-fnt-guaramiranga-2024-003.jpeg)
+![Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 4](../../media/images/action-farol-novo-fnt-guaramiranga-2024/action-farol-novo-fnt-guaramiranga-2024-004.jpeg)

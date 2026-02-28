@@ -50,3 +50,10 @@ Participação como pesquisador e aluno no Laboratório de Criação da Escola P
 ![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 5](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-005.jpeg)
 
 ![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 6](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-006.jpeg)
+
+![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 1](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-001.jpeg)
+![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 2](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-002.jpeg)
+![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 3](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-003.jpeg)
+![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 4](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-004.jpeg)
+![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 5](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-005.jpeg)
+![Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema, imagem 6](../../media/images/action-rafael-porto-iracema-2022/action-rafael-porto-iracema-2022-006.jpeg)
