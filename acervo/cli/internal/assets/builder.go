@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"image"
 	_ "image/jpeg"
-	_ "image/png"
+	"image/png"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/dsoprea/go-exif/v2"
 )
 
 const (
@@ -205,32 +207,34 @@ func isUpToDate(src, dest string) bool {
 }
 
 func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
-	// 1. Decode config to check width
+	args := []string{
+		"-q", WebPQuality,
+	}
+
+	// 1. Resolve orientation and rotate if necessary
+	orientation := getOrientation(srcPath)
+	if orientation > 1 {
+		fmt.Printf("🔄 Rotating image (Orientation: %d): %s\n", orientation, filepath.Base(srcPath))
+		// For simplicity and to avoid too many temporary files, we'll decode, rotate,
+		// and encode to a temporary JPEG that cwebp will then consume.
+		rotatedPath, err := rotateAndSaveTemp(srcPath, orientation)
+		if err != nil {
+			return fmt.Errorf("rotating image: %w", err)
+		}
+		defer os.Remove(rotatedPath)
+		srcPath = rotatedPath
+	}
+
+	// 2. Decode config to check width of (possibly rotated) source
 	srcFile, err := os.Open(srcPath)
 	if err != nil {
 		return err
 	}
-	// Defer closing with combined error handling
-	defer func() {
-		if cerr := srcFile.Close(); cerr != nil {
-			if err == nil {
-				err = fmt.Errorf("closing source file: %w", cerr)
-			} else {
-				// Don't overwrite the primary error, but wrap it
-				err = fmt.Errorf("%w; additionally failed to close source file: %v", err, cerr)
-			}
-		}
-	}()
+	defer srcFile.Close()
 
-	// We only need to decode config, not the whole image
-	config, format, err := image.DecodeConfig(srcFile)
+	config, _, err := image.DecodeConfig(srcFile)
 	if err != nil {
 		return fmt.Errorf("decoding image config for %s: %w", srcPath, err)
-	}
-	_ = format // For now we don't use it, but good for debug
-
-	args := []string{
-		"-q", WebPQuality,
 	}
 
 	if config.Width > MaxImageWidth {
@@ -248,4 +252,106 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 	}
 
 	return nil
+}
+
+func getOrientation(path string) int {
+	rawExif, err := exif.SearchFileAndExtractExif(path)
+	if err != nil {
+		return 1
+	}
+
+	entries, err := exif.GetFlatExifData(rawExif)
+	if err != nil {
+		return 1
+	}
+
+	for _, entry := range entries {
+		if entry.TagName == "Orientation" {
+			if val, ok := entry.Value.([]uint16); ok && len(val) > 0 {
+				return int(val[0])
+			}
+			if val, ok := entry.Value.(int); ok {
+				return val
+			}
+		}
+	}
+	return 1
+}
+
+func rotateAndSaveTemp(srcPath string, orientation int) (string, error) {
+	file, err := os.Open(srcPath)
+	if err != nil {
+		return "", err
+	}
+	defer file.Close()
+
+	img, _, err := image.Decode(file)
+	if err != nil {
+		return "", err
+	}
+
+	var rotated image.Image
+	switch orientation {
+	case 3: // 180 degrees
+		rotated = rotate180(img)
+	case 6: // 90 degrees CW
+		rotated = rotate90(img)
+	case 8: // 270 degrees CW (90 CCW)
+		rotated = rotate270(img)
+	default:
+		return srcPath, nil
+	}
+
+	tmpFile, err := os.CreateTemp("", "acervo-rotated-*.png")
+	if err != nil {
+		return "", err
+	}
+	tmpPath := tmpFile.Name()
+	tmpFile.Close() // Close so we can write with png.Encode
+
+	out, err := os.Create(tmpPath)
+	if err != nil {
+		return "", err
+	}
+	defer out.Close()
+
+	if err := png.Encode(out, rotated); err != nil {
+		os.Remove(tmpPath)
+		return "", err
+	}
+
+	return tmpPath, nil
+}
+
+func rotate90(img image.Image) image.Image {
+	bounds := img.Bounds()
+	newImg := image.NewRGBA(image.Rect(0, 0, bounds.Dy(), bounds.Dx()))
+	for x := bounds.Min.X; x < bounds.Max.X; x++ {
+		for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+			newImg.Set(bounds.Max.Y-y-1, x, img.At(x, y))
+		}
+	}
+	return newImg
+}
+
+func rotate180(img image.Image) image.Image {
+	bounds := img.Bounds()
+	newImg := image.NewRGBA(bounds)
+	for x := bounds.Min.X; x < bounds.Max.X; x++ {
+		for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+			newImg.Set(bounds.Max.X-x-1, bounds.Max.Y-y-1, img.At(x, y))
+		}
+	}
+	return newImg
+}
+
+func rotate270(img image.Image) image.Image {
+	bounds := img.Bounds()
+	newImg := image.NewRGBA(image.Rect(0, 0, bounds.Dy(), bounds.Dx()))
+	for x := bounds.Min.X; x < bounds.Max.X; x++ {
+		for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+			newImg.Set(y, bounds.Max.X-x-1, img.At(x, y))
+		}
+	}
+	return newImg
 }

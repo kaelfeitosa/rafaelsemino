@@ -3,6 +3,7 @@ module acervo
 go 1.25.6
 
 require (
+	github.com/dsoprea/go-exif/v2 v2.0.0-20200604193436-ca8584a0e1c4
 	github.com/dsoprea/go-png-image-structure v0.0.0-20210512210324-29b889a6093d
 	github.com/spf13/cobra v1.10.2
 	gopkg.in/yaml.v3 v3.0.1
@@ -10,7 +11,6 @@ require (
 )
 
 require (
-	github.com/dsoprea/go-exif/v2 v2.0.0-20200604193436-ca8584a0e1c4 // indirect
 	github.com/dsoprea/go-logging v0.0.0-20200517223158-a10564966e9d // indirect
 	github.com/dsoprea/go-utility v0.0.0-20200711062821-fab8125e9bdf // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
