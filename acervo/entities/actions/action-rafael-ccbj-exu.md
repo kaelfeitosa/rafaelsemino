@@ -10,11 +10,13 @@ my_role: Pesquisador
 work_id: '[[work-exu-nao-vem-hoje]]'
 date_start: "2023"
 description: Laboratório de pesquisa - Exu não vem hoje (300h).
+attachments:
+  - caption: "Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje), imagem 1"
+    role: documentation
+    src: action-rafael-ccbj-exu/action-rafael-ccbj-exu-001.jpeg
+    type: image
 ---
-
-
-
-
 
 Participação como pesquisador no Laboratório de Pesquisa do Centro Cultural Bom Jardim (CCBJ), com carga horária de 300 horas, focado no desenvolvimento do espetáculo "Exu não vem hoje".
 
+![Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje), imagem 1](../../media/images/action-rafael-ccbj-exu/action-rafael-ccbj-exu-001.jpeg)

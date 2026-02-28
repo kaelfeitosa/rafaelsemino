@@ -5,40 +5,43 @@ id: agent-rafael-semino
 kind: person
 name: Francisco Rafael da Silva Semino
 attachments:
-  - caption: Francisco Rafael da Silva Semino, imagem 1
+  - caption: "agent-rafael-semino, imagem 1"
     role: documentation
-    src: action-produtor-cultural-001.png
+    src: agent-rafael-semino/agent-rafael-semino-001.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 2
+  - caption: "agent-rafael-semino, imagem 2"
     role: documentation
-    src: agent-rafael-semino-001.jpeg
+    src: agent-rafael-semino/agent-rafael-semino-002.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 3
+  - caption: "agent-rafael-semino, imagem 3"
     role: documentation
-    src: agent-rafael-semino-perfil-academico.jpeg
+    src: agent-rafael-semino/agent-rafael-semino-003.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 4
+  - caption: "agent-rafael-semino, imagem 4"
     role: documentation
-    src: agent-rafael-semino-perfil-portifolio-001.jpeg
+    src: agent-rafael-semino/agent-rafael-semino-004.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 5
+  - caption: "agent-rafael-semino, imagem 5"
     role: documentation
-    src: agent-rafael-semino-perfil-portifolio-002.jpeg
+    src: agent-rafael-semino/agent-rafael-semino-005.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 6
+  - caption: "agent-rafael-semino, imagem 6"
     role: documentation
-    src: work-blackheroes-001.jpeg
+    src: agent-rafael-semino/agent-rafael-semino-006.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 7
+  - caption: "agent-rafael-semino, imagem 7"
     role: documentation
-    src: work-blackheroes-002.jpeg
+    src: agent-rafael-semino/agent-rafael-semino-007.jpeg
     type: image
-  - caption: Francisco Rafael da Silva Semino, imagem 8
+  - caption: "agent-rafael-semino, imagem 8"
     role: documentation
-    src: work-blackheroes-003.png
+    src: agent-rafael-semino/agent-rafael-semino-008.jpeg
+    type: image
+  - caption: "agent-rafael-semino, imagem 9"
+    role: documentation
+    src: agent-rafael-semino/agent-rafael-semino-009.jpeg
     type: image
 ---
-
 
 Francisco Rafael da Silva Semino atua há mais de dez anos no campo das artes cênicas como Ator, Diretor, Dramaturgo, Produtor, Pesquisador e Professor de Teatro.
 
@@ -62,11 +65,20 @@ Sua trajetória profissional abrange forte atuação no ensino de teatro e artes
 ### Audiovisual e Criação Literária
 Além do palco, Rafael acumula experiências como roteirista, produtor, assistente de produção e de direção audiovisual. É também autor da obra literária/infantil "Contos de Exu", que derivou das experimentações cênicas e investigações do corpo e ancestralidade forjados dentro do Laboratório de Criação Cênica em 2022.
 
-![Francisco Rafael da Silva Semino, imagem 1](../../media/images/action-produtor-cultural-001.png)
-![Francisco Rafael da Silva Semino, imagem 2](../../media/images/agent-rafael-semino-001.jpeg)
-![Francisco Rafael da Silva Semino, imagem 3](../../media/images/agent-rafael-semino-perfil-academico.jpeg)
-![Francisco Rafael da Silva Semino, imagem 4](../../media/images/agent-rafael-semino-perfil-portifolio-001.jpeg)
-![Francisco Rafael da Silva Semino, imagem 5](../../media/images/agent-rafael-semino-perfil-portifolio-002.jpeg)
-![Francisco Rafael da Silva Semino, imagem 6](../../media/images/work-blackheroes-001.jpeg)
-![Francisco Rafael da Silva Semino, imagem 7](../../media/images/work-blackheroes-002.jpeg)
-![Francisco Rafael da Silva Semino, imagem 8](../../media/images/work-blackheroes-003.png)
+![agent-rafael-semino, imagem 1](../../media/images/agent-rafael-semino/agent-rafael-semino-001.jpeg)
+
+![agent-rafael-semino, imagem 2](../../media/images/agent-rafael-semino/agent-rafael-semino-002.jpeg)
+
+![agent-rafael-semino, imagem 3](../../media/images/agent-rafael-semino/agent-rafael-semino-003.jpeg)
+
+![agent-rafael-semino, imagem 4](../../media/images/agent-rafael-semino/agent-rafael-semino-004.jpeg)
+
+![agent-rafael-semino, imagem 5](../../media/images/agent-rafael-semino/agent-rafael-semino-005.jpeg)
+
+![agent-rafael-semino, imagem 6](../../media/images/agent-rafael-semino/agent-rafael-semino-006.jpeg)
+
+![agent-rafael-semino, imagem 7](../../media/images/agent-rafael-semino/agent-rafael-semino-007.jpeg)
+
+![agent-rafael-semino, imagem 8](../../media/images/agent-rafael-semino/agent-rafael-semino-008.jpeg)
+
+![agent-rafael-semino, imagem 9](../../media/images/agent-rafael-semino/agent-rafael-semino-009.jpeg)

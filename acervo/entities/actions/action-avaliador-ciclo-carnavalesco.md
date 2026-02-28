@@ -10,17 +10,12 @@ my_role: Avaliador
 date_start: "2020-02-01"
 description: Atuação como avaliador do Ciclo Carnavalesco da Avenida Domingos Olímpio em Fortaleza.
 attachments:
-  - caption: 'Registro Documental: Avaliador Ciclo Carnavalesco'
+  - caption: "Avaliador do Ciclo Carnavalesco, imagem 1"
     role: documentation
-    src: action-avaliador-ciclo-carnavalesco-001.jpeg
+    src: action-avaliador-ciclo-carnavalesco/action-avaliador-ciclo-carnavalesco-001.jpeg
     type: image
 ---
 
-
-
-
-
 Atuação de Rafael Semino como avaliador no tradicional Ciclo Carnavalesco da Avenida Domingos Olímpio, Fortaleza, no ano de 2020.
 
-
-![Registro Documental: Avaliador Ciclo Carnavalesco](../../media/images/action-avaliador-ciclo-carnavalesco-001.jpeg)
+![Avaliador do Ciclo Carnavalesco, imagem 1](../../media/images/action-avaliador-ciclo-carnavalesco/action-avaliador-ciclo-carnavalesco-001.jpeg)

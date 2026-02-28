@@ -6,6 +6,4 @@ type: teatro
 year: null
 ---
 
-
 Notas de processo, versões, decisões artísticas.
-

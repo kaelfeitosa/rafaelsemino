@@ -9,9 +9,4 @@ my_role: Mestrando
 date_start: "2022"
 ---
 
-
-
-
-
 Detalhes específicos da participação.
-

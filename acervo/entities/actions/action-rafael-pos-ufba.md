@@ -8,23 +8,18 @@ performed_by: '[[agent-rafael-semino]]'
 my_role: Pós-graduando
 date_start: "2021"
 attachments:
-  - caption: 'Registro Documental: Formacao Ufba'
+  - caption: "Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 1"
     role: documentation
-    src: action-rafael-pos-ufba-pos.jpeg
+    src: action-rafael-pos-ufba/action-rafael-pos-ufba-001.jpeg
     type: image
-  - caption: 'Registro Documental: Formacao Ufba'
+  - caption: "Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 2"
     role: documentation
-    src: action-rafael-pos-ufba-doc.jpeg
+    src: action-rafael-pos-ufba/action-rafael-pos-ufba-002.jpeg
     type: image
 ---
 
-
-
-
-
 Detalhes específicos da participação.
 
+![Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 1](../../media/images/action-rafael-pos-ufba/action-rafael-pos-ufba-001.jpeg)
 
-![Registro Documental: Formacao Ufba](../../media/images/action-rafael-pos-ufba-pos.jpeg)
-
-![Registro Documental: Formacao Ufba](../../media/images/action-rafael-pos-ufba-doc.jpeg)
+![Pós-graduando em Pós-graduação em Teatro do Oprimido, imagem 2](../../media/images/action-rafael-pos-ufba/action-rafael-pos-ufba-002.jpeg)

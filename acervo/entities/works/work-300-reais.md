@@ -1,27 +1,16 @@
 ---
-attachments:
-  - caption: 'Registro Documental: 300 Reais'
-    role: documentation
-    src: work-300-reais-002.png
-    type: image
-  - caption: 'Registro Documental: 300 Reais'
-    role: documentation
-    src: work-300-reais-001.png
-    type: image
-  - caption: 'Registro Documental: 300 Reais'
-    role: documentation
-    src: work-300-reais-003.png
-    type: image
 description: Performance encenada no FIDA (2015).
 id: work-300-reais
 title: 300 Reais
 type: performance
 year: 2015
+attachments:
+  - caption: "300 Reais, imagem 1"
+    role: documentation
+    src: work-300-reais/work-300-reais-001.png
+    type: image
 ---
-
 
 Performance teatral.
 
-![Registro Documental: 300 Reais](../../media/images/work-300-reais-002.png)
-![Registro Documental: 300 Reais](../../media/images/work-300-reais-001.png)
-![Registro Documental: 300 Reais](../../media/images/work-300-reais-003.png)
+![300 Reais, imagem 1](../../media/images/work-300-reais/work-300-reais-001.png)

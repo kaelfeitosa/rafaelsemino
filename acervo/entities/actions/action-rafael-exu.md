@@ -18,41 +18,6 @@ collaborators:
     role: Ator e Sonoplasta
   - name: Felipe Rodrigues Marques
     role: Engenharia técnica e maquinária cênica
-attachments:
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 1
-    role: documentation
-    src: action-rafael-exu-ator-teatro-001.png
-    type: image
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 2
-    role: documentation
-    src: action-rafael-exu-ator-teatro-002.png
-    type: image
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 3
-    role: documentation
-    src: action-rafael-exu-ator-teatro-003.png
-    type: image
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 4
-    role: documentation
-    src: action-rafael-exu-ator-teatro-004.png
-    type: image
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 5
-    role: documentation
-    src: action-rafael-exu-ator-teatro-005.png
-    type: image
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 6
-    role: documentation
-    src: action-rafael-exu-ator-teatro-006.png
-    type: image
-  - caption: Atuação e Co-fundação de Exu Não Vem Hoje, imagem 7
-    role: documentation
-    src: action-rafael-exu-ator-teatro-007.png
-    type: image
 ---
 
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 1](../../media/images/action-rafael-exu-ator-teatro-001.png)
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 2](../../media/images/action-rafael-exu-ator-teatro-002.png)
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 3](../../media/images/action-rafael-exu-ator-teatro-003.png)
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 4](../../media/images/action-rafael-exu-ator-teatro-004.png)
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 5](../../media/images/action-rafael-exu-ator-teatro-005.png)
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 6](../../media/images/action-rafael-exu-ator-teatro-006.png)
-![Atuação e Co-fundação de Exu Não Vem Hoje, imagem 7](../../media/images/action-rafael-exu-ator-teatro-007.png)
+

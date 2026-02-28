@@ -6,28 +6,15 @@ id: agent-coletivo-farol-novo
 kind: collective
 name: Coletivo Farol Novo
 attachments:
-  - caption: Coletivo Farol Novo, imagem 1
+  - caption: "agent-coletivo-farol-novo, imagem 1"
     role: documentation
-    src: agent-coletivo-farol-novo-aniversario-001.jpeg
+    src: agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg
     type: image
-  - caption: Coletivo Farol Novo, imagem 2
+  - caption: "agent-coletivo-farol-novo, imagem 2"
     role: documentation
-    src: agent-coletivo-farol-novo-aniversario-002.jpeg
-    type: image
-  - caption: Coletivo Farol Novo, imagem 3
-    role: documentation
-    src: agent-felipe-marques-001.jpeg
-    type: image
-  - caption: Coletivo Farol Novo, imagem 4
-    role: documentation
-    src: agent-gabriel-franca-001.jpeg
-    type: image
-  - caption: Coletivo Farol Novo, imagem 5
-    role: documentation
-    src: agent-zeis-001.jpeg
+    src: agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg
     type: image
 ---
-
 
 O Coletivo Farol Novo, fundado em 2022 por Rafael Semino e Gabriel França dentro do Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, é uma articulação entre teatro, rito e oralidade. Atualmente o núcleo é composto por Rafael Semino e Felipe Marques.
 
@@ -37,8 +24,6 @@ Em 2023, após vencerem o prêmio "Amarrações Estéticas" da Escola Porto Irac
 
 Hoje, celebrando seus três primeiros anos de vida, o Coletivo Farol Novo é marcado pelo desejo profundo de conceber dramaturgias coletivas e um teatro que dissolva a barreira entre palco e plateia, onde os espectadores convergem ativamente com os atores.
 
-![Coletivo Farol Novo, imagem 1](../../media/images/agent-coletivo-farol-novo-aniversario-001.jpeg)
-![Coletivo Farol Novo, imagem 2](../../media/images/agent-coletivo-farol-novo-aniversario-002.jpeg)
-![Coletivo Farol Novo, imagem 3](../../media/images/agent-felipe-marques-001.jpeg)
-![Coletivo Farol Novo, imagem 4](../../media/images/agent-gabriel-franca-001.jpeg)
-![Coletivo Farol Novo, imagem 5](../../media/images/agent-zeis-001.jpeg)
+![agent-coletivo-farol-novo, imagem 1](../../media/images/agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg)
+
+![agent-coletivo-farol-novo, imagem 2](../../media/images/agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg)

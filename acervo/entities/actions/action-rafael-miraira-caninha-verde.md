@@ -11,9 +11,4 @@ date_start: "2016"
 description: Apresentação de dança dramática de Caninha Verde com o Grupo Mira Ira.
 ---
 
-
-
-
-
 Rafael Semino realizou apresentações da dança dramática de Caninha Verde com o Grupo Mira Ira durante o Encontro Mestres do Mundo.
-

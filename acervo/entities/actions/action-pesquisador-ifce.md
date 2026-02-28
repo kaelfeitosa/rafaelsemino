@@ -9,39 +9,18 @@ my_role: Pesquisador
 date_start: "2023"
 description: Atuação como pesquisador no Grupo Miraira durante a licenciatura.
 attachments:
-  - caption: 'Registro Documental: Pesquisador Ifce'
+  - caption: "Pesquisador no IFCE, imagem 1"
     role: documentation
-    src: action-pesquisador-ifce-registro.jpeg
+    src: action-pesquisador-ifce/action-pesquisador-ifce-001.jpeg
     type: image
-  - caption: 'Registro Documental: Pesquisador Ifce'
+  - caption: "Pesquisador no IFCE, imagem 2"
     role: documentation
-    src: action-pesquisador-ifce-doc.jpeg
-    type: image
-  - caption: Pesquisador no IFCE, imagem 3
-    role: documentation
-    src: agent-grupo-miraira-001.png
-    type: image
-  - caption: Pesquisador no IFCE, imagem 4
-    role: documentation
-    src: agent-grupo-miraira-002.png
-    type: image
-  - caption: Pesquisador no IFCE, imagem 5
-    role: documentation
-    src: agent-grupo-miraira-003.png
+    src: action-pesquisador-ifce/action-pesquisador-ifce-002.jpeg
     type: image
 ---
 
-
-
-
-
 Participação como pesquisador no IFCE.
 
+![Pesquisador no IFCE, imagem 1](../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-001.jpeg)
 
-![Registro Documental: Pesquisador Ifce](../../media/images/action-pesquisador-ifce-registro.jpeg)
-
-![Registro Documental: Pesquisador Ifce](../../media/images/action-pesquisador-ifce-doc.jpeg)
-
-![Pesquisador no IFCE, imagem 3](../../media/images/agent-grupo-miraira-001.png)
-![Pesquisador no IFCE, imagem 4](../../media/images/agent-grupo-miraira-002.png)
-![Pesquisador no IFCE, imagem 5](../../media/images/agent-grupo-miraira-003.png)
+![Pesquisador no IFCE, imagem 2](../../media/images/action-pesquisador-ifce/action-pesquisador-ifce-002.jpeg)

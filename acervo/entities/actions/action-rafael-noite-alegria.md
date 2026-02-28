@@ -10,9 +10,4 @@ work_id: '[[work-noite-de-alegria]]'
 date_start: "2022"
 ---
 
-
-
-
-
 Detalhes específicos da participação.
-

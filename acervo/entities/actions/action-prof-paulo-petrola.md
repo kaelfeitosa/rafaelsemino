@@ -10,7 +10,4 @@ date_start: "2020-01-01"
 description: Atuação no Programa Mais Educação, ministrando aulas de teatro e reforço de Português e Matemática no contraturno escolar.
 ---
 
-
-
-
 Atuação no Programa Mais Educação, ministrando aulas de teatro e reforço de Português e Matemática no contraturno escolar.
