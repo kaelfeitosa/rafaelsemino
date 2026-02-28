@@ -112,6 +112,19 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 			for _, match := range matches {
 				if len(match) > 1 {
 					imgSrc := string(match[1])
+
+					// Trim whitespace and parse path, handling optional titles and angle-bracket-enclosed paths.
+					imgSrc = strings.TrimSpace(imgSrc)
+					if len(imgSrc) > 0 && imgSrc[0] == '<' {
+						if end := strings.IndexByte(imgSrc, '>'); end > 0 {
+							imgSrc = imgSrc[1:end]
+						}
+					} else {
+						if end := strings.IndexAny(imgSrc, " \t\n"); end != -1 {
+							imgSrc = imgSrc[:end]
+						}
+					}
+
 					// Skip nested wiki-style images like ![alt](![[path]])
 					// as they are handled by the reWiki regex.
 					if strings.HasPrefix(imgSrc, "![[") {
