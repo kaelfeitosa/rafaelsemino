@@ -156,6 +156,19 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	fmt.Println("--- DANGLING & NAMING AUDIT ---")
 	danglingImages := 0
 	namingViolations := 0
+
+	// Parse optional ignored images from environment variable (comma-separated)
+	ignoredImages := make(map[string]bool)
+	ignoredEnv := os.Getenv("ACERVO_IGNORE_IMAGES")
+	if ignoredEnv != "" {
+		for _, img := range strings.Split(ignoredEnv, ",") {
+			ignoredImages[strings.TrimSpace(img)] = true
+		}
+	} else {
+		// Default to ignoring the protected test artifact
+		ignoredImages["test-robust.jpeg"] = true
+	}
+
 	imageFiles, err := os.ReadDir(imagesDir)
 	if err == nil {
 		for _, f := range imageFiles {
@@ -164,8 +177,8 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 			}
 			name := f.Name()
 
-			// Skip protected test artifact
-			if name == "test-robust.jpeg" {
+			// Skip specifically ignored artifacts
+			if ignoredImages[name] {
 				continue
 			}
 
