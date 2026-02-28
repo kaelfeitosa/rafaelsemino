@@ -15,8 +15,9 @@ import (
 )
 
 var (
-	re     = regexp.MustCompile(`!\[.*?\]\((.*?)\)`)
-	reWiki = regexp.MustCompile(`!\[\[(.*?)\]\]`)
+	re           = regexp.MustCompile(`!\[.*?\]\((.*?)\)`)
+	reWiki       = regexp.MustCompile(`!\[\[(.*?)\]\]`)
+	reNestedWiki = regexp.MustCompile(`^\[\[(.*)\]\]$`)
 )
 
 func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
@@ -117,8 +118,8 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 						continue
 					}
 					// Also handles nested wiki links like ![alt]([[path]])
-					if strings.HasPrefix(imgSrc, "[[") && strings.HasSuffix(imgSrc, "]]") {
-						imgSrc = strings.TrimSuffix(strings.TrimPrefix(imgSrc, "[["), "]]")
+					if nestedMatch := reNestedWiki.FindStringSubmatch(imgSrc); nestedMatch != nil {
+						imgSrc = nestedMatch[1]
 					}
 					addImageSrc(imgSrc)
 				}
