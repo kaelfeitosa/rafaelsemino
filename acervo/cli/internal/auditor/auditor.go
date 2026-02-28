@@ -27,6 +27,15 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	var allWorks []domain.Work
 	referencedImages := make(map[string]bool)
 
+	// Helper to process and add image source
+	addImageSrc := func(src string) {
+		// Handle wiki-style resizing syntax like `image.jpg|300`
+		src = strings.Split(src, "|")[0]
+		if src != "" {
+			referencedImages[filepath.Base(src)] = true
+		}
+	}
+
 	// Single pass walk to collect all entities and actions
 	err := filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -96,15 +105,6 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		// Also parse markdown body for referenced images
 		if len(parts) == 3 {
 			body := parts[2]
-
-			// Helper to process and add image source
-			addImageSrc := func(src string) {
-				// Handle wiki-style resizing syntax like `image.jpg|300`
-				src = strings.Split(src, "|")[0]
-				if src != "" {
-					referencedImages[filepath.Base(src)] = true
-				}
-			}
 
 			// Handle standard markdown links: ![alt](path)
 			matches := re.FindAllSubmatch(body, -1)
