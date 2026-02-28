@@ -3,6 +3,39 @@ description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, 
 id: agent-rafael-semino
 kind: person
 name: Francisco Rafael da Silva Semino
+attachments:
+  - caption: action-produtor-cultural-001.png
+    role: documentation
+    src: action-produtor-cultural-001.png
+    type: image
+  - caption: agent-rafael-semino-001.jpeg
+    role: documentation
+    src: agent-rafael-semino-001.jpeg
+    type: image
+  - caption: agent-rafael-semino-perfil-academico.jpeg
+    role: documentation
+    src: agent-rafael-semino-perfil-academico.jpeg
+    type: image
+  - caption: agent-rafael-semino-perfil-portifolio-001.jpeg
+    role: documentation
+    src: agent-rafael-semino-perfil-portifolio-001.jpeg
+    type: image
+  - caption: agent-rafael-semino-perfil-portifolio-002.jpeg
+    role: documentation
+    src: agent-rafael-semino-perfil-portifolio-002.jpeg
+    type: image
+  - caption: work-blackheroes-001.jpeg
+    role: documentation
+    src: work-blackheroes-001.jpeg
+    type: image
+  - caption: work-blackheroes-002.jpeg
+    role: documentation
+    src: work-blackheroes-002.jpeg
+    type: image
+  - caption: work-blackheroes-003.png
+    role: documentation
+    src: work-blackheroes-003.png
+    type: image
 ---
 
 
@@ -27,3 +60,12 @@ Sua trajetória profissional abrange forte atuação no ensino de teatro e artes
 
 ### Audiovisual e Criação Literária
 Além do palco, Rafael acumula experiências como roteirista, produtor, assistente de produção e de direção audiovisual. É também autor da obra literária/infantil "Contos de Exu", que derivou das experimentações cênicas e investigações do corpo e ancestralidade forjados dentro do Laboratório de Criação Cênica em 2022.
+
+![action-produtor-cultural-001.png](../../media/images/action-produtor-cultural-001.png)
+![agent-rafael-semino-001.jpeg](../../media/images/agent-rafael-semino-001.jpeg)
+![agent-rafael-semino-perfil-academico.jpeg](../../media/images/agent-rafael-semino-perfil-academico.jpeg)
+![agent-rafael-semino-perfil-portifolio-001.jpeg](../../media/images/agent-rafael-semino-perfil-portifolio-001.jpeg)
+![agent-rafael-semino-perfil-portifolio-002.jpeg](../../media/images/agent-rafael-semino-perfil-portifolio-002.jpeg)
+![work-blackheroes-001.jpeg](../../media/images/work-blackheroes-001.jpeg)
+![work-blackheroes-002.jpeg](../../media/images/work-blackheroes-002.jpeg)
+![work-blackheroes-003.png](../../media/images/work-blackheroes-003.png)

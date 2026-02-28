@@ -1,13 +1,13 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Trapo Preto'
-      role: documentation
-      src: work-trapo-preto-002.jpeg
-      type: image
-    - caption: 'Registro Documental: Trapo Preto'
-      role: documentation
-      src: work-trapo-preto-001.png
-      type: image
+  - caption: 'Registro Documental: Trapo Preto'
+    role: documentation
+    src: work-trapo-preto-002.jpeg
+    type: image
+  - caption: 'Registro Documental: Trapo Preto'
+    role: documentation
+    src: work-trapo-preto-001.png
+    type: image
 description: ""
 id: work-trapo-preto
 title: Trapo Preto

@@ -1,9 +1,9 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Calor'
-      role: documentation
-      src: work-calor-001.png
-      type: image
+  - caption: 'Registro Documental: Calor'
+    role: documentation
+    src: work-calor-001.png
+    type: image
 description: Performance encenada e protagonizada em 2019.
 id: work-calor
 title: Calor

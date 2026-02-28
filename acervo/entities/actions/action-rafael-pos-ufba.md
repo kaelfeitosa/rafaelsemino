@@ -8,14 +8,14 @@ performed_by: '[[agent-rafael-semino]]'
 my_role: Pós-graduando
 date_start: "2021"
 attachments:
-    - caption: 'Registro Documental: Formacao Ufba'
-      role: documentation
-      src: action-rafael-pos-ufba-pos.jpeg
-      type: image
-    - caption: 'Registro Documental: Formacao Ufba'
-      role: documentation
-      src: action-rafael-pos-ufba-doc.jpeg
-      type: image
+  - caption: 'Registro Documental: Formacao Ufba'
+    role: documentation
+    src: action-rafael-pos-ufba-pos.jpeg
+    type: image
+  - caption: 'Registro Documental: Formacao Ufba'
+    role: documentation
+    src: action-rafael-pos-ufba-doc.jpeg
+    type: image
 ---
 
 

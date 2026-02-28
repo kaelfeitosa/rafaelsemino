@@ -4,6 +4,27 @@ founded_by_me: true
 id: agent-coletivo-farol-novo
 kind: collective
 name: Coletivo Farol Novo
+attachments:
+  - caption: agent-coletivo-farol-novo-aniversario-001.jpeg
+    role: documentation
+    src: agent-coletivo-farol-novo-aniversario-001.jpeg
+    type: image
+  - caption: agent-coletivo-farol-novo-aniversario-002.jpeg
+    role: documentation
+    src: agent-coletivo-farol-novo-aniversario-002.jpeg
+    type: image
+  - caption: agent-felipe-marques-001.jpeg
+    role: documentation
+    src: agent-felipe-marques-001.jpeg
+    type: image
+  - caption: agent-gabriel-franca-001.jpeg
+    role: documentation
+    src: agent-gabriel-franca-001.jpeg
+    type: image
+  - caption: agent-zeis-001.jpeg
+    role: documentation
+    src: agent-zeis-001.jpeg
+    type: image
 ---
 
 
@@ -14,3 +35,9 @@ O grupo surgiu com o intuito de desenvolver uma peça ("Exu não vem hoje") que 
 Em 2023, após vencerem o prêmio "Amarrações Estéticas" da Escola Porto Iracema, o Coletivo convidou Zeis (que na época estava no Laboratório de Música com o projeto "Encruzilhada") para integrar o grupo definitivo. A chegada de Zeis, com sua pesquisa sobre mitos e uma narrativa musical inédita, culminou na criação e elaboração do espetáculo "Vão". 
 
 Hoje, celebrando seus três primeiros anos de vida, o Coletivo Farol Novo é marcado pelo desejo profundo de conceber dramaturgias coletivas e um teatro que dissolva a barreira entre palco e plateia, onde os espectadores convergem ativamente com os atores.
+
+![agent-coletivo-farol-novo-aniversario-001.jpeg](../../media/images/agent-coletivo-farol-novo-aniversario-001.jpeg)
+![agent-coletivo-farol-novo-aniversario-002.jpeg](../../media/images/agent-coletivo-farol-novo-aniversario-002.jpeg)
+![agent-felipe-marques-001.jpeg](../../media/images/agent-felipe-marques-001.jpeg)
+![agent-gabriel-franca-001.jpeg](../../media/images/agent-gabriel-franca-001.jpeg)
+![agent-zeis-001.jpeg](../../media/images/agent-zeis-001.jpeg)

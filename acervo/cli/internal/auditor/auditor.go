@@ -48,11 +48,14 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		parentDir := filepath.Base(filepath.Dir(relPath))
 
 		if parentDir == "agents" {
-			var agent struct {
-				ID string `yaml:"id"`
-			}
+			var agent domain.Agent
 			if err := yaml.Unmarshal(parts[1], &agent); err == nil {
 				agents[agent.ID] = true
+				for _, att := range agent.Attachments {
+					if att.Type == "image" && att.Src != "" {
+						referencedImages[att.Src] = true
+					}
+				}
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Agent em %s: %v\n", path, err)
 			}
