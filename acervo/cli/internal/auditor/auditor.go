@@ -201,8 +201,8 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 
 	// Parse optional ignored images from environment variable (comma-separated)
 	ignoredImages := make(map[string]bool)
-	ignoredEnv := os.Getenv("ACERVO_IGNORE_IMAGES")
-	if ignoredEnv != "" {
+	ignoredEnv, isSet := os.LookupEnv("ACERVO_IGNORE_IMAGES")
+	if isSet {
 		for _, img := range strings.Split(ignoredEnv, ",") {
 			trimmedImg := strings.TrimSpace(img)
 			if trimmedImg != "" {
