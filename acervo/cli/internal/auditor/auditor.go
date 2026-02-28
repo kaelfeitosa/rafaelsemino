@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"acervo/internal/domain"
@@ -86,6 +87,35 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				fmt.Printf("[WARNING] Falha ao analisar Action em %s: %v\n", path, err)
 			}
 		}
+
+		// Also parse markdown body for referenced images
+		if len(parts) == 3 {
+			re := regexp.MustCompile(`!\[.*?\]\((.*?)\)`)
+			matches := re.FindAllSubmatch(parts[2], -1)
+			for _, match := range matches {
+				if len(match) > 1 {
+					imgSrc := string(match[1])
+					// Handle wiki links e.g., ![[image.jpg|300]] or standard URLs
+					if strings.HasPrefix(imgSrc, "[") && strings.HasSuffix(imgSrc, "]") {
+						imgSrc = strings.TrimPrefix(strings.TrimSuffix(imgSrc, "]"), "[")
+						imgSrc = strings.Split(imgSrc, "|")[0]
+					}
+					referencedImages[filepath.Base(imgSrc)] = true
+				}
+			}
+
+			// Handle obsidian wiki image syntax: ![[image.jpg]] or ![[image.jpg|300]]
+			reWiki := regexp.MustCompile(`!\[\[(.*?)\]\]`)
+			matchesWiki := reWiki.FindAllSubmatch(parts[2], -1)
+			for _, match := range matchesWiki {
+				if len(match) > 1 {
+					imgSrc := string(match[1])
+					imgSrc = strings.Split(imgSrc, "|")[0]
+					referencedImages[filepath.Base(imgSrc)] = true
+				}
+			}
+		}
+
 		return nil
 	})
 
