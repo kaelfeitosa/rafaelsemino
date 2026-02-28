@@ -1,17 +1,17 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Contos De Exu'
-      role: documentation
-      src: work-contos-de-exu-002.png
-      type: image
-    - caption: 'Registro Documental: Contos De Exu'
-      role: documentation
-      src: work-contos-de-exu-003.png
-      type: image
-    - caption: 'Registro Documental: Contos De Exu'
-      role: documentation
-      src: work-contos-de-exu-001.jpeg
-      type: image
+  - caption: 'Registro Documental: Contos De Exu'
+    role: documentation
+    src: work-contos-de-exu-002.png
+    type: image
+  - caption: 'Registro Documental: Contos De Exu'
+    role: documentation
+    src: work-contos-de-exu-003.png
+    type: image
+  - caption: 'Registro Documental: Contos De Exu'
+    role: documentation
+    src: work-contos-de-exu-001.jpeg
+    type: image
 description: Livro resultante do Laboratório do Porto Iracema dando contornos práticos à pesquisa de mestrado da UFC.
 id: work-contos-de-exu
 title: Contos de Exu

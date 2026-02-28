@@ -1,46 +1,51 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-005.jpeg
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-001.jpeg
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-008.png
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-003.jpeg
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-004.jpeg
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-007.png
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-006.jpeg
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-010.png
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-009.png
-      type: image
-    - caption: 'Registro Documental: Vao'
-      role: documentation
-      src: work-vao-002.jpeg
-      type: image
-description: Espetáculo nascido do cruzamento entre teatro e música dentro da escola Porto Iracema (Prêmio Amarrações Estéticas).
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-005.jpeg
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-001.jpeg
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-008.png
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-003.jpeg
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-004.jpeg
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-007.png
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-006.jpeg
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-010.png
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-009.png
+    type: image
+  - caption: 'Registro Documental: Vao'
+    role: documentation
+    src: work-vao-002.jpeg
+    type: image
+  - caption: Vão, imagem 11
+    role: documentation
+    src: action-apresentacao-centro-cultural-nordeste-001.jpeg
+    type: image
+description: Espetáculo nascido do cruzamento entre teatro e música dentro da
+  escola Porto Iracema (Prêmio Amarrações Estéticas).
 id: work-vao
 title: Vão
 type: teatro
@@ -64,3 +69,5 @@ O encontro revelou interesses dramatúrgicos profundos em comum: as investigaç�
 ![Registro Documental: Vao](../../media/images/work-vao-010.png)
 ![Registro Documental: Vao](../../media/images/work-vao-009.png)
 ![Registro Documental: Vao](../../media/images/work-vao-002.jpeg)
+
+![Vão, imagem 11](../../media/images/action-apresentacao-centro-cultural-nordeste-001.jpeg)

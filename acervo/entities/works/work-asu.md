@@ -1,9 +1,9 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Asu'
-      role: documentation
-      src: work-asu-001.png
-      type: image
+  - caption: 'Registro Documental: Asu'
+    role: documentation
+    src: work-asu-001.png
+    type: image
 description: Espetáculo teatral de grupo.
 id: work-asu
 title: Asu

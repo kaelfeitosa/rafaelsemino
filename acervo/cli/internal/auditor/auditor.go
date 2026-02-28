@@ -5,12 +5,19 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"acervo/internal/domain"
 	"acervo/internal/utils"
 
 	"gopkg.in/yaml.v3"
+)
+
+var (
+	re           = regexp.MustCompile(`!\[.*?\]\((.*?)\)`)
+	reWiki       = regexp.MustCompile(`!\[\[(.*?)\]\]`)
+	reNestedWiki = regexp.MustCompile(`^\[\[(.*)\]\]$`)
 )
 
 func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
@@ -20,6 +27,15 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	var allActions []domain.Action
 	var allWorks []domain.Work
 	referencedImages := make(map[string]bool)
+
+	// Helper to process and add image source
+	addImageSrc := func(src string) {
+		// Handle wiki-style resizing syntax like `image.jpg|300`
+		src = strings.Split(src, "|")[0]
+		if src != "" {
+			referencedImages[filepath.Base(src)] = true
+		}
+	}
 
 	// Single pass walk to collect all entities and actions
 	err := filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
@@ -48,11 +64,14 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		parentDir := filepath.Base(filepath.Dir(relPath))
 
 		if parentDir == "agents" {
-			var agent struct {
-				ID string `yaml:"id"`
-			}
+			var agent domain.Agent
 			if err := yaml.Unmarshal(parts[1], &agent); err == nil {
 				agents[agent.ID] = true
+				for _, att := range agent.Attachments {
+					if att.Type == "image" && att.Src != "" {
+						referencedImages[filepath.Base(att.Src)] = true
+					}
+				}
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Agent em %s: %v\n", path, err)
 			}
@@ -63,7 +82,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				allWorks = append(allWorks, work)
 				for _, att := range work.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+						referencedImages[filepath.Base(att.Src)] = true
 					}
 				}
 			} else {
@@ -76,13 +95,58 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				allActions = append(allActions, action)
 				for _, att := range action.Attachments {
 					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+						referencedImages[filepath.Base(att.Src)] = true
 					}
 				}
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Action em %s: %v\n", path, err)
 			}
 		}
+
+		// Also parse markdown body for referenced images
+		if len(parts) == 3 {
+			body := parts[2]
+
+			// Handle standard markdown links: ![alt](path)
+			matches := re.FindAllSubmatch(body, -1)
+			for _, match := range matches {
+				if len(match) > 1 {
+					imgSrc := string(match[1])
+
+					// Trim whitespace and parse path, handling optional titles and angle-bracket-enclosed paths.
+					imgSrc = strings.TrimSpace(imgSrc)
+					if len(imgSrc) > 0 && imgSrc[0] == '<' {
+						if end := strings.IndexByte(imgSrc, '>'); end > 0 {
+							imgSrc = imgSrc[1:end]
+						}
+					} else {
+						if end := strings.IndexAny(imgSrc, " \t\n"); end != -1 {
+							imgSrc = imgSrc[:end]
+						}
+					}
+
+					// Skip nested wiki-style images like ![alt](![[path]])
+					// as they are handled by the reWiki regex.
+					if strings.HasPrefix(imgSrc, "![[") {
+						continue
+					}
+					// Also handles nested wiki links like ![alt]([[path]])
+					if nestedMatch := reNestedWiki.FindStringSubmatch(imgSrc); nestedMatch != nil {
+						imgSrc = nestedMatch[1]
+					}
+					addImageSrc(imgSrc)
+				}
+			}
+
+			// Handle Obsidian-style wiki links: ![[path]]
+			matchesWiki := reWiki.FindAllSubmatch(body, -1)
+			for _, match := range matchesWiki {
+				if len(match) > 1 {
+					addImageSrc(string(match[1]))
+				}
+			}
+		}
+
 		return nil
 	})
 
@@ -153,6 +217,20 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	fmt.Println("--- DANGLING & NAMING AUDIT ---")
 	danglingImages := 0
 	namingViolations := 0
+
+	// Default to ignoring the protected test artifact, and parse optional additional ones.
+	ignoredImages := map[string]bool{
+		"test-robust.jpeg": true,
+	}
+	if ignoredEnv, isSet := os.LookupEnv("ACERVO_IGNORE_IMAGES"); isSet {
+		for _, img := range strings.Split(ignoredEnv, ",") {
+			trimmedImg := strings.TrimSpace(img)
+			if trimmedImg != "" {
+				ignoredImages[trimmedImg] = true
+			}
+		}
+	}
+
 	imageFiles, err := os.ReadDir(imagesDir)
 	if err == nil {
 		for _, f := range imageFiles {
@@ -160,6 +238,11 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				continue
 			}
 			name := f.Name()
+
+			// Skip specifically ignored artifacts
+			if ignoredImages[name] {
+				continue
+			}
 
 			// Check if referenced in entities
 			if !referencedImages[name] {

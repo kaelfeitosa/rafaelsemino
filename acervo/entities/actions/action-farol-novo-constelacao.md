@@ -9,10 +9,10 @@ my_role: Diretor
 work_id: '[[work-constelacao]]'
 date_start: "2023"
 attachments:
-    - caption: Promo Residência Colaborativa Constelação
-      role: documentation
-      src: action-farol-novo-constelacao-promo-residencia.jpeg
-      type: image
+  - caption: Promo Residência Colaborativa Constelação
+    role: documentation
+    src: action-farol-novo-constelacao-promo-residencia.jpeg
+    type: image
 ---
 
 

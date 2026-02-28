@@ -1,9 +1,9 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Reino De Aspan'
-      role: documentation
-      src: work-reino-de-aspan-001.png
-      type: image
+  - caption: 'Registro Documental: Reino De Aspan'
+    role: documentation
+    src: work-reino-de-aspan-001.png
+    type: image
 description: Espetáculo da Cia Del Artes.
 id: work-reino-de-aspan
 title: Reino de Aspan

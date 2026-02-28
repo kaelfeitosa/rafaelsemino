@@ -10,14 +10,14 @@ my_role: Avaliador
 date_start: "2023-06-01"
 description: Atuação de Rafael Semino como avaliador em festivais e quadrilhas juninas no Ceará, ano 2023.
 attachments:
-    - caption: 'Registro Documental: Avaliador Junino'
-      role: documentation
-      src: action-avaliador-junino-002.jpeg
-      type: image
-    - caption: 'Registro Documental: Avaliador Junino'
-      role: documentation
-      src: action-avaliador-junino-001.jpeg
-      type: image
+  - caption: 'Registro Documental: Avaliador Junino'
+    role: documentation
+    src: action-avaliador-junino-002.jpeg
+    type: image
+  - caption: 'Registro Documental: Avaliador Junino'
+    role: documentation
+    src: action-avaliador-junino-001.jpeg
+    type: image
 ---
 
 

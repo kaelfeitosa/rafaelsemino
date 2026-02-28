@@ -1,13 +1,13 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Rebordose'
-      role: documentation
-      src: work-rebordose-001.jpeg
-      type: image
-    - caption: 'Registro Documental: Rebordose'
-      role: documentation
-      src: work-rebordose-002.jpeg
-      type: image
+  - caption: 'Registro Documental: Rebordose'
+    role: documentation
+    src: work-rebordose-001.jpeg
+    type: image
+  - caption: 'Registro Documental: Rebordose'
+    role: documentation
+    src: work-rebordose-002.jpeg
+    type: image
 description: Curta-metragem dirigido por Darlan Souza onde Rafael Semino atua.
 id: work-rebordose
 title: Rebordose

@@ -1,30 +1,35 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-006.png
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-009.jpeg
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-002.jpeg
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-008.jpeg
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-004.jpeg
-      type: image
-    - caption: 'Registro Documental: Exu Nao Vem Hoje'
-      role: documentation
-      src: work-exu-nao-vem-hoje-007.jpeg
-      type: image
-description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo a pesquisa de mestrado para o palco.
+  - caption: 'Registro Documental: Exu Nao Vem Hoje'
+    role: documentation
+    src: work-exu-nao-vem-hoje-006.png
+    type: image
+  - caption: 'Registro Documental: Exu Nao Vem Hoje'
+    role: documentation
+    src: work-exu-nao-vem-hoje-009.jpeg
+    type: image
+  - caption: 'Registro Documental: Exu Nao Vem Hoje'
+    role: documentation
+    src: work-exu-nao-vem-hoje-002.jpeg
+    type: image
+  - caption: 'Registro Documental: Exu Nao Vem Hoje'
+    role: documentation
+    src: work-exu-nao-vem-hoje-008.jpeg
+    type: image
+  - caption: 'Registro Documental: Exu Nao Vem Hoje'
+    role: documentation
+    src: work-exu-nao-vem-hoje-004.jpeg
+    type: image
+  - caption: 'Registro Documental: Exu Nao Vem Hoje'
+    role: documentation
+    src: work-exu-nao-vem-hoje-007.jpeg
+    type: image
+  - caption: Exu Não Vem Hoje, imagem 7
+    role: documentation
+    src: work-exu-nao-vem-hoje-convite-temporada.jpeg
+    type: image
+description: Peça teatral apresentada ao final do Laboratório do Porto Iracema,
+  transpondo a pesquisa de mestrado para o palco.
 id: work-exu-nao-vem-hoje
 title: Exu Não Vem Hoje
 type: teatro
@@ -45,12 +50,10 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - Festival Nordestino de Teatro de Guaramiranga – apresentação única
 
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-006.png)
-![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-003.jpeg)
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-009.jpeg)
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-002.jpeg)
-![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-001.jpeg)
-![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-005.png)
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-008.jpeg)
-![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-010.jpeg)
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-004.jpeg)
 ![Registro Documental: Exu Nao Vem Hoje](../../media/images/work-exu-nao-vem-hoje-007.jpeg)
+
+![Exu Não Vem Hoje, imagem 7](../../media/images/work-exu-nao-vem-hoje-convite-temporada.jpeg)

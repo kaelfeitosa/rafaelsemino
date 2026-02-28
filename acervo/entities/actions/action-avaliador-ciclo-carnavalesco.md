@@ -10,10 +10,10 @@ my_role: Avaliador
 date_start: "2020-02-01"
 description: Atuação como avaliador do Ciclo Carnavalesco da Avenida Domingos Olímpio em Fortaleza.
 attachments:
-    - caption: 'Registro Documental: Avaliador Ciclo Carnavalesco'
-      role: documentation
-      src: action-avaliador-ciclo-carnavalesco-001.jpeg
-      type: image
+  - caption: 'Registro Documental: Avaliador Ciclo Carnavalesco'
+    role: documentation
+    src: action-avaliador-ciclo-carnavalesco-001.jpeg
+    type: image
 ---
 
 

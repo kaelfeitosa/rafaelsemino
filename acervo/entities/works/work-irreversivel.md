@@ -1,9 +1,9 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Irreversivel'
-      role: documentation
-      src: work-irreversivel-001.png
-      type: image
+  - caption: 'Registro Documental: Irreversivel'
+    role: documentation
+    src: work-irreversivel-001.png
+    type: image
 description: null
 id: work-irreversivel
 title: Irreversível

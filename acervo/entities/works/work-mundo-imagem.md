@@ -1,13 +1,13 @@
 ---
 attachments:
-    - caption: 'Registro Documental: Mundo Imagem'
-      role: documentation
-      src: work-mundo-imagem-002.jpeg
-      type: image
-    - caption: 'Registro Documental: Mundo Imagem'
-      role: documentation
-      src: work-mundo-imagem-001.jpeg
-      type: image
+  - caption: 'Registro Documental: Mundo Imagem'
+    role: documentation
+    src: work-mundo-imagem-002.jpeg
+    type: image
+  - caption: 'Registro Documental: Mundo Imagem'
+    role: documentation
+    src: work-mundo-imagem-001.jpeg
+    type: image
 description: Websérie do Porto Iracema das Artes explorando o universo audiovisual (11 episódios).
 id: work-mundo-imagem
 title: Mundo-Imagem
