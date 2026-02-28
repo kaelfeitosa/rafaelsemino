@@ -199,19 +199,17 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	danglingImages := 0
 	namingViolations := 0
 
-	// Parse optional ignored images from environment variable (comma-separated)
-	ignoredImages := make(map[string]bool)
-	ignoredEnv, isSet := os.LookupEnv("ACERVO_IGNORE_IMAGES")
-	if isSet {
+	// Default to ignoring the protected test artifact, and parse optional additional ones.
+	ignoredImages := map[string]bool{
+		"test-robust.jpeg": true,
+	}
+	if ignoredEnv, isSet := os.LookupEnv("ACERVO_IGNORE_IMAGES"); isSet {
 		for _, img := range strings.Split(ignoredEnv, ",") {
 			trimmedImg := strings.TrimSpace(img)
 			if trimmedImg != "" {
 				ignoredImages[trimmedImg] = true
 			}
 		}
-	} else {
-		// Default to ignoring the protected test artifact
-		ignoredImages["test-robust.jpeg"] = true
 	}
 
 	imageFiles, err := os.ReadDir(imagesDir)
