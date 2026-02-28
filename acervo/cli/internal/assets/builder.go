@@ -14,24 +14,13 @@ import (
 )
 
 const (
-	WebPQuality     = "80"
-	WebPMetadata    = "xmp"
-	MaxImageWidth   = 1920
+	WebPQuality   = "80"
+	WebPMetadata  = "xmp"
+	MaxImageWidth = 1920
 )
 
 // BuildAssets scans HTML files for optimized image references and generates them
-func BuildAssets(htmlPath, sourceDir, outputDir string) error {
-	// Check for cwebp availability
-	cwebpPath, err := exec.LookPath("cwebp")
-	if err != nil {
-		fmt.Println("❌ Error: 'cwebp' tool not found in PATH.")
-		fmt.Println("   Please install WebP tools:")
-		fmt.Println("   - macOS: brew install webp")
-		fmt.Println("   - Linux: sudo apt-get install webp")
-		fmt.Println("   - Windows: Download from https://developers.google.com/speed/webp/docs/precompiled")
-		return fmt.Errorf("cwebp dependency missing")
-	}
-
+func BuildAssets(htmlPath, sourceDir, outputDir string, force bool) error {
 	refs, err := scanHTMLForImages(htmlPath)
 	if err != nil {
 		return fmt.Errorf("scanning HTML: %w", err)
@@ -40,6 +29,31 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 	if len(refs) == 0 {
 		fmt.Printf("No optimized images found in HTML file: %s.\n", htmlPath)
 		return nil
+	}
+
+	// Check for cwebp availability
+	cwebpPath := "cwebp"
+	// Look for cwebp.exe in the current working directory (where we run the command)
+	if _, err := os.Stat("cwebp.exe"); err == nil {
+		if absPath, err := filepath.Abs("cwebp.exe"); err == nil {
+			cwebpPath = absPath
+		} else {
+			// If we found cwebp.exe but couldn't get its absolute path, log a warning and fall back to just "cwebp.exe"
+			fmt.Printf("⚠️  Warning: Found 'cwebp.exe' but could not resolve absolute path: %v. Using 'cwebp.exe' directly.\n", err)
+			cwebpPath = "cwebp.exe"
+		}
+	} else {
+		// cwebp.exe not found in current directory, try looking in PATH
+		var lookPathErr error
+		cwebpPath, lookPathErr = exec.LookPath("cwebp")
+		if lookPathErr != nil {
+			fmt.Println("❌ Error: 'cwebp' tool not found in PATH or current directory.")
+			fmt.Println("   Please install WebP tools:")
+			fmt.Println("   - macOS: brew install webp")
+			fmt.Println("   - Linux: sudo apt-get install webp")
+			fmt.Println("   - Windows: Download from https://developers.google.com/speed/webp/docs/precompiled")
+			return fmt.Errorf("cwebp dependency missing: %w", lookPathErr)
+		}
 	}
 
 	if err := os.MkdirAll(outputDir, 0755); err != nil {
@@ -54,42 +68,38 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 
 	var buildErrors []string
 
+	fmt.Printf("📂 Processing %d references using source map of %d files...\n", len(refs), len(sourceMap))
+
 	for _, ref := range refs {
-		// Only process paths starting with the optimization prefix
-		if !strings.HasPrefix(ref, "images/optimized/") {
-			continue
-		}
-
-		// Extract relative path after "images/optimized/"
-		parts := strings.SplitN(ref, "images/optimized/", 2)
-		if len(parts) < 2 || parts[1] == "" {
-			continue
-		}
-		relPath := parts[1]
-
-		filename := filepath.Base(relPath)
+		filename := filepath.Base(ref)
 		baseName := strings.TrimSuffix(filename, filepath.Ext(filename))
 
 		sourcePath := findSourceFile(sourceMap, baseName)
 		if sourcePath == "" {
-			fmt.Printf("⚠️  Source not found for: '%s' in directory '%s'\n", baseName, sourceDir)
+			continue // Not one of our master images
+		}
+
+		// Determine destination path. We want to preserve the name but use .webp
+		relPath := baseName + ".webp"
+		destPath := filepath.Join(outputDir, relPath)
+		absDest, err := filepath.Abs(destPath)
+		if err != nil {
+			buildErrors = append(buildErrors, fmt.Sprintf("resolving abs path for %s: %v", relPath, err))
 			continue
 		}
 
-		destPath := filepath.Join(outputDir, relPath)
-
 		// Ensure destination directory exists
-		if err := os.MkdirAll(filepath.Dir(destPath), 0755); err != nil {
+		if err := os.MkdirAll(filepath.Dir(absDest), 0755); err != nil {
 			buildErrors = append(buildErrors, fmt.Sprintf("creating dir for %s: %v", relPath, err))
 			continue
 		}
 
-		if isUpToDate(sourcePath, destPath) {
+		if !force && isUpToDate(sourcePath, absDest) {
 			continue
 		}
 
 		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), relPath)
-		if err := optimizeImage(cwebpPath, sourcePath, destPath); err != nil {
+		if err := optimizeImage(cwebpPath, sourcePath, absDest); err != nil {
 			fmt.Printf("❌ Error optimizing %s: %v\n", relPath, err)
 			buildErrors = append(buildErrors, fmt.Sprintf("optimizing %s: %v", relPath, err))
 		} else {
@@ -105,27 +115,36 @@ func BuildAssets(htmlPath, sourceDir, outputDir string) error {
 }
 
 func scanHTMLForImages(path string) ([]string, error) {
-	content, err := os.ReadFile(path)
+	absPath, err := filepath.Abs(path)
 	if err != nil {
-		return nil, err
+		fmt.Printf("⚠️  Warning: could not resolve absolute path for %s: %v\n", path, err)
+		absPath = path // Fallback to original
 	}
 
-	// Updated regex to handle whitespace around '='
-	re := regexp.MustCompile(`src\s*=\s*["']([^"']+)["']`)
+	content, err := os.ReadFile(absPath)
+	if err != nil {
+		return nil, fmt.Errorf("reading HTML at %s: %w", absPath, err)
+	}
+
+	// Refined regex: non-greedy, handles src and url() with various quoting
+	re := regexp.MustCompile(`(?:src\s*=\s*["'](?P<src>[^"']+)["']|url\s*\(\s*["']?(?P<url>[^"'\)]+)["']?\s*\))`)
 	matches := re.FindAllSubmatch(content, -1)
 
 	var refs []string
 	seen := make(map[string]bool)
 
 	for _, match := range matches {
-		if len(match) > 1 {
-			ref := string(match[1])
-			if !seen[ref] {
-				refs = append(refs, ref)
-				seen[ref] = true
+		for i, name := range re.SubexpNames() {
+			if (name == "src" || name == "url") && i < len(match) && match[i] != nil {
+				ref := strings.TrimSpace(string(match[i]))
+				if ref != "" && !seen[ref] {
+					refs = append(refs, ref)
+					seen[ref] = true
+				}
 			}
 		}
 	}
+	fmt.Fprintf(os.Stderr, "🔍 DEBUG: All unique references found: %v\n", refs)
 	return refs, nil
 }
 
@@ -142,6 +161,11 @@ func buildSourceMap(dir string) (map[string]string, error) {
 			continue
 		}
 
+		ext := strings.ToLower(filepath.Ext(f.Name()))
+		if ext != ".jpg" && ext != ".jpeg" && ext != ".png" {
+			continue // Only process JPEG and PNG masters
+		}
+
 		fBase := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
 		// Normalized key: replace underscores with hyphens
 		fNorm := strings.ReplaceAll(fBase, "_", "-")
@@ -150,7 +174,11 @@ func buildSourceMap(dir string) (map[string]string, error) {
 			return nil, fmt.Errorf("filename collision: %s and %s both map to %s", filepath.Base(existing), f.Name(), fNorm)
 		}
 
-		sourceMap[fNorm] = filepath.Join(dir, f.Name())
+		absSource, err := filepath.Abs(filepath.Join(dir, f.Name()))
+		if err != nil {
+			return nil, fmt.Errorf("resolving absolute path for %s: %v", f.Name(), err)
+		}
+		sourceMap[fNorm] = absSource
 	}
 	return sourceMap, nil
 }
@@ -195,25 +223,24 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 	}()
 
 	// We only need to decode config, not the whole image
-	config, _, err := image.DecodeConfig(srcFile)
+	config, format, err := image.DecodeConfig(srcFile)
 	if err != nil {
-		return fmt.Errorf("decoding image config: %w", err)
+		return fmt.Errorf("decoding image config for %s: %w", srcPath, err)
 	}
+	_ = format // For now we don't use it, but good for debug
 
 	args := []string{
 		"-q", WebPQuality,
-		"-metadata", WebPMetadata,
-		"-quiet",
 	}
 
 	if config.Width > MaxImageWidth {
-		// Calculate height to maintain aspect ratio (0 = auto)
 		args = append(args, "-resize", strconv.Itoa(MaxImageWidth), "0")
 	}
 
 	args = append(args, srcPath, "-o", destPath)
 
 	// Execute cwebp
+	fmt.Printf("🔨 Running: %s %v\n", cwebpCmd, args)
 	cmd := exec.Command(cwebpCmd, args...)
 	output, err := cmd.CombinedOutput()
 	if err != nil {

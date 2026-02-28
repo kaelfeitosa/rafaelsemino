@@ -147,6 +147,7 @@ func main() {
 		htmlPath  string
 		sourceDir string
 		outputDir string
+		force     bool
 	)
 
 	var buildAssetsCmd = &cobra.Command{
@@ -158,7 +159,7 @@ Default paths assume the command is run from 'acervo/cli'.
 Use absolute paths or adjust flags if running from elsewhere.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("🚀 Starting asset optimization...")
-			if err := assets.BuildAssets(htmlPath, sourceDir, outputDir); err != nil {
+			if err := assets.BuildAssets(htmlPath, sourceDir, outputDir, force); err != nil {
 				fmt.Println("❌ Error building assets:", err)
 				os.Exit(1)
 			}
@@ -168,6 +169,7 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 	buildAssetsCmd.Flags().StringVar(&htmlPath, "html", "../../frontend/index.html", "Path to HTML file to scan (relative to execution dir or absolute)")
 	buildAssetsCmd.Flags().StringVar(&sourceDir, "source", "../media/images", "Directory containing source master images (relative to execution dir or absolute)")
 	buildAssetsCmd.Flags().StringVar(&outputDir, "output", "../../frontend/images/optimized", "Directory to output optimized WebP assets (relative to execution dir or absolute)")
+	buildAssetsCmd.Flags().BoolVar(&force, "force", false, "Force regeneration of all assets even if they are up to date")
 
 	var (
 		repo        string
