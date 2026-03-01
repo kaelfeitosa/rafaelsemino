@@ -24,6 +24,9 @@ var (
 	validOccurrenceTypes = map[string]bool{
 		"apresentacao": true, "residencia": true, "oficina": true, "publicacao_ou_apresentacao": true, "lancamento": true, "premio": true, "exposicao": true,
 	}
+	validAttachmentCategories = map[string]bool{
+		"documentation": true, "poster": true, "clipping": true, "program": true, "technical": true, "outro": true,
+	}
 )
 
 func getKeys(m map[string]bool) string {
@@ -142,6 +145,9 @@ func validateAttachmentsSync(path string, attachments []domain.Attachment, body 
 
 	yamlImages := make(map[string]bool)
 	for _, att := range attachments {
+		if att.Category != "" && !validAttachmentCategories[att.Category] {
+			return fmt.Errorf("ERRO (%s): Anexo '%s' tem category inválido: '%s'", path, att.URL, att.Category)
+		}
 		if att.Type == "image" && att.URL != "" {
 			yamlImages[att.URL] = true
 			if !bodyImages[att.URL] {

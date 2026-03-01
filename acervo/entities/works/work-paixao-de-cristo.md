@@ -7,34 +7,17 @@ year: 2023
 role: Ator
 occurrences: []
 attachments:
-- caption: Paixao De Cristo, imagem 1
-  role: documentation
-  src: work-paixao-de-cristo/work-paixao-de-cristo-001.jpeg
-  type: image
-- caption: Paixao De Cristo, imagem 2
-  role: documentation
-  src: work-paixao-de-cristo/work-paixao-de-cristo-002.jpeg
-  type: image
-- caption: Image
-  role: documentation
+- type: image
   url: work-paixao-de-cristo/work-paixao-de-cristo-001.jpeg
-  type: image
-- caption: Image
-  role: documentation
+  label: Paixao De Cristo, imagem 1
+  category: documentation
+- type: image
   url: work-paixao-de-cristo/work-paixao-de-cristo-002.jpeg
-  type: image
+  label: Paixao De Cristo, imagem 2
+  category: documentation
 ---
 
 Entidade Paixao De Cristo (ID: work-paixao-de-cristo).
 
-(../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-001.jpeg)
-
-(../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-002.jpeg)
-
-(../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-003.jpeg)
-
-(../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-004.jpeg)
-
 ![Paixao De Cristo, imagem 1](../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-001.jpeg)
-
 ![Paixao De Cristo, imagem 2](../../media/images/work-paixao-de-cristo/work-paixao-de-cristo-002.jpeg)

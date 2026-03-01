@@ -9,22 +9,14 @@ collaborators:
 - Maria Vitória
 occurrences: []
 attachments:
-- caption: A Serpente (Montagem 2014), imagem 1
-  role: documentation
-  src: work-a-serpente/work-a-serpente-001.png
-  type: image
-- caption: Image
-  role: documentation
+- type: image
   url: work-a-serpente/work-a-serpente-001.png
-  type: image
+  label: A Serpente (Montagem 2014), imagem 1
+  category: documentation
 ---
 
 **A Serpente** foi uma peça teatral resultante do curso "Ações Físicas e Construção do Personagem" (45h), promovido pela Escola Porto Iracema das Artes em 2014.
 
 A direção do espetáculo foi assinada por Maria Vitória. Rafael Semino participou da montagem como ator, compondo parte do seu percurso de práticas de atuação.
-
-(../../media/images/work-a-serpente/work-a-serpente-001.png)
-
-(../../media/images/work-a-serpente/work-a-serpente-001.png)
 
 ![A Serpente (Montagem 2014), imagem 1](../../media/images/work-a-serpente/work-a-serpente-001.png)

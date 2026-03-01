@@ -7,34 +7,17 @@ year: 2012
 role: Diretor
 occurrences: []
 attachments:
-- caption: Sociedade, o Circo, imagem 1
-  role: documentation
-  src: work-sociedade-o-circo/work-sociedade-o-circo-001.png
-  type: image
-- caption: Sociedade, o Circo, imagem 2
-  role: documentation
-  src: work-sociedade-o-circo/work-sociedade-o-circo-002.png
-  type: image
-- caption: Image
-  role: documentation
+- type: image
   url: work-sociedade-o-circo/work-sociedade-o-circo-001.png
-  type: image
-- caption: Image
-  role: documentation
+  label: Sociedade, o Circo, imagem 1
+  category: documentation
+- type: image
   url: work-sociedade-o-circo/work-sociedade-o-circo-002.png
-  type: image
+  label: Sociedade, o Circo, imagem 2
+  category: documentation
 ---
 
 Montado durante o início da carreira.
 
-(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
-
-(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)
-
-
-(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
-(../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)
-
 ![Sociedade, o Circo, imagem 1](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
-
 ![Sociedade, o Circo, imagem 2](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)

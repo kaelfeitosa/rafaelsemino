@@ -31,9 +31,10 @@ type Work struct {
 }
 
 type Attachment struct {
-	Type  string `yaml:"type"` // image | video | pdf | link
-	URL   string `yaml:"url"`
-	Label string `yaml:"label,omitempty"`
+	Type     string `yaml:"type"` // image | video | pdf | link
+	URL      string `yaml:"url"`
+	Label    string `yaml:"label,omitempty"`
+	Category string `yaml:"category,omitempty"` // documentation | poster | clipping | program | technical | outro
 }
 
 // Occurrence represents an event linked to a Work (e.g., season, presentation)

@@ -96,7 +96,10 @@ func SyncImages(entitiesDir string, mode string) error {
 							if !changed {
 								updatedBody = strings.TrimRight(updatedBody, "\n") + "\n\n"
 							}
-							caption, _ := att["caption"].(string)
+							caption, _ := att["label"].(string)
+							if caption == "" {
+								caption, _ = att["caption"].(string)
+							}
 							if caption == "" {
 								caption = "Image"
 							}
