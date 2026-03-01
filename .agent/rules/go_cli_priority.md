@@ -15,7 +15,7 @@ The Go-based CLI is the authoritative engine for all data operations in the Acer
 - **Indexing**: Always use `go run main.go reindex`.
 
 ## 3. Transient Script Safety
-If you create transient scripts for bulk operations, they **MUST** invoke the CLI commands listed above rather than writing directly to `.md` files. This prevents structural corruption and maintains the "Action-centric" constraints.
+If you create transient scripts for bulk operations, they **MUST** invoke the CLI commands listed above rather than writing directly to `.md` files. This prevents structural corruption and maintains the "Work-centric" architecture with nested occurrences.
 
 ## 4. Immediate Cleanup
 Any one-off script created to assist in a task MUST be deleted immediately after execution.

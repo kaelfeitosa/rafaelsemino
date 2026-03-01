@@ -1,12 +1,13 @@
 ---
-description: How to ingest a new entity (Action, Work, Agent) into the Acervo
+description: How to ingest a new entity (Work, Agent) or Occurrence into the Acervo
 ---
 # Workflow: Ingest Entity into Acervo
 
 Follow these steps when you need to add new information to the Acervo.
 
 ## 1. Determine Entity Type
-Identify if the new information represents an **Action**, **Work**, or **Agent**.
+Identify if the new information represents a **Work**, an **Agent**, or an **Occurrence** (which must belong to a Work).
+The old `Action` entity no longer exists. All events now exist as Occurrences nested inside Works.
 
 ## 2. Execute CLI Creation
 Do NOT manually create Markdown files or copy templates. You MUST use the Acervo CLI to guarantee structural integrity. 
@@ -15,10 +16,10 @@ Do NOT manually create Markdown files or copy templates. You MUST use the Acervo
 // turbo
 cd acervo/cli && go run main.go ingest create <type> <slug> [key=value...]
 ```
-*Example:* `go run main.go ingest create action festival-teatro title="Atuação em Festival" performed_by="[[agent-rafael-semino]]" my_role="Ator"`
+*Example:* `go run main.go ingest create work festival-teatro title="Atuação em Festival" medium="teatro" role="Ator"`
 
 ## 3. Link Relations (Wikilinks)
-Relational fields (`performed_by`, `work_id`) MUST use Obsidian Wikilinks.
+Relational fields (e.g. `collaborators`) MUST match Agent IDs where possible.
 You can update them via the CLI:
 ```bash
 // turbo

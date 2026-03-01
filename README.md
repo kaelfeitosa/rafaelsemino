@@ -15,10 +15,9 @@ Responsável pela exibição e interface com o usuário final. Aqui os dados do 
 O "Cérebro" do projeto. Funciona como um banco de dados editorial em Markdown. Toda a história artística de Rafael Semino está mapeada semanticamente aqui.
 
 - **`entities/`**: Arquivos Markdown puros que servem como "Nós" da rede:
-    - **Actions**: O que Rafael fez (atuações, aulas, direções, criações). É o núcleo do sistema.
-    - **Works**: As obras artísticas associadas às ações (espetáculos, livros, curtas).
+    - **Works**: O núcleo do sistema. As obras artísticas, pesquisas, e projetos (espetáculos, livros, curtas, participações). Cada Work abriga **Occurrences** (eventos, apresentações, prêmios) aninhadas em seu interior, mapeando a linha do tempo.
     - **Agents**: Rafael Semino e os coletivos/instituições com quem colaborou.
-- **Evidências**: Documentos e mídias (fotos, vídeos, PDFs) são anexados diretamente às Actions e Works, provendo sustentação factual à narrativa.
+- **Evidências (Attachments)**: Documentos e mídias (fotos de cena, pôsteres, press clippings, PDFs) são anexados diretamente aos Works, ganhando tags de `category` para fácil filtragem no portfólio.
 
 ### 🧠 Motor em Go (`/acervo/cli`)
 Para garantir integridade e velocidade de busca, o projeto possui uma Command-Line Interface (CLI) em **Go**. Ela transforma os arquivos Markdown em um banco de dados relacional SQLite (`db.sqlite`).

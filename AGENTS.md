@@ -11,47 +11,47 @@ Este sistema descreve a trajetória profissional de Rafael Semino, a partir do s
 
 ## Modelo de Dados (`acervo`)
 
-### 1. Agent (Pessoa ou Coletivo)
+### 1. Agent (Pessoa, Coletivo ou Instituição)
 **Regras:**
 - Rafael Semino é um Agent do tipo `person`.
-- Coletivos são Agent do tipo `collective`.
-- Agents não têm histórico interno nem conhecem Actions diretamente.
-- Não há hierarquia entre Agents.
+- Coletivos ou instituições são Agent do tipo `collective`.
+- Agents não têm histórico interno linear, eles apenas existem como entidades nominais para cruzamento de dados (`collaborators`).
 
-### 2. Work (Obra Artística)
+### 2. Work (Obra Artística ou Projeto) - O Núcleo do Sistema
 **Regras:**
-- Work não age e não tem autoria interna.
-- Autoria e atuação acontecem exclusivamente na **Action**.
-
-### 3. Action (Núcleo do Sistema)
-Representa o que "Eu fiz". Toda Action vira um item visível no portfólio.
+- É a espinha dorsal narrativa do Portfólio.
+- Representa um espetáculo, um filme, uma pesquisa acadêmica, uma oficina ministrada ou um evento cultural.
+- Pode ser algo criado por Rafael ou um projeto autônomo do qual Rafael participou.
+- Em projetos autônomos de terceiros, o papel de Rafael é sinalizado diretamente via campo `role`.
 
 **Campos Principais:**
-- **Category** (`category`): Tipo da ação (criacao, exibicao, formacao, avaliacao, curadoria, premiacao, outro).
-- **Format** (`format`): Formato do contexto (festival, mostra, curso, oficina, residencia, premiacao, entrevista, outro).
-- **Label** (`label`): Nome do evento ou contexto (ex: "Festival de Curitiba 2023").
-- **Location** (`location`): Local físico (cidade/estado).
+- **Medium** (`medium`): Formato da obra (teatro, audiovisual, pesquisa, cultura_popular, jogos_digitais, etc.). 
+- **Collaborators** (`collaborators`): Lista simples de Agents relacionados àquela Obra.
 
-**Regras Absolutas:**
-- Toda Action representa algo que **Eu fiz**.
-- Não existe Action sem `my_role`.
-- Não existe Action "do coletivo" sem Rafael envolvido.
-- Action descreve a atuação de Rafael.
+### 3. Occurrence (Linha do Tempo Aninhada)
+A antiga entidade solta `Action` foi abolida. Agora, os eventos temporais de Rafael vivem exclusivamente *dentro* das restrições de uma Obra (`Work`), chamados de `Occurrences`.
 
-### 4. Attachments (Evidências)
-- **Attachment**: Evidência visual ou documental (imagem, vídeo, pdf). Não possui ID próprio e não existe fora de Action ou Work.
-- As imagens listadas em `attachments` também devem aparecer no corpo do Markdown para visualização em editores.
+**Campos Principais:**
+- **Type** (`type`): Tipo de ocorrência (apresentacao, residencia, lancamento, oficina, premio, exposicao).
+- **Date** (`start_date` e `end_date`): Balizadores temporais lógicos para construção da interface gráfica (Timeline).
+- **Context** (`context`): O nome do festival, edital ou temporada.
 
-## Relações Válidas
-- `Action.performed_by` → `Agent`
-- `Action.work_id` → `Work`
-*Nenhuma outra relação é permitida.*
+### 4. Attachments (Evidências e Clipping)
+- **Attachment**: Ficam anexados aos Works. Possuem um rígido esquema de `category`:
+  - `documentation`: Fotografia de Cena / Registro puro.
+  - `poster`: Material de Divulgação (Design vertical/quadrado).
+  - `clipping`: Matérias de Imprensa e prêmios.
+  - `program`: Fichas Técnicas documentais em PDF/Imagem.
+  - `technical`: Riders técnicos, mapas de palco, etc.
+
+## Relações Válidas (Grafo)
+- `Work.collaborators` → `Agent`
+*Nenhuma outra relação cruzada arbitrária é permitida pela engine para evitar teias de aranha.*
 
 ## Regras Editoriais
-1. **Se não vira card, não entra.**
-2. O sistema responde "o que eu fiz", não "o que aconteceu".
-3. Coletivos podem agir, mas sempre com papel explícito de Rafael.
-4. Clareza narrativa > normalização de dados.
+1. **Se não vira card no Frontend, não entra.**
+2. Coletivos podem figurar como colaboradores, mas a narrativa é pautada na lente de criação/atuação de Rafael.
+3. Clareza narrativa > Modelos engessados de arquivologia tradicional.
 
 ## Ferramentas CLI (`acervo/cli`)
 O repositório inclui uma ferramenta CLI em Go para gerenciar o acervo.
