@@ -8,12 +8,11 @@ year: 2023
 role: Avaliador / Parecerista
 collaborators: []
 attachments:
-- label: Image
-  type: image
-  url: work-avaliador-junino/work-avaliador-junino-001.jpeg
-- label: Image
-  type: image
-  url: work-avaliador-junino/work-avaliador-junino-002.jpeg
+  - label: Image
+    type: image
+    url: work-avaliador-junino/work-avaliador-junino-001.jpeg
+  - label: Image
+    type: image
+    url: work-avaliador-junino/work-avaliador-junino-002.jpeg
 ---
-
-
+Atuação no júri técnico e avaliativo em festivais e competições de quadrilhas da rede de tradição junina do Estado do Ceará em 2023.

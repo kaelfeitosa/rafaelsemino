@@ -7,11 +7,10 @@ description: Atuação como avaliador do Ciclo Carnavalesco da Avenida Domingos 
 year: 2020
 role: Avaliador / Parecerista
 collaborators:
-- Secultfor
+  - Secultfor
 attachments:
-- label: Image
-  type: image
-  url: work-avaliador-ciclo-carnavalesco/work-avaliador-ciclo-carnavalesco-001.jpeg
+  - label: Image
+    type: image
+    url: work-avaliador-ciclo-carnavalesco/work-avaliador-ciclo-carnavalesco-001.jpeg
 ---
-
-
+Atuação no júri técnico e avaliativo das apresentações dos blocos/maracatus na histórica Avenida Domingos Olímpio durante o ciclo oficial de 2020.
