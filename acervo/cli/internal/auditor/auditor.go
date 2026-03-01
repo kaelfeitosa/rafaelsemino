@@ -181,7 +181,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		sourceMap, _ := buildHeuristicSourceMap(imagesDir)
 
 		for _, ref := range refs {
-			baseName := strings.TrimSuffix(ref, filepath.Ext(ref))
+			baseName := strings.TrimSuffix(filepath.Base(ref), filepath.Ext(ref))
 			normalizedBase := strings.ReplaceAll(baseName, "_", "-")
 			if _, ok := sourceMap[normalizedBase]; !ok {
 				fmt.Printf("[MISSING MASTER] Referência em index.html: %s (Nenhum master encontrado em %s)\n", ref, imagesDir)

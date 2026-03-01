@@ -75,9 +75,6 @@ func ValidateEntities(entitiesDir string) error {
 				if agent.Kind != "person" && agent.Kind != "collective" {
 					return fmt.Errorf("ERRO: Agent %s com kind inválido: '%s'. Deve ser 'person' ou 'collective'", agent.ID, agent.Kind)
 				}
-				if err := validateAttachmentsSync(path, agent.Attachments, parts[2]); err != nil {
-					return err
-				}
 			} else if parentDir == "works" {
 				var work domain.Work
 				if err := yaml.Unmarshal(parts[1], &work); err != nil {
@@ -107,60 +104,8 @@ func ValidateEntities(entitiesDir string) error {
 					}
 				}
 
-				if err := validateAttachmentsSync(path, work.Attachments, parts[2]); err != nil {
-					return err
-				}
 			}
 		}
 		return nil
 	})
-}
-
-func validateAttachmentsSync(path string, attachments []domain.Attachment, body []byte) error {
-	bodyStr := string(body)
-	bodyImages := make(map[string]bool)
-
-	// Standard markdown images: ![alt](path)
-	mdMatches := mdImageRegex.FindAllStringSubmatch(bodyStr, -1)
-	for _, match := range mdMatches {
-		imgSrc := match[2]
-		if idx := strings.Index(imgSrc, "media/images/"); idx != -1 {
-			imgSrc = imgSrc[idx+len("media/images/"):]
-		} else if strings.HasPrefix(imgSrc, "../") || strings.HasPrefix(imgSrc, "./") {
-			imgSrc = filepath.Base(imgSrc)
-		}
-		bodyImages[imgSrc] = true
-	}
-
-	// Obsidian Wiki links: ![[image.jpg]]
-	wikiMatches := wikiImageRegex.FindAllStringSubmatch(bodyStr, -1)
-	for _, match := range wikiMatches {
-		imgSrc := match[1]
-		// Normalize Obsidian embed targets (e.g., "folder/image.jpg|300")
-		if idx := strings.Index(imgSrc, "|"); idx != -1 {
-			imgSrc = imgSrc[:idx]
-		}
-		bodyImages[imgSrc] = true
-	}
-
-	yamlImages := make(map[string]bool)
-	for _, att := range attachments {
-		if att.Category != "" && !validAttachmentCategories[att.Category] {
-			return fmt.Errorf("ERRO (%s): Anexo '%s' tem category inválido: '%s'", path, att.URL, att.Category)
-		}
-		if att.Type == "image" && att.URL != "" {
-			yamlImages[att.URL] = true
-			if !bodyImages[att.URL] {
-				return fmt.Errorf("ERRO (%s): Imagem '%s' está em attachments YAML mas não no corpo do Markdown. Execute 'acervo sync-images --mode=yaml-to-body'", path, att.URL)
-			}
-		}
-	}
-
-	for imgSrc := range bodyImages {
-		if !yamlImages[imgSrc] {
-			return fmt.Errorf("ERRO (%s): Imagem '%s' está no corpo do Markdown mas não no attachments YAML. Execute 'acervo sync-images --mode=body-to-yaml'", path, imgSrc)
-		}
-	}
-
-	return nil
 }

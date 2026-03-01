@@ -6,12 +6,12 @@ import (
 
 	"acervo/internal/assets"
 	"acervo/internal/auditor"
+	"acervo/internal/builder"
 	"acervo/internal/indexer"
 	"acervo/internal/ingester"
 	"acervo/internal/metadata"
 	"acervo/internal/reposter"
 	"acervo/internal/setup"
-	"acervo/internal/syncer"
 	"acervo/internal/validator"
 
 	"github.com/spf13/cobra"
@@ -52,28 +52,6 @@ func main() {
 			fmt.Println("✅ Auditoria de Grafo OK")
 		},
 	}
-
-	var syncImagesCmd = &cobra.Command{
-		Use:   "sync-images --mode=[yaml-to-body|body-to-yaml]",
-		Short: "Synchronizes images between YAML frontmatter 'attachments' and Markdown body",
-		Long: `Synchronizes images to keep Obsidian backlinks and CLI metadata consistent.
-Modes:
-  yaml-to-body: Appends missing images from YAML 'attachments' to the Markdown body. (Run once for migration)
-  body-to-yaml: Updates YAML 'attachments' to strictly match the images referenced in the Markdown body. (Obsidian workflow)`,
-		Run: func(cmd *cobra.Command, args []string) {
-			mode, _ := cmd.Flags().GetString("mode")
-			if mode == "" {
-				fmt.Println("❌ A --mode is required (yaml-to-body or body-to-yaml)")
-				os.Exit(1)
-			}
-			if err := syncer.SyncImages("../entities", mode); err != nil {
-				fmt.Println("❌ Sync failed:", err)
-				os.Exit(1)
-			}
-			fmt.Println("✅ Images synchronized successfully.")
-		},
-	}
-	syncImagesCmd.Flags().String("mode", "", "Synchronization mode: yaml-to-body or body-to-yaml")
 
 	var reindexCmd = &cobra.Command{
 		Use:   "reindex",
@@ -231,7 +209,18 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 	repostReviewCmd.MarkFlagRequired("pull-number")
 	repostReviewCmd.MarkFlagRequired("review-id")
 
-	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, syncImagesCmd)
+	var buildSiteCmd = &cobra.Command{
+		Use:   "build-site",
+		Short: "Generates the static frontend (index.html) from markdown Works",
+		Run: func(cmd *cobra.Command, args []string) {
+			if err := builder.BuildSite("../entities", "../../frontend/index.tmpl", "../../frontend/index.html"); err != nil {
+				fmt.Println("❌ Build failed:", err)
+				os.Exit(1)
+			}
+		},
+	}
+
+	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

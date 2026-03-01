@@ -16,8 +16,5 @@ attachments:
   label: Sociedade, o Circo, imagem 2
   category: documentation
 ---
-
 Montado durante o início da carreira.
 
-![Sociedade, o Circo, imagem 1](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-001.png)
-![Sociedade, o Circo, imagem 2](../../media/images/work-sociedade-o-circo/work-sociedade-o-circo-002.png)

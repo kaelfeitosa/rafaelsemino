@@ -23,11 +23,7 @@ attachments:
   label: Rastros de Exu, imagem 3
   category: documentation
 ---
-
 Projeto audiovisual criado como desdobramento do espetáculo "Exu Não Vem Hoje", integrando as ações da **Zona de Criação** do Hub Cultural Porto Dragão.
 
 O programa "Zona de Criação" tem como objetivo principal oferecer suporte técnico a artistas que experimentam novos formatos e linguagens documentais para reverberar e impulsionar suas obras:
 
-![Rastros de Exu, imagem 1](../../media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg)
-![Rastros de Exu, imagem 2](../../media/images/work-rastros-de-exu/work-rastros-de-exu-002.jpeg)
-![Rastros de Exu, imagem 3](../../media/images/work-rastros-de-exu/work-rastros-de-exu-003.jpeg)

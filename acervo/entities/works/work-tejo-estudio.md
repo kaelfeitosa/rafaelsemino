@@ -16,7 +16,4 @@ attachments:
   category: documentation
 ---
 
-Entidade Tejo Estudio (ID: work-tejo-estudio).
 
-![Tejo Estudio, imagem 1](../../media/images/work-tejo-estudio/work-tejo-estudio-001.png)
-![Tejo Estudio, imagem 2](../../media/images/work-tejo-estudio/work-tejo-estudio-002.png)

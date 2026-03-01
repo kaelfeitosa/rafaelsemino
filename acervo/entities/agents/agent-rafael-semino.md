@@ -1,81 +1,46 @@
 ---
-description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, professor e pesquisador de Teatro
+description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, professor
+  e pesquisador de Teatro
 id: agent-rafael-semino
 kind: person
 name: Francisco Rafael da Silva Semino
 attachments:
-  - caption: "agent-rafael-semino, imagem 1"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-001.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 2"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-002.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 3"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-003.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 4"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-004.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 5"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-005.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 6"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-006.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 7"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-007.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 8"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-008.jpeg
-    type: image
-  - caption: "agent-rafael-semino, imagem 9"
-    role: documentation
-    src: agent-rafael-semino/agent-rafael-semino-009.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-009.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-001.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-002.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-004.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-006.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-007.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-003.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-005.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: agent-rafael-semino/agent-rafael-semino-008.jpeg
-    type: image
+- caption: agent-rafael-semino, imagem 1
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-001.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 2
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-002.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 3
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-003.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 4
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-004.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 5
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-005.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 6
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-006.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 7
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-007.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 8
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-008.jpeg
+  type: image
+- caption: agent-rafael-semino, imagem 9
+  role: documentation
+  url: agent-rafael-semino/agent-rafael-semino-009.jpeg
+  type: image
 ---
 
 Francisco Rafael da Silva Semino atua há mais de dez anos no campo das artes cênicas como Ator, Diretor, Dramaturgo, Produtor, Pesquisador e Professor de Teatro.
@@ -100,30 +65,3 @@ Sua trajetória profissional abrange forte atuação no ensino de teatro e artes
 ### Audiovisual e Criação Literária
 Além do palco, Rafael acumula experiências como roteirista, produtor, assistente de produção e de direção audiovisual. É também autor da obra literária/infantil "Contos de Exu", que derivou das experimentações cênicas e investigações do corpo e ancestralidade forjados dentro do Laboratório de Criação Cênica em 2022.
 
-![agent-rafael-semino, imagem 1](../../media/images/agent-rafael-semino/agent-rafael-semino-001.jpeg)
-
-![agent-rafael-semino, imagem 2](../../media/images/agent-rafael-semino/agent-rafael-semino-002.jpeg)
-
-![agent-rafael-semino, imagem 3](../../media/images/agent-rafael-semino/agent-rafael-semino-003.jpeg)
-
-![agent-rafael-semino, imagem 4](../../media/images/agent-rafael-semino/agent-rafael-semino-004.jpeg)
-
-![agent-rafael-semino, imagem 5](../../media/images/agent-rafael-semino/agent-rafael-semino-005.jpeg)
-
-![agent-rafael-semino, imagem 6](../../media/images/agent-rafael-semino/agent-rafael-semino-006.jpeg)
-
-![agent-rafael-semino, imagem 7](../../media/images/agent-rafael-semino/agent-rafael-semino-007.jpeg)
-
-![agent-rafael-semino, imagem 8](../../media/images/agent-rafael-semino/agent-rafael-semino-008.jpeg)
-
-![agent-rafael-semino, imagem 9](../../media/images/agent-rafael-semino/agent-rafael-semino-009.jpeg)
-
-![agent-rafael-semino, imagem 1](../../media/images/agent-rafael-semino/agent-rafael-semino-001.jpeg)
-![agent-rafael-semino, imagem 2](../../media/images/agent-rafael-semino/agent-rafael-semino-002.jpeg)
-![agent-rafael-semino, imagem 3](../../media/images/agent-rafael-semino/agent-rafael-semino-003.jpeg)
-![agent-rafael-semino, imagem 4](../../media/images/agent-rafael-semino/agent-rafael-semino-004.jpeg)
-![agent-rafael-semino, imagem 5](../../media/images/agent-rafael-semino/agent-rafael-semino-005.jpeg)
-![agent-rafael-semino, imagem 6](../../media/images/agent-rafael-semino/agent-rafael-semino-006.jpeg)
-![agent-rafael-semino, imagem 7](../../media/images/agent-rafael-semino/agent-rafael-semino-007.jpeg)
-![agent-rafael-semino, imagem 8](../../media/images/agent-rafael-semino/agent-rafael-semino-008.jpeg)
-![agent-rafael-semino, imagem 9](../../media/images/agent-rafael-semino/agent-rafael-semino-009.jpeg)

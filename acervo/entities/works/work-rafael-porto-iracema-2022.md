@@ -1,4 +1,4 @@
---- 
+---
 id: work-rafael-porto-iracema-2022
 title: Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema (2022)
 medium: pesquisa_artistica
@@ -9,24 +9,22 @@ collaborators: []
 attachments:
 - label: Image
   type: image
-  url: ''
+  url: work-rafael-porto-iracema-2022/work-rafael-porto-iracema-2022-001.jpeg
 - label: Image
   type: image
-  url: ''
+  url: work-rafael-porto-iracema-2022/work-rafael-porto-iracema-2022-002.jpeg
 - label: Image
   type: image
-  url: ''
+  url: work-rafael-porto-iracema-2022/work-rafael-porto-iracema-2022-003.jpeg
 - label: Image
   type: image
-  url: ''
+  url: work-rafael-porto-iracema-2022/work-rafael-porto-iracema-2022-004.jpeg
 - label: Image
   type: image
-  url: ''
+  url: work-rafael-porto-iracema-2022/work-rafael-porto-iracema-2022-005.jpeg
 - label: Image
   type: image
-  url: ''
+  url: work-rafael-porto-iracema-2022/work-rafael-porto-iracema-2022-006.jpeg
 ---
 
-Em 2022, em parceria com o artista Zeis, Rafael Semino foi contemplado com o Prêmio Amarrações Estéticas promovido pela Escola Porto Iracema das Artes. O prêmio incentiva a colaboração entre diferentes projetos e grupos dos laboratórios artísticos residentes. Juntos, a parceria culminou no desenvolvimento conjunto do espetáculo "Vão".
 
-O projeto foi apresentado na Escola Porto Iracema das Artes (Fortaleza – CE – Brasil, 2023) como resultado do cruzamento entre a pesquisa teatral de Rafael Semino e a pesquisa musical autoral de Zéis. Zéis foi responsável pelo núcleo "Encruzilhada", no qual as canções baseiam a dramaturgia do "Vão".

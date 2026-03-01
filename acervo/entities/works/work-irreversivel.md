@@ -2,7 +2,8 @@
 id: work-irreversivel
 title: Irreversível
 medium: teatro
-description: Rafael Semino atuou como ator neste projeto, que contou com a direção de Caique Melo. A obra foi apresentada em São Paulo e em Angola.
+description: Rafael Semino atuou como ator neste projeto, que contou com a direção
+  de Caique Melo. A obra foi apresentada em São Paulo e em Angola.
 year: 2022
 role: Ator
 collaborators:
@@ -26,8 +27,5 @@ attachments:
   label: Irreversível, imagem 2
   category: documentation
 ---
+Rafael Semino atuou como ator neste projeto de teatro, que contou com a direção de Caique Melo. A obra integrou o percurso de práticas cênicas e formativas, e foi apresentada tanto na cidade de São Paulo quanto internacionalmente, em Angola.
 
-Rafael Semino atuou como ator neste projeto, que contou com a direção de Caique Melo. A obra foi apresentada em São Paulo e em Angola.
-
-![Irreversível, imagem 1](../../media/images/work-irreversivel/work-irreversivel-001.png)
-![Irreversível, imagem 2](../../media/images/work-irreversivel/work-irreversivel-002.jpeg)
