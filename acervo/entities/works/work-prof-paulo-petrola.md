@@ -4,8 +4,9 @@ title: Professor de Artes na Escola Municipal Paulo Petrola
 medium: ensino
 description: Atuação no Programa Mais Educação, ministrando aulas de teatro e reforço de Português e Matemática no contraturno escolar.
 year: 2020
-role: Professor de Artes
-collaborators: []
+role: Educador
+collaborators:
+- Zeis
 attachments: []
 ---
 

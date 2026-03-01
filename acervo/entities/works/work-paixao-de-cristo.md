@@ -1,9 +1,10 @@
 ---
 id: work-paixao-de-cristo
 title: Paixao De Cristo
-medium: outro
+medium: cultura_popular
 description: 'Entidade Paixao De Cristo (ID: work-paixao-de-cristo).'
 year: 2023
+role: Ator
 occurrences: []
 attachments:
 - caption: Paixao De Cristo, imagem 1

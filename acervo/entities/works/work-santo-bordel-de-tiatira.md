@@ -5,6 +5,8 @@ medium: teatro
 description: Espetáculo de teatro.
 year: 2017
 role: Ator
+collaborators:
+- Caique Melo
 occurrences: []
 attachments:
 - caption: Santo Bordel de Tiatira, imagem 1

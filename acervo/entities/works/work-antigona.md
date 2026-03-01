@@ -5,6 +5,8 @@ medium: teatro
 description: Peça com direção de Fran Teixeira a partir do laboratório de criação teatral no Porto Iracema.
 year: 2015
 role: Ator
+collaborators:
+- Fran Teixeira
 occurrences: []
 ---
 

@@ -5,6 +5,9 @@ medium: teatro
 description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo a pesquisa de mestrado para o palco.
 year: 2022
 role: Ator
+collaborators:
+- Gabriel França
+- Felipe Marques
 occurrences:
 - title: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga
   type: apresentacao

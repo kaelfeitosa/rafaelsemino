@@ -5,6 +5,8 @@ medium: teatro
 description: Montagem do texto de Nelson Rodrigues, realizada em 2014 a partir do curso Ações Físicas e Construção do Personagem.
 year: 2014
 role: Ator
+collaborators:
+- Maria Vitória
 occurrences: []
 attachments:
 - caption: A Serpente (Montagem 2014), imagem 1

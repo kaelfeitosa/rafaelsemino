@@ -1,35 +1,39 @@
 ---
-description: Série audiovisual / documentação poética derivada dos processos cênicos do espetáculo.
 id: work-rastros-de-exu
 title: Rastros de Exu
-year: 2023
-attachments:
-  - caption: "Rastros de Exu, imagem 1"
-    role: "documentation"
-    src: "work-rastros-de-exu/work-rastros-de-exu-001.jpeg"
-    type: "image"
-  - caption: "Rastros de Exu, imagem 2"
-    role: "documentation"
-    src: "work-rastros-de-exu/work-rastros-de-exu-002.jpeg"
-    type: "image"
-  - caption: "Rastros de Exu, imagem 3"
-    role: "documentation"
-    src: "work-rastros-de-exu/work-rastros-de-exu-003.jpeg"
-    type: "image"
-  - caption: Image
-    role: documentation
-    url: work-rastros-de-exu/work-rastros-de-exu-001.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: work-rastros-de-exu/work-rastros-de-exu-002.jpeg
-    type: image
-  - caption: Image
-    role: documentation
-    url: work-rastros-de-exu/work-rastros-de-exu-003.jpeg
-    type: image
 medium: audiovisual
-occurrences: []
+description: Série audiovisual / documentação poética derivada dos processos cênicos do espetáculo.
+year: 2023
+role: Ator e Produtor
+occurrences:
+  - context: "Programa Zona de Criação (YouTube)"
+    start_date: "2024"
+    type: "publicacao_ou_apresentacao"
+attachments:
+- caption: Rastros de Exu, imagem 1
+  role: documentation
+  src: work-rastros-de-exu/work-rastros-de-exu-001.jpeg
+  type: image
+- caption: Rastros de Exu, imagem 2
+  role: documentation
+  src: work-rastros-de-exu/work-rastros-de-exu-002.jpeg
+  type: image
+- caption: Rastros de Exu, imagem 3
+  role: documentation
+  src: work-rastros-de-exu/work-rastros-de-exu-003.jpeg
+  type: image
+- caption: Image
+  role: documentation
+  url: work-rastros-de-exu/work-rastros-de-exu-001.jpeg
+  type: image
+- caption: Image
+  role: documentation
+  url: work-rastros-de-exu/work-rastros-de-exu-002.jpeg
+  type: image
+- caption: Image
+  role: documentation
+  url: work-rastros-de-exu/work-rastros-de-exu-003.jpeg
+  type: image
 ---
 
 Projeto audiovisual criado como desdobramento do espetáculo "Exu Não Vem Hoje", integrando as ações da **Zona de Criação** do Hub Cultural Porto Dragão.

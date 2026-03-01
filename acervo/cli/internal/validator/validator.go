@@ -19,7 +19,7 @@ var (
 	wikiImageRegex = regexp.MustCompile(`!\[\[(.*?)\]\]`)
 
 	validWorkMediums = map[string]bool{
-		"teatro": true, "audiovisual": true, "pesquisa_academica": true, "pesquisa_artistica": true, "pesquisa": true, "ensino": true, "formacao": true, "exposicao": true, "performance": true, "jogo": true, "livro": true, "empresa": true, "outro": true, "producao_cultural": true, "curadoria_e_juri": true, "cultura_popular": true, "ensino_e_formacao": true, "literatura": true,
+		"teatro": true, "audiovisual": true, "pesquisa_academica": true, "pesquisa_artistica": true, "pesquisa": true, "ensino": true, "formacao": true, "exposicao": true, "performance": true, "jogos_digitais": true, "livro": true, "empresa": true, "producao_cultural": true, "curadoria_e_juri": true, "cultura_popular": true, "ensino_e_formacao": true, "literatura": true,
 	}
 	validOccurrenceTypes = map[string]bool{
 		"apresentacao": true, "residencia": true, "oficina": true, "publicacao_ou_apresentacao": true, "lancamento": true, "premio": true, "exposicao": true,

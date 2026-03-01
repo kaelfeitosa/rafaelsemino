@@ -1,11 +1,12 @@
 ---
 id: work-rafael-miraira-caninha-verde
 title: Caninha Verde (Miraira)
-medium: outro
+medium: cultura_popular
 description: Apresentação de dança dramática de Caninha Verde com o Grupo Mira Ira.
 year: 2016
 role: Intérprete (Caninha Verde)
-collaborators: []
+collaborators:
+- Zeis
 attachments: []
 ---
 

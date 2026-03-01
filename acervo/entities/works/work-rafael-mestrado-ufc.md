@@ -5,7 +5,8 @@ medium: formacao
 description: Detalhes específicos da participação.
 year: 2022
 role: Mestrando
-collaborators: []
+collaborators:
+- Zeis
 attachments: []
 ---
 

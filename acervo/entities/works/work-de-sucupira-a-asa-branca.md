@@ -5,6 +5,8 @@ medium: teatro
 description: Montagem teatral em 2016.
 year: 2016
 role: Ator
+collaborators:
+- Fernando Lira
 occurrences: []
 attachments:
 - caption: De Sucupira à Asa Branca, imagem 1

@@ -5,6 +5,8 @@ medium: teatro
 description: Performance teatral fruto do curso Corpo e Movimento no Porto Iracema das Artes em 2015.
 year: 2015
 role: Ator
+collaborators:
+- Andrea Pires
 occurrences: []
 attachments:
 - caption: 300 Reais, imagem 1

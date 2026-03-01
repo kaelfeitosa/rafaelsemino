@@ -5,7 +5,8 @@ medium: formacao
 description: Detalhes específicos da participação.
 year: 2019
 role: Graduando
-collaborators: []
+collaborators:
+- Zeis
 attachments: []
 ---
 

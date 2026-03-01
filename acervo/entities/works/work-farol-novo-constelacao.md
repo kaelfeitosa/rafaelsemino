@@ -1,11 +1,12 @@
 ---
 id: work-farol-novo-constelacao
 title: Residência de Criação Colaborativa Constelação
-medium: outro
+medium: pesquisa_artistica
 description: Detalhes específicos da participação de Rafael Semino como Diretor.
 year: 2023
 role: Diretor
-collaborators: []
+collaborators:
+- Zeis
 attachments: []
 ---
 

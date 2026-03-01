@@ -5,6 +5,8 @@ medium: audiovisual
 description: Curta-metragem dirigido por Jennifer Vieira.
 year: 2019
 role: Ator
+collaborators:
+- Jennifer Vieira
 occurrences: []
 attachments:
 - caption: Há números que sonham, imagem 1
