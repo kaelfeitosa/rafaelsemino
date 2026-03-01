@@ -2,7 +2,7 @@
 id: work-rafael-mestrado-ufc
 title: Mestrando em Mestrado em Artes
 medium: formacao
-description: 
+description: Detalhes específicos da participação.
 year: 2022
 role: Mestrando
 collaborators: []

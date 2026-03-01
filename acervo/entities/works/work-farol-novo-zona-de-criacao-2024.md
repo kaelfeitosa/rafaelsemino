@@ -2,7 +2,7 @@
 id: work-farol-novo-zona-de-criacao-2024
 title: Programa Zona de Criação (YouTube)
 medium: outro
-description: 
+description: Detalhes específicos da participação.
 year: 2024
 role: Diretor
 collaborators: []

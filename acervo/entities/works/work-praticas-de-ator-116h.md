@@ -1,9 +1,10 @@
 ---
-description: Atuação de 116 horas no Porto Iracema das Artes em 2015.
 id: work-praticas-de-ator-116h
 title: Práticas de Ator (Porto Iracema 116h)
-year: 2015
 medium: teatro
+description: Atuação de 116 horas no Porto Iracema das Artes em 2015.
+year: 2015
+role: Ator
 occurrences: []
 ---
 

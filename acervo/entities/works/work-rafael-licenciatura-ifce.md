@@ -2,7 +2,7 @@
 id: work-rafael-licenciatura-ifce
 title: Graduando em Licenciatura em Teatro
 medium: formacao
-description: 
+description: Detalhes específicos da participação.
 year: 2019
 role: Graduando
 collaborators: []

@@ -1,19 +1,20 @@
 ---
-description: Montagem do texto de Nelson Rodrigues, realizada em 2014 a partir do curso Ações Físicas e Construção do Personagem.
 id: work-a-serpente
 title: A Serpente (Montagem 2014)
-year: 2014
-attachments:
-  - caption: "A Serpente (Montagem 2014), imagem 1"
-    role: "documentation"
-    src: "work-a-serpente/work-a-serpente-001.png"
-    type: "image"
-  - caption: Image
-    role: documentation
-    url: work-a-serpente/work-a-serpente-001.png
-    type: image
 medium: teatro
+description: Montagem do texto de Nelson Rodrigues, realizada em 2014 a partir do curso Ações Físicas e Construção do Personagem.
+year: 2014
+role: Ator
 occurrences: []
+attachments:
+- caption: A Serpente (Montagem 2014), imagem 1
+  role: documentation
+  src: work-a-serpente/work-a-serpente-001.png
+  type: image
+- caption: Image
+  role: documentation
+  url: work-a-serpente/work-a-serpente-001.png
+  type: image
 ---
 
 **A Serpente** foi uma peça teatral resultante do curso "Ações Físicas e Construção do Personagem" (45h), promovido pela Escola Porto Iracema das Artes em 2014.
