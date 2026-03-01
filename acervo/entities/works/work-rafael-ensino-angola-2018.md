@@ -1,27 +1,31 @@
----
+--- 
 id: work-rafael-ensino-angola-2018
 title: Ensino de Artes e Cinema em Angola
-medium: ensino
-description: Atuação como professor voluntário de Artes e Cinema em Angola, Província do Bié, em parceria com a Cia Del Artes. O escopo abarcou a produção de curtas-metragens, montagem de espetáculos teatrais, roteiros e cenários, além de diálogos com o público infanto-juvenil.
+medium: ensino_e_formacao
+description: Atuação como professor voluntário de Artes e Cinema em Angola, Província
+  do Bié, em parceria com a Cia Del Artes. O escopo abarcou a produção de curtas-metragens,
+  montagem de espetáculos teatrais, roteiros e cenários, além de diálogos com o público
+  infanto-juvenil.
 year: 2018
-role: Professor e Produtor
-collaborators: []
+role: Professor de Artes e Cinema / Produtor
+collaborators:
+- Cia Del Artes
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
+- label: Image
+  type: image
+  url: ''
+- label: Image
+  type: image
+  url: ''
+- label: Image
+  type: image
+  url: ''
+- label: Image
+  type: image
+  url: ''
+- label: Image
+  type: image
+  url: ''
 ---
 
 Em 2022, em parceria com o artista Zeis, Rafael Semino foi contemplado com o Prêmio Amarrações Estéticas promovido pela Escola Porto Iracema das Artes. O prêmio incentiva a colaboração entre diferentes projetos e grupos dos laboratórios artísticos residentes. Juntos, a parceria culminou no desenvolvimento conjunto do espetáculo "Vão".

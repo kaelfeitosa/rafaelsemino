@@ -1,18 +1,19 @@
----
+--- 
 id: work-avaliador-junino
 title: Avaliador do Ciclo Junino
-medium: outro
-description: Atuação de Rafael Semino como avaliador em festivais e quadrilhas juninas no Ceará, ano 2023.
+medium: cultura_popular
+description: Atuação de Rafael Semino como avaliador em festivais e quadrilhas juninas
+  no Ceará, ano 2023.
 year: 2023
-role: Avaliador
+role: Avaliador / Parecerista
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
+- label: Image
+  type: image
+  url: ''
+- label: Image
+  type: image
+  url: ''
 ---
 
 Em 2022, em parceria com o artista Zeis, Rafael Semino foi contemplado com o Prêmio Amarrações Estéticas promovido pela Escola Porto Iracema das Artes. O prêmio incentiva a colaboração entre diferentes projetos e grupos dos laboratórios artísticos residentes. Juntos, a parceria culminou no desenvolvimento conjunto do espetáculo "Vão".

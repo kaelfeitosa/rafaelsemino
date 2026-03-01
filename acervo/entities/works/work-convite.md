@@ -1,10 +1,13 @@
 ---
-description: Espetáculo teatral encenado em 2017.
 id: work-convite
 title: Convite
-year: 2013
+year: 2017
 medium: teatro
+role: Ator
+collaborators: []
 occurrences: []
+description: Peça teatral Convite realizada em 2017.
+attachments: []
 ---
 
-Realizado em 2017 (início em 2013).
+Peça Convite (2017). Atuação.
