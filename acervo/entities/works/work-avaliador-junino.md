@@ -1,18 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
+id: work-avaliador-junino
+title: Avaliador do Ciclo Junino
 medium: outro
-description:
+description: Atuação de Rafael Semino como avaliador em festivais e quadrilhas juninas no Ceará, ano 2023.
 year: 2023
-role: Participante
+role: Avaliador
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

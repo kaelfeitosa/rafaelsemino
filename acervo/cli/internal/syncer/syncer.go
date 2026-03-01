@@ -67,7 +67,11 @@ func SyncImages(entitiesDir string, mode string) error {
 			mdMatches := mdImageRegex.FindAllStringSubmatch(body, -1)
 			for _, match := range mdMatches {
 				imgSrc := match[2]
-				imgSrc = filepath.Base(imgSrc)
+				if idx := strings.Index(imgSrc, "media/images/"); idx != -1 {
+					imgSrc = imgSrc[idx+len("media/images/"):]
+				} else if strings.HasPrefix(imgSrc, "../") || strings.HasPrefix(imgSrc, "./") {
+					imgSrc = filepath.Base(imgSrc)
+				}
 				bodyImages[imgSrc] = true
 			}
 
@@ -78,7 +82,6 @@ func SyncImages(entitiesDir string, mode string) error {
 				if idx := strings.Index(imgSrc, "|"); idx != -1 {
 					imgSrc = imgSrc[:idx]
 				}
-				imgSrc = filepath.Base(imgSrc)
 				bodyImages[imgSrc] = true
 			}
 
@@ -87,7 +90,7 @@ func SyncImages(entitiesDir string, mode string) error {
 				changed := false
 				for _, att := range rawAttachments {
 					typeStr, _ := att["type"].(string)
-					srcStr, _ := att["src"].(string)
+					srcStr, _ := att["url"].(string)
 					if typeStr == "image" && srcStr != "" {
 						if !bodyImages[srcStr] {
 							if !changed {
@@ -134,7 +137,7 @@ func SyncImages(entitiesDir string, mode string) error {
 						for _, itemNode := range attachmentsNode.Content {
 							// Check if it's an image
 							isImage := false
-							src := ""
+							url := ""
 							if itemNode.Kind == yaml.MappingNode {
 								for j := 0; j < len(itemNode.Content); j += 2 {
 									k := itemNode.Content[j].Value
@@ -142,15 +145,15 @@ func SyncImages(entitiesDir string, mode string) error {
 									if k == "type" && v == "image" {
 										isImage = true
 									}
-									if k == "src" {
-										src = v
+									if k == "url" {
+										url = v
 									}
 								}
 							}
 
-							if isImage && src != "" {
-								yamlImages[src] = true
-								if bodyImages[src] {
+							if isImage && url != "" {
+								yamlImages[url] = true
+								if bodyImages[url] {
 									newAttachments = append(newAttachments, itemNode)
 								}
 							} else {
@@ -171,7 +174,7 @@ func SyncImages(entitiesDir string, mode string) error {
 								&yaml.Node{Kind: yaml.ScalarNode, Value: "Image"},
 								&yaml.Node{Kind: yaml.ScalarNode, Value: "role"},
 								&yaml.Node{Kind: yaml.ScalarNode, Value: "documentation"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "src"},
+								&yaml.Node{Kind: yaml.ScalarNode, Value: "url"},
 								&yaml.Node{Kind: yaml.ScalarNode, Value: imgName},
 								&yaml.Node{Kind: yaml.ScalarNode, Value: "type"},
 								&yaml.Node{Kind: yaml.ScalarNode, Value: "image"},

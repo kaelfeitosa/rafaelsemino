@@ -1,21 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
+id: work-avaliador-ciclo-carnavalesco
+title: Avaliador do Ciclo Carnavalesco
 medium: outro
-description:
-year: 2023
-role: Participante
+description: Atuação como avaliador do Ciclo Carnavalesco da Avenida Domingos Olímpio em Fortaleza.
+year: 2020
+role: Avaliador
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

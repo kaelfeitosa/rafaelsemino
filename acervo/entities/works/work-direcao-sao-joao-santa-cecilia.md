@@ -1,18 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
+id: work-direcao-sao-joao-santa-cecilia
+title: São João Escola Santa Cecília
 medium: outro
-description:
+description: Dramaturgia e direção da peça de São João da Escola Santa Cecília, Fortaleza (2023 e 2024).
 year: 2023
-role: Participante
+role: Dramaturgia e Direção
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

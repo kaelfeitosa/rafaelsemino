@@ -1,18 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
+id: work-rafael-pos-ufba
+title: Pós-graduando em Pós-graduação em Teatro do Oprimido
+medium: formacao
 description:
-year: 2023
-role: Participante
+year: 2021
+role: Pós-graduando
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

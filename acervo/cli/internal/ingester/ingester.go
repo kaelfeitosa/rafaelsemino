@@ -19,7 +19,7 @@ func Create(entityType string, slug string, args []string) error {
 	slug = filepath.Base(slug)
 
 	// Validate entityType against allow-list
-	allowedTypes := map[string]bool{"action": true, "work": true, "agent": true}
+	allowedTypes := map[string]bool{"work": true, "agent": true}
 	if !allowedTypes[entityType] {
 		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
 	}
@@ -28,20 +28,7 @@ func Create(entityType string, slug string, args []string) error {
 	var frontmatter interface{}
 	var body string = "Detalhes específicos."
 
-	// Helper to ensure wikilink format
-	toWikilink := func(s string) string {
-		s = strings.TrimSpace(s)
-		if s == "" {
-			return ""
-		}
-		if !strings.HasPrefix(s, "[[") {
-			s = "[[" + s
-		}
-		if !strings.HasSuffix(s, "]]") {
-			s = s + "]]"
-		}
-		return s
-	}
+	// Helper to ensure wikilink format (Removed - no longer needed for new Works model)
 
 	// Parse args into a map for easier access
 	argMap := make(map[string]string)
@@ -53,51 +40,6 @@ func Create(entityType string, slug string, args []string) error {
 	}
 
 	switch entityType {
-	case "action":
-		data := &domain.Action{
-			ID: id,
-		}
-		for key, val := range argMap {
-			switch key {
-			case "title":
-				data.Title = val
-			case "category":
-				data.Category = val
-			case "format":
-				data.Format = val
-			case "label":
-				data.Label = val
-			case "location":
-				data.Location = val
-			case "performed_by":
-				data.PerformedBy = toWikilink(val)
-			case "my_role":
-				data.MyRole = val
-			case "work_id":
-				data.WorkID = toWikilink(val)
-			case "date_start":
-				data.DateStart = val
-			case "date_end":
-				data.DateEnd = val
-			case "description":
-				data.Description = val
-			case "featured":
-				data.Featured = (strings.ToLower(val) == "true")
-			case "collaborators":
-				if val != "" {
-					if err := json.Unmarshal([]byte(val), &data.Collaborators); err != nil {
-						return fmt.Errorf("falha ao analisar collaborators (esperado JSON): %w", err)
-					}
-				}
-			case "attachments":
-				if val != "" {
-					if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
-						return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
-					}
-				}
-			}
-		}
-		frontmatter = data
 	case "agent":
 		data := &domain.Agent{
 			ID: id,
@@ -133,20 +75,34 @@ func Create(entityType string, slug string, args []string) error {
 			switch key {
 			case "title":
 				data.Title = val
-			case "type":
-				data.Type = val
+			case "medium":
+				data.Medium = val
 			case "description":
 				data.Description = val
 			case "year":
 				if val != "" {
-					y, err := strconv.Atoi(val)
-					if err != nil {
-						return fmt.Errorf("valor inválido para year: '%s' não é um número", val)
-					}
-					data.Year = y
+					data.Year = val
 				}
 			case "featured":
 				data.Featured = (strings.ToLower(val) == "true")
+			case "collaborators":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Collaborators); err != nil {
+						return fmt.Errorf("falha ao analisar collaborators (esperado JSON array de strings): %w", err)
+					}
+				}
+			case "attachments":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
+						return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
+					}
+				}
+			case "occurrences":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Occurrences); err != nil {
+						return fmt.Errorf("falha ao analisar occurrences (esperado JSON array): %w", err)
+					}
+				}
 			}
 		}
 		frontmatter = data
@@ -178,7 +134,7 @@ func Update(entityType string, id string, args []string) error {
 	entityType = filepath.Base(entityType)
 	id = filepath.Base(id)
 
-	allowedTypes := map[string]bool{"action": true, "work": true, "agent": true}
+	allowedTypes := map[string]bool{"work": true, "agent": true}
 	if !allowedTypes[entityType] {
 		return fmt.Errorf("tipo de entidade inválido: %s", entityType)
 	}

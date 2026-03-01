@@ -1,6 +1,5 @@
 ---
-description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator,
-  professor e pesquisador de Teatro
+description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, professor e pesquisador de Teatro
 id: agent-rafael-semino
 kind: person
 name: Francisco Rafael da Silva Semino
@@ -40,6 +39,42 @@ attachments:
   - caption: "agent-rafael-semino, imagem 9"
     role: documentation
     src: agent-rafael-semino/agent-rafael-semino-009.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-009.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-001.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-002.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-004.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-006.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-007.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-003.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-005.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-rafael-semino/agent-rafael-semino-008.jpeg
     type: image
 ---
 

@@ -1,12 +1,18 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
-description:
-year: 2023
-role: Participante
+id: work-rafael-porto-iracema-2022
+title: Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema (2022)
+medium: pesquisa_laboratorio
+description: "Criação em tempo espiralar: Exu e suas encruzilhadas (346h)."
+year: 2022
+role: Pesquisador/Aluno
 collaborators: []
 attachments:
+  - label: "Image"
+    type: "image"
+    url: ""
+  - label: "Image"
+    type: "image"
+    url: ""
   - label: "Image"
     type: "image"
     url: ""

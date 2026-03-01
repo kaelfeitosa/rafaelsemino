@@ -18,14 +18,11 @@ var (
 	mdImageRegex   = regexp.MustCompile(`!\[(.*?)\]\((.*?)\)`)
 	wikiImageRegex = regexp.MustCompile(`!\[\[(.*?)\]\]`)
 
-	validWorkTypes = map[string]bool{
-		"teatro": true, "jogo": true, "filme": true, "roteiro": true, "performance": true, "outro": true, "audiovisual": true, "livro": true, "empresa": true,
+	validWorkMediums = map[string]bool{
+		"teatro": true, "audiovisual": true, "pesquisa": true, "ensino": true, "formacao": true, "exposicao": true, "pesquisa_laboratorio": true, "filme": true, "roteiro": true, "performance": true, "jogo": true, "livro": true, "empresa": true, "outro": true,
 	}
-	validActionCategories = map[string]bool{
-		"criacao": true, "exibicao": true, "formacao": true, "avaliacao": true, "curadoria": true, "premiacao": true, "outro": true,
-	}
-	validActionFormats = map[string]bool{
-		"festival": true, "mostra": true, "curso": true, "oficina": true, "residencia": true, "premiacao": true, "entrevista": true, "outro": true,
+	validOccurrenceTypes = map[string]bool{
+		"apresentacao": true, "residencia": true, "oficina": true, "publicacao_ou_apresentacao": true, "lancamento": true, "premio": true, "exposicao": true,
 	}
 )
 
@@ -89,51 +86,25 @@ func ValidateEntities(entitiesDir string) error {
 				if work.Title == "" {
 					return fmt.Errorf("ERRO: Work %s sem title", work.ID)
 				}
-				if work.Type == "" || !validWorkTypes[work.Type] {
-					return fmt.Errorf("ERRO: Work %s tem tipo inválido: '%s'. Tipos permitidos: %s", work.ID, work.Type, getKeys(validWorkTypes))
+				if work.Medium == "" || !validWorkMediums[work.Medium] {
+					return fmt.Errorf("ERRO: Work %s tem medium inválido: '%s'. Tipos permitidos: %s", work.ID, work.Medium, getKeys(validWorkMediums))
 				}
-				if err := validateAttachmentsSync(path, work.Attachments, parts[2]); err != nil {
-					return err
-				}
-			} else if parentDir == "actions" {
-				var action domain.Action
-				if err := yaml.Unmarshal(parts[1], &action); err != nil {
-					return fmt.Errorf("ERRO: Action em %s tem YAML inválido: %w", path, err)
-				}
-				if action.ID == "" {
-					return fmt.Errorf("ERRO: Action %s sem id", path)
-				}
-				if action.Title == "" {
-					return fmt.Errorf("ERRO: Action %s sem title", action.ID)
-				}
-				if action.Category == "" || !validActionCategories[action.Category] {
-					return fmt.Errorf("ERRO: Action %s tem category inválido: '%s'. Tipos permitidos: %s", action.ID, action.Category, getKeys(validActionCategories))
-				}
-				if action.Format == "" || !validActionFormats[action.Format] {
-					return fmt.Errorf("ERRO: Action %s tem format inválido: '%s'. Tipos permitidos: %s", action.ID, action.Format, getKeys(validActionFormats))
-				}
-				if action.PerformedBy == "" {
-					return fmt.Errorf("ERRO: Action %s sem performed_by", action.ID)
-				}
-				if action.MyRole == "" {
-					return fmt.Errorf("ERRO: Action %s sem my_role", action.ID)
-				}
-				if action.Label == "" {
-					return fmt.Errorf("ERRO: Action %s sem label", action.ID)
-				}
-				if action.DateStart == "" {
-					return fmt.Errorf("ERRO: Action %s sem date_start", action.ID)
-				}
+
+				// Optional: validate occurrences inside works
 				dateRegex := regexp.MustCompile(`^\d{4}(-\d{2})?(-\d{2})?$`)
-				if !dateRegex.MatchString(action.DateStart) {
-					return fmt.Errorf("ERRO: Action %s tem formato de date_start inválido: '%s'", action.ID, action.DateStart)
-				}
-				if action.DateEnd != "" {
-					if !dateRegex.MatchString(action.DateEnd) {
-						return fmt.Errorf("ERRO: Action %s tem formato de date_end inválido: '%s'", action.ID, action.DateEnd)
+				for i, occ := range work.Occurrences {
+					if occ.Type != "" && !validOccurrenceTypes[occ.Type] {
+						return fmt.Errorf("ERRO: Occurrence %d no Work %s tem type inválido: '%s'", i+1, work.ID, occ.Type)
+					}
+					if occ.StartDate != "" && !dateRegex.MatchString(occ.StartDate) {
+						return fmt.Errorf("ERRO: Occurrence %d no Work %s tem formato de start_date inválido: '%s'", i+1, work.ID, occ.StartDate)
+					}
+					if occ.EndDate != "" && !dateRegex.MatchString(occ.EndDate) {
+						return fmt.Errorf("ERRO: Occurrence %d no Work %s tem formato de end_date inválido: '%s'", i+1, work.ID, occ.EndDate)
 					}
 				}
-				if err := validateAttachmentsSync(path, action.Attachments, parts[2]); err != nil {
+
+				if err := validateAttachmentsSync(path, work.Attachments, parts[2]); err != nil {
 					return err
 				}
 			}
@@ -150,7 +121,11 @@ func validateAttachmentsSync(path string, attachments []domain.Attachment, body 
 	mdMatches := mdImageRegex.FindAllStringSubmatch(bodyStr, -1)
 	for _, match := range mdMatches {
 		imgSrc := match[2]
-		imgSrc = filepath.Base(imgSrc)
+		if idx := strings.Index(imgSrc, "media/images/"); idx != -1 {
+			imgSrc = imgSrc[idx+len("media/images/"):]
+		} else if strings.HasPrefix(imgSrc, "../") || strings.HasPrefix(imgSrc, "./") {
+			imgSrc = filepath.Base(imgSrc)
+		}
 		bodyImages[imgSrc] = true
 	}
 
@@ -162,17 +137,15 @@ func validateAttachmentsSync(path string, attachments []domain.Attachment, body 
 		if idx := strings.Index(imgSrc, "|"); idx != -1 {
 			imgSrc = imgSrc[:idx]
 		}
-		imgSrc = filepath.Base(imgSrc)
 		bodyImages[imgSrc] = true
 	}
 
 	yamlImages := make(map[string]bool)
 	for _, att := range attachments {
-		if att.Type == "image" && att.Src != "" {
-			baseSrc := filepath.Base(att.Src)
-			yamlImages[baseSrc] = true
-			if !bodyImages[baseSrc] {
-				return fmt.Errorf("ERRO (%s): Imagem '%s' está em attachments YAML mas não no corpo do Markdown. Execute 'acervo sync-images --mode=yaml-to-body'", path, att.Src)
+		if att.Type == "image" && att.URL != "" {
+			yamlImages[att.URL] = true
+			if !bodyImages[att.URL] {
+				return fmt.Errorf("ERRO (%s): Imagem '%s' está em attachments YAML mas não no corpo do Markdown. Execute 'acervo sync-images --mode=yaml-to-body'", path, att.URL)
 			}
 		}
 	}

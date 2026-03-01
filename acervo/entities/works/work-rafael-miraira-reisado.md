@@ -1,18 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
+id: work-rafael-miraira-reisado
+title: Reisado (Miraira)
 medium: outro
-description:
-year: 2023
-role: Participante
+description: Apresentação de dança dramática de Reisado com o Grupo Mira Ira.
+year: 2016
+role: Intérprete (Reisado)
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

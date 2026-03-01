@@ -1,12 +1,15 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
-description:
-year: 2023
-role: Participante
+id: work-rafael-ensino-angola-2018
+title: Ensino de Artes e Cinema em Angola
+medium: ensino
+description: Atuação como professor voluntário de Artes e Cinema em Angola, Província do Bié, em parceria com a Cia Del Artes. O escopo abarcou a produção de curtas-metragens, montagem de espetáculos teatrais, roteiros e cenários, além de diálogos com o público infanto-juvenil.
+year: 2018
+role: Professor e Produtor
 collaborators: []
 attachments:
+  - label: "Image"
+    type: "image"
+    url: ""
   - label: "Image"
     type: "image"
     url: ""

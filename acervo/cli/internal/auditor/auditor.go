@@ -9,7 +9,6 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
-	"acervo/internal/utils"
 
 	"gopkg.in/yaml.v3"
 )
@@ -23,8 +22,6 @@ var (
 func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	agents := make(map[string]bool)
 	works := make(map[string]bool)
-	actions := make(map[string]bool)
-	var allActions []domain.Action
 	var allWorks []domain.Work
 	referencedImages := make(map[string]bool)
 
@@ -68,8 +65,8 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 			if err := yaml.Unmarshal(parts[1], &agent); err == nil {
 				agents[agent.ID] = true
 				for _, att := range agent.Attachments {
-					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+					if att.Type == "image" && att.URL != "" {
+						referencedImages[att.URL] = true
 					}
 				}
 			} else {
@@ -81,25 +78,19 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 				works[work.ID] = true
 				allWorks = append(allWorks, work)
 				for _, att := range work.Attachments {
-					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
+					if att.Type == "image" && att.URL != "" {
+						referencedImages[att.URL] = true
+					}
+				}
+				for _, occ := range work.Occurrences {
+					for _, att := range occ.Attachments {
+						if att.Type == "image" && att.URL != "" {
+							referencedImages[att.URL] = true
+						}
 					}
 				}
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Work em %s: %v\n", path, err)
-			}
-		} else if parentDir == "actions" {
-			var action domain.Action
-			if err := yaml.Unmarshal(parts[1], &action); err == nil {
-				actions[action.ID] = true
-				allActions = append(allActions, action)
-				for _, att := range action.Attachments {
-					if att.Type == "image" && att.Src != "" {
-						referencedImages[att.Src] = true
-					}
-				}
-			} else {
-				fmt.Printf("[WARNING] Falha ao analisar Action em %s: %v\n", path, err)
 			}
 		}
 
@@ -156,19 +147,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 
 	brokenLinks := 0
 	// Validate relations using collected data
-	for _, action := range allActions {
-		pb := utils.CleanWikilink(action.PerformedBy)
-		if pb != "" && !agents[pb] {
-			fmt.Printf("[BROKEN LINK] Action %s aponta para Agent %s inexistente\n", action.ID, pb)
-			brokenLinks++
-		}
-
-		wid := utils.CleanWikilink(action.WorkID)
-		if wid != "" && !works[wid] {
-			fmt.Printf("[BROKEN LINK] Action %s aponta para Work %s inexistente\n", action.ID, wid)
-			brokenLinks++
-		}
-	}
+	// Note: Action relation checks (PerformedBy, WorkID) were removed as Action entity is deprecated.
 
 	// 2. Entity Image Audit (Markdown Attachments)
 	fmt.Println("--- ENTITY IMAGE AUDIT ---")
@@ -278,7 +257,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	fmt.Printf("Dangling Images: %d\n", danglingImages)
 	fmt.Printf("Naming Violations: %d\n", namingViolations)
 
-	if brokenLinks > 0 || missingImages > 0 || missingMasters > 0 {
+	if brokenLinks > 0 || missingImages > 0 {
 		return fmt.Errorf("audit failed with reference errors")
 	}
 	return nil

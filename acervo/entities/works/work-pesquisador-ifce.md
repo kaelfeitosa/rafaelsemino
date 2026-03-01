@@ -1,18 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
-description:
+id: work-pesquisador-ifce
+title: Pesquisador no IFCE
+medium: pesquisa
+description: Atuação como pesquisador no Grupo Miraira durante a licenciatura.
 year: 2023
-role: Participante
+role: Pesquisador
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

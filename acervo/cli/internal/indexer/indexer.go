@@ -10,7 +10,6 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
-	"acervo/internal/utils"
 
 	"gopkg.in/yaml.v3"
 	_ "modernc.org/sqlite"
@@ -34,7 +33,7 @@ func Reindex(entitiesDir, dbPath string) error {
 	}
 	defer db.Close()
 
-	// New Schema compatible with the Action-centric model
+	// New Schema compatible with the Work+Occurrence model
 	if _, err := db.Exec(`
 		CREATE TABLE entities(
 			id TEXT PRIMARY KEY,
@@ -43,6 +42,16 @@ func Reindex(entitiesDir, dbPath string) error {
 			path TEXT,
 			featured INTEGER DEFAULT 0,
 			json_data TEXT
+		);
+		CREATE TABLE occurrences(
+			work_id TEXT,
+			title TEXT,
+			type TEXT,
+			start_date TEXT,
+			end_date TEXT,
+			context TEXT,
+			role TEXT,
+			FOREIGN KEY(work_id) REFERENCES entities(id)
 		);
 		CREATE TABLE relations(
 			src TEXT,
@@ -118,30 +127,11 @@ func Reindex(entitiesDir, dbPath string) error {
 					return fmt.Errorf("failed to marshal work %s: %w", id, err)
 				}
 
-			} else if parentDir == "actions" {
-				var data domain.Action
-				if err := yaml.Unmarshal(parts[1], &data); err != nil {
-					return err
-				}
-				id = data.ID
-				typ = "action"
-				title = data.Title
-				if data.Featured {
-					featured = 1
-				}
-				jsonData, err = json.Marshal(data)
-				if err != nil {
-					return fmt.Errorf("failed to marshal action %s: %w", id, err)
-				}
-
-				if pb := utils.CleanWikilink(data.PerformedBy); pb != "" {
-					if _, err := tx.Exec("INSERT INTO relations VALUES(?,?,?)", id, "performed_by", pb); err != nil {
-						return fmt.Errorf("failed to insert relation performed_by for %s: %w", id, err)
-					}
-				}
-				if wid := utils.CleanWikilink(data.WorkID); wid != "" {
-					if _, err := tx.Exec("INSERT INTO relations VALUES(?,?,?)", id, "work_id", wid); err != nil {
-						return fmt.Errorf("failed to insert relation work_id for %s: %w", id, err)
+				// Index occurrences
+				for _, occ := range data.Occurrences {
+					if _, err := tx.Exec("INSERT INTO occurrences VALUES(?,?,?,?,?,?,?)",
+						id, occ.Title, occ.Type, occ.StartDate, occ.EndDate, occ.Context, occ.Role); err != nil {
+						return fmt.Errorf("failed to insert occurrence for work %s: %w", id, err)
 					}
 				}
 			}

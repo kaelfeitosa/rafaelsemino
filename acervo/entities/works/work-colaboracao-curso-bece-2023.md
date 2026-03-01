@@ -1,18 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
+id: work-colaboracao-curso-bece-2023
+title: Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE)
+medium: ensino
 description:
 year: 2023
-role: Participante
+role: Palestrante
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

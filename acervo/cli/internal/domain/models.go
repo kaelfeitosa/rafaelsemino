@@ -18,42 +18,32 @@ type Link struct {
 }
 
 type Work struct {
-	ID          string       `yaml:"id"`
-	Title       string       `yaml:"title"`
-	Type        string       `yaml:"type"` // teatro | jogo | filme | roteiro | performance | outro
-	Description string       `yaml:"description,omitempty"`
-	Year        int          `yaml:"year,omitempty"`
-	Attachments []Attachment `yaml:"attachments,omitempty"`
-	Featured    bool         `yaml:"featured,omitempty"`
+	ID            string       `yaml:"id"`
+	Title         string       `yaml:"title"`
+	Medium        string       `yaml:"medium"` // teatro | audiovisual | pesquisa | ensino | formacao | exposicao | outro
+	Description   string       `yaml:"description,omitempty"`
+	Year          interface{}  `yaml:"year,omitempty"` // interface to handle int or string
+	Role          string       `yaml:"role,omitempty"` // For standalone works where I took a role
+	Collaborators []string     `yaml:"collaborators,omitempty"`
+	Attachments   []Attachment `yaml:"attachments,omitempty"`
+	Occurrences   []Occurrence `yaml:"occurrences,omitempty"`
+	Featured      bool         `yaml:"featured,omitempty"`
 }
 
 type Attachment struct {
-	Type    string `yaml:"type"` // image | video | pdf | link
-	Role    string `yaml:"role"` // documentation | clipping | press | certificate | contract | outro
-	Source  string `yaml:"source,omitempty"`
-	Src     string `yaml:"src"`
-	Caption string `yaml:"caption,omitempty"`
+	Type  string `yaml:"type"` // image | video | pdf | link
+	URL   string `yaml:"url"`
+	Label string `yaml:"label,omitempty"`
 }
 
-type Collaborator struct {
-	Name string `yaml:"name"`
-	Role string `yaml:"role,omitempty"`
-}
-
-type Action struct {
-	ID            string         `yaml:"id"`
-	Title         string         `yaml:"title"`
-	Category      string         `yaml:"category"` // criacao | exibicao | formacao | avaliacao | curadoria | premiacao | outro
-	Format        string         `yaml:"format"`   // festival | mostra | curso | oficina | residencia | premiacao | entrevista | outro
-	Label         string         `yaml:"label"`
-	Location      string         `yaml:"location,omitempty"`
-	PerformedBy   string         `yaml:"performed_by"` // Agent.id
-	MyRole        string         `yaml:"my_role"`
-	WorkID        string         `yaml:"work_id,omitempty"` // Work.id
-	DateStart     string         `yaml:"date_start"`
-	DateEnd       string         `yaml:"date_end,omitempty"`
-	Description   string         `yaml:"description,omitempty"`
-	Collaborators []Collaborator `yaml:"collaborators,omitempty"`
-	Attachments   []Attachment   `yaml:"attachments,omitempty"`
-	Featured      bool           `yaml:"featured,omitempty"`
+// Occurrence represents an event linked to a Work (e.g., season, presentation)
+type Occurrence struct {
+	Title         string       `yaml:"title"`
+	Type          string       `yaml:"type"` // apresentacao | residencia | oficina | publicacao_ou_apresentacao | lancamento | premio | exposicao
+	StartDate     string       `yaml:"start_date"`
+	EndDate       string       `yaml:"end_date,omitempty"`
+	Context       string       `yaml:"context,omitempty"`
+	Role          string       `yaml:"role,omitempty"`
+	Collaborators []string     `yaml:"collaborators,omitempty"`
+	Attachments   []Attachment `yaml:"attachments,omitempty"`
 }

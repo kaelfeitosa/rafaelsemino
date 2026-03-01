@@ -1,17 +1,26 @@
 ---
 id: work-tejo-estudio
-title: "Tejo Estudio"
-type: outro
+title: Tejo Estudio
 year: 2023
 attachments:
   - caption: "Tejo Estudio, imagem 1"
-    role: documentation
-    src: work-tejo-estudio/work-tejo-estudio-001.png
-    type: image
+    role: "documentation"
+    src: "work-tejo-estudio/work-tejo-estudio-001.png"
+    type: "image"
   - caption: "Tejo Estudio, imagem 2"
+    role: "documentation"
+    src: "work-tejo-estudio/work-tejo-estudio-002.png"
+    type: "image"
+  - caption: Image
     role: documentation
-    src: work-tejo-estudio/work-tejo-estudio-002.png
+    url: work-tejo-estudio/work-tejo-estudio-001.png
     type: image
+  - caption: Image
+    role: documentation
+    url: work-tejo-estudio/work-tejo-estudio-002.png
+    type: image
+medium: outro
+occurrences: []
 ---
 
 Entidade Tejo Estudio (ID: work-tejo-estudio).
@@ -23,4 +32,3 @@ Entidade Tejo Estudio (ID: work-tejo-estudio).
 ![Tejo Estudio, imagem 1](../../media/images/work-tejo-estudio/work-tejo-estudio-001.png)
 
 ![Tejo Estudio, imagem 2](../../media/images/work-tejo-estudio/work-tejo-estudio-002.png)
-

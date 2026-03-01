@@ -1,21 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
+id: work-prof-aceleracao
+title: Docência em Projeto de Aceleração da Aprendizagem
+medium: ensino
 description:
-year: 2023
-role: Participante
+year: 2024
+role: Professor/Diretor
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

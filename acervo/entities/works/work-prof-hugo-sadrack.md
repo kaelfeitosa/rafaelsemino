@@ -1,15 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
-medium: outro
-description:
-year: 2023
-role: Participante
+id: work-prof-hugo-sadrack
+title: Professor de Artes na Escola Estadual Hugo Sidrack do Vale
+medium: ensino
+description: Ministração das disciplinas de Artes, Jogos e Africanidade e História da Arte para turmas do 9º ano do Ensino Fundamental e 1º e 2º anos do Ensino Médio.
+year: 2021
+role: Professor de Artes
 collaborators: []
 attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
   - label: "Image"
     type: "image"
     url: ""

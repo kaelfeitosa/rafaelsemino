@@ -1,24 +1,12 @@
 ---
-id: work-mestres-do-mundo
-title: Mestres Do Mundo
+id: work-rafael-miraira-caninha-verde
+title: Caninha Verde (Miraira)
 medium: outro
-description:
-year: 2023
-role: Participante
+description: Apresentação de dança dramática de Caninha Verde com o Grupo Mira Ira.
+year: 2016
+role: Intérprete (Caninha Verde)
 collaborators: []
-attachments:
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
-  - label: "Image"
-    type: "image"
-    url: ""
+attachments: []
 ---
 
 Em 2022, em parceria com o artista Zeis, Rafael Semino foi contemplado com o Prêmio Amarrações Estéticas promovido pela Escola Porto Iracema das Artes. O prêmio incentiva a colaboração entre diferentes projetos e grupos dos laboratórios artísticos residentes. Juntos, a parceria culminou no desenvolvimento conjunto do espetáculo "Vão".

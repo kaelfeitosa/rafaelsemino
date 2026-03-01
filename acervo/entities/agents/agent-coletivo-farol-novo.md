@@ -1,6 +1,5 @@
 ---
-description: Fundado em 2022 no Laboratório de Criação do Porto Iracema para
-  pesquisar mito, oralidade e o tempo na periferia.
+description: Fundado em 2022 no Laboratório de Criação do Porto Iracema para pesquisar mito, oralidade e o tempo na periferia.
 founded_by_me: true
 id: agent-coletivo-farol-novo
 kind: collective
@@ -13,6 +12,14 @@ attachments:
   - caption: "agent-coletivo-farol-novo, imagem 2"
     role: documentation
     src: agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg
+    type: image
+  - caption: Image
+    role: documentation
+    url: agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg
     type: image
 ---
 
