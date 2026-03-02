@@ -251,13 +251,14 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 
 						var data interface{}
 
-						if parentDir == "agents" {
+						switch parentDir {
+						case "agents":
 							var agent domain.Agent
 							if err := yaml.Unmarshal(parts[1], &agent); err != nil {
 								return fmt.Errorf("failed to unmarshal agent %s: %w", path, err)
 							}
 							data = agent
-						} else if parentDir == "works" {
+						case "works":
 							var work domain.Work
 							if err := yaml.Unmarshal(parts[1], &work); err != nil {
 								return fmt.Errorf("failed to unmarshal work %s: %w", path, err)
