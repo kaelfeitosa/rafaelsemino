@@ -909,6 +909,8 @@
             font-family: 'Lora', serif;
             font-size: 1.2rem;
             margin-top: 20px;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         .project-desc.light {
@@ -1013,23 +1015,12 @@
         .awards-list li::before,
         .eixos-list li::before,
         .direction-list li::before {
+            content: "■ ";
+            font-size: 0.8em;
+            vertical-align: middle;
             margin-right: 0.5em;
             color: var(--red);
             font-weight: 900;
-        }
-
-        .hyphen-list li::before {
-            content: "■ ";
-            font-size: 0.8em;
-            vertical-align: middle;
-        }
-
-        .awards-list li::before,
-        .eixos-list li::before,
-        .direction-list li::before {
-            content: "■ ";
-            font-size: 0.8em;
-            vertical-align: middle;
         }
 
 
@@ -1110,11 +1101,6 @@
 
         .profile-text p {
             margin-bottom: 25px;
-        }
-
-        .project-desc {
-            line-height: 1.7;
-            margin-bottom: 20px;
         }
 
         .gap-80 {
@@ -1290,31 +1276,6 @@
             transform: translate(-4px, -4px);
         }
 
-        .ator-destaque-box p {
-            color: white !important;
-        }
-
-        .btn-work {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--red);
-            color: white;
-            text-decoration: none;
-            font-family: 'Archivo Black', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: all 0.3s var(--ease);
-            border: 2px solid var(--red);
-        }
-
-        .btn-work:hover {
-            background: var(--white);
-            color: var(--black);
-            box-shadow: 8px 8px 0px var(--red);
-            transform: translate(-4px, -4px);
-        }
     </style>
 </head>
 
@@ -1340,7 +1301,7 @@
                 <a href="#coletivo">Coletivo</a>
             </nav>
             <div class="nav-meta">
-                <button class="btn-print" onclick="window.print()">Imprimir PDF</button>
+                <button class="btn-print" id="print-button">Imprimir PDF</button>
             </div>
         </header>
 
@@ -1829,10 +1790,10 @@
                                     src="images/optimized/work-rebordose/work-rebordose-001.webp" alt="Cena do curta-metragem Rebordose"></focus-image>
                             </div>
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-rebordose/work-rebordose-002.webp" alt="Outra cena de Rebordose"></focus-image>
+                                    src="images/optimized/work-rebordose/work-rebordose-002.webp" alt="Ator atuando no curta-metragem Rebordose"></focus-image>
                             </div>
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.webp" alt="Imagem relacionada a Rebordose"></focus-image>
+                                    src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.webp" alt="Performance noturna na rua com espectadores do projeto Exu Não Vem Hoje"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -2146,6 +2107,8 @@
                 });
             }
         });
+
+        document.getElementById('print-button').addEventListener('click', () => window.print());
     </script>
 </body>
 
