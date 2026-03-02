@@ -104,8 +104,7 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 	}
 
 	// Support flattened keys
-	attMap := make(map[int]Attachment)
-
+	attFieldsMap := make(map[int]map[string]string)
 	for k, v := range m {
 		matches := attachmentRegexp.FindStringSubmatch(k)
 		if len(matches) == 3 {
@@ -115,33 +114,39 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 			}
 			field := matches[2]
 
-			att := attMap[idx]
+			if _, ok := attFieldsMap[idx]; !ok {
+				attFieldsMap[idx] = make(map[string]string)
+			}
+
 			strVal, ok := v.(string)
 			if !ok {
 				if v != nil {
 					strVal = fmt.Sprintf("%v", v)
 				}
 			}
-			switch field {
-			case "type":
-				att.Type = strVal
-			case "url":
-				att.URL = strVal
-			case "label":
-				att.Label = strVal
-			case "caption":
-				if att.Label == "" {
-					att.Label = strVal
-				}
-			case "category":
-				att.Category = strVal
-			case "role":
-				if att.Category == "" {
-					att.Category = strVal
-				}
-			}
-			attMap[idx] = att
+			attFieldsMap[idx][field] = strVal
 		}
+	}
+
+	attMap := make(map[int]Attachment)
+	for idx, fields := range attFieldsMap {
+		att := Attachment{
+			Type: fields["type"],
+			URL:  fields["url"],
+		}
+
+		if label, ok := fields["label"]; ok && label != "" {
+			att.Label = label
+		} else {
+			att.Label = fields["caption"]
+		}
+
+		if category, ok := fields["category"]; ok && category != "" {
+			att.Category = category
+		} else {
+			att.Category = fields["role"]
+		}
+		attMap[idx] = att
 	}
 
 	if len(attMap) > 0 {
