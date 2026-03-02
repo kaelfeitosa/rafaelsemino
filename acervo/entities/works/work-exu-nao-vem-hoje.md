@@ -15,12 +15,27 @@ occurrences:
       end_date: "2024"
       context: 30º Festival Nordestino de Teatro de Guaramiranga
       role: Diretor
+      attachment_1_type: image
+      attachment_1_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-001.jpeg
+      attachment_1_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 1
+      attachment_2_type: image
+      attachment_2_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-002.jpeg
+      attachment_2_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 2
+      attachment_3_type: image
+      attachment_3_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-003.jpeg
+      attachment_3_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 3
+      attachment_4_type: image
+      attachment_4_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-004.jpeg
+      attachment_4_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 4
     - title: Farol Novo Temporada Porto Dragão 2023
       type: lancamento
       start_date: "2023"
       end_date: "2023"
       context: Temporada Porto Dragão
       role: Diretor
+      attachment_1_type: image
+      attachment_1_url: work-farol-novo-temporada-porto-dragao-2023-03/work-farol-novo-temporada-porto-dragao-2023-03-001.jpeg
+      attachment_1_label: Farol Novo Temporada Porto Dragão 2023, imagem 1
     - title: Diretor em Temporada Hub Porto Dragão 2023
       type: exposicao
       start_date: 2023-01

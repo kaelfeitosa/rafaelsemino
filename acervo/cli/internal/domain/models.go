@@ -198,12 +198,9 @@ func (a *Agent) UnmarshalYAML(value *yaml.Node) error {
 	return UnmarshalAttachments(value, a)
 }
 
-func (a *Agent) MarshalYAML() (interface{}, error) {
+func (a Agent) MarshalYAML() (interface{}, error) {
 	type alias Agent
-	if a == nil {
-		return nil, nil
-	}
-	return MarshalAttachments(a, alias(*a))
+	return MarshalAttachments(&a, alias(a))
 }
 
 // Work custom marshal/unmarshal
@@ -217,12 +214,9 @@ func (w *Work) UnmarshalYAML(value *yaml.Node) error {
 	return UnmarshalAttachments(value, w)
 }
 
-func (w *Work) MarshalYAML() (interface{}, error) {
+func (w Work) MarshalYAML() (interface{}, error) {
 	type alias Work
-	if w == nil {
-		return nil, nil
-	}
-	return MarshalAttachments(w, alias(*w))
+	return MarshalAttachments(&w, alias(w))
 }
 
 // Occurrence custom marshal/unmarshal
@@ -236,10 +230,7 @@ func (o *Occurrence) UnmarshalYAML(value *yaml.Node) error {
 	return UnmarshalAttachments(value, o)
 }
 
-func (o *Occurrence) MarshalYAML() (interface{}, error) {
+func (o Occurrence) MarshalYAML() (interface{}, error) {
 	type alias Occurrence
-	if o == nil {
-		return nil, nil
-	}
-	return MarshalAttachments(o, alias(*o))
+	return MarshalAttachments(&o, alias(o))
 }

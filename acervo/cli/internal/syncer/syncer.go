@@ -71,12 +71,13 @@ func SyncImages(entitiesDir string, mode string) error {
 			}
 
 			if atts, ok := tempMap["attachments"].([]interface{}); ok {
-				idx := 1
+				maxIdx := 0
 				for k := range attMap {
-					if k >= idx {
-						idx = k + 1
+					if k > maxIdx {
+						maxIdx = k
 					}
 				}
+				idx := maxIdx + 1
 				for _, a := range atts {
 					if m, ok := a.(map[string]interface{}); ok {
 						attMap[idx] = m
@@ -138,7 +139,15 @@ func SyncImages(entitiesDir string, mode string) error {
 							if caption == "" {
 								caption = "Image"
 							}
-							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", caption, srcStr)
+							// Sanitize fields to prevent markdown injection
+							safeCaption := strings.ReplaceAll(caption, "\n", " ")
+							safeCaption = strings.ReplaceAll(safeCaption, "[", "\\[")
+							safeCaption = strings.ReplaceAll(safeCaption, "]", "\\]")
+
+							safeSrcStr := strings.ReplaceAll(srcStr, "\n", "")
+							safeSrcStr = strings.ReplaceAll(safeSrcStr, ")", "%29")
+
+							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", safeCaption, safeSrcStr)
 							changed = true
 							bodyImages[srcStr] = true
 						}

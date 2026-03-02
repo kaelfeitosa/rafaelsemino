@@ -2,7 +2,6 @@ package domain
 
 import (
 	"reflect"
-	"strings"
 	"testing"
 
 	"gopkg.in/yaml.v3"
@@ -40,11 +39,11 @@ attachment_2_url: bar.mp4
 		t.Fatalf("Failed to marshal: %v", err)
 	}
 
-	outStr := string(out)
-	if !strings.Contains(outStr, "attachment_1_url: foo.jpg") {
-		t.Errorf("Marshal output missing attachment_1_url: \n%s", outStr)
+	var w2 Work
+	if err := yaml.Unmarshal(out, &w2); err != nil {
+		t.Fatalf("Failed to unmarshal marshaled output: %v", err)
 	}
-	if !strings.Contains(outStr, "attachment_2_type: video") {
-		t.Errorf("Marshal output missing attachment_2_type: \n%s", outStr)
+	if !reflect.DeepEqual(w, w2) {
+		t.Errorf("Roundtrip failed. Got: %#v\nWant: %#v", w2, w)
 	}
 }
