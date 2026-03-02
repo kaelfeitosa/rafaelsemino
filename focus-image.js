@@ -11,7 +11,7 @@ class MetadataReader {
             const response = await fetch(src, { headers, signal });
 
             if (!response.ok && response.status !== 206 && response.status !== 416) return null;
-            
+
             // Se for 416, o arquivo é menor que o range solicitado. Tenta buscar o arquivo inteiro.
             if (response.status === 416) {
                 const fullResponse = await fetch(src, { signal });
@@ -33,6 +33,8 @@ class MetadataReader {
                 xmpString = MetadataReader.extractXMPFromJPEG(view);
             } else if (MetadataReader.isPNG(view)) {
                 xmpString = MetadataReader.extractXMPFromPNG(view);
+            } else if (MetadataReader.isWebP(view)) {
+                xmpString = MetadataReader.extractXMPFromWebP(view);
             }
 
             if (!xmpString) return null;
@@ -54,6 +56,12 @@ class MetadataReader {
     static isPNG(view) {
         if (view.byteLength < 8) return false;
         return view.getUint32(0) === 0x89504E47;
+    }
+
+    static isWebP(view) {
+        if (view.byteLength < 12) return false;
+        return view.getUint32(0) === 0x52494646 && // "RIFF"
+            view.getUint32(8) === 0x57454250;    // "WEBP"
     }
 
     static extractXMPFromJPEG(view) {
@@ -79,6 +87,25 @@ class MetadataReader {
                 }
             }
             offset += 2 + length;
+        }
+        return "";
+    }
+
+    static extractXMPFromWebP(view) {
+        let offset = 12; // Skip RIFF header
+        const decoder = new TextDecoder();
+
+        while (offset + 8 <= view.byteLength) {
+            const type = decoder.decode(new Uint8Array(view.buffer, offset, 4));
+            const length = view.getUint32(offset + 4, true); // Little-endian
+
+            if (type === "XMP ") {
+                if (offset + 8 + length > view.byteLength) break;
+                return decoder.decode(new Uint8Array(view.buffer, offset + 8, length));
+            }
+
+            // Chunks in RIFF are even-sized
+            offset += 8 + length + (length % 2);
         }
         return "";
     }
