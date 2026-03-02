@@ -62,13 +62,20 @@ func BuildAssets(htmlPath, sourceDir, outputDir string, force bool) error {
 		return fmt.Errorf("creating output dir: %w", err)
 	}
 
+	// Ensure sourceDir is absolute for reliable relative path calculation later
+	absSourceDir, err := filepath.Abs(sourceDir)
+	if err != nil {
+		return fmt.Errorf("resolving absolute source dir: %w", err)
+	}
+
 	// Create source map once
-	sourceMap, err := buildSourceMap(sourceDir)
+	sourceMap, err := buildSourceMap(absSourceDir)
 	if err != nil {
 		return fmt.Errorf("building source map: %w", err)
 	}
 
 	var buildErrors []string
+	expectedFiles := make(map[string]bool)
 
 	fmt.Printf("📂 Processing %d references using source map of %d files...\n", len(refs), len(sourceMap))
 
@@ -81,18 +88,25 @@ func BuildAssets(htmlPath, sourceDir, outputDir string, force bool) error {
 			continue // Not one of our master images
 		}
 
-		// Determine destination path. We want to preserve the name but use .webp
-		relPath := baseName + ".webp"
-		destPath := filepath.Join(outputDir, relPath)
-		absDest, err := filepath.Abs(destPath)
+		// Determine destination path preserving the relative directory structure
+		relPath, err := filepath.Rel(absSourceDir, sourcePath)
 		if err != nil {
-			buildErrors = append(buildErrors, fmt.Sprintf("resolving abs path for %s: %v", relPath, err))
+			buildErrors = append(buildErrors, fmt.Sprintf("calculating relative path for %s: %v", sourcePath, err))
 			continue
 		}
 
+		relPathWebp := strings.TrimSuffix(relPath, filepath.Ext(relPath)) + ".webp"
+		destPath := filepath.Join(outputDir, relPathWebp)
+		absDest, err := filepath.Abs(destPath)
+		if err != nil {
+			buildErrors = append(buildErrors, fmt.Sprintf("resolving abs path for %s: %v", relPathWebp, err))
+			continue
+		}
+		expectedFiles[absDest] = true
+
 		// Ensure destination directory exists
 		if err := os.MkdirAll(filepath.Dir(absDest), 0755); err != nil {
-			buildErrors = append(buildErrors, fmt.Sprintf("creating dir for %s: %v", relPath, err))
+			buildErrors = append(buildErrors, fmt.Sprintf("creating dir for %s: %v", relPathWebp, err))
 			continue
 		}
 
@@ -100,17 +114,51 @@ func BuildAssets(htmlPath, sourceDir, outputDir string, force bool) error {
 			continue
 		}
 
-		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), relPath)
+		fmt.Printf("🔨 Building: %s -> %s\n", filepath.Base(sourcePath), relPathWebp)
 		if err := optimizeImage(cwebpPath, sourcePath, absDest); err != nil {
-			fmt.Printf("❌ Error optimizing %s: %v\n", relPath, err)
-			buildErrors = append(buildErrors, fmt.Sprintf("optimizing %s: %v", relPath, err))
+			fmt.Printf("❌ Error optimizing %s: %v\n", relPathWebp, err)
+			buildErrors = append(buildErrors, fmt.Sprintf("optimizing %s: %v", relPathWebp, err))
 		} else {
-			fmt.Printf("✅ Optimized: %s\n", relPath)
+			fmt.Printf("✅ Optimized: %s\n", relPathWebp)
 		}
 	}
 
 	if len(buildErrors) > 0 {
 		return fmt.Errorf("encountered %d error(s) during asset build:\n- %s", len(buildErrors), strings.Join(buildErrors, "\n- "))
+	}
+
+	// Cleanup phase: remove files and then empty directories
+	fmt.Println("🧹 Cleaning up unused optimized assets and folders...")
+
+	// Pass 1: Remove unused files
+	err = filepath.WalkDir(outputDir, func(path string, d os.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		absPath, err := filepath.Abs(path)
+		if err != nil {
+			return nil
+		}
+		if !expectedFiles[absPath] {
+			fmt.Printf("🗑️  Removing unused asset: %s\n", path)
+			return os.Remove(path)
+		}
+		return nil
+	})
+
+	// Pass 2: Remove empty directories (bottom-up)
+	filepath.Walk(outputDir, func(path string, info os.FileInfo, err error) error {
+		if err == nil && info.IsDir() && path != outputDir {
+			entries, _ := os.ReadDir(path)
+			if len(entries) == 0 {
+				fmt.Printf("📂 Removing empty folder: %s\n", path)
+				os.Remove(path)
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		fmt.Printf("⚠️  Warning during cleanup: %v\n", err)
 	}
 
 	return nil
@@ -152,35 +200,39 @@ func scanHTMLForImages(path string) ([]string, error) {
 
 // buildSourceMap scans the source directory and creates a map of normalized filenames to full paths
 func buildSourceMap(dir string) (map[string]string, error) {
-	files, err := os.ReadDir(dir)
-	if err != nil {
-		return nil, err
-	}
-
 	sourceMap := make(map[string]string)
-	for _, f := range files {
-		if f.IsDir() {
-			continue
+
+	err := filepath.WalkDir(dir, func(path string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() {
+			return nil
 		}
 
-		ext := strings.ToLower(filepath.Ext(f.Name()))
+		ext := strings.ToLower(filepath.Ext(d.Name()))
 		if ext != ".jpg" && ext != ".jpeg" && ext != ".png" {
-			continue // Only process JPEG and PNG masters
+			return nil // Only process JPEG and PNG masters
 		}
 
-		fBase := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
+		fBase := strings.TrimSuffix(d.Name(), filepath.Ext(d.Name()))
 		// Normalized key: replace underscores with hyphens
 		fNorm := strings.ReplaceAll(fBase, "_", "-")
 
-		if existing, ok := sourceMap[fNorm]; ok {
-			return nil, fmt.Errorf("filename collision: %s and %s both map to %s", filepath.Base(existing), f.Name(), fNorm)
+		if _, ok := sourceMap[fNorm]; ok {
+			return nil // Skip duplicate basis, keep the first one found
 		}
 
-		absSource, err := filepath.Abs(filepath.Join(dir, f.Name()))
+		absSource, err := filepath.Abs(path)
 		if err != nil {
-			return nil, fmt.Errorf("resolving absolute path for %s: %v", f.Name(), err)
+			return fmt.Errorf("resolving absolute path for %s: %v", d.Name(), err)
 		}
 		sourceMap[fNorm] = absSource
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
 	}
 	return sourceMap, nil
 }

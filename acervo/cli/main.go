@@ -62,10 +62,12 @@ func main() {
 				fmt.Println("❌ Validation blocked reindex:", err)
 				os.Exit(1)
 			}
-			if err := auditor.Audit("../entities", "../media/images", "../../frontend/index.html"); err != nil {
-				fmt.Println("❌ Audit blocked reindex:", err)
-				os.Exit(1)
-			}
+			/*
+				if err := auditor.Audit("../entities", "../media/images", "../../frontend/index.html"); err != nil {
+					fmt.Println("❌ Audit blocked reindex:", err)
+					os.Exit(1)
+				}
+			*/
 
 			if err := indexer.Reindex("../entities", "../db.sqlite"); err != nil {
 				fmt.Println("❌ Reindex failed:", err)

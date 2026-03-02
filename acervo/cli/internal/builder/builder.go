@@ -168,7 +168,35 @@ func BuildSite(entitiesDir, templatePath, outputPath string) error {
 			return i % j
 		},
 		"safeURL": func(s string) template.URL {
-			return template.URL("images/optimized/" + strings.ReplaceAll(strings.ReplaceAll(s, ".jpeg", ".webp"), ".png", ".webp"))
+			// Resolve nested path by searching in the source images directory
+			baseName := strings.TrimSuffix(filepath.Base(s), filepath.Ext(s))
+			// Normalized lookup: handle underscores vs hyphens
+			normalizedBase := strings.ReplaceAll(baseName, "_", "-")
+
+			// Heuristic: walk the source dir to find where this image lives
+			sourceDir := "../media/images"
+			var relFolder string
+			filepath.WalkDir(sourceDir, func(path string, d os.DirEntry, err error) error {
+				if err == nil && !d.IsDir() {
+					f := d.Name()
+					fBase := strings.TrimSuffix(f, filepath.Ext(f))
+					fNorm := strings.ReplaceAll(fBase, "_", "-")
+					if fNorm == normalizedBase {
+						rel, _ := filepath.Rel(sourceDir, path)
+						relFolder = filepath.ToSlash(filepath.Dir(rel))
+						return fmt.Errorf("found") // Stop walking
+					}
+				}
+				return nil
+			})
+
+			path := ""
+			if relFolder != "" && relFolder != "." {
+				path = relFolder + "/" + baseName + ".webp"
+			} else {
+				path = baseName + ".webp"
+			}
+			return template.URL("images/optimized/" + path)
 		},
 		"getDocs": func(attachments []domain.Attachment) []domain.Attachment {
 			var res []domain.Attachment
