@@ -48,7 +48,7 @@ type Attachment struct {
 
 // Occurrence represents an event linked to a Work (e.g., season, presentation)
 type Occurrence struct {
-	Title         string       `yaml:"title"`
+	Title         string       `yaml:"title,omitempty"`
 	Type          string       `yaml:"type"` // apresentacao | residencia | oficina | publicacao_ou_apresentacao | lancamento | premio | exposicao
 	StartDate     string       `yaml:"start_date"`
 	EndDate       string       `yaml:"end_date,omitempty"`
@@ -169,17 +169,23 @@ func injectAttachmentsToNode(node *yaml.Node, attachments []Attachment) error {
 
 	for i, att := range attachments {
 		idx := i + 1
-		if att.Type != "" {
-			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_type", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.Type})
+		fields := []struct {
+			Name  string
+			Value string
+		}{
+			{"type", att.Type},
+			{"url", att.URL},
+			{"label", att.Label},
+			{"category", att.Category},
 		}
-		if att.URL != "" {
-			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_url", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.URL})
-		}
-		if att.Label != "" {
-			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_label", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.Label})
-		}
-		if att.Category != "" {
-			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_category", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.Category})
+
+		for _, field := range fields {
+			if field.Value != "" {
+				node.Content = append(node.Content,
+					&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", idx, field.Name)},
+					&yaml.Node{Kind: yaml.ScalarNode, Value: field.Value},
+				)
+			}
 		}
 	}
 	return nil

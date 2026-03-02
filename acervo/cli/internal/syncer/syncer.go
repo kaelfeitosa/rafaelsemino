@@ -143,9 +143,15 @@ func SyncImages(entitiesDir string, mode string) error {
 							safeCaption := strings.ReplaceAll(caption, "\n", " ")
 							safeCaption = strings.ReplaceAll(safeCaption, "[", "\\[")
 							safeCaption = strings.ReplaceAll(safeCaption, "]", "\\]")
+							safeCaption = strings.ReplaceAll(safeCaption, "\"", "&quot;")
+							safeCaption = strings.ReplaceAll(safeCaption, "<", "&lt;")
+							safeCaption = strings.ReplaceAll(safeCaption, ">", "&gt;")
 
 							safeSrcStr := strings.ReplaceAll(srcStr, "\n", "")
 							safeSrcStr = strings.ReplaceAll(safeSrcStr, ")", "%29")
+							safeSrcStr = strings.ReplaceAll(safeSrcStr, "\"", "%22")
+							safeSrcStr = strings.ReplaceAll(safeSrcStr, "<", "%3C")
+							safeSrcStr = strings.ReplaceAll(safeSrcStr, ">", "%3E")
 
 							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", safeCaption, safeSrcStr)
 							changed = true
