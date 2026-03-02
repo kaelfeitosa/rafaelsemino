@@ -194,29 +194,38 @@ func applyArgs(data map[string]interface{}, args []string) error {
 			if (strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]")) ||
 				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
 				var jsonVal interface{}
-				if err := json.Unmarshal([]byte(val), &jsonVal); err != nil {
-					// Also support single quotes as a fallback to make passing arrays easier from CLI
-					val = strings.ReplaceAll(val, "'", "\"")
-					if err2 := json.Unmarshal([]byte(val), &jsonVal); err2 != nil {
-						// Fallback: If it's a simple array [a, b], attempt basic parsing
-						if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
-							if strings.Contains(val, "---") {
-								return fmt.Errorf("valor inválido para %s: contém delimitador reservado '---'", key)
-							}
-							inner := strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
-							parts := strings.Split(inner, ",")
-							var strArr []string
-							for _, p := range parts {
-								strArr = append(strArr, strings.TrimSpace(p))
-							}
-							data[key] = strArr
-							continue
-						}
-						return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err2)
-					}
+				// Attempt 1: Try to parse as-is
+				if err := json.Unmarshal([]byte(val), &jsonVal); err == nil {
+					data[key] = jsonVal
+					continue
 				}
-				data[key] = jsonVal
-				continue
+
+				// Attempt 2: Try with single quotes replaced
+				valWithQuotes := strings.ReplaceAll(val, "'", "\"")
+				if err := json.Unmarshal([]byte(valWithQuotes), &jsonVal); err == nil {
+					data[key] = jsonVal
+					continue
+				}
+
+				// Attempt 3: Fallback to simple array parsing
+				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
+					if strings.Contains(val, "---") {
+						return fmt.Errorf("valor inválido para %s: contém delimitador reservado '---'", key)
+					}
+					inner := strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
+					parts := strings.Split(inner, ",")
+					strArr := make([]string, len(parts))
+					for i, p := range parts {
+						strArr[i] = strings.TrimSpace(p)
+					}
+					data[key] = strArr
+					continue
+				}
+
+				// All attempts failed, return an error from the most likely intended format
+				var tempForErr interface{}
+				errForReport := json.Unmarshal([]byte(valWithQuotes), &tempForErr)
+				return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, errForReport)
 			}
 
 			vLower := strings.ToLower(val)
