@@ -200,6 +200,9 @@ func applyArgs(data map[string]interface{}, args []string) error {
 					if err2 := json.Unmarshal([]byte(val), &jsonVal); err2 != nil {
 						// Fallback: If it's a simple array [a, b], attempt basic parsing
 						if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
+							if strings.Contains(val, "---") {
+								return fmt.Errorf("valor inválido para %s: contém delimitador reservado '---'", key)
+							}
 							inner := strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
 							parts := strings.Split(inner, ",")
 							var strArr []string
