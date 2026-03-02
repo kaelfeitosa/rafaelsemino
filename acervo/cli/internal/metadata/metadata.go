@@ -30,9 +30,180 @@ func SetFocus(imagePath string, x, y float64) error {
 		return setFocusJPEG(imagePath, xmpBytes)
 	case "png":
 		return setFocusPNG(imagePath, xmpBytes)
+	case "webp":
+		return InjectXMPWebP(imagePath, xmpBytes)
 	default:
 		return fmt.Errorf("formato de imagem não suportado para metadados: %s", ext)
 	}
+}
+
+// ExtractXMP attempts to extract XMP metadata from JPEG or PNG files.
+func ExtractXMP(imagePath string) ([]byte, error) {
+	data, err := os.ReadFile(imagePath)
+	if err != nil {
+		return nil, err
+	}
+
+	ext := ""
+	for i := len(imagePath) - 1; i >= 0 && imagePath[i] != '.'; i-- {
+		ext = string(imagePath[i]) + ext
+	}
+
+	switch ext {
+	case "jpg", "jpeg":
+		return extractXMPJPEG(data)
+	case "png":
+		return extractXMPPNG(data)
+	default:
+		return nil, nil // Silently ignore unsupported formats for extraction
+	}
+}
+
+func extractXMPJPEG(data []byte) ([]byte, error) {
+	if len(data) < 2 || data[0] != 0xFF || data[1] != 0xD8 {
+		return nil, fmt.Errorf("não é um JPEG válido")
+	}
+	offset := 2
+	for offset < len(data) {
+		for offset < len(data) && data[offset] != 0xFF {
+			offset++
+		}
+		if offset >= len(data)-1 {
+			break
+		}
+		marker := data[offset+1]
+		if marker == 0xDA || marker == 0xD9 {
+			break
+		}
+		if (marker >= 0xD0 && marker <= 0xD7) || marker == 0xD8 || marker == 0x01 {
+			offset += 2
+			continue
+		}
+		if offset+3 >= len(data) {
+			break
+		}
+		length := int(binary.BigEndian.Uint16(data[offset+2 : offset+4]))
+		if marker == 0xE1 && length >= 2+len(xmpNamespace)-1 {
+			payload := data[offset+4 : offset+2+length]
+			if bytes.HasPrefix(payload, []byte("http://ns.adobe.com/xap/1.0/")) {
+				// Offset depends on whether there's a null terminator
+				nsLen := 29
+				if len(payload) > 29 && payload[29] == 0 {
+					nsLen = 30
+				}
+				return payload[nsLen:], nil
+			}
+		}
+		offset += 2 + length
+	}
+	return nil, nil
+}
+
+func extractXMPPNG(data []byte) ([]byte, error) {
+	pmp := pngstructure.NewPngMediaParser()
+	intfc, err := pmp.ParseBytes(data)
+	if err != nil {
+		return nil, err
+	}
+	cs := intfc.(*pngstructure.ChunkSlice)
+	for _, chunk := range cs.Chunks() {
+		if chunk.Type == "iTXt" && bytes.HasPrefix(chunk.Data, []byte("XML:com.adobe.xmp")) {
+			// PNG iTXt: keyword (null) compressionflag (null) compressionmethod (null) lang (null) translatedkey (null) text
+			parts := bytes.SplitN(chunk.Data, []byte{0}, 6)
+			if len(parts) > 5 {
+				return parts[5], nil
+			}
+		}
+	}
+	return nil, nil
+}
+
+// InjectXMPWebP embeds XMP metadata into a WebP file.
+func InjectXMPWebP(imagePath string, xmp []byte) error {
+	data, err := os.ReadFile(imagePath)
+	if err != nil {
+		return err
+	}
+
+	if len(data) < 12 || string(data[0:4]) != "RIFF" || string(data[8:12]) != "WEBP" {
+		return fmt.Errorf("não é um arquivo WebP válido")
+	}
+
+	// We'll rebuild the WebP to ensure it has VP8X if it needs it.
+	// But as a simpler approach for now, we'll just check if it has VP8X.
+	hasVP8X := string(data[12:16]) == "VP8X"
+
+	var buf bytes.Buffer
+	buf.Write(data[0:12]) // RIFF header
+
+	if !hasVP8X {
+		// Insert VP8X chunk
+		// We'll need dimensions. For now, since cwebp generated it,
+		// we might need to parse dimensions from VP8/VP8L if we wanted thoroughness.
+		// BUT if we just want to ADD XMP, we MUST have VP8X.
+		// Let's implement a minimal VP8X insertion.
+		// To get dimensions, we can parse them from VP8/VP8L.
+		width, height := parseDimensions(data)
+
+		buf.Write([]byte("VP8X"))
+		binary.Write(&buf, binary.LittleEndian, uint32(10))
+		flags := byte(0x10) // Set XMP bit (bit 4, 0x10)
+		buf.WriteByte(flags)
+		buf.Write([]byte{0, 0, 0}) // Reserved
+
+		// Dimensions are stored as 24-bit (3 bytes), value-1
+		w := uint32(width - 1)
+		h := uint32(height - 1)
+		buf.Write([]byte{byte(w), byte(w >> 8), byte(w >> 16)})
+		buf.Write([]byte{byte(h), byte(h >> 8), byte(h >> 16)})
+
+		buf.Write(data[12:]) // Original chunks
+	} else {
+		// Update VP8X if it exists
+		flags := data[20]
+		data[20] = flags | 0x10 // Set XMP bit
+		buf.Write(data[12:])
+	}
+
+	// Append XMP chunk
+	buf.Write([]byte("XMP "))
+	binary.Write(&buf, binary.LittleEndian, uint32(len(xmp)))
+	buf.Write(xmp)
+	if len(xmp)%2 != 0 {
+		buf.WriteByte(0) // Padding
+	}
+
+	finalData := buf.Bytes()
+	// Update total RIFF size
+	binary.LittleEndian.PutUint32(finalData[4:8], uint32(len(finalData)-8))
+
+	return os.WriteFile(imagePath, finalData, 0644)
+}
+
+func parseDimensions(data []byte) (int, int) {
+	for i := 12; i < len(data)-8; {
+		chunkType := string(data[i : i+4])
+		size := int(binary.LittleEndian.Uint32(data[i+4 : i+8]))
+		if chunkType == "VP8 " {
+			// VP8 bitstream header
+			if i+18 <= len(data) {
+				w := int(data[i+14]) | (int(data[i+15]&0x3F) << 8)
+				h := int(data[i+16]) | (int(data[i+17]&0x3F) << 8)
+				return w, h
+			}
+		} else if chunkType == "VP8L" {
+			// VP8L bitstream header
+			if i+12 <= len(data) {
+				// 14 bits for w/h
+				bits := uint32(data[i+9]) | (uint32(data[i+10]) << 8) | (uint32(data[i+11]) << 16) | (uint32(data[i+12]) << 24)
+				w := int(bits&0x3FFF) + 1
+				h := int((bits>>14)&0x3FFF) + 1
+				return w, h
+			}
+		}
+		i += 8 + size + (size % 2)
+	}
+	return 0, 0
 }
 
 func generateXMP(x, y float64) []byte {

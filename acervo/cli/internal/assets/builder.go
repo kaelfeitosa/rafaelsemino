@@ -1,6 +1,8 @@
 package assets
 
 import (
+	"acervo/internal/metadata"
+	"bytes"
 	"fmt"
 	"image"
 	_ "image/jpeg"
@@ -259,8 +261,10 @@ func isUpToDate(src, dest string) bool {
 }
 
 func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
+	originalSrcPath := srcPath
 	args := []string{
 		"-q", WebPQuality,
+		"-metadata", WebPMetadata,
 	}
 
 	// 1. Resolve orientation and rotate if necessary
@@ -295,12 +299,25 @@ func optimizeImage(cwebpCmd, srcPath, destPath string) (err error) {
 
 	args = append(args, srcPath, "-o", destPath)
 
-	// Execute cwebp
+	// 4. Extract XMP from original source (before any rotation/stripping)
+	xmp, _ := metadata.ExtractXMP(originalSrcPath)
+
+	// 5. Execute cwebp
 	fmt.Printf("🔨 Running: %s %v\n", cwebpCmd, args)
 	cmd := exec.Command(cwebpCmd, args...)
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("cwebp failed: %v\nOutput: %s", err, string(output))
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("cwebp error: %v (stderr: %s)", err, stderr.String())
+	}
+
+	// 6. Manual metadata injection if handled by our pure Go implementation
+	if xmp != nil {
+		if err := metadata.InjectXMPWebP(destPath, xmp); err != nil {
+			fmt.Printf("⚠️ Warning: failed to inject XMP into %s: %v\n", destPath, err)
+		} else {
+			fmt.Printf("✨ XMP metadata preserved in %s\n", destPath)
+		}
 	}
 
 	return nil
