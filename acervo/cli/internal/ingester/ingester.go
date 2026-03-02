@@ -28,8 +28,6 @@ func Create(entityType string, slug string, args []string) error {
 	var frontmatter interface{}
 	var body string = "Detalhes específicos."
 
-	// Helper to ensure wikilink format (Removed - no longer needed for new Works model)
-
 	// Parse args into a map for easier access
 	argMap := make(map[string]string)
 	for _, arg := range args {
@@ -64,6 +62,12 @@ func Create(entityType string, slug string, args []string) error {
 				}
 			case "featured":
 				data.Featured = (strings.ToLower(val) == "true")
+			case "attachments":
+				if val != "" {
+					if err := json.Unmarshal([]byte(val), &data.Attachments); err != nil {
+						return fmt.Errorf("falha ao analisar attachments (esperado JSON): %w", err)
+					}
+				}
 			}
 		}
 		frontmatter = data
@@ -157,7 +161,6 @@ func Update(entityType string, id string, args []string) error {
 		return err
 	}
 
-	// Update allows generic key setting
 	if err := applyArgs(data, args); err != nil {
 		return err
 	}
@@ -175,6 +178,7 @@ func Update(entityType string, id string, args []string) error {
 	fmt.Printf("✅ Entidade atualizada: %s\n", id)
 	return nil
 }
+
 func applyArgs(data map[string]interface{}, args []string) error {
 	for _, arg := range args {
 		kv := strings.SplitN(arg, "=", 2)
@@ -198,16 +202,11 @@ func applyArgs(data map[string]interface{}, args []string) error {
 			if (strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]")) ||
 				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
 				var jsonVal interface{}
-				// Attempt 1: Try to parse as-is
 				firstErr := json.Unmarshal([]byte(val), &jsonVal)
 				if firstErr == nil {
 					data[key] = jsonVal
 					continue
 				}
-
-				// The previous fallback parsing methods (Attempt 2: replace all single quotes, Attempt 3: simple split by comma)
-				// were brittle and could corrupt data if values contained apostrophes or commas (e.g. ['it's a test', 'a, b']).
-				// To maintain a robust and secure parsing system, we will enforce strict JSON formatting for complex fields.
 
 				return fmt.Errorf("falha ao analisar %s (esperado JSON strict, ex: [\"val1\", \"val2\"]): %w", key, firstErr)
 			}

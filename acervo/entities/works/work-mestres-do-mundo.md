@@ -2,27 +2,25 @@
 id: work-mestres-do-mundo
 title: Mestres Do Mundo
 medium: cultura_popular
-description: Participações acadêmicas e culturais do Encontro Mestres do Mundo (2016
-  a 2022).
+description: Participações acadêmicas e culturais do Encontro Mestres do Mundo (2016 a 2022).
 year: 2023
 role: Pesquisador
 collaborators: []
-attachments:
-  - label: Image
-    type: image
-    url: work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg
-  - label: Image
-    type: image
-    url: work-mestres-do-mundo/work-mestres-do-mundo-001.png
-  - label: Image
-    type: image
-    url: work-mestres-do-mundo/work-mestres-do-mundo-002.jpeg
-  - label: Image
-    type: image
-    url: work-mestres-do-mundo/work-mestres-do-mundo-003.jpeg
-  - label: Image
-    type: image
-    url: work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg
+attachment_1_type: image
+attachment_1_url: work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg
+attachment_1_label: Image
+attachment_2_type: image
+attachment_2_url: work-mestres-do-mundo/work-mestres-do-mundo-001.png
+attachment_2_label: Image
+attachment_3_type: image
+attachment_3_url: work-mestres-do-mundo/work-mestres-do-mundo-002.jpeg
+attachment_3_label: Image
+attachment_4_type: image
+attachment_4_url: work-mestres-do-mundo/work-mestres-do-mundo-003.jpeg
+attachment_4_label: Image
+attachment_5_type: image
+attachment_5_url: work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg
+attachment_5_label: Image
 ---
 Rafael Semino possui ampla relação de pesquisa e participação no Encontro Mestres do Mundo. Suas ações incluem:
 

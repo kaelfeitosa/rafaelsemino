@@ -10,6 +10,7 @@ import (
 	"acervo/internal/indexer"
 	"acervo/internal/ingester"
 	"acervo/internal/metadata"
+	"acervo/internal/migrator"
 	"acervo/internal/reposter"
 	"acervo/internal/setup"
 	"acervo/internal/validator"
@@ -222,7 +223,21 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 		},
 	}
 
-	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
+	var migrateAttachmentsCmd = &cobra.Command{
+		Use:   "migrate-attachments",
+		Short: "Migrates nested attachments list to flattened format",
+		Run: func(cmd *cobra.Command, args []string) {
+			// This requires importing "acervo/internal/migrator" which we'll add.
+			// Handled by goimports or we can import it directly.
+			if err := migrator.MigrateAttachments("../entities"); err != nil {
+				fmt.Println("❌ Migration failed:", err)
+				os.Exit(1)
+			}
+			fmt.Println("✅ Migration successful")
+		},
+	}
+
+	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd, migrateAttachmentsCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
