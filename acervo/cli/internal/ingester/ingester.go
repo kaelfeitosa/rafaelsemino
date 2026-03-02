@@ -199,15 +199,15 @@ func applyArgs(data map[string]interface{}, args []string) error {
 				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
 				var jsonVal interface{}
 				// Attempt 1: Try to parse as-is
-				if err := json.Unmarshal([]byte(val), &jsonVal); err == nil {
+				firstErr := json.Unmarshal([]byte(val), &jsonVal)
+				if firstErr == nil {
 					data[key] = jsonVal
 					continue
 				}
 
 				// Attempt 2: Try with single quotes replaced
 				valWithQuotes := strings.ReplaceAll(val, "'", "\"")
-				err2 := json.Unmarshal([]byte(valWithQuotes), &jsonVal)
-				if err2 == nil {
+				if err2 := json.Unmarshal([]byte(valWithQuotes), &jsonVal); err2 == nil {
 					data[key] = jsonVal
 					continue
 				}
@@ -224,8 +224,8 @@ func applyArgs(data map[string]interface{}, args []string) error {
 					continue
 				}
 
-				// All attempts failed, return an error from the most likely intended format
-				return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err2)
+				// All attempts failed, return an error from the original JSON parse attempt
+				return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, firstErr)
 			}
 
 			vLower := strings.ToLower(val)
