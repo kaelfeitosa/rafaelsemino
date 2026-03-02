@@ -212,7 +212,7 @@ func applyArgs(data map[string]interface{}, args []string) error {
 							data[key] = strArr
 							continue
 						}
-						return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err)
+						return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err2)
 					}
 				}
 				data[key] = jsonVal
