@@ -16,6 +16,7 @@ import (
 var (
 	mdImageRegex   = regexp.MustCompile(`!\[(.*?)\]\((.*?)\)`)
 	wikiImageRegex = regexp.MustCompile(`!\[\[(.*?)\]\]`)
+	flattenedRe    = regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
 )
 
 func SyncImages(entitiesDir string, mode string) error {
@@ -53,7 +54,6 @@ func SyncImages(entitiesDir string, mode string) error {
 			yaml.Unmarshal(parts[1], &tempMap)
 
 			attMap := make(map[int]map[string]interface{})
-			flattenedRe := regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
 			for k, v := range tempMap {
 				matches := flattenedRe.FindStringSubmatch(k)
 				if len(matches) == 3 {
@@ -233,19 +233,11 @@ func SyncImages(entitiesDir string, mode string) error {
 
 					// Add missing body images
 					changed := false
+					// To avoid any gap issues, since they will be reindexed by keptAtts anyway,
+					// we just need a unique high index to append. The sort will handle it.
+					nextIdx := 99999
 					for imgName := range bodyImages {
 						if !yamlImages[imgName] {
-							// find next idx
-							nextIdx := 1
-							for {
-								found := false
-								for _, ad := range keptAtts {
-									if ad.idx == nextIdx { found = true; break }
-								}
-								if !found { break }
-								nextIdx++
-							}
-
 							newAd := &attData{
 								idx: nextIdx,
 								url: imgName,
@@ -258,6 +250,7 @@ func SyncImages(entitiesDir string, mode string) error {
 								},
 							}
 							keptAtts = append(keptAtts, newAd)
+							nextIdx++
 							changed = true
 						}
 					}
@@ -279,7 +272,11 @@ func SyncImages(entitiesDir string, mode string) error {
 					}
 
 					// If there's a difference in length or elements, or explicitly changed
-					if changed || len(parsedAtts) != len(keptAtts) || len(tempMap["attachments"].([]interface{})) > 0 {
+					needsSave := changed || len(parsedAtts) != len(keptAtts)
+					if attsList, ok := tempMap["attachments"].([]interface{}); ok && len(attsList) > 0 {
+						needsSave = true
+					}
+					if needsSave {
 						mapNode.Content = append(otherNodes, newContent...)
 
 						var out bytes.Buffer

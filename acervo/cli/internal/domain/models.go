@@ -58,7 +58,7 @@ type Occurrence struct {
 	Attachments []Attachment `yaml:"-"`
 }
 
-
+var attachmentRegexp = regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
 
 func extractAttachments(m map[string]interface{}) []Attachment {
 	var attachments []Attachment
@@ -70,8 +70,8 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 				var att Attachment
 				if v, ok := attMap["type"].(string); ok { att.Type = v }
 				if v, ok := attMap["url"].(string); ok { att.URL = v }
-				if v, ok := attMap["label"].(string); ok { att.Label = v }
-				if v, ok := attMap["category"].(string); ok { att.Category = v }
+				if v, ok := attMap["label"].(string); ok { att.Label = v } else if v, ok := attMap["caption"].(string); ok { att.Label = v }
+				if v, ok := attMap["category"].(string); ok { att.Category = v } else if v, ok := attMap["role"].(string); ok { att.Category = v }
 				attachments = append(attachments, att)
 			}
 		}
@@ -79,16 +79,20 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 
 	// Support flattened keys
 	attMap := make(map[int]Attachment)
-	re := regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
 
 	for k, v := range m {
-		matches := re.FindStringSubmatch(k)
+		matches := attachmentRegexp.FindStringSubmatch(k)
 		if len(matches) == 3 {
 			idx, _ := strconv.Atoi(matches[1])
 			field := matches[2]
 
 			att := attMap[idx]
-			strVal, _ := v.(string)
+			strVal, ok := v.(string)
+			if !ok {
+				if v != nil {
+					strVal = fmt.Sprintf("%v", v)
+				}
+			}
 			switch field {
 			case "type":
 				att.Type = strVal
@@ -116,6 +120,32 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 	}
 
 	return attachments
+}
+
+func injectAttachmentsToNode(node *yaml.Node, attachments []Attachment) error {
+	if node.Kind == yaml.DocumentNode {
+		node = node.Content[0]
+	}
+	if node.Kind != yaml.MappingNode {
+		return fmt.Errorf("expected MappingNode")
+	}
+
+	for i, att := range attachments {
+		idx := i + 1
+		if att.Type != "" {
+			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_type", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.Type})
+		}
+		if att.URL != "" {
+			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_url", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.URL})
+		}
+		if att.Label != "" {
+			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_label", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.Label})
+		}
+		if att.Category != "" {
+			node.Content = append(node.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_category", idx)}, &yaml.Node{Kind: yaml.ScalarNode, Value: att.Category})
+		}
+	}
+	return nil
 }
 
 func injectAttachments(m map[string]interface{}, attachments []Attachment) {
@@ -155,17 +185,14 @@ func (a *Agent) UnmarshalYAML(value *yaml.Node) error {
 
 func (a Agent) MarshalYAML() (interface{}, error) {
 	type alias Agent
-	bytes, err := yaml.Marshal(alias(a))
-	if err != nil {
+	var node yaml.Node
+	if err := node.Encode(alias(a)); err != nil {
 		return nil, err
 	}
-	var m map[string]interface{}
-	if err := yaml.Unmarshal(bytes, &m); err != nil {
+	if err := injectAttachmentsToNode(&node, a.Attachments); err != nil {
 		return nil, err
 	}
-
-	injectAttachments(m, a.Attachments)
-	return m, nil
+	return node, nil
 }
 
 // Work custom marshal/unmarshal
@@ -187,17 +214,14 @@ func (w *Work) UnmarshalYAML(value *yaml.Node) error {
 
 func (w Work) MarshalYAML() (interface{}, error) {
 	type alias Work
-	bytes, err := yaml.Marshal(alias(w))
-	if err != nil {
+	var node yaml.Node
+	if err := node.Encode(alias(w)); err != nil {
 		return nil, err
 	}
-	var m map[string]interface{}
-	if err := yaml.Unmarshal(bytes, &m); err != nil {
+	if err := injectAttachmentsToNode(&node, w.Attachments); err != nil {
 		return nil, err
 	}
-
-	injectAttachments(m, w.Attachments)
-	return m, nil
+	return node, nil
 }
 
 // Occurrence custom marshal/unmarshal
@@ -219,15 +243,12 @@ func (o *Occurrence) UnmarshalYAML(value *yaml.Node) error {
 
 func (o Occurrence) MarshalYAML() (interface{}, error) {
 	type alias Occurrence
-	bytes, err := yaml.Marshal(alias(o))
-	if err != nil {
+	var node yaml.Node
+	if err := node.Encode(alias(o)); err != nil {
 		return nil, err
 	}
-	var m map[string]interface{}
-	if err := yaml.Unmarshal(bytes, &m); err != nil {
+	if err := injectAttachmentsToNode(&node, o.Attachments); err != nil {
 		return nil, err
 	}
-
-	injectAttachments(m, o.Attachments)
-	return m, nil
+	return node, nil
 }

@@ -255,16 +255,30 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 						// If the file has 'attachments' or already needs formatting
 						if parentDir == "agents" {
 							var agent domain.Agent
-							yaml.Unmarshal(parts[1], &agent)
-							newYaml, _ := yaml.Marshal(agent)
+							if err := yaml.Unmarshal(parts[1], &agent); err != nil {
+								return fmt.Errorf("failed to unmarshal agent %s: %w", path, err)
+							}
+							newYaml, err := yaml.Marshal(agent)
+							if err != nil {
+								return fmt.Errorf("failed to marshal agent %s: %w", path, err)
+							}
 							newContent := string(parts[0]) + "---\n" + string(newYaml) + "---" + string(parts[2])
-							os.WriteFile(path, []byte(newContent), 0644)
+							if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {
+								return fmt.Errorf("failed to write %s: %w", path, err)
+							}
 						} else if parentDir == "works" {
 							var work domain.Work
-							yaml.Unmarshal(parts[1], &work)
-							newYaml, _ := yaml.Marshal(work)
+							if err := yaml.Unmarshal(parts[1], &work); err != nil {
+								return fmt.Errorf("failed to unmarshal work %s: %w", path, err)
+							}
+							newYaml, err := yaml.Marshal(work)
+							if err != nil {
+								return fmt.Errorf("failed to marshal work %s: %w", path, err)
+							}
 							newContent := string(parts[0]) + "---\n" + string(newYaml) + "---" + string(parts[2])
-							os.WriteFile(path, []byte(newContent), 0644)
+							if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {
+								return fmt.Errorf("failed to write %s: %w", path, err)
+							}
 						}
 					}
 				}

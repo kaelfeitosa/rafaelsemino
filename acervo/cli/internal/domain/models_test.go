@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"strings"
 	"testing"
 
 	"gopkg.in/yaml.v3"
@@ -41,20 +42,10 @@ attachment_2_url: bar.mp4
 	}
 
 	outStr := string(out)
-	if !contains(outStr, "attachment_1_url: foo.jpg") {
+	if !strings.Contains(outStr, "attachment_1_url: foo.jpg") {
 		t.Errorf("Marshal output missing attachment_1_url: \n%s", outStr)
 	}
-	if !contains(outStr, "attachment_2_type: video") {
+	if !strings.Contains(outStr, "attachment_2_type: video") {
 		t.Errorf("Marshal output missing attachment_2_type: \n%s", outStr)
 	}
-}
-
-func contains(s, substr string) bool {
-	// Simple string contain check
-	for i := 0; i <= len(s)-len(substr); i++ {
-		if s[i:i+len(substr)] == substr {
-			return true
-		}
-	}
-	return false
 }
