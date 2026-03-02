@@ -1,27 +1,27 @@
 ---
-id: work-rastros-de-exu
-title: Rastros de Exu
-medium: audiovisual
+attachment_1_category: documentation
+attachment_1_label: Rastros de Exu, imagem 1
+attachment_1_type: image
+attachment_1_url: work-rastros-de-exu/work-rastros-de-exu-001.jpeg
+attachment_2_category: documentation
+attachment_2_label: Rastros de Exu, imagem 2
+attachment_2_type: image
+attachment_2_url: work-rastros-de-exu/work-rastros-de-exu-002.jpeg
+attachment_3_category: documentation
+attachment_3_label: Rastros de Exu, imagem 3
+attachment_3_type: image
+attachment_3_url: work-rastros-de-exu/work-rastros-de-exu-003.jpeg
 description: Série audiovisual / documentação poética derivada dos processos cênicos do espetáculo.
-year: 2023
-role: Ator e Produtor
+id: work-rastros-de-exu
+medium: audiovisual
 occurrences:
-- context: Programa Zona de Criação (YouTube)
-  start_date: '2024'
-  type: publicacao_ou_apresentacao
-attachments:
-- type: image
-  url: work-rastros-de-exu/work-rastros-de-exu-001.jpeg
-  label: Rastros de Exu, imagem 1
-  category: documentation
-- type: image
-  url: work-rastros-de-exu/work-rastros-de-exu-002.jpeg
-  label: Rastros de Exu, imagem 2
-  category: documentation
-- type: image
-  url: work-rastros-de-exu/work-rastros-de-exu-003.jpeg
-  label: Rastros de Exu, imagem 3
-  category: documentation
+    - context: Programa Zona de Criação (YouTube)
+      start_date: "2024"
+      title: ""
+      type: publicacao_ou_apresentacao
+role: Ator e Produtor
+title: Rastros de Exu
+year: 2023
 ---
 Projeto audiovisual criado como desdobramento do espetáculo "Exu Não Vem Hoje", integrando as ações da **Zona de Criação** do Hub Cultural Porto Dragão.
 

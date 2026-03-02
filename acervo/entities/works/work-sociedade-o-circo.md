@@ -1,20 +1,18 @@
 ---
-id: work-sociedade-o-circo
-title: Sociedade, o Circo
-medium: teatro
+attachment_1_category: documentation
+attachment_1_label: Sociedade, o Circo, imagem 1
+attachment_1_type: image
+attachment_1_url: work-sociedade-o-circo/work-sociedade-o-circo-001.png
+attachment_2_category: documentation
+attachment_2_label: Sociedade, o Circo, imagem 2
+attachment_2_type: image
+attachment_2_url: work-sociedade-o-circo/work-sociedade-o-circo-002.png
 description: Montado durante o início da carreira.
-year: 2012
+id: work-sociedade-o-circo
+medium: teatro
 role: Diretor
-occurrences: []
-attachments:
-- type: image
-  url: work-sociedade-o-circo/work-sociedade-o-circo-001.png
-  label: Sociedade, o Circo, imagem 1
-  category: documentation
-- type: image
-  url: work-sociedade-o-circo/work-sociedade-o-circo-002.png
-  label: Sociedade, o Circo, imagem 2
-  category: documentation
+title: Sociedade, o Circo
+year: 2012
 ---
 Montado durante o início da carreira.
 

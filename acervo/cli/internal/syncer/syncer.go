@@ -6,6 +6,8 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
+	"strconv"
 	"strings"
 
 	"gopkg.in/yaml.v3"
@@ -47,17 +49,48 @@ func SyncImages(entitiesDir string, mode string) error {
 				return fmt.Errorf("error parsing YAML in %s: %w", path, err)
 			}
 
-			// We need the raw map to easily check types/src without navigating the complex Node tree
 			var tempMap map[string]interface{}
 			yaml.Unmarshal(parts[1], &tempMap)
 
-			var rawAttachments []map[string]interface{}
+			attMap := make(map[int]map[string]interface{})
+			flattenedRe := regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
+			for k, v := range tempMap {
+				matches := flattenedRe.FindStringSubmatch(k)
+				if len(matches) == 3 {
+					idx, _ := strconv.Atoi(matches[1])
+					field := matches[2]
+
+					if attMap[idx] == nil {
+						attMap[idx] = make(map[string]interface{})
+					}
+					attMap[idx][field] = v
+				}
+			}
+
 			if atts, ok := tempMap["attachments"].([]interface{}); ok {
-				for _, a := range atts {
-					if m, ok := a.(map[string]interface{}); ok {
-						rawAttachments = append(rawAttachments, m)
+				idx := 1
+				for k := range attMap {
+					if k >= idx {
+						idx = k + 1
 					}
 				}
+				for _, a := range atts {
+					if m, ok := a.(map[string]interface{}); ok {
+						attMap[idx] = m
+						idx++
+					}
+				}
+			}
+
+			var indices []int
+			for k := range attMap {
+				indices = append(indices, k)
+			}
+			sort.Ints(indices)
+
+			var rawAttachments []map[string]interface{}
+			for _, idx := range indices {
+				rawAttachments = append(rawAttachments, attMap[idx])
 			}
 
 			body := string(parts[2])
@@ -78,7 +111,6 @@ func SyncImages(entitiesDir string, mode string) error {
 			wikiMatches := wikiImageRegex.FindAllStringSubmatch(body, -1)
 			for _, match := range wikiMatches {
 				imgSrc := match[1]
-				// Normalize Obsidian embed targets (e.g., "folder/image.jpg|300")
 				if idx := strings.Index(imgSrc, "|"); idx != -1 {
 					imgSrc = imgSrc[:idx]
 				}
@@ -105,7 +137,7 @@ func SyncImages(entitiesDir string, mode string) error {
 							}
 							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", caption, srcStr)
 							changed = true
-							bodyImages[srcStr] = true // Prevent duplicates from multiple YAML entries for the same src
+							bodyImages[srcStr] = true
 						}
 					}
 				}
@@ -117,52 +149,85 @@ func SyncImages(entitiesDir string, mode string) error {
 					fmt.Printf("🔄 Updated body of %s\n", path)
 				}
 			} else if mode == "body-to-yaml" {
-				var newAttachments []*yaml.Node
-				yamlImages := make(map[string]bool)
-
-				// Rebuild using yaml.Node to preserve everything perfectly
 				if len(rootNode.Content) > 0 && rootNode.Content[0].Kind == yaml.MappingNode {
 					mapNode := rootNode.Content[0]
 
-					var attachmentsNode *yaml.Node
-					var attachmentsKeyIdx int = -1
+					var newContent []*yaml.Node
+					yamlImages := make(map[string]bool)
+
+					// Rebuild the yaml map, keeping non-attachment keys
+					// For attachments, we keep them if they are in bodyImages (or if they are not images)
+
+					type attData struct {
+						idx int
+						nodes []*yaml.Node // key, value, key, value...
+						url string
+						isImage bool
+					}
+
+					parsedAtts := make(map[int]*attData)
+					var otherNodes []*yaml.Node
 
 					for i := 0; i < len(mapNode.Content); i += 2 {
 						keyNode := mapNode.Content[i]
+						valNode := mapNode.Content[i+1]
+
 						if keyNode.Value == "attachments" {
-							attachmentsNode = mapNode.Content[i+1]
-							attachmentsKeyIdx = i
-							break
+							// For migration: parse legacy attachments block and integrate
+							if valNode.Kind == yaml.SequenceNode {
+								idx := 1
+								for _, itemNode := range valNode.Content {
+									// find next available idx
+									for parsedAtts[idx] != nil { idx++ }
+
+									if itemNode.Kind == yaml.MappingNode {
+										ad := &attData{idx: idx, nodes: make([]*yaml.Node, 0)}
+										for j := 0; j < len(itemNode.Content); j += 2 {
+											k := itemNode.Content[j]
+											v := itemNode.Content[j+1]
+											if k.Value == "type" && v.Value == "image" { ad.isImage = true }
+											if k.Value == "url" { ad.url = v.Value }
+											ad.nodes = append(ad.nodes, k, v)
+										}
+										parsedAtts[idx] = ad
+									}
+								}
+							}
+							continue
+						}
+
+						matches := flattenedRe.FindStringSubmatch(keyNode.Value)
+						if len(matches) == 3 {
+							idx, _ := strconv.Atoi(matches[1])
+							field := matches[2]
+
+							if parsedAtts[idx] == nil {
+								parsedAtts[idx] = &attData{idx: idx, nodes: make([]*yaml.Node, 0)}
+							}
+							ad := parsedAtts[idx]
+
+							if field == "type" && valNode.Value == "image" { ad.isImage = true }
+							if field == "url" { ad.url = valNode.Value }
+
+							ad.nodes = append(ad.nodes, &yaml.Node{Kind: yaml.ScalarNode, Value: field}, valNode)
+						} else {
+							otherNodes = append(otherNodes, keyNode, valNode)
 						}
 					}
 
-					if attachmentsNode != nil && attachmentsNode.Kind == yaml.SequenceNode {
-						for _, itemNode := range attachmentsNode.Content {
-							// Check if it's an image
-							isImage := false
-							url := ""
-							if itemNode.Kind == yaml.MappingNode {
-								for j := 0; j < len(itemNode.Content); j += 2 {
-									k := itemNode.Content[j].Value
-									v := itemNode.Content[j+1].Value
-									if k == "type" && v == "image" {
-										isImage = true
-									}
-									if k == "url" {
-										url = v
-									}
-								}
-							}
+					// Filter existing attachments
+					var keptAtts []*attData
+					for _, idx := range indices {
+						ad := parsedAtts[idx]
+						if ad == nil { continue }
 
-							if isImage && url != "" {
-								yamlImages[url] = true
-								if bodyImages[url] {
-									newAttachments = append(newAttachments, itemNode)
-								}
-							} else {
-								// keep non-image attachments exactly as they are
-								newAttachments = append(newAttachments, itemNode)
+						if ad.isImage && ad.url != "" {
+							yamlImages[ad.url] = true
+							if bodyImages[ad.url] {
+								keptAtts = append(keptAtts, ad)
 							}
+						} else {
+							keptAtts = append(keptAtts, ad)
 						}
 					}
 
@@ -170,38 +235,52 @@ func SyncImages(entitiesDir string, mode string) error {
 					changed := false
 					for imgName := range bodyImages {
 						if !yamlImages[imgName] {
-							// Create new mapping node for this image
-							newNode := &yaml.Node{Kind: yaml.MappingNode}
-							newNode.Content = append(newNode.Content,
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "caption"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "Image"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "role"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "documentation"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "url"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: imgName},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "type"},
-								&yaml.Node{Kind: yaml.ScalarNode, Value: "image"},
-							)
-							newAttachments = append(newAttachments, newNode)
+							// find next idx
+							nextIdx := 1
+							for {
+								found := false
+								for _, ad := range keptAtts {
+									if ad.idx == nextIdx { found = true; break }
+								}
+								if !found { break }
+								nextIdx++
+							}
+
+							newAd := &attData{
+								idx: nextIdx,
+								url: imgName,
+								isImage: true,
+								nodes: []*yaml.Node{
+									{Kind: yaml.ScalarNode, Value: "label"}, {Kind: yaml.ScalarNode, Value: "Image"},
+									{Kind: yaml.ScalarNode, Value: "category"}, {Kind: yaml.ScalarNode, Value: "documentation"},
+									{Kind: yaml.ScalarNode, Value: "url"}, {Kind: yaml.ScalarNode, Value: imgName},
+									{Kind: yaml.ScalarNode, Value: "type"}, {Kind: yaml.ScalarNode, Value: "image"},
+								},
+							}
+							keptAtts = append(keptAtts, newAd)
 							changed = true
 						}
 					}
 
-					if (attachmentsNode != nil && len(attachmentsNode.Content) != len(newAttachments)) || changed {
-						if len(newAttachments) == 0 && attachmentsKeyIdx != -1 {
-							// Remove attachments entirely
-							mapNode.Content = append(mapNode.Content[:attachmentsKeyIdx], mapNode.Content[attachmentsKeyIdx+2:]...)
-						} else {
-							if attachmentsNode == nil {
-								// Need to add 'attachments' key
-								mapNode.Content = append(mapNode.Content,
-									&yaml.Node{Kind: yaml.ScalarNode, Value: "attachments"},
-									&yaml.Node{Kind: yaml.SequenceNode, Content: newAttachments},
-								)
-							} else {
-								attachmentsNode.Content = newAttachments
-							}
+					// Re-index and reconstruct nodes
+					sort.Slice(keptAtts, func(i, j int) bool { return keptAtts[i].idx < keptAtts[j].idx })
+
+					for i, ad := range keptAtts {
+						newIdx := i + 1
+						if ad.idx != newIdx { changed = true } // Needs re-indexing
+
+						for j := 0; j < len(ad.nodes); j += 2 {
+							field := ad.nodes[j].Value
+							valNode := ad.nodes[j+1]
+
+							keyNode := &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", newIdx, field)}
+							newContent = append(newContent, keyNode, valNode)
 						}
+					}
+
+					// If there's a difference in length or elements, or explicitly changed
+					if changed || len(parsedAtts) != len(keptAtts) || len(tempMap["attachments"].([]interface{})) > 0 {
+						mapNode.Content = append(otherNodes, newContent...)
 
 						var out bytes.Buffer
 						encoder := yaml.NewEncoder(&out)
@@ -212,8 +291,8 @@ func SyncImages(entitiesDir string, mode string) error {
 						encoder.Close()
 
 						newYaml := out.String()
-						newContent := "---\n" + newYaml + "---" + string(parts[2])
-						if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {
+						newContentStr := "---\n" + newYaml + "---" + string(parts[2])
+						if err := os.WriteFile(path, []byte(newContentStr), 0644); err != nil {
 							return fmt.Errorf("failed to write %s: %w", path, err)
 						}
 						fmt.Printf("🔄 Updated YAML of %s\n", path)
