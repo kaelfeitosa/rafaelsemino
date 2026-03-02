@@ -127,10 +127,18 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 				att.Type = strVal
 			case "url":
 				att.URL = strVal
-			case "label", "caption":
+			case "label":
 				att.Label = strVal
-			case "category", "role":
+			case "caption":
+				if att.Label == "" {
+					att.Label = strVal
+				}
+			case "category":
 				att.Category = strVal
+			case "role":
+				if att.Category == "" {
+					att.Category = strVal
+				}
 			}
 			attMap[idx] = att
 		}
