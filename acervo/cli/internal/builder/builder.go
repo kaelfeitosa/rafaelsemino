@@ -191,6 +191,14 @@ func BuildSite(entitiesDir, templatePath, outputPath string) error {
 		"hasOccurrences": func(occ []domain.Occurrence) bool {
 			return len(occ) > 0
 		},
+		"getWork": func(id string) domain.Work {
+			for _, w := range allWorks {
+				if w.ID == id {
+					return w
+				}
+			}
+			return domain.Work{}
+		},
 	}
 
 	tmpl, err := template.New(filepath.Base(templatePath)).Funcs(funcMap).ParseFiles(templatePath)
