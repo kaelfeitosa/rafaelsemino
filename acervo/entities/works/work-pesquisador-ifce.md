@@ -8,12 +8,6 @@ role: Pesquisador
 collaborators:
     - IFCE
     - LCPT
-attachment_1_type: image
-attachment_1_url: work-pesquisador-ifce/work-pesquisador-ifce-001.jpeg
-attachment_1_label: Image
-attachment_2_type: image
-attachment_2_url: work-pesquisador-ifce/work-pesquisador-ifce-002.jpeg
-attachment_2_label: Image
 ---
 
 

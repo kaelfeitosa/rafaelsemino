@@ -232,7 +232,13 @@ func SyncImages(entitiesDir string, mode string) error {
 
 					// Filter existing attachments
 					var keptAtts []*attData
-					for _, idx := range indices {
+					var parsedIndices []int
+					for idx := range parsedAtts {
+						parsedIndices = append(parsedIndices, idx)
+					}
+					sort.Ints(parsedIndices)
+
+					for _, idx := range parsedIndices {
 						ad := parsedAtts[idx]
 						if ad == nil { continue }
 

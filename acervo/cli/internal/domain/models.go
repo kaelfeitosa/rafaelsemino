@@ -35,7 +35,7 @@ type Work struct {
 	Role          string       `yaml:"role,omitempty"` // For standalone works where I took a role
 	Collaborators []string     `yaml:"collaborators,omitempty"`
 	Attachments []Attachment `yaml:"-"`
-	Occurrences   []Occurrence `yaml:"occurrences,omitempty"`
+	Occurrences   []*Occurrence `yaml:"occurrences,omitempty"`
 	Featured      bool         `yaml:"featured,omitempty"`
 }
 
@@ -198,9 +198,12 @@ func (a *Agent) UnmarshalYAML(value *yaml.Node) error {
 	return UnmarshalAttachments(value, a)
 }
 
-func (a Agent) MarshalYAML() (interface{}, error) {
+func (a *Agent) MarshalYAML() (interface{}, error) {
 	type alias Agent
-	return MarshalAttachments(&a, alias(a))
+	if a == nil {
+		return nil, nil
+	}
+	return MarshalAttachments(a, alias(*a))
 }
 
 // Work custom marshal/unmarshal
@@ -214,9 +217,12 @@ func (w *Work) UnmarshalYAML(value *yaml.Node) error {
 	return UnmarshalAttachments(value, w)
 }
 
-func (w Work) MarshalYAML() (interface{}, error) {
+func (w *Work) MarshalYAML() (interface{}, error) {
 	type alias Work
-	return MarshalAttachments(&w, alias(w))
+	if w == nil {
+		return nil, nil
+	}
+	return MarshalAttachments(w, alias(*w))
 }
 
 // Occurrence custom marshal/unmarshal
@@ -230,7 +236,10 @@ func (o *Occurrence) UnmarshalYAML(value *yaml.Node) error {
 	return UnmarshalAttachments(value, o)
 }
 
-func (o Occurrence) MarshalYAML() (interface{}, error) {
+func (o *Occurrence) MarshalYAML() (interface{}, error) {
 	type alias Occurrence
-	return MarshalAttachments(&o, alias(o))
+	if o == nil {
+		return nil, nil
+	}
+	return MarshalAttachments(o, alias(*o))
 }
