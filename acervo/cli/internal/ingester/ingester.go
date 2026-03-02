@@ -205,27 +205,11 @@ func applyArgs(data map[string]interface{}, args []string) error {
 					continue
 				}
 
-				// Attempt 2: Try with single quotes replaced
-				valWithQuotes := strings.ReplaceAll(val, "'", "\"")
-				if err2 := json.Unmarshal([]byte(valWithQuotes), &jsonVal); err2 == nil {
-					data[key] = jsonVal
-					continue
-				}
+				// The previous fallback parsing methods (Attempt 2: replace all single quotes, Attempt 3: simple split by comma)
+				// were brittle and could corrupt data if values contained apostrophes or commas (e.g. ['it's a test', 'a, b']).
+				// To maintain a robust and secure parsing system, we will enforce strict JSON formatting for complex fields.
 
-				// Attempt 3: Fallback to simple array parsing
-				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
-					inner := strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
-					parts := strings.Split(inner, ",")
-					strArr := make([]string, len(parts))
-					for i, p := range parts {
-						strArr[i] = strings.TrimSpace(p)
-					}
-					data[key] = strArr
-					continue
-				}
-
-				// All attempts failed, return an error from the original JSON parse attempt
-				return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, firstErr)
+				return fmt.Errorf("falha ao analisar %s (esperado JSON strict, ex: [\"val1\", \"val2\"]): %w", key, firstErr)
 			}
 
 			vLower := strings.ToLower(val)
