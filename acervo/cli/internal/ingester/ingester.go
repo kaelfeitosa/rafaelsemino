@@ -195,7 +195,22 @@ func applyArgs(data map[string]interface{}, args []string) error {
 				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
 				var jsonVal interface{}
 				if err := json.Unmarshal([]byte(val), &jsonVal); err != nil {
-					return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err)
+					// Also support single quotes as a fallback to make passing arrays easier from CLI
+					val = strings.ReplaceAll(val, "'", "\"")
+					if err2 := json.Unmarshal([]byte(val), &jsonVal); err2 != nil {
+						// Fallback: If it's a simple array [a, b], attempt basic parsing
+						if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
+							inner := strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
+							parts := strings.Split(inner, ",")
+							var strArr []string
+							for _, p := range parts {
+								strArr = append(strArr, strings.TrimSpace(p))
+							}
+							data[key] = strArr
+							continue
+						}
+						return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err)
+					}
 				}
 				data[key] = jsonVal
 				continue

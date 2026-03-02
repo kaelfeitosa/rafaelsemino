@@ -464,6 +464,10 @@ func (r *ReviewReposter) RepostReview(reviewID string, mentionUser string) error
 		return nil
 	}
 
+	if newComments == nil {
+		newComments = make([]interface{}, 0)
+	}
+
 	payload := map[string]interface{}{
 		"body":     newBody,
 		"event":    event,
