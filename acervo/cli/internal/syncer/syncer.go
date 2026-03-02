@@ -66,7 +66,10 @@ func SyncImages(entitiesDir string, mode string) error {
 			for k, v := range tempMap {
 				matches := attKeyRegex.FindStringSubmatch(k)
 				if len(matches) == 3 {
-					idx, _ := strconv.Atoi(matches[1])
+					idx, err := strconv.Atoi(matches[1])
+					if err != nil {
+						continue
+					}
 					field := matches[2]
 					if rawAtts[idx] == nil {
 						rawAtts[idx] = &flatAttachment{idx: idx}
@@ -128,7 +131,9 @@ func SyncImages(entitiesDir string, mode string) error {
 							if caption == "" {
 								caption = "Image"
 							}
-							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", caption, att.URL)
+							safeCaption := strings.ReplaceAll(caption, "]", "\\]")
+							safeURL := strings.ReplaceAll(att.URL, ")", "%29")
+							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", safeCaption, safeURL)
 							changed = true
 							bodyImages[att.URL] = true // Prevent duplicates from multiple YAML entries for the same src
 						}
@@ -153,22 +158,34 @@ func SyncImages(entitiesDir string, mode string) error {
 					// We will rebuild the list of valid attachments to re-index them properly.
 					validAtts := make([]*flatAttachment, 0)
 
-					// Iterate index from 1 to 1000 to maintain order
-					maxIndexFound := 0
-					for idx := 1; idx < 1000; idx++ {
-						if att, ok := rawAtts[idx]; ok {
-							maxIndexFound = idx
-							isImage := att.Type == "image"
-
-							if isImage && att.URL != "" {
-								if bodyImages[att.URL] {
-									validAtts = append(validAtts, att)
-									yamlImages[att.URL] = true
-								}
-							} else {
-								// Keep non-image
-								validAtts = append(validAtts, att)
+					var indices []int
+					for idx := range rawAtts {
+						indices = append(indices, idx)
+					}
+					// simple sort
+					for i := 0; i < len(indices); i++ {
+						for j := i + 1; j < len(indices); j++ {
+							if indices[i] > indices[j] {
+								indices[i], indices[j] = indices[j], indices[i]
 							}
+						}
+					}
+					maxIndexFound := 0
+					if len(indices) > 0 {
+						maxIndexFound = indices[len(indices)-1]
+					}
+					for _, idx := range indices {
+						att := rawAtts[idx]
+						isImage := att.Type == "image"
+
+						if isImage && att.URL != "" {
+							if bodyImages[att.URL] {
+								validAtts = append(validAtts, att)
+								yamlImages[att.URL] = true
+							}
+						} else {
+							// Keep non-image
+							validAtts = append(validAtts, att)
 						}
 					}
 

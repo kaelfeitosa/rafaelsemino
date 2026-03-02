@@ -72,7 +72,10 @@ func extractAttachments(value *yaml.Node) ([]Attachment, error) {
 
 		matches := re.FindStringSubmatch(keyNode.Value)
 		if len(matches) == 3 {
-			idx, _ := strconv.Atoi(matches[1])
+			idx, err := strconv.Atoi(matches[1])
+			if err != nil {
+				return nil, fmt.Errorf("failed to parse attachment index from key: %w", err)
+			}
 			field := matches[2]
 
 			if attMap[idx] == nil {

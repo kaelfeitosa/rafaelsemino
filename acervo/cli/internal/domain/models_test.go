@@ -137,23 +137,23 @@ func TestAgentMarshal(t *testing.T) {
 				t.Fatalf("Failed to marshal: %v", err)
 			}
 
-			expectedMap := map[string]interface{}{}
-			if err := yaml.Unmarshal(data, &expectedMap); err != nil {
-				t.Fatalf("Failed to unmarshal marshaled string: %v", err)
+			var agent Agent
+			if err := yaml.Unmarshal(data, &agent); err != nil {
+				t.Fatalf("Failed to unmarshal back to Agent: %v", err)
 			}
 
-			if expectedMap["id"] != tc.agent.ID || expectedMap["name"] != tc.agent.Name {
-				t.Errorf("Marshaled simple fields incorrectly")
+			if agent.ID != tc.agent.ID || agent.Name != tc.agent.Name {
+				t.Errorf("Marshaled simple fields incorrectly. Expected ID: %s Name: %s, got ID: %s Name: %s", tc.agent.ID, tc.agent.Name, agent.ID, agent.Name)
 			}
 
-			if len(tc.expectedAtts) > 0 {
-				if expectedMap["attachment_1_type"] != tc.expectedAtts[0].Type || expectedMap["attachment_1_url"] != tc.expectedAtts[0].URL {
-					t.Errorf("Marshaled attachment 1 incorrectly. Yaml string:\n%s", string(data))
-				}
+			if len(agent.Attachments) != len(tc.expectedAtts) {
+				t.Fatalf("Expected %d attachments, got %d. Yaml string:\n%s", len(tc.expectedAtts), len(agent.Attachments), string(data))
 			}
-			if len(tc.expectedAtts) > 1 {
-				if expectedMap["attachment_2_type"] != tc.expectedAtts[1].Type || expectedMap["attachment_2_url"] != tc.expectedAtts[1].URL {
-					t.Errorf("Marshaled attachment 2 incorrectly. Yaml string:\n%s", string(data))
+
+			for i, expected := range tc.expectedAtts {
+				actual := agent.Attachments[i]
+				if actual.Type != expected.Type || actual.URL != expected.URL || actual.Label != expected.Label || actual.Category != expected.Category {
+					t.Errorf("Attachment %d mismatch. Expected %+v, got %+v", i, expected, actual)
 				}
 			}
 		})

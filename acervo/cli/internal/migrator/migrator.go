@@ -91,20 +91,27 @@ func MigrateAttachments(entitiesDir string) error {
 												&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_url", seqIdx)},
 												&yaml.Node{Kind: yaml.ScalarNode, Value: u})
 										}
+										label := ""
 										if l, ok := att["label"].(string); ok && l != "" {
+											label = l
+										} else if c, ok := att["caption"].(string); ok && c != "" {
+											label = c
+										}
+										if label != "" {
 											newOccNodes = append(newOccNodes,
 												&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_label", seqIdx)},
-												&yaml.Node{Kind: yaml.ScalarNode, Value: l})
+												&yaml.Node{Kind: yaml.ScalarNode, Value: label})
 										}
-										if c, ok := att["caption"].(string); ok && c != "" {
-											newOccNodes = append(newOccNodes,
-												&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_label", seqIdx)},
-												&yaml.Node{Kind: yaml.ScalarNode, Value: c})
-										}
+										category := ""
 										if c, ok := att["category"].(string); ok && c != "" {
+											category = c
+										} else if r, ok := att["role"].(string); ok && r != "" {
+											category = r
+										}
+										if category != "" {
 											newOccNodes = append(newOccNodes,
 												&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_category", seqIdx)},
-												&yaml.Node{Kind: yaml.ScalarNode, Value: c})
+												&yaml.Node{Kind: yaml.ScalarNode, Value: category})
 										}
 									}
 									occNode.Content = newOccNodes
@@ -129,20 +136,27 @@ func MigrateAttachments(entitiesDir string) error {
 							&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_url", seqIdx)},
 							&yaml.Node{Kind: yaml.ScalarNode, Value: u})
 					}
+					label := ""
 					if l, ok := att["label"].(string); ok && l != "" {
+						label = l
+					} else if c, ok := att["caption"].(string); ok && c != "" {
+						label = c
+					}
+					if label != "" {
 						newContentNodes = append(newContentNodes,
 							&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_label", seqIdx)},
-							&yaml.Node{Kind: yaml.ScalarNode, Value: l})
+							&yaml.Node{Kind: yaml.ScalarNode, Value: label})
 					}
-					if c, ok := att["caption"].(string); ok && c != "" {
-						newContentNodes = append(newContentNodes,
-							&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_label", seqIdx)},
-							&yaml.Node{Kind: yaml.ScalarNode, Value: c})
-					}
+					category := ""
 					if c, ok := att["category"].(string); ok && c != "" {
+						category = c
+					} else if r, ok := att["role"].(string); ok && r != "" {
+						category = r
+					}
+					if category != "" {
 						newContentNodes = append(newContentNodes,
 							&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_category", seqIdx)},
-							&yaml.Node{Kind: yaml.ScalarNode, Value: c})
+							&yaml.Node{Kind: yaml.ScalarNode, Value: category})
 					}
 				}
 
