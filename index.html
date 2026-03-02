@@ -218,7 +218,7 @@
             }
 
             /* Optimized lists for print space */
-            .hyphen-list,
+            .detail-list,
             .eixos-list,
             .awards-list {
                 column-count: 2;
@@ -285,12 +285,35 @@
             border-bottom: 6px solid var(--black);
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
             position: sticky;
             top: 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-nav a {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--black);
+            text-decoration: none;
+            transition: color 0.3s var(--ease);
+            letter-spacing: 1px;
+            padding: 5px;
+        }
+
+        .main-nav a:hover {
+            color: var(--red);
         }
 
         .brand h1 {
@@ -886,6 +909,8 @@
             font-family: 'Lora', serif;
             font-size: 1.2rem;
             margin-top: 20px;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         .project-desc.light {
@@ -986,21 +1011,16 @@
 
 
         /* Shared list style properties */
-        .hyphen-list li::before,
+        .detail-list li::before,
         .awards-list li::before,
         .eixos-list li::before,
         .direction-list li::before {
+            content: "■ ";
+            font-size: 0.8em;
+            vertical-align: middle;
             margin-right: 0.5em;
-        }
-
-        .hyphen-list li::before {
-            content: "- ";
-        }
-
-        .awards-list li::before,
-        .eixos-list li::before,
-        .direction-list li::before {
-            content: "• ";
+            color: var(--red);
+            font-weight: 900;
         }
 
 
@@ -1076,8 +1096,12 @@
         .profile-text {
             font-family: 'Lora', serif;
             font-size: 1.4rem;
+            line-height: 1.8;
         }
 
+        .profile-text p {
+            margin-bottom: 25px;
+        }
 
         .gap-80 {
             gap: 80px;
@@ -1096,7 +1120,7 @@
             padding-top: 15px;
         }
 
-        .project-details-mini .hyphen-list {
+        .project-details-mini .detail-list {
             margin-top: 5px;
         }
 
@@ -1128,7 +1152,7 @@
         }
 
 
-        .hyphen-list,
+        .detail-list,
         .awards-list,
         .eixos-list,
         .direction-list {
@@ -1227,7 +1251,11 @@
         }
 
         .btn-work {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            min-width: 44px;
             margin-top: 20px;
             padding: 12px 24px;
             background: var(--red);
@@ -1248,31 +1276,6 @@
             transform: translate(-4px, -4px);
         }
 
-        .ator-destaque-box p {
-            color: white !important;
-        }
-
-        .btn-work {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--red);
-            color: white;
-            text-decoration: none;
-            font-family: 'Archivo Black', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: all 0.3s var(--ease);
-            border: 2px solid var(--red);
-        }
-
-        .btn-work:hover {
-            background: var(--white);
-            color: var(--black);
-            box-shadow: 8px 8px 0px var(--red);
-            transform: translate(-4px, -4px);
-        }
     </style>
 </head>
 
@@ -1281,11 +1284,33 @@
     <div class="noise no-print"></div>
 
     <div class="page-wrapper">
+        <header class="no-print">
+            <div class="brand">
+                <h1>SEMINO</h1>
+                <p>Acervo Cultural</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#apresentacao">Perfil</a>
+                <a href="#formacao">Estudo</a>
+                <a href="#pesquisa">Autoria</a>
+                <a href="#atuacao">Atuação</a>
+                <a href="#cultura-popular">Cultura Popular</a>
+                <a href="#audiovisual">Audiovisual</a>
+                <a href="#producao">Produção</a>
+                <a href="#ensino">Ensino</a>
+                <a href="#coletivo">Coletivo</a>
+            </nav>
+            <div class="nav-meta">
+                <button class="btn-print" id="print-button">Imprimir PDF</button>
+            </div>
+        </header>
+
         <div class="print-header">
             <span>Rafael Semino | Portfólio</span>
             <span>seminorafael5@gmail.com</span>
         </div>
 
+        <main>
         <section class="hero hero--index visible">
             <div class="hero-overlay"></div>
 
@@ -1306,15 +1331,15 @@
         </section>
 
         <!-- SEÇÃO: APRESENTAÇÃO -->
-        <section id="apresentacao">
+        <section id="apresentacao" tabindex="-1">
             <div class="section-label stamped">PERFIL</div>
             <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
                         <focus-image
-                            src="images/optimized/agent-rafael-semino/agent-rafael-semino-001.webp"></focus-image>
+                            src="images/optimized/agent-rafael-semino/agent-rafael-semino-001.webp" alt="Retrato de Rafael Semino em performance"></focus-image>
                         <focus-image
-                            src="images/optimized/agent-rafael-semino/agent-rafael-semino-002.webp"></focus-image>
+                            src="images/optimized/agent-rafael-semino/agent-rafael-semino-002.webp" alt="Rafael Semino atuando no palco"></focus-image>
                     </div>
                     <div class="card-content card-content--large-padding profile-text">
                         <p class="profile-intro">Minha trajetória articula <strong>criação artística, pesquisa
@@ -1332,7 +1357,7 @@
         </section>
 
         <!-- SEÇÃO: FORMAÇÃO ACADÊMICA -->
-        <section id="formacao">
+        <section id="formacao" tabindex="-1">
             <div class="section-label stamped">ESTUDO</div>
             <div class="flex-col-gap">
 
@@ -1340,23 +1365,23 @@
                 <div class="catalog-grid">
                     <div class="card woodcut-border">
                         <div class="card-content">
-                            <span class="card-tag">Mestrado em Artes</span>
-                            <h3>UFC (2023)</h3>
+                            <span class="card-tag">UFC (2023)</span>
+                            <h3>Mestrado em Artes</h3>
                             <p>Universidade Federal do Ceará.<br>Ênfase: teatro, pedagogia do corpo, ritual e
                                 ancestralidade.</p>
                         </div>
                     </div>
                     <div class="card woodcut-border">
                         <div class="card-content">
-                            <span class="card-tag">Licenciatura em Teatro</span>
-                            <h3>IFCE (2022)</h3>
+                            <span class="card-tag">IFCE (2022)</span>
+                            <h3>Licenciatura em Teatro</h3>
                             <p>Instituto Federal de Educação, Ciência e Tecnologia do Ceará.</p>
                         </div>
                     </div>
                     <div class="card woodcut-border">
                         <div class="card-content">
-                            <span class="card-tag">Pós-graduação em Estudos em Teatro do Oprimido</span>
-                            <h3>UFBA (2024)</h3>
+                            <span class="card-tag">UFBA (2024)</span>
+                            <h3>Especialização em Teatro do Oprimido</h3>
                             <p>Universidade Federal da Bahia.<br>330h cursadas.</p>
                         </div>
                     </div>
@@ -1366,23 +1391,23 @@
                 <div class="catalog-grid catalog-grid--single-col">
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Laboratório de Criação</span>
-                            <h3 class="course-institution">Escola Porto Iracema das Artes</h3>
+                            <span class="card-tag">Escola Porto Iracema das Artes</span>
+                            <h3 class="course-institution">Laboratório de Criação</h3>
                             <p class="course-details">Criação em tempo espiralar: Exu e suas encruzilhadas (346 horas)
                             </p>
                         </div>
                     </div>
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Laboratório de Pesquisa</span>
-                            <h3 class="course-institution">CCBJ - Centro Cultural Bom Jardim</h3>
+                            <span class="card-tag">CCBJ - Centro Cultural Bom Jardim</span>
+                            <h3 class="course-institution">Laboratório de Pesquisa</h3>
                             <p class="course-details">Exu não vem hoje (300 horas)</p>
                         </div>
                     </div>
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Cultura Popular</span>
-                            <h3 class="course-institution">Grupo Mira Ira – IFCE</h3>
+                            <span class="card-tag">Grupo Mira Ira – IFCE</span>
+                            <h3 class="course-institution">Cultura Popular</h3>
                             <p class="course-details">Coletivo tradicional de cultura popular. Atuação como pesquisador
                                 por <strong>dois anos</strong>, com participação em processos de criação e apresentações
                                 do espetáculo <em>Flor do Deserto</em> e de danças dramáticas de Reisado e Caninha
@@ -1394,7 +1419,7 @@
         </section>
 
         <!-- SEÇÃO: EIXOS DE ATUAÇÃO -->
-        <section id="eixos">
+        <section id="eixos" tabindex="-1">
             <div class="section-label stamped">EIXOS</div>
             <div class="catalog-grid catalog-grid--single-col">
                 <div class="card card--red-shadow">
@@ -1412,7 +1437,7 @@
         </section>
 
         <!-- SEÇÃO: PESQUISA ARTÍSTICA E PROJETOS AUTORAIS -->
-        <section id="pesquisa">
+        <section id="pesquisa" tabindex="-1">
             <div class="section-label stamped">AUTORIA</div>
             <div class="catalog-grid catalog-grid--single-col gap-80">
 
@@ -1420,38 +1445,34 @@
                 <div class="card woodcut-border">
                     <div class="img-stack img-stack--cols-3">
                         <focus-image
-                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.webp"></focus-image>
+                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.webp" alt="Rafael Semino em cena no espetáculo Exu Não Vem Hoje"></focus-image>
                         <focus-image
-                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.webp"></focus-image>
+                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.webp" alt="Performance teatral de Exu Não Vem Hoje"></focus-image>
                         <focus-image
-                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.webp"></focus-image>
+                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.webp" alt="Público e interação em Exu Não Vem Hoje"></focus-image>
                     </div>
                     <div class="card-content">
-                        <span class="card-tag">Espetáculos: Rito e Participação</span>
+                        <span class="card-tag">Espetáculo Teatral</span>
                         <h3 class="project-title">Exu Não Vem Hoje (2022 – atual)</h3>
                         <div class="project-context mt-20">
                             <p class="project-desc light">
-                                Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Rafael
-                                Semino no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, em diálogo
-                                com sua investigação em torno de Exu, oralidade e presença cênica. A obra articula rito,
-                                jogo e participação do público, tendo Rafael Semino como autor e intérprete, em processo
-                                de criação coletiva no âmbito do laboratório.
+                                Espetáculo criado a partir de pesquisa no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes. A obra investiga Exu, oralidade e presença cênica, articulando rito, jogo e participação do público.
                             </p>
                             <div class="project-details-mini">
-                                <strong>Autoria:</strong>
-                                <ul class="hyphen-list">
+                                <strong>Ficha Técnica:</strong>
+                                <ul class="detail-list">
                                     <li><strong>Direção:</strong> Felipe Marques e Rafael Semino</li>
-                                    <li><strong>Dramaturgia:</strong> Rafael Semino</li>
+                                    <li><strong>Dramaturgia e Interpretação:</strong> Rafael Semino</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="project-meta light">
                             <p><strong>Circulação:</strong></p>
-                            <ul class="hyphen-list">
-                                <li>Escola Porto Iracema das Artes – apresentação única</li>
-                                <li>Cine Teatro São Luís – apresentação única</li>
-                                <li>Hub Cultural Porto Dragão – temporada</li>
-                                <li>Festival Nordestino de Teatro de Guaramiranga – apresentação única</li>
+                            <ul class="detail-list">
+                                <li>Escola Porto Iracema das Artes</li>
+                                <li>Cine Teatro São Luís</li>
+                                <li>Hub Cultural Porto Dragão (Temporada)</li>
+                                <li>Festival Nordestino de Teatro de Guaramiranga</li>
                             </ul>
                             <a href="https://www.youtube.com/watch?v=bjwQwDCBGsI&t=108s" target="_blank"
                                 class="btn-work">Assista o Espetáculo</a>
@@ -1462,19 +1483,19 @@
                 <!-- PROJETO: VÃO -->
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
-                        <focus-image src="images/optimized/work-vao/work-vao-001.webp"></focus-image>
-                        <focus-image src="images/optimized/work-vao/work-vao-002.webp"></focus-image>
+                        <focus-image src="images/optimized/work-vao/work-vao-001.webp" alt="Cena do espetáculo Vão"></focus-image>
+                        <focus-image src="images/optimized/work-vao/work-vao-002.webp" alt="Apresentação musical no espetáculo Vão"></focus-image>
                     </div>
                     <div class="card-content">
                         <span class="card-tag card-tag--red">Teatro e Música</span>
                         <h3 class="project-title">Vão (2023)</h3>
                         <div class="project-context mt-20">
                             <p class="project-desc">
-                                Espetáculo teatral.
+                                Espetáculo teatral concebido a partir do Prêmio Amarrações Estéticas. É o resultado do cruzamento entre a pesquisa cênica e a pesquisa musical autoral de Zéis.
                             </p>
                             <div class="project-details-mini">
-                                <strong>Autoria:</strong>
-                                <ul class="hyphen-list">
+                                <strong>Ficha Técnica:</strong>
+                                <ul class="detail-list">
                                     <li><strong>Direção e Dramaturgia:</strong> Rafael Semino</li>
                                     <li><strong>Pesquisa Musical:</strong> Zéis</li>
                                 </ul>
@@ -1482,12 +1503,9 @@
                         </div>
                         <div class="project-meta">
                             <p><strong>Circulação e Reconhecimento:</strong></p>
-                            <ul class="hyphen-list">
-                                <li>Escola Porto Iracema das Artes 📍 Fortaleza – CE – Brasil (2023)</li>
-                                <li>Projeto desenvolvido a partir do <strong>Prêmio Amarrações Estéticas – 10
-                                        anos</strong> <strong>Escola Porto Iracema das Artes</strong>.</li>
-                                <li>Resultado do cruzamento entre a pesquisa teatral de Rafael Semino e a pesquisa
-                                    musical autoral de Zéis.</li>
+                            <ul class="detail-list">
+                                <li>Escola Porto Iracema das Artes (Fortaleza, CE)</li>
+                                <li><strong>Prêmio Amarrações Estéticas (10 anos)</strong> – Porto Iracema das Artes</li>
                             </ul>
                         </div>
                     </div>
@@ -1497,29 +1515,28 @@
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-2">
                         <focus-image
-                            src="images/optimized/work-contos-de-exu/work-contos-de-exu-001.webp"></focus-image>
+                            src="images/optimized/work-contos-de-exu/work-contos-de-exu-001.webp" alt="Capa do livro Contos de Exu"></focus-image>
                         <focus-image
-                            src="images/optimized/work-contos-de-exu/work-contos-de-exu-002.webp"></focus-image>
+                            src="images/optimized/work-contos-de-exu/work-contos-de-exu-002.webp" alt="Página interna do livro Contos de Exu"></focus-image>
                     </div>
                     <div class="card-content">
-                        <span class="card-tag card-tag--red">Pesquisa e Literatura</span>
+                        <span class="card-tag card-tag--red">Literatura e Pesquisa</span>
                         <h3 class="project-title">Contos de Exu (2022)</h3>
                         <div class="project-context mt-20">
                             <p class="project-desc">
-                                Livro e pesquisa teatral. Quatro contos baseados em escrevivências e itãs de Exu.
-                                Resultado do mestrado em Artes (UFC).
+                                Livro e pesquisa teatral composto por quatro contos baseados em escrevivências e itãs de Exu. A obra é fruto direto da pesquisa de Mestrado em Artes (UFC).
                             </p>
                             <div class="project-details-mini">
-                                <strong>Autoria:</strong>
-                                <ul class="hyphen-list">
+                                <strong>Ficha Técnica:</strong>
+                                <ul class="detail-list">
                                     <li><strong>Escrita e Pesquisa:</strong> Rafael Semino</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="project-meta">
                             <p><strong>Circulação:</strong></p>
-                            <ul class="hyphen-list">
-                                <li>Laboratório Porto Iracema das Artes 📍 Fortaleza – CE – Brasil (2022)</li>
+                            <ul class="detail-list">
+                                <li>Lançamento no Laboratório Porto Iracema das Artes (Fortaleza, CE)</li>
                             </ul>
                             <a href="https://drive.google.com/file/d/1B4qxxLZdMHsu6nY-ghGDl61jHWcjkTmW/view?usp=sharing"
                                 target="_blank" class="btn-work">Leia o Livro</a>
@@ -1533,27 +1550,27 @@
         </section>
 
         <!-- SEÇÃO: TEATRO – ATUAÇÃO -->
-        <section id="atuacao">
+        <section id="atuacao" tabindex="-1">
             <div class="section-label stamped">ATUAÇÃO</div>
             <div class="catalog-grid catalog-grid--single-col gap-60">
                 <div class="card woodcut-border card--light">
                     <div class="img-stack img-stack--cols-3">
                         <focus-image
-                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.webp"></focus-image>
+                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.webp" alt="Registro de atuação teatral"></focus-image>
                         <focus-image
-                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.webp"></focus-image>
+                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.webp" alt="Expressão corporal em cena"></focus-image>
                         <focus-image
-                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.webp"></focus-image>
+                            src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.webp" alt="Momento dramático no palco"></focus-image>
                     </div>
                     <div class="card-content card-content--medium-padding">
-                        <span class="card-tag card-tag--red">REPERTÓRIO & PERFORMANCE</span>
+                        <span class="card-tag card-tag--red">Repertório e Performance</span>
                         <h2 class="section-header">Atuação e Criação</h2>
 
                         <div class="atuacao-consolidated-grid">
                             <!-- TEATRO -->
                             <div class="atuacao-group">
                                 <p class="group-label">Teatro (Destaques)</p>
-                                <ul class="hyphen-list">
+                                <ul class="detail-list">
                                     <li><strong>IRREVERSÍVEL</strong> (Dir: Caique Melo)</li>
                                     <li><strong>SANTO BORDEL DE TIATIRA</strong> (Dir: Caique Melo)</li>
                                     <li><strong>DE LOUCO, TODO MUNDO TEM UM POUCO</strong> (Dir: Hiroldo Serra)</li>
@@ -1565,7 +1582,7 @@
                             <!-- AUTORIA -->
                             <div class="atuacao-group">
                                 <p class="group-label">Autoria e Escrita Cênica</p>
-                                <ul class="hyphen-list">
+                                <ul class="detail-list">
                                     <li><strong>Cala-me os Olhos</strong> (2016)</li>
                                     <li><strong>Sociedade o Circo</strong> (2017)</li>
                                     <li><strong>O Caso da Casa</strong> (2019)</li>
@@ -1575,7 +1592,7 @@
                             <!-- AUDIOVISUAL -->
                             <div class="atuacao-group">
                                 <p class="group-label">Audiovisual</p>
-                                <ul class="hyphen-list">
+                                <ul class="detail-list">
                                     <li><strong>Astronauta</strong> (Produção Audiovisual – Angola)</li>
                                 </ul>
                             </div>
@@ -1588,7 +1605,7 @@
 
 
         <!-- SEÇÃO: CULTURA POPULAR -->
-        <section id="cultura-popular">
+        <section id="cultura-popular" tabindex="-1">
             <div class="section-label stamped">CULTURA POPULAR</div>
             <div class="catalog-grid catalog-grid--single-col gap-80">
 
@@ -1683,7 +1700,7 @@
                             </p>
                             <div class="project-details-mini mt-20">
                                 <strong>Atuações Oficiais:</strong>
-                                <ul class="hyphen-list">
+                                <ul class="detail-list">
                                     <li><strong>Ciclo Junino (2023):</strong> Avaliador em festivais e competições da
                                         rede de tradição junina cearense.</li>
                                     <li><strong>Ciclo Carnavalesco (2020):</strong> Parecerista oficial dos desfiles de
@@ -1713,7 +1730,7 @@
                             </p>
                             <div class="project-details-mini mt-20">
                                 <strong>Projetos:</strong>
-                                <ul class="hyphen-list">
+                                <ul class="detail-list">
                                     <li><strong>Escola Santa Cecília (2023-2024):</strong> Dramaturgia e direção da peça
                                         de São João.</li>
                                 </ul>
@@ -1726,7 +1743,7 @@
         </section>
 
         <!-- SEÇÃO: AUDIOVISUAL -->
-        <section id="audiovisual">
+        <section id="audiovisual" tabindex="-1">
             <div class="section-label stamped">AUDIOVISUAL</div>
             <div class="catalog-grid catalog-grid--single-col gap-80">
 
@@ -1757,8 +1774,8 @@
                                 de 2024.
                             </p>
                             <div class="project-details-mini mt-20">
-                                <strong>Autoria:</strong>
-                                <ul class="hyphen-list">
+                                <strong>Ficha Técnica:</strong>
+                                <ul class="detail-list">
                                     <li><strong>Direção:</strong> Isaac Pipano (2023)</li>
                                 </ul>
                             </div>
@@ -1770,13 +1787,13 @@
                     <div class="carousel-container carousel-container--cols-2">
                         <div class="carousel-wrapper">
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-rebordose/work-rebordose-001.webp"></focus-image>
+                                    src="images/optimized/work-rebordose/work-rebordose-001.webp" alt="Cena do curta-metragem Rebordose"></focus-image>
                             </div>
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-rebordose/work-rebordose-002.webp"></focus-image>
+                                    src="images/optimized/work-rebordose/work-rebordose-002.webp" alt="Ator atuando no curta-metragem Rebordose"></focus-image>
                             </div>
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.webp"></focus-image>
+                                    src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.webp" alt="Performance noturna na rua com espectadores do projeto Exu Não Vem Hoje"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -1793,8 +1810,8 @@
                                 B.O.
                             </p>
                             <div class="project-details-mini mt-20">
-                                <strong>Autoria:</strong>
-                                <ul class="hyphen-list">
+                                <strong>Ficha Técnica:</strong>
+                                <ul class="detail-list">
                                     <li><strong>Direção:</strong> Darlan Souza</li>
                                 </ul>
                             </div>
@@ -1810,13 +1827,13 @@
                     <div class="carousel-container carousel-container--cols-2">
                         <div class="carousel-wrapper">
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-001.webp"></focus-image>
+                                    src="images/optimized/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-001.webp" alt="Poética visual do curta Há números que sonham"></focus-image>
                             </div>
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-002.webp"></focus-image>
+                                    src="images/optimized/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-002.webp" alt="Cena conceitual do curta"></focus-image>
                             </div>
                             <div class="carousel-slide"><focus-image
-                                    src="images/optimized/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.webp"></focus-image>
+                                    src="images/optimized/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.webp" alt="Enquadramento do curta Há números que sonham"></focus-image>
                             </div>
                         </div>
                         <button class="carousel-btn carousel-btn--prev">&#10094;</button>
@@ -1833,8 +1850,8 @@
                                 destaque).
                             </p>
                             <div class="project-details-mini mt-20">
-                                <strong>Autoria:</strong>
-                                <ul class="hyphen-list">
+                                <strong>Ficha Técnica:</strong>
+                                <ul class="detail-list">
                                     <li><strong>Direção:</strong> Jennifer Vieira</li>
                                 </ul>
                             </div>
@@ -1846,35 +1863,35 @@
         </section>
 
         <!-- SEÇÃO: PRODUÇÃO E GESTÃO -->
-        <section id="producao">
+        <section id="producao" tabindex="-1">
             <div class="section-label stamped">PRODUÇÃO</div>
             <div class="catalog-grid">
                 <div class="card woodcut-border card--light">
                     <div class="card-content">
-                        <span class="card-tag">COORDENAÇÃO</span>
+                        <span class="card-tag">Coordenação de Formação (2018–2023)</span>
                         <h3>Black Heroes</h3>
-                        <p>Produtor Cultural e Coordenador de Formação (2018–2023).</p>
+                        <p>Atuação como Produtor Cultural e Coordenador de Formação.</p>
                     </div>
                 </div>
                 <div class="card woodcut-border">
                     <div class="card-content">
-                        <span class="card-tag">PESQUISA</span>
+                        <span class="card-tag">Coordenação de Ensino (2018–2023)</span>
                         <h3>Azusa</h3>
-                        <p>Coordenação de ensino e processos formativos (2018–2023).</p>
+                        <p>Coordenação de ensino, pesquisa e processos formativos.</p>
                     </div>
                 </div>
                 <div class="card woodcut-border">
                     <div class="card-content">
-                        <span class="card-tag">INTERNACIONAL</span>
+                        <span class="card-tag">Gestão Internacional (2024)</span>
                         <h3>Luanda – Angola</h3>
-                        <p>Gestão de projetos culturais e intercâmbio artístico (2024).</p>
+                        <p>Gestão de projetos culturais e intercâmbio artístico no exterior.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SEÇÃO: ENSINO E EXPERIÊNCIA PEDAGÓGICA -->
-        <section id="ensino">
+        <section id="ensino" tabindex="-1">
             <div class="section-label stamped">ENSINO</div>
             <div class="flex-col-gap">
 
@@ -1882,15 +1899,15 @@
                 <div class="catalog-grid">
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Professor de Artes</span>
-                            <h3>Escola Paulo Petrola</h3>
+                            <span class="card-tag">Escola Paulo Petrola</span>
+                            <h3>Professor de Artes</h3>
                             <p>Ensino básico.</p>
                         </div>
                     </div>
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Professor de Artes</span>
-                            <h3>Escola Hugo Sadrack do Vale</h3>
+                            <span class="card-tag">Escola Hugo Sadrack do Vale</span>
+                            <h3>Professor de Artes</h3>
                             <p>Ensino básico.</p>
                         </div>
                     </div>
@@ -1901,14 +1918,13 @@
                     <div class="card woodcut-border card--light">
                         <div class="img-stack img-stack--cols-2">
                             <focus-image
-                                src="images/optimized/work-prof-hugo-sadrack/work-prof-hugo-sadrack-001.webp"></focus-image>
+                                src="images/optimized/work-prof-hugo-sadrack/work-prof-hugo-sadrack-001.webp" alt="Aula do Projeto ABARCA"></focus-image>
                             <focus-image
-                                src="images/optimized/work-prof-hugo-sadrack/work-prof-hugo-sadrack-002.webp"></focus-image>
+                                src="images/optimized/work-prof-hugo-sadrack/work-prof-hugo-sadrack-002.webp" alt="Atividade prática com alunos"></focus-image>
                         </div>
                         <div class="card-content">
-                            <span class="card-tag card-tag--red">Projeto ABARCA</span>
-                            <h3 class="course-institution">Escola Porto Iracema das Artes 📍 Fortaleza – CE – Brasil
-                            </h3>
+                            <span class="card-tag card-tag--red">Escola Porto Iracema das Artes 📍 Fortaleza – CE – Brasil</span>
+                            <h3 class="course-institution">Projeto ABARCA</h3>
                             <p class="course-details"><strong>Territórios de atuação:</strong> Vicente Pinzón,
                                 Genibaú,
                                 Itapipoca.</p>
@@ -1918,8 +1934,8 @@
                     </div>
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Percurso Básico de Teatro</span>
-                            <h3>Escola Porto Iracema das Artes 📍 Fortaleza – CE – Brasil</h3>
+                            <span class="card-tag">Escola Porto Iracema das Artes 📍 Fortaleza – CE – Brasil</span>
+                            <h3>Percurso Básico de Teatro</h3>
                             <p>Professor • Fortaleza – CE.</p>
                         </div>
                     </div>
@@ -1936,8 +1952,8 @@
                     </div>
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Orientador de Montagem / Mediação</span>
-                            <h3>Projeto no Bairro Terceiro</h3>
+                            <span class="card-tag">Projeto no Bairro Terceiro</span>
+                            <h3>Orientador de Montagem / Mediação</h3>
                             <p>Função: acompanhamento pedagógico e direção de processo.</p>
                         </div>
                     </div>
@@ -1947,8 +1963,8 @@
                 <div class="catalog-grid catalog-grid--single-col">
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Estágio em Teatro – Intérprete</span>
-                            <h3>Noite de Alegria da Rua Trinta e Sete</h3>
+                            <span class="card-tag">Noite de Alegria da Rua Trinta e Sete</span>
+                            <h3>Estágio em Teatro – Intérprete</h3>
                             <p><strong>Supervisão:</strong> Circe Damascena.<br>
                                 <strong>Texto:</strong> Rafael Semino.<br>
                                 <strong>Direção:</strong> Circe e Rafael.<br>
@@ -1962,7 +1978,7 @@
         </section>
 
         <!-- SEÇÃO: COLETIVO FAROL NOVO -->
-        <section id="coletivo">
+        <section id="coletivo" tabindex="-1">
             <div class="section-label stamped">COLETIVO</div>
             <div class="catalog-grid catalog-grid--single-col">
                 <div class="card woodcut-border">
@@ -1986,7 +2002,7 @@
             </div>
         </section>
 
-
+        </main>
 
 
 
@@ -2091,6 +2107,8 @@
                 });
             }
         });
+
+        document.getElementById('print-button').addEventListener('click', () => window.print());
     </script>
 </body>
 
