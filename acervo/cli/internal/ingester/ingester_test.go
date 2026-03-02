@@ -43,10 +43,10 @@ func TestApplyArgs(t *testing.T) {
 			expected: map[string]interface{}{"description": "false"},
 		},
 		{
-			name:     "Array string",
+			name:     "Array string valid JSON",
 			data:     map[string]interface{}{"tags": []string{"a", "b"}},
-			args:     []string{"tags=[c, d]"},
-			expected: map[string]interface{}{"tags": []string{"c", "d"}},
+			args:     []string{`tags=["c", "d"]`},
+			expected: map[string]interface{}{"tags": []interface{}{"c", "d"}},
 		},
 	}
 

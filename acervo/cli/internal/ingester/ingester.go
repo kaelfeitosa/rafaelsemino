@@ -181,6 +181,10 @@ func applyArgs(data map[string]interface{}, args []string) error {
 		if len(kv) == 2 {
 			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
 
+			if strings.Contains(val, "---") {
+				return fmt.Errorf("valor inválido para %s: contém delimitador reservado '---'", key)
+			}
+
 			// Validate year
 			if key == "year" || key == "active_since" {
 				if val != "" {
@@ -194,11 +198,18 @@ func applyArgs(data map[string]interface{}, args []string) error {
 			if (strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]")) ||
 				(strings.HasPrefix(val, "{") && strings.HasSuffix(val, "}")) {
 				var jsonVal interface{}
-				if err := json.Unmarshal([]byte(val), &jsonVal); err != nil {
-					return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err)
+				// Attempt 1: Try to parse as-is
+				firstErr := json.Unmarshal([]byte(val), &jsonVal)
+				if firstErr == nil {
+					data[key] = jsonVal
+					continue
 				}
-				data[key] = jsonVal
-				continue
+
+				// The previous fallback parsing methods (Attempt 2: replace all single quotes, Attempt 3: simple split by comma)
+				// were brittle and could corrupt data if values contained apostrophes or commas (e.g. ['it's a test', 'a, b']).
+				// To maintain a robust and secure parsing system, we will enforce strict JSON formatting for complex fields.
+
+				return fmt.Errorf("falha ao analisar %s (esperado JSON strict, ex: [\"val1\", \"val2\"]): %w", key, firstErr)
 			}
 
 			vLower := strings.ToLower(val)
