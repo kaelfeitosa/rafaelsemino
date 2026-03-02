@@ -181,6 +181,10 @@ func applyArgs(data map[string]interface{}, args []string) error {
 		if len(kv) == 2 {
 			key, val := strings.TrimSpace(kv[0]), strings.TrimSpace(kv[1])
 
+			if strings.Contains(val, "---") {
+				return fmt.Errorf("valor inválido para %s: contém delimitador reservado '---'", key)
+			}
+
 			// Validate year
 			if key == "year" || key == "active_since" {
 				if val != "" {
@@ -202,16 +206,14 @@ func applyArgs(data map[string]interface{}, args []string) error {
 
 				// Attempt 2: Try with single quotes replaced
 				valWithQuotes := strings.ReplaceAll(val, "'", "\"")
-				if err := json.Unmarshal([]byte(valWithQuotes), &jsonVal); err == nil {
+				err2 := json.Unmarshal([]byte(valWithQuotes), &jsonVal)
+				if err2 == nil {
 					data[key] = jsonVal
 					continue
 				}
 
 				// Attempt 3: Fallback to simple array parsing
 				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
-					if strings.Contains(val, "---") {
-						return fmt.Errorf("valor inválido para %s: contém delimitador reservado '---'", key)
-					}
 					inner := strings.TrimSuffix(strings.TrimPrefix(val, "["), "]")
 					parts := strings.Split(inner, ",")
 					strArr := make([]string, len(parts))
@@ -223,9 +225,7 @@ func applyArgs(data map[string]interface{}, args []string) error {
 				}
 
 				// All attempts failed, return an error from the most likely intended format
-				var tempForErr interface{}
-				errForReport := json.Unmarshal([]byte(valWithQuotes), &tempForErr)
-				return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, errForReport)
+				return fmt.Errorf("falha ao analisar %s (esperado JSON): %w", key, err2)
 			}
 
 			vLower := strings.ToLower(val)
