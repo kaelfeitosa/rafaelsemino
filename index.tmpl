@@ -1336,55 +1336,56 @@
 
                 <h2 class="section-header">Formação Acadêmica</h2>
                 <div class="catalog-grid">
+                    {{ $ufc := getWork "work-rafael-mestrado-ufc" }}
                     <div class="card woodcut-border">
                         <div class="card-content">
-                            <span class="card-tag">Mestrado em Artes</span>
-                            <h3>UFC (2023)</h3>
-                            <p>Universidade Federal do Ceará.<br>Ênfase: teatro, pedagogia do corpo, ritual e
-                                ancestralidade.</p>
+                            <span class="card-tag">{{ $ufc.Medium }}</span>
+                            <h3>{{ $ufc.Title }} ({{ $ufc.Year }})</h3>
+                            <p>{{ $ufc.Description }}</p>
                         </div>
                     </div>
+                    {{ $ifce := getWork "work-rafael-licenciatura-ifce" }}
                     <div class="card woodcut-border">
                         <div class="card-content">
-                            <span class="card-tag">Licenciatura em Teatro</span>
-                            <h3>IFCE (2022)</h3>
-                            <p>Instituto Federal de Educação, Ciência e Tecnologia do Ceará.</p>
+                            <span class="card-tag">{{ $ifce.Medium }}</span>
+                            <h3>{{ $ifce.Title }} ({{ $ifce.Year }})</h3>
+                            <p>{{ $ifce.Description }}</p>
                         </div>
                     </div>
+                    {{ $ufba := getWork "work-rafael-pos-ufba" }}
                     <div class="card woodcut-border">
                         <div class="card-content">
-                            <span class="card-tag">Pós-graduação em Estudos em Teatro do Oprimido</span>
-                            <h3>UFBA (2024)</h3>
-                            <p>Universidade Federal da Bahia.<br>330h cursadas.</p>
+                            <span class="card-tag">{{ $ufba.Medium }}</span>
+                            <h3>{{ $ufba.Title }} ({{ $ufba.Year }})</h3>
+                            <p>{{ $ufba.Description }}</p>
                         </div>
                     </div>
                 </div>
 
                 <h2 class="section-header mt-20">Formação Complementar</h2>
                 <div class="catalog-grid catalog-grid--single-col">
+                    {{ $porto := getWork "work-rafael-porto-iracema-2022" }}
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Laboratório de Criação</span>
-                            <h3 class="course-institution">Escola Porto Iracema das Artes</h3>
-                            <p class="course-details">Criação em tempo espiralar: Exu e suas encruzilhadas (346 horas)
-                            </p>
+                            <span class="card-tag">{{ $porto.Medium }}</span>
+                            <h3 class="course-institution">{{ $porto.Title }}</h3>
+                            <p class="course-details">{{ $porto.Description }}</p>
                         </div>
                     </div>
+                    {{ $ccbj := getWork "work-rafael-ccbj-exu" }}
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Laboratório de Pesquisa</span>
-                            <h3 class="course-institution">CCBJ - Centro Cultural Bom Jardim</h3>
-                            <p class="course-details">Exu não vem hoje (300 horas)</p>
+                            <span class="card-tag">{{ $ccbj.Medium }}</span>
+                            <h3 class="course-institution">{{ $ccbj.Title }}</h3>
+                            <p class="course-details">{{ $ccbj.Description }}</p>
                         </div>
                     </div>
+                    {{ $mira := getWork "work-pesquisador-ifce" }}
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">Cultura Popular</span>
-                            <h3 class="course-institution">Grupo Mira Ira – IFCE</h3>
-                            <p class="course-details">Coletivo tradicional de cultura popular. Atuação como pesquisador
-                                por <strong>dois anos</strong>, com participação em processos de criação e apresentações
-                                do espetáculo <em>Flor do Deserto</em> e de danças dramáticas de Reisado e Caninha
-                                Verde, em eventos com Mestres da Cultura Popular.</p>
+                            <span class="card-tag">{{ $mira.Medium }}</span>
+                            <h3 class="course-institution">{{ $mira.Title }}</h3>
+                            <p class="course-details">{{ $mira.Description }}</p>
                         </div>
                     </div>
                 </div>
@@ -1414,149 +1415,166 @@
             <div class="section-label stamped">AUTORIA</div>
             <div class="catalog-grid catalog-grid--single-col gap-80">
 
-{{ $FeaturedSlice := .PesquisaFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
-                {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
-
-{{ $ListSlice := .PesquisaList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
+                <!-- PROJETO: EXU NÃO VEM HOJE -->
+                {{ $exu := getWork "work-exu-nao-vem-hoje" }}
+                <div class="card woodcut-border">
+                    <div class="img-stack img-stack--cols-3">
+                        {{ range $idx, $doc := getDocs $exu.Attachments }}
+                           {{ if lt $idx 3 }}<focus-image src="{{ $doc.URL | safeURL }}"></focus-image>{{ end }}
                         {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-{{ end }}
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Espetáculos: Rito e Participação</span>
+                        <h3 class="project-title">{{ $exu.Title }} {{ if $exu.Year }}({{ $exu.Year }}){{ end }}</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc light">
+                                {{ $exu.Description }}
+                            </p>
+                            <div class="project-details-mini">
+                                <strong>Colaboradores:</strong>
+                                <ul class="hyphen-list">
+                                    {{ range $collab := $exu.Collaborators }}
+                                    <li>{{ $collab }}</li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                        {{ if hasOccurrences $exu.Occurrences }}
+                        <div class="project-meta light">
+                            <p><strong>Circulação:</strong></p>
+                            <ul class="hyphen-list">
+                                {{ range $occ := $exu.Occurrences }}
+                                <li>{{ $occ.Context }} ({{ $occ.StartDate }})</li>
+                                {{ end }}
+                            </ul>
+                            <a href="https://www.youtube.com/watch?v=bjwQwDCBGsI&t=108s" target="_blank"
+                                class="btn-work">Assista o Espetáculo</a>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
 
-</div>
+                <!-- PROJETO: VÃO -->
+                {{ $vao := getWork "work-vao" }}
+                <div class="card woodcut-border card--light">
+                    <div class="img-stack img-stack--cols-2">
+                        {{ range $idx, $doc := getDocs $vao.Attachments }}
+                           {{ if lt $idx 2 }}<focus-image src="{{ $doc.URL | safeURL }}"></focus-image>{{ end }}
+                        {{ end }}
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag card-tag--red">{{ $vao.Medium }}</span>
+                        <h3 class="project-title">{{ $vao.Title }} {{ if $vao.Year }}({{ $vao.Year }}){{ end }}</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc">
+                                {{ $vao.Description }}
+                            </p>
+                            <div class="project-details-mini">
+                                <strong>Colaboradores:</strong>
+                                <ul class="hyphen-list">
+                                    {{ range $collab := $vao.Collaborators }}
+                                    <li>{{ $collab }}</li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                        {{ if hasOccurrences $vao.Occurrences }}
+                        <div class="project-meta">
+                            <p><strong>Circulação e Reconhecimento:</strong></p>
+                            <ul class="hyphen-list">
+                                {{ range $occ := $vao.Occurrences }}
+                                <li>{{ $occ.Context }} ({{ $occ.StartDate }})</li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+
+                <!-- PROJETO: CONTOS DE EXU -->
+                {{ $contos := getWork "work-contos-de-exu" }}
+                <div class="card woodcut-border card--light">
+                    <div class="img-stack img-stack--cols-2">
+                        {{ range $idx, $doc := getDocs $contos.Attachments }}
+                           {{ if lt $idx 2 }}<focus-image src="{{ $doc.URL | safeURL }}"></focus-image>{{ end }}
+                        {{ end }}
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag card-tag--red">{{ $contos.Medium }}</span>
+                        <h3 class="project-title">{{ $contos.Title }} {{ if $contos.Year }}({{ $contos.Year }}){{ end }}</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc">
+                                {{ $contos.Description }}
+                            </p>
+                            {{ if hasOccurrences $contos.Occurrences }}
+                            <div class="project-meta">
+                                <p><strong>Ocorrências:</strong></p>
+                                <ul class="hyphen-list">
+                                    {{ range $occ := $contos.Occurrences }}
+                                    <li>{{ $occ.Context }} ({{ $occ.StartDate }})</li>
+                                    {{ end }}
+                                </ul>
+                                <a href="https://drive.google.com/file/d/1B4qxxLZdMHsu6nY-ghGDl61jHWcjkTmW/view?usp=sharing"
+                                    target="_blank" class="btn-work">Leia o Livro</a>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
         </section>
 
         <!-- SEÇÃO: TEATRO – ATUAÇÃO -->
         <section id="atuacao">
             <div class="section-label stamped">ATUAÇÃO</div>
             <div class="catalog-grid catalog-grid--single-col gap-60">
+                <div class="card woodcut-border card--light">
+                    <div class="img-stack img-stack--cols-3">
+                        <focus-image src="images/optimized/work-exu-nao-vem-hoje-001.webp"></focus-image>
+                        <focus-image src="images/optimized/work-exu-nao-vem-hoje-002.webp"></focus-image>
+                        <focus-image src="images/optimized/work-exu-nao-vem-hoje-003.webp"></focus-image>
+                    </div>
+                    <div class="card-content card-content--medium-padding">
+                        <span class="card-tag card-tag--red">REPERTÓRIO & PERFORMANCE</span>
+                        <h2 class="section-header">Atuação e Criação</h2>
 
-{{ $FeaturedSlice := .TeatroFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
-                {{ end }}
-                </ul>
+                        <div class="atuacao-consolidated-grid">
+                            <!-- TEATRO -->
+                            <div class="atuacao-group">
+                                <p class="group-label">Teatro & Performance</p>
+                                <ul class="hyphen-list">
+                                    {{ range $wk := .TeatroFeatured }}
+                                    {{ if and (ne $wk.ID "work-exu-nao-vem-hoje") (ne $wk.ID "work-vao") }}
+                                    <li><strong>{{ $wk.Title }}</strong> {{ if $wk.Year }}({{ $wk.Year }}){{ end }}<br><span style="font-size:0.9em;color:#666;">Func: {{ $wk.Role }}</span></li>
+                                    {{ end }}
+                                    {{ end }}
+                                    {{ range $wk := .TeatroList }}
+                                    {{ if and (ne $wk.ID "work-exu-nao-vem-hoje") (ne $wk.ID "work-vao") }}
+                                    <li><strong>{{ $wk.Title }}</strong> {{ if $wk.Year }}({{ $wk.Year }}){{ end }}<br><span style="font-size:0.9em;color:#666;">Func: {{ $wk.Role }}</span></li>
+                                    {{ end }}
+                                    {{ end }}
+                                </ul>
+                            </div>
+
+                            <!-- AUDIOVISUAL -->
+                            <div class="atuacao-group">
+                                <p class="group-label">Audiovisual</p>
+                                <ul class="hyphen-list">
+                                    {{ range $wk := .AudiovisualFeatured }}
+                                    <li><strong>{{ $wk.Title }}</strong> {{ if $wk.Year }}({{ $wk.Year }}){{ end }}<br><span style="font-size:0.9em;color:#666;">Func: {{ $wk.Role }}</span></li>
+                                    {{ end }}
+                                    {{ range $wk := .AudiovisualList }}
+                                    <li><strong>{{ $wk.Title }}</strong> {{ if $wk.Year }}({{ $wk.Year }}){{ end }}<br><span style="font-size:0.9em;color:#666;">Func: {{ $wk.Role }}</span></li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
-
-{{ $ListSlice := .TeatroList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
-                        {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-{{ end }}
-
-</div>
         </section>
 
 
@@ -1566,74 +1584,144 @@
             <div class="section-label stamped">CULTURA POPULAR</div>
             <div class="catalog-grid catalog-grid--single-col gap-80">
 
-{{ $FeaturedSlice := .CulturaPopularFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
-                {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
-
-{{ $ListSlice := .CulturaPopularList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
+                <!-- GRUPO MIRAIRA -->
+                {{ $mira := getWork "work-seca-flor" }}
+                <div class="card woodcut-border card--light">
+                    <div class="img-stack img-stack--cols-2">
+                        {{ range $idx, $doc := getDocs $mira.Attachments }}
+                           {{ if lt $idx 2 }}<focus-image src="{{ $doc.URL | safeURL }}"></focus-image>{{ end }}
                         {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-{{ end }}
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag card-tag--red">Tradição</span>
+                        <h3 class="project-title">{{ $mira.Title }}</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc">
+                                {{ $mira.Description }}
+                            </p>
+                            {{ if hasOccurrences $mira.Occurrences }}
+                            <div class="project-details-mini mt-20">
+                                <strong>Apresentações:</strong>
+                                <ul class="hyphen-list">
+                                    {{ range $occ := $mira.Occurrences }}
+                                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }}</li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
 
-</div>
+                <!-- MESTRES DO MUNDO -->
+                <div class="card woodcut-border">
+                    <div class="carousel-container carousel-container--cols-2">
+                        <div class="carousel-wrapper">
+                            {{ range $cwk := .CulturaPopularFeatured }}
+                                {{ range $doc := getDocs $cwk.Attachments }}
+                                <div class="carousel-slide"><focus-image src="{{ $doc.URL | safeURL }}"></focus-image></div>
+                                {{ end }}
+                            {{ end }}
+                            {{ range $cwk := .CulturaPopularList }}
+                                {{ range $doc := getDocs $cwk.Attachments }}
+                                <div class="carousel-slide"><focus-image src="{{ $doc.URL | safeURL }}"></focus-image></div>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+                        <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                        <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                        <div class="carousel-indicators">
+                            <div class="carousel-dot active"></div>
+                            <div class="carousel-dot"></div>
+                            <div class="carousel-dot"></div>
+                            <div class="carousel-dot"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Ofícios Tradicionais</span>
+                        <h3 class="project-title">Eventos Mestres do Mundo</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc light">
+                                Participação contínua e ativa nos eventos de celebração dos Mestres da Cultura do Ceará,
+                                incluindo colóquios, apresentações artísticas (Seca Flor, Reisado, Caninha Verde) e
+                                trabalhos de catalogação.
+                            </p>
+                            <div class="project-details-mini mt-20">
+                                <strong>Edições:</strong>
+                                <ul class="hyphen-list">
+                                    <li><strong>Limoeiro do Norte (2016):</strong> Apresentações com o Grupo Miraira e
+                                        presença no colóquio "Reconhecimento de Saberes e Ofícios Tradicionais".</li>
+                                    <li><strong>Sobral (2019):</strong> Tema "Construindo Resistência Entre Girassóis e
+                                        Mandacarus".</li>
+                                    <li><strong>Quixadá e Juazeiro do Norte (2022):</strong> Tema "Tesouros de Gilmar,
+                                        madeira matriz".</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project-meta light">
+                            <a href="https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2024/12/Catalogo-Encontro-Mestres-do-Mundo-2022.pdf"
+                                target="_blank" class="btn-work">Catálogo Encontro Mestres do Mundo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AVALIADOR -->
+                <div class="card woodcut-border">
+                    <div class="img-stack img-stack--cols-3">
+                        <focus-image src="images/optimized/work-avaliador-ciclo-carnavalesco-001.webp"></focus-image>
+                        <focus-image src="images/optimized/work-avaliador-junino-001.webp"></focus-image>
+                        <focus-image src="images/optimized/work-avaliador-junino-002.webp"></focus-image>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag card-tag--red">Festividades</span>
+                        <h3 class="project-title">Avaliador de Ciclos Festivos</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc">
+                                Atuação direta na avaliação técnica e artística de grandes ciclos culturais do Ceará.
+                            </p>
+                            <div class="project-details-mini mt-20">
+                                <strong>Atuações:</strong>
+                                <ul class="hyphen-list">
+                                    {{ $junino := getWork "work-avaliador-junino" }}
+                                    <li><strong>{{ $junino.Title }} ({{ $junino.Year }}):</strong> {{ $junino.Description }}</li>
+                                    {{ $carnaval := getWork "work-avaliador-ciclo-carnavalesco" }}
+                                    <li><strong>{{ $carnaval.Title }} ({{ $carnaval.Year }}):</strong> {{ $carnaval.Description }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIREÇÃO ESCOLAR -->
+                {{ $escola := getWork "work-direcao-sao-joao-santa-cecilia" }}
+                <div class="card woodcut-border card--light">
+                    <div class="img-stack img-stack--cols-2">
+                        {{ range $idx, $doc := getDocs $escola.Attachments }}
+                           {{ if lt $idx 2 }}<focus-image src="{{ $doc.URL | safeURL }}"></focus-image>{{ end }}
+                        {{ end }}
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag card-tag--red">{{ $escola.Medium }}</span>
+                        <h3 class="project-title">{{ $escola.Title }}</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc">
+                                {{ $escola.Description }}
+                            </p>
+                            {{ if hasOccurrences $escola.Occurrences }}
+                            <div class="project-details-mini mt-20">
+                                <strong>Projetos:</strong>
+                                <ul class="hyphen-list">
+                                    {{ range $occ := $escola.Occurrences }}
+                                    <li><strong>{{ $occ.Title }} ({{ $occ.StartDate }}):</strong> {{ $occ.Context }}</li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- SEÇÃO: AUDIOVISUAL -->
@@ -1641,302 +1729,210 @@
             <div class="section-label stamped">AUDIOVISUAL</div>
             <div class="catalog-grid catalog-grid--single-col gap-80">
 
-{{ $FeaturedSlice := .AudiovisualFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
-                {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
+                {{ $mundo := getWork "work-mundo-imagem" }}
+                <div class="card woodcut-border">
+                    <div class="carousel-container carousel-container--cols-2">
+                        <div class="carousel-wrapper">
+                            {{ range $doc := getDocs $mundo.Attachments }}
+                            <div class="carousel-slide"><focus-image src="{{ $doc.URL | safeURL }}"></focus-image></div>
+                            {{ end }}
+                        </div>
+                        <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                        <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">{{ $mundo.Medium }}</span>
+                        <h3 class="project-title">{{ $mundo.Title }} ({{ $mundo.Year }})</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc light">
+                                {{ $mundo.Description }}
+                            </p>
+                            <div class="project-details-mini mt-20">
+                                <strong>Papel:</strong> {{ $mundo.Role }}.<br>
+                                {{ if hasOccurrences $mundo.Occurrences }}
+                                {{ range $occ := $mundo.Occurrences }}
+                                <strong>{{ $occ.Title }}:</strong> {{ $occ.Context }}
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                        </div>
+                        <div class="project-meta light">
+                            <a href="https://www.youtube.com/watch?v=oXhE3w4FhX8" target="_blank" class="btn-work">Assistir Série</a>
+                        </div>
+                    </div>
+                </div>
 
-{{ $ListSlice := .AudiovisualList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
-                        {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-{{ end }}
+                {{ $rebordose := getWork "work-rebordose" }}
+                <div class="card woodcut-border card--light">
+                    <div class="carousel-container carousel-container--cols-2">
+                        <div class="carousel-wrapper">
+                            {{ range $doc := getDocs $rebordose.Attachments }}
+                            <div class="carousel-slide"><focus-image src="{{ $doc.URL | safeURL }}"></focus-image></div>
+                            {{ end }}
+                        </div>
+                        <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                        <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag card-tag--red">{{ $rebordose.Medium }}</span>
+                        <h3 class="project-title">{{ $rebordose.Title }} ({{ $rebordose.Year }})</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc">
+                                {{ $rebordose.Description }}
+                            </p>
+                            <div class="project-details-mini mt-20">
+                                <strong>Papel:</strong> {{ $rebordose.Role }}.<br>
+                                {{ if hasOccurrences $rebordose.Occurrences }}
+                                {{ range $occ := $rebordose.Occurrences }}
+                                <strong>{{ $occ.Title }}:</strong> {{ $occ.Context }}
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <a href="https://www.youtube.com/watch?v=S0TnfB5O7yU&t=1506s" target="_blank" class="btn-work">Assistir no YouTube</a>
+                        </div>
+                    </div>
+                </div>
 
-</div>
+                {{ $numeros := getWork "work-ha-numeros-que-sonham" }}
+                <div class="card woodcut-border">
+                    <div class="carousel-container carousel-container--cols-2">
+                        <div class="carousel-wrapper">
+                            {{ range $doc := getDocs $numeros.Attachments }}
+                            <div class="carousel-slide"><focus-image src="{{ $doc.URL | safeURL }}"></focus-image></div>
+                            {{ end }}
+                        </div>
+                        <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                        <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">{{ $numeros.Medium }}</span>
+                        <h3 class="project-title">{{ $numeros.Title }} ({{ $numeros.Year }})</h3>
+                        <div class="project-context mt-20">
+                            <p class="project-desc light">
+                                {{ $numeros.Description }}
+                            </p>
+                            <div class="project-details-mini mt-20">
+                                <strong>Papel:</strong> {{ $numeros.Role }}.<br>
+                                {{ if hasOccurrences $numeros.Occurrences }}
+                                {{ range $occ := $numeros.Occurrences }}
+                                <strong>{{ $occ.Title }}:</strong> {{ $occ.Context }}
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- SEÇÃO: PRODUÇÃO E GESTÃO -->
         <section id="producao">
-            <div class="section-label stamped">PRODUÇÃO</div>
+            <div class="section-label stamped">PRODUÇÃO & GESTÃO</div>
             <div class="catalog-grid">
-
-{{ $FeaturedSlice := .ProducaoFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
+                {{ range $pwk := .ProducaoList }}
+                <div class="card woodcut-border card--light">
+                    <div class="card-content">
+                        <span class="card-tag">{{ $pwk.Role }}</span>
+                        <h3>{{ $pwk.Title }}</h3>
+                        <p>{{ $pwk.Description }}{{ if $pwk.Year }} ({{ $pwk.Year }}){{ end }}.</p>
+                    </div>
+                </div>
                 {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
-
-{{ $ListSlice := .ProducaoList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
-                        {{ end }}
-                    </li>
+                {{ range $pwk := .PesquisaList }}
+                <div class="card woodcut-border">
+                    <div class="card-content">
+                        <span class="card-tag">{{ $pwk.Role }}</span>
+                        <h3>{{ $pwk.Title }}</h3>
+                        <p>{{ $pwk.Description }}{{ if $pwk.Year }} ({{ $pwk.Year }}){{ end }}.</p>
+                    </div>
+                </div>
                 {{ end }}
-                </ul>
+                {{ range $pwk := .OutrosList }}
+                <div class="card woodcut-border">
+                    <div class="card-content">
+                        <span class="card-tag">{{ $pwk.Role }}</span>
+                        <h3>{{ $pwk.Title }}</h3>
+                        <p>{{ $pwk.Description }}{{ if $pwk.Year }} ({{ $pwk.Year }}){{ end }}.</p>
+                    </div>
+                </div>
+                {{ end }}
             </div>
-        </div>
-    </div>
-</div>
-{{ end }}
-
-</div>
         </section>
 
         <!-- SEÇÃO: ENSINO E EXPERIÊNCIA PEDAGÓGICA -->
         <section id="ensino">
-            <div class="section-label stamped">ENSINO</div>
+            <div class="section-label stamped">ENSINO E EXPERIÊNCIA PEDAGÓGICA</div>
             <div class="flex-col-gap">
-
-                <h2 class="section-header">Ensino Formal</h2>
                 <div class="catalog-grid">
-
-{{ $FeaturedSlice := .EnsinoFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
-                {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
-
-{{ $ListSlice := .EnsinoList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
+                    {{ range $ewk := .EnsinoFeatured }}
+                    <div class="card woodcut-border card--light">
+                        {{ $docs := getDocs $ewk.Attachments }}
+                        {{ if gt (len $docs) 0 }}
+                        <div class="img-stack img-stack--cols-2">
+                            {{ range $idx, $doc := $docs }}
+                                {{ if lt $idx 2 }}<focus-image src="{{ $doc.URL | safeURL }}"></focus-image>{{ end }}
+                            {{ end }}
+                        </div>
                         {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
+                        <div class="card-content">
+                            <span class="card-tag card-tag--red">{{ $ewk.Role }}</span>
+                            <h3 class="project-title">{{ $ewk.Title }}</h3>
+                            <div class="project-context mt-20">
+                                <p class="project-desc">{{ $ewk.Description }}</p>
+                                <div class="project-details-mini mt-20">
+                                    {{ if hasOccurrences $ewk.Occurrences }}
+                                    <ul class="hyphen-list mt-20">
+                                        {{ range $occ := $ewk.Occurrences }}
+                                        <li><strong>{{ $occ.Title }}:</strong> {{ $occ.Context }}</li>
+                                        {{ end }}
+                                    </ul>
+                                    {{ end }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                    {{ range $ewk := .EnsinoList }}
+                    <div class="card woodcut-border card--light">
+                        <div class="card-content">
+                            <span class="card-tag">{{ $ewk.Role }}</span>
+                            <h3>{{ $ewk.Title }}</h3>
+                            <p>{{ $ewk.Description }}</p>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-{{ end }}
-
-</div>
         </section>
 
         <!-- SEÇÃO: COLETIVO FAROL NOVO -->
         <section id="coletivo">
             <div class="section-label stamped">COLETIVO</div>
             <div class="catalog-grid catalog-grid--single-col">
-
-{{ $FeaturedSlice := .OutrosFeatured }}
-{{ range $i, $work := $FeaturedSlice }}
-{{ $isLight := "" }}
-{{ if eq (mod $i 2) 0 }}{{ $isLight = "card--light" }}{{ end }}
-<div class="card woodcut-border {{ $isLight }}">
-    {{ $docs := getDocs $work.Attachments }}
-    {{ $docLen := len $docs }}
-    
-    {{ if gt $docLen 0 }}
-    <div class="{{ if gt $docLen 1 }}img-stack{{ else }}img-single{{ end }} {{ if gt $docLen 2 }}img-stack--cols-3{{ else if gt $docLen 1 }}img-stack--cols-2{{ end }}">
-        {{ range $idx, $doc := $docs }}
-           {{ if lt $idx 3 }}
-           <focus-image src="{{ $doc.URL | safeURL }}"></focus-image>
-           {{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    <div class="card-content">
-        <span class="card-tag card-tag--red">{{ $work.Medium }}</span>
-        <h3 class="project-title">{{ $work.Title }} {{ if $work.Year }}({{ $work.Year }}){{ end }}</h3>
-        <div class="project-context mt-20">
-            <p class="project-desc">{{ $work.Description }}</p>
-            
-            {{ if hasOccurrences $work.Occurrences }}
-            <div class="project-details-mini mt-20">
-                <strong>Ocorrências:</strong>
-                <ul class="hyphen-list">
-                {{ range $occ := $work.Occurrences }}
-                    <li><strong>{{ $occ.Title }}</strong>: {{ $occ.Context }} ({{ $occ.StartDate }})</li>
-                {{ end }}
-                </ul>
+                <div class="card woodcut-border">
+                    <div class="img-stack img-stack--cols-3">
+                        <focus-image
+                            src="images/optimized/agent-coletivo-farol-novo-001.webp"></focus-image>
+                        <focus-image
+                            src="images/optimized/agent-coletivo-farol-novo-002.webp"></focus-image>
+                        <focus-image
+                            src="images/optimized/work-constelacao-promo-residencia-001.webp"></focus-image>
+                    </div>
+                    <div class="card-content card-content--large-padding">
+                        <span class="card-tag">FUNDADO EM 2022</span>
+                        <h2 class="section-header">Coletivo Farol Novo</h2>
+                        <p class="coletivo-desc">
+                            Articulação entre teatro, rito e oralidade.
+                        </p>
+                        <p class="coletivo-members">
+                            RAFAEL SEMINO / FELIPE MARQUES
+                        </p>
+                    </div>
+                </div>
             </div>
-            {{ end }}
-        </div>
-    </div>
-</div>
-{{ end }}
-
-{{ $ListSlice := .OutrosList }}
-{{ if gt (len $ListSlice) 0 }}
-<div class="card woodcut-border">
-    <div class="card-content card-content--medium-padding">
-        <span class="card-tag card-tag--red">Demais Projetos</span>
-        <h2 class="section-header">Arquivo Mestre</h2>
-        <div class="atuacao-consolidated-grid">
-            <div class="atuacao-group" style="margin-top:20px;">
-                <ul class="hyphen-list">
-                {{ range $work := $ListSlice }}
-                    <li style="margin-bottom:15px;">
-                        <strong>{{ $work.Title }}</strong> {{ if $work.Year }}({{ $work.Year }}){{ end }} 
-                        <br><span style="color:#666; font-size: 0.9em">{{ $work.Description }}</span>
-                        {{ if hasOccurrences $work.Occurrences }}
-                        <br>
-                        <em style="color:#aaa; font-size: 0.8em">Ocorrências:
-                        {{ range $occ := $work.Occurrences }}[{{ $occ.Title }} ({{ $occ.StartDate }})]{{ end }}
-                        </em>
-                        {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-{{ end }}
-
-</div>
         </section>
 
 
