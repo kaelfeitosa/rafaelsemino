@@ -1,10 +1,10 @@
 ---
-description: Festival Asu onde o espetáculo O Reino de Aspan foi apresentado.
 id: work-asu
-medium: producao_cultural
-role: Produtor
 title: Festival Asu
+medium: producao_cultural
+description: Festival Asu onde o espetáculo O Reino de Aspan foi apresentado.
 year: 2017
+role: Produtor
 ---
 
 **Festival Asu** foi um evento ou mostra onde foi apresentado o espetáculo *O Reino de Aspan*.

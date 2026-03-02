@@ -241,7 +241,13 @@ func SyncImages(entitiesDir string, mode string) error {
 					changed := false
 					// To avoid any gap issues, since they will be reindexed by keptAtts anyway,
 					// we just need a unique high index to append. The sort will handle it.
-					nextIdx := 99999
+					nextIdx := 0
+					for _, ad := range keptAtts {
+						if ad.idx > nextIdx {
+							nextIdx = ad.idx
+						}
+					}
+					nextIdx++
 					for imgName := range bodyImages {
 						if !yamlImages[imgName] {
 							newAd := &attData{
