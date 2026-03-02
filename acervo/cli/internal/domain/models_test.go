@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"reflect"
 	"strings"
 	"testing"
 
@@ -26,14 +27,12 @@ attachment_2_url: bar.mp4
 	if w.ID != "work-1" {
 		t.Errorf("Expected ID 'work-1', got '%s'", w.ID)
 	}
-	if len(w.Attachments) != 2 {
-		t.Fatalf("Expected 2 attachments, got %d", len(w.Attachments))
+	expected := []Attachment{
+		{Type: "image", URL: "foo.jpg", Label: "Foo Label", Category: "documentation"},
+		{Type: "video", URL: "bar.mp4"},
 	}
-	if w.Attachments[0].URL != "foo.jpg" || w.Attachments[0].Type != "image" || w.Attachments[0].Label != "Foo Label" || w.Attachments[0].Category != "documentation" {
-		t.Errorf("Unexpected first attachment: %+v", w.Attachments[0])
-	}
-	if w.Attachments[1].URL != "bar.mp4" || w.Attachments[1].Type != "video" {
-		t.Errorf("Unexpected second attachment: %+v", w.Attachments[1])
+	if !reflect.DeepEqual(w.Attachments, expected) {
+		t.Errorf("Attachments do not match expected.\nGot:  %#v\nWant: %#v", w.Attachments, expected)
 	}
 
 	out, err := yaml.Marshal(&w)

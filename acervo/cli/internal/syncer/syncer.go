@@ -57,7 +57,10 @@ func SyncImages(entitiesDir string, mode string) error {
 			for k, v := range tempMap {
 				matches := flattenedRe.FindStringSubmatch(k)
 				if len(matches) == 3 {
-					idx, _ := strconv.Atoi(matches[1])
+					idx, err := strconv.Atoi(matches[1])
+					if err != nil {
+						continue
+					}
 					field := matches[2]
 
 					if attMap[idx] == nil {
@@ -198,7 +201,10 @@ func SyncImages(entitiesDir string, mode string) error {
 
 						matches := flattenedRe.FindStringSubmatch(keyNode.Value)
 						if len(matches) == 3 {
-							idx, _ := strconv.Atoi(matches[1])
+							idx, err := strconv.Atoi(matches[1])
+							if err != nil {
+								continue
+							}
 							field := matches[2]
 
 							if parsedAtts[idx] == nil {

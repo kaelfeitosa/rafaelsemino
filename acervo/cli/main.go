@@ -249,31 +249,26 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 						rel, _ := filepath.Rel("../entities", path)
 						parentDir := filepath.Base(filepath.Dir(rel))
 
-						var frontmatter map[string]interface{}
-						if err := yaml.Unmarshal(parts[1], &frontmatter); err != nil { return err }
+						var data interface{}
 
-						// If the file has 'attachments' or already needs formatting
 						if parentDir == "agents" {
 							var agent domain.Agent
 							if err := yaml.Unmarshal(parts[1], &agent); err != nil {
 								return fmt.Errorf("failed to unmarshal agent %s: %w", path, err)
 							}
-							newYaml, err := yaml.Marshal(agent)
-							if err != nil {
-								return fmt.Errorf("failed to marshal agent %s: %w", path, err)
-							}
-							newContent := string(parts[0]) + "---\n" + string(newYaml) + "---" + string(parts[2])
-							if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {
-								return fmt.Errorf("failed to write %s: %w", path, err)
-							}
+							data = agent
 						} else if parentDir == "works" {
 							var work domain.Work
 							if err := yaml.Unmarshal(parts[1], &work); err != nil {
 								return fmt.Errorf("failed to unmarshal work %s: %w", path, err)
 							}
-							newYaml, err := yaml.Marshal(work)
+							data = work
+						}
+
+						if data != nil {
+							newYaml, err := yaml.Marshal(data)
 							if err != nil {
-								return fmt.Errorf("failed to marshal work %s: %w", path, err)
+								return fmt.Errorf("failed to marshal %s %s: %w", parentDir, path, err)
 							}
 							newContent := string(parts[0]) + "---\n" + string(newYaml) + "---" + string(parts[2])
 							if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {

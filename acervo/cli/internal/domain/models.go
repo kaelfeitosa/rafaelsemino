@@ -60,6 +60,32 @@ type Occurrence struct {
 
 var attachmentRegexp = regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
 
+type Attachable interface {
+	GetAttachments() []Attachment
+	SetAttachments([]Attachment)
+}
+
+func UnmarshalAttachments(value *yaml.Node, a Attachable) error {
+	var m map[string]interface{}
+	if err := value.Decode(&m); err != nil {
+		return err
+	}
+	a.SetAttachments(extractAttachments(m))
+	return nil
+}
+
+func MarshalAttachments(a Attachable, alias interface{}) (interface{}, error) {
+	var node yaml.Node
+	if err := node.Encode(alias); err != nil {
+		return nil, err
+	}
+	if err := injectAttachmentsToNode(&node, a.GetAttachments()); err != nil {
+		return nil, err
+	}
+	return node, nil
+}
+
+
 func extractAttachments(m map[string]interface{}) []Attachment {
 	var attachments []Attachment
 
@@ -83,7 +109,10 @@ func extractAttachments(m map[string]interface{}) []Attachment {
 	for k, v := range m {
 		matches := attachmentRegexp.FindStringSubmatch(k)
 		if len(matches) == 3 {
-			idx, _ := strconv.Atoi(matches[1])
+			idx, err := strconv.Atoi(matches[1])
+			if err != nil {
+				continue
+			}
 			field := matches[2]
 
 			att := attMap[idx]
@@ -148,23 +177,15 @@ func injectAttachmentsToNode(node *yaml.Node, attachments []Attachment) error {
 	return nil
 }
 
-func injectAttachments(m map[string]interface{}, attachments []Attachment) {
-	for i, att := range attachments {
-		idx := i + 1
-		if att.Type != "" {
-			m[fmt.Sprintf("attachment_%d_type", idx)] = att.Type
-		}
-		if att.URL != "" {
-			m[fmt.Sprintf("attachment_%d_url", idx)] = att.URL
-		}
-		if att.Label != "" {
-			m[fmt.Sprintf("attachment_%d_label", idx)] = att.Label
-		}
-		if att.Category != "" {
-			m[fmt.Sprintf("attachment_%d_category", idx)] = att.Category
-		}
-	}
-}
+
+func (a *Agent) GetAttachments() []Attachment { return a.Attachments }
+func (a *Agent) SetAttachments(atts []Attachment) { a.Attachments = atts }
+
+func (w *Work) GetAttachments() []Attachment { return w.Attachments }
+func (w *Work) SetAttachments(atts []Attachment) { w.Attachments = atts }
+
+func (o *Occurrence) GetAttachments() []Attachment { return o.Attachments }
+func (o *Occurrence) SetAttachments(atts []Attachment) { o.Attachments = atts }
 
 // Agent custom marshal/unmarshal
 func (a *Agent) UnmarshalYAML(value *yaml.Node) error {
@@ -174,25 +195,12 @@ func (a *Agent) UnmarshalYAML(value *yaml.Node) error {
 		return err
 	}
 	*a = Agent(aux)
-
-	var m map[string]interface{}
-	if err := value.Decode(&m); err != nil {
-		return err
-	}
-	a.Attachments = extractAttachments(m)
-	return nil
+	return UnmarshalAttachments(value, a)
 }
 
 func (a Agent) MarshalYAML() (interface{}, error) {
 	type alias Agent
-	var node yaml.Node
-	if err := node.Encode(alias(a)); err != nil {
-		return nil, err
-	}
-	if err := injectAttachmentsToNode(&node, a.Attachments); err != nil {
-		return nil, err
-	}
-	return node, nil
+	return MarshalAttachments(&a, alias(a))
 }
 
 // Work custom marshal/unmarshal
@@ -203,25 +211,12 @@ func (w *Work) UnmarshalYAML(value *yaml.Node) error {
 		return err
 	}
 	*w = Work(aux)
-
-	var m map[string]interface{}
-	if err := value.Decode(&m); err != nil {
-		return err
-	}
-	w.Attachments = extractAttachments(m)
-	return nil
+	return UnmarshalAttachments(value, w)
 }
 
 func (w Work) MarshalYAML() (interface{}, error) {
 	type alias Work
-	var node yaml.Node
-	if err := node.Encode(alias(w)); err != nil {
-		return nil, err
-	}
-	if err := injectAttachmentsToNode(&node, w.Attachments); err != nil {
-		return nil, err
-	}
-	return node, nil
+	return MarshalAttachments(&w, alias(w))
 }
 
 // Occurrence custom marshal/unmarshal
@@ -232,23 +227,10 @@ func (o *Occurrence) UnmarshalYAML(value *yaml.Node) error {
 		return err
 	}
 	*o = Occurrence(aux)
-
-	var m map[string]interface{}
-	if err := value.Decode(&m); err != nil {
-		return err
-	}
-	o.Attachments = extractAttachments(m)
-	return nil
+	return UnmarshalAttachments(value, o)
 }
 
 func (o Occurrence) MarshalYAML() (interface{}, error) {
 	type alias Occurrence
-	var node yaml.Node
-	if err := node.Encode(alias(o)); err != nil {
-		return nil, err
-	}
-	if err := injectAttachmentsToNode(&node, o.Attachments); err != nil {
-		return nil, err
-	}
-	return node, nil
+	return MarshalAttachments(&o, alias(o))
 }
