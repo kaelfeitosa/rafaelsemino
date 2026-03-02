@@ -1,19 +1,15 @@
 ---
-description: Fundado em 2022 no Laboratório de Criação do Porto Iracema para pesquisar
-  mito, oralidade e o tempo na periferia.
+description: Fundado em 2022 no Laboratório de Criação do Porto Iracema para pesquisar mito, oralidade e o tempo na periferia.
 founded_by_me: true
 id: agent-coletivo-farol-novo
 kind: collective
 name: Coletivo Farol Novo
-attachments:
-- caption: agent-coletivo-farol-novo, imagem 1
-  role: documentation
-  url: agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg
-  type: image
-- caption: agent-coletivo-farol-novo, imagem 2
-  role: documentation
-  url: agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg
-  type: image
+attachment_1_type: image
+attachment_1_url: agent-coletivo-farol-novo/agent-coletivo-farol-novo-001.jpeg
+attachment_1_label: agent-coletivo-farol-novo, imagem 1
+attachment_2_type: image
+attachment_2_url: agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.jpeg
+attachment_2_label: agent-coletivo-farol-novo, imagem 2
 ---
 
 O Coletivo Farol Novo, fundado em 2022 por Rafael Semino e Gabriel França dentro do Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, é uma articulação entre teatro, rito e oralidade. Atualmente o núcleo é composto por Rafael Semino e Felipe Marques.
