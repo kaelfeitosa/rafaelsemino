@@ -8,15 +8,15 @@ role: Ator
 collaborators:
   - Fernando Lira
 attachment_1_type: image
-attachment_1_url: "[[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-001.png]]"
+attachment_1_url: '[[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-001.png]]'
 attachment_1_label: De Sucupira à Asa Branca, imagem 1
 attachment_1_category: divulgacao
 attachment_2_type: image
-attachment_2_url: "[[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-002.png]]"
+attachment_2_url: '[[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-002.png]]'
 attachment_2_label: De Sucupira à Asa Branca, imagem 2
 attachment_2_category: divulgacao
 attachment_3_type: image
-attachment_3_url: "[[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-003.png]]"
+attachment_3_url: '[[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-003.png]]'
 attachment_3_label: De Sucupira à Asa Branca, imagem 3
 attachment_3_category: registro
 ---

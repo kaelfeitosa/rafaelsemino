@@ -10,15 +10,15 @@ occurrences:
     start_date: "2024"
     context: Programa Zona de Criação (YouTube)
 attachment_1_type: image
-attachment_1_url: "[[work-rastros-de-exu/work-rastros-de-exu-001.jpeg]]"
+attachment_1_url: '[[work-rastros-de-exu/work-rastros-de-exu-001.jpeg]]'
 attachment_1_label: Rastros de Exu, imagem 1
 attachment_1_category: registro
 attachment_2_type: image
-attachment_2_url: "[[work-rastros-de-exu/work-rastros-de-exu-002.jpeg]]"
+attachment_2_url: '[[work-rastros-de-exu/work-rastros-de-exu-002.jpeg]]'
 attachment_2_label: Rastros de Exu, imagem 2
 attachment_2_category: imprensa
 attachment_3_type: image
-attachment_3_url: "[[work-rastros-de-exu/work-rastros-de-exu-003.jpeg]]"
+attachment_3_url: '[[work-rastros-de-exu/work-rastros-de-exu-003.jpeg]]'
 attachment_3_label: Rastros de Exu, imagem 3
 attachment_3_category: imprensa
 ---

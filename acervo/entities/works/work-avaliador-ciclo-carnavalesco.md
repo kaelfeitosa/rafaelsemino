@@ -8,7 +8,7 @@ role: Avaliador / Parecerista
 collaborators:
   - Secultfor
 attachment_1_type: image
-attachment_1_url: "[[work-avaliador-ciclo-carnavalesco/work-avaliador-ciclo-carnavalesco-001.jpeg]]"
+attachment_1_url: '[[work-avaliador-ciclo-carnavalesco/work-avaliador-ciclo-carnavalesco-001.jpeg]]'
 attachment_1_category: documentacao
 ---
 Atuação no júri técnico e avaliativo das apresentações dos blocos/maracatus na histórica Avenida Domingos Olímpio durante o ciclo oficial de 2020.

@@ -8,15 +8,15 @@ role: Ator
 collaborators:
   - Andrei Bessa
 attachment_1_type: image
-attachment_1_url: "[[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-001.png]]"
+attachment_1_url: '[[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-001.png]]'
 attachment_1_label: Chega de Falar de Botas, imagem 1
 attachment_1_category: registro
 attachment_2_type: image
-attachment_2_url: "[[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-002.png]]"
+attachment_2_url: '[[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-002.png]]'
 attachment_2_label: Chega de Falar de Botas, imagem 2
 attachment_2_category: registro
 attachment_3_type: image
-attachment_3_url: "[[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-003.png]]"
+attachment_3_url: '[[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-003.png]]'
 attachment_3_label: Chega de Falar de Botas, imagem 3
 attachment_3_category: divulgacao
 ---

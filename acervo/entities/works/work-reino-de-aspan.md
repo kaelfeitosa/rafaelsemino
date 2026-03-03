@@ -6,9 +6,9 @@ description: Espetáculo da Cia Del Artes.
 year: 2017
 role: Ator
 occurrences:
-    - type: apresentacao
-      context: Festival Asu
-      start_date: 2017
+  - type: apresentacao
+    start_date: "2017"
+    context: Festival Asu
 ---
 
 

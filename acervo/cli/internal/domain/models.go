@@ -214,8 +214,8 @@ func injectAttachmentsToNode(node *yaml.Node, attachments []Attachment) error {
 				}
 
 				node.Content = append(node.Content,
-					&yaml.Node{Kind: yaml.ScalarNode, Style: yaml.DoubleQuotedStyle, Value: fmt.Sprintf("attachment_%d_%s", idx, field.Name)},
-					&yaml.Node{Kind: yaml.ScalarNode, Style: yaml.DoubleQuotedStyle, Value: val},
+					&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", idx, field.Name)},
+					&yaml.Node{Kind: yaml.ScalarNode, Value: val},
 				)
 			}
 		}

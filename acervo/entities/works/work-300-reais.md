@@ -6,7 +6,7 @@ description: Performance teatral fruto do curso Corpo e Movimento no Porto Irace
 year: 2015
 role: Ator
 collaborators:
-    - Andrea Pires
+  - Andrea Pires
 attachment_1_type: image
 attachment_1_url: '[[work-300-reais/work-300-reais-001.png]]'
 attachment_1_label: 300 Reais, imagem 1

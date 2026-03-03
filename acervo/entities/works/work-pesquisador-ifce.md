@@ -6,8 +6,8 @@ description: Atuação como pesquisador no Grupo Miraira durante a licenciatura.
 year: 2023
 role: Pesquisador
 collaborators:
-    - IFCE
-    - LCPT
+  - IFCE
+  - LCPT
 attachment_1_type: image
 attachment_1_url: '[[work-pesquisador-ifce/work-pesquisador-ifce-001.jpeg]]'
 attachment_1_category: registro

@@ -9,11 +9,11 @@ collaborators:
   - Rafael Semino
 attachment_1_category: registro
 attachment_2_type: image
-attachment_2_url: "[[work-black-heroes/work-black-heroes-002.jpeg]]"
+attachment_2_url: '[[work-black-heroes/work-black-heroes-002.jpeg]]'
 attachment_2_label: Black Heroes, imagem 2
 attachment_2_category: registro
 attachment_3_type: image
-attachment_3_url: "[[work-black-heroes/work-black-heroes-003.png]]"
+attachment_3_url: '[[work-black-heroes/work-black-heroes-003.png]]'
 attachment_3_label: Black Heroes, imagem 3
 attachment_3_category: registro
 ---

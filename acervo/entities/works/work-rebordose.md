@@ -6,7 +6,7 @@ description: Curta-metragem dirigido por Darlan Souza onde Rafael Semino atua.
 year: 2024
 role: Ator
 collaborators:
-    - Darlan Souza
+  - Darlan Souza
 attachment_1_type: image
 attachment_1_url: '[[work-rebordose/work-rebordose-001.jpeg]]'
 attachment_1_label: Rebordose, imagem 1

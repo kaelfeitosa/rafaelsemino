@@ -6,17 +6,17 @@ description: Participações acadêmicas e culturais do Encontro Mestres do Mund
 year: 2023
 role: Pesquisador
 attachment_1_type: image
-attachment_1_url: "[[work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg]]"
+attachment_1_url: '[[work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg]]'
 attachment_1_category: registro
 attachment_2_type: image
-attachment_2_url: "[[work-mestres-do-mundo/work-mestres-do-mundo-001.png]]"
+attachment_2_url: '[[work-mestres-do-mundo/work-mestres-do-mundo-001.png]]'
 attachment_2_category: registro
+attachment_3_type: image
+attachment_3_url: '[[work-mestres-do-mundo/work-mestres-do-mundo-003.jpeg]]'
+attachment_3_category: registro
 attachment_4_type: image
-attachment_4_url: "[[work-mestres-do-mundo/work-mestres-do-mundo-003.jpeg]]"
-attachment_4_category: registro
-attachment_5_type: image
-attachment_5_url: "[[work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg]]"
-attachment_5_category: imprensa
+attachment_4_url: '[[work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg]]'
+attachment_4_category: imprensa
 ---
 Rafael Semino possui ampla relação de pesquisa e participação no Encontro Mestres do Mundo. Suas ações incluem:
 

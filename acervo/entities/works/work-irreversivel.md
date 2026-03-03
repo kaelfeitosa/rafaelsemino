@@ -6,14 +6,14 @@ description: Rafael Semino atuou como ator neste projeto, que contou com a dire�
 year: 2022
 role: Ator
 collaborators:
-    - Caique Melo
+  - Caique Melo
 occurrences:
-    - title: Ator em Irreversível
-      type: lancamento
-      start_date: "2022"
-      end_date: "2022"
-      context: Porto Iracema das Artes
-      role: Ator
+  - title: Ator em Irreversível
+    type: lancamento
+    start_date: "2022"
+    end_date: "2022"
+    context: Porto Iracema das Artes
+    role: Ator
 attachment_1_type: image
 attachment_1_url: '[[work-irreversivel/work-irreversivel-001.png]]'
 attachment_1_label: Irreversível, imagem 1

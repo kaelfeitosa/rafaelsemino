@@ -6,7 +6,7 @@ description: Espetáculo teatral de grupo.
 year: 2017
 role: Ator
 collaborators:
-    - Hiroldo Serra
+  - Hiroldo Serra
 attachment_1_type: image
 attachment_1_url: '[[work-de-louco-todo-mundo-tem-um-pouco/work-de-louco-todo-mundo-tem-um-pouco-001.png]]'
 attachment_1_label: De Louco, Todo Mundo Tem Um Pouco, imagem 1

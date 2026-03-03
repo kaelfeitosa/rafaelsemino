@@ -391,7 +391,7 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 
 							var buf bytes.Buffer
 							enc := yaml.NewEncoder(&buf)
-							enc.SetIndent(4)
+							enc.SetIndent(2)
 							if err := enc.Encode(data); err != nil {
 								return fmt.Errorf("failed to marshal %s %s: %w", parentDir, path, err)
 							}
