@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 
+	"acervo/internal/domain"
 	"gopkg.in/yaml.v3"
 )
 
@@ -24,12 +25,15 @@ func SyncImages(entitiesDir string, mode string) error {
 		return fmt.Errorf("invalid mode: %s. Must be 'yaml-to-body' or 'body-to-yaml'", mode)
 	}
 
-	return filepath.Walk(entitiesDir, func(path string, info os.FileInfo, err error) error {
+	// Sanitize against path traversal vulnerabilities
+	safeEntitiesDir := filepath.Clean(entitiesDir)
+
+	return filepath.Walk(safeEntitiesDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 		if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
-			rel, _ := filepath.Rel(entitiesDir, path)
+			rel, _ := filepath.Rel(safeEntitiesDir, path)
 			parentDir := filepath.Base(filepath.Dir(rel))
 			if parentDir != "actions" && parentDir != "works" && parentDir != "agents" {
 				return nil
@@ -53,49 +57,8 @@ func SyncImages(entitiesDir string, mode string) error {
 			var tempMap map[string]interface{}
 			yaml.Unmarshal(parts[1], &tempMap)
 
-			attMap := make(map[int]map[string]interface{})
-			for k, v := range tempMap {
-				matches := flattenedRe.FindStringSubmatch(k)
-				if len(matches) == 3 {
-					idx, err := strconv.Atoi(matches[1])
-					if err != nil {
-						continue
-					}
-					field := matches[2]
-
-					if attMap[idx] == nil {
-						attMap[idx] = make(map[string]interface{})
-					}
-					attMap[idx][field] = v
-				}
-			}
-
-			if atts, ok := tempMap["attachments"].([]interface{}); ok {
-				maxIdx := 0
-				for k := range attMap {
-					if k > maxIdx {
-						maxIdx = k
-					}
-				}
-				idx := maxIdx + 1
-				for _, a := range atts {
-					if m, ok := a.(map[string]interface{}); ok {
-						attMap[idx] = m
-						idx++
-					}
-				}
-			}
-
-			var indices []int
-			for k := range attMap {
-				indices = append(indices, k)
-			}
-			sort.Ints(indices)
-
-			var rawAttachments []map[string]interface{}
-			for _, idx := range indices {
-				rawAttachments = append(rawAttachments, attMap[idx])
-			}
+			// Simplify extraction using domain layer utility
+			domainAttachments := domain.ExtractAttachments(tempMap)
 
 			body := string(parts[2])
 
@@ -124,18 +87,13 @@ func SyncImages(entitiesDir string, mode string) error {
 			if mode == "yaml-to-body" {
 				updatedBody := body
 				changed := false
-				for _, att := range rawAttachments {
-					typeStr, _ := att["type"].(string)
-					srcStr, _ := att["url"].(string)
-					if typeStr == "image" && srcStr != "" {
-						if !bodyImages[srcStr] {
+				for _, att := range domainAttachments {
+					if att.Type == "image" && att.URL != "" {
+						if !bodyImages[att.URL] {
 							if !changed {
 								updatedBody = strings.TrimRight(updatedBody, "\n") + "\n\n"
 							}
-							caption, _ := att["label"].(string)
-							if caption == "" {
-								caption, _ = att["caption"].(string)
-							}
+							caption := att.Label
 							if caption == "" {
 								caption = "Image"
 							}
@@ -147,7 +105,7 @@ func SyncImages(entitiesDir string, mode string) error {
 							safeCaption = strings.ReplaceAll(safeCaption, "<", "&lt;")
 							safeCaption = strings.ReplaceAll(safeCaption, ">", "&gt;")
 
-							safeSrcStr := strings.ReplaceAll(srcStr, "\n", "")
+							safeSrcStr := strings.ReplaceAll(att.URL, "\n", "")
 							safeSrcStr = strings.ReplaceAll(safeSrcStr, ")", "%29")
 							safeSrcStr = strings.ReplaceAll(safeSrcStr, "\"", "%22")
 							safeSrcStr = strings.ReplaceAll(safeSrcStr, "<", "%3C")
@@ -155,7 +113,7 @@ func SyncImages(entitiesDir string, mode string) error {
 
 							updatedBody += fmt.Sprintf("![%s](../../media/images/%s)\n", safeCaption, safeSrcStr)
 							changed = true
-							bodyImages[srcStr] = true
+							bodyImages[att.URL] = true
 						}
 					}
 				}
@@ -322,7 +280,7 @@ func appendMissingBodyImages(keptAtts []*attData, bodyImages map[string]bool, ya
 				nodes: []*yaml.Node{
 					{Kind: yaml.ScalarNode, Value: "label"}, {Kind: yaml.ScalarNode, Value: "Image"},
 					{Kind: yaml.ScalarNode, Value: "category"}, {Kind: yaml.ScalarNode, Value: "documentation"},
-					{Kind: yaml.ScalarNode, Value: "url"}, {Kind: yaml.ScalarNode, Value: imgName},
+					{Kind: yaml.ScalarNode, Value: "url"}, {Kind: yaml.ScalarNode, Value: imgName, Style: yaml.DoubleQuotedStyle},
 					{Kind: yaml.ScalarNode, Value: "type"}, {Kind: yaml.ScalarNode, Value: "image"},
 				},
 			}

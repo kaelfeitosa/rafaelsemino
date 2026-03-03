@@ -70,7 +70,7 @@ func UnmarshalAttachments(value *yaml.Node, a Attachable) error {
 	if err := value.Decode(&m); err != nil {
 		return err
 	}
-	a.SetAttachments(extractAttachments(m))
+	a.SetAttachments(ExtractAttachments(m))
 	return nil
 }
 
@@ -86,7 +86,7 @@ func MarshalAttachments(a Attachable, alias interface{}) (interface{}, error) {
 }
 
 
-func extractAttachments(m map[string]interface{}) []Attachment {
+func ExtractAttachments(m map[string]interface{}) []Attachment {
 	var attachments []Attachment
 
 	// Support old nested "attachments" list (for migration)
