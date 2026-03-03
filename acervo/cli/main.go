@@ -15,7 +15,6 @@ import (
 
 	"acervo/internal/assets"
 	"acervo/internal/auditor"
-	"acervo/internal/builder"
 	"acervo/internal/indexer"
 	"acervo/internal/ingester"
 	"acervo/internal/metadata"
@@ -222,12 +221,15 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 
 	var buildSiteCmd = &cobra.Command{
 		Use:   "build-site",
-		Short: "Generates the static frontend (index.html) from markdown Works",
+		Short: "Generates the static frontend (index.html) from markdown Works (CURRENTLY DISABLED)",
 		Run: func(cmd *cobra.Command, args []string) {
-			if err := builder.BuildSite("../entities", "../../frontend/index.tmpl", "../../frontend/index.html"); err != nil {
-				fmt.Println("❌ Build failed:", err)
-				os.Exit(1)
-			}
+			fmt.Println("❌ AVISO: O comando 'build-site' está temporariamente desativado pelo usuário pois está quebrado.")
+			/*
+				if err := builder.BuildSite("../entities", "../../frontend/index.tmpl", "../../frontend/index.html"); err != nil {
+					fmt.Println("❌ Build failed:", err)
+					os.Exit(1)
+				}
+			*/
 		},
 	}
 

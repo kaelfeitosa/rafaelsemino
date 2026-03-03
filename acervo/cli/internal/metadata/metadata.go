@@ -37,6 +37,19 @@ func SetFocus(imagePath string, x, y float64) error {
 	}
 }
 
+// HasFocus checks if an image has a defined focal point in its XMP metadata.
+func HasFocus(imagePath string) (bool, error) {
+	xmp, err := ExtractXMP(imagePath)
+	if err != nil {
+		return false, err
+	}
+	if xmp == nil {
+		return false, nil
+	}
+	// Focus point is defined by mwg-rs:RegionType>Focus
+	return bytes.Contains(xmp, []byte("<mwg-rs:RegionType>Focus</mwg-rs:RegionType>")), nil
+}
+
 // ExtractXMP attempts to extract XMP metadata from JPEG or PNG files.
 func ExtractXMP(imagePath string) ([]byte, error) {
 	data, err := os.ReadFile(imagePath)

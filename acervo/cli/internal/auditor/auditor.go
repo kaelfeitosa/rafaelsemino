@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
+	"acervo/internal/metadata"
 
 	"gopkg.in/yaml.v3"
 )
@@ -153,7 +154,27 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 		}
 	}
 
-	// 3. Frontend Asset Audit (index.html References)
+	// 3. Focal Point Audit
+	fmt.Println("--- FOCAL POINT AUDIT (XMP Focus Point) ---")
+	fmt.Println("Verificando se as imagens possuem metadados de 'Ponto de Foco' para corte inteligente no frontend.")
+	missingFocus := 0
+	for img := range referencedImages {
+		imgPath := filepath.Join(imagesDir, img)
+		if _, err := os.Stat(imgPath); err == nil {
+			focused, err := metadata.HasFocus(imgPath)
+			if err != nil {
+				fmt.Printf("[ERROR] Erro ao ler metadados XMP de %s: %v\n", img, err)
+				continue
+			}
+			if !focused {
+				fmt.Printf("[SOLICITAÇÃO] Imagem sem Ponto de Foco (XMP FocusPoint): %s\n", img)
+				fmt.Printf("            -> Ação recomendada: go run main.go set-focus %s 0.5 0.5\n", img)
+				missingFocus++
+			}
+		}
+	}
+
+	// 4. Frontend Asset Audit (index.html References)
 	fmt.Println("--- FRONTEND ASSET AUDIT ---")
 	missingMasters := 0
 	htmlContent, err := os.ReadFile(htmlPath)
@@ -246,6 +267,7 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 	fmt.Printf("=== AUDIT REPORT ===\n")
 	fmt.Printf("Broken Links: %d\n", brokenLinks)
 	fmt.Printf("Missing Images (Entities): %d\n", missingImages)
+	fmt.Printf("Missing Focus Points: %d\n", missingFocus)
 	fmt.Printf("Missing Masters (Frontend): %d\n", missingMasters)
 	fmt.Printf("Dangling Images: %d\n", danglingImages)
 	fmt.Printf("Naming Violations: %d\n", namingViolations)

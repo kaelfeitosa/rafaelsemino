@@ -11,12 +11,14 @@
             "id": "51db4c1a83c9558f",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png"
+                "file": "entities/works/work-mestres-do-mundo.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "work-ha-numeros-que-sonham-003"
+              "icon": "lucide-file",
+              "title": "work-mestres-do-mundo"
             }
           }
         ]
@@ -92,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png",
+                "file": "entities/works/work-mestres-do-mundo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para work-ha-numeros-que-sonham-003"
+              "title": "Links inversos para work-mestres-do-mundo"
             }
           },
           {
@@ -180,24 +182,28 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "51db4c1a83c9558f",
+  "active": "e7d1dd5b422a2de2",
   "lastOpenFiles": [
+    "cli/verify_out2.txt",
+    "media/images/work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg",
+    "media/images/work-mestres-do-mundo/work-mestres-do-mundo-002.jpeg",
+    "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.png",
+    "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg",
+    "media/images/work-rafael-miraira-reisado/work-rafael-miraira-reisado-001.png",
+    "media/images/work-rafael-miraira-reisado/work-rafael-miraira-reisado-002.png",
+    "media/images/work-rafael-miraira-reisado/work-rafael-miraira-reisado-003.jpeg",
+    "media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg",
+    "media/images/work-prof-aceleracao/work-prof-aceleracao-002.jpeg",
+    "media/images/work-prof-aceleracao/work-prof-aceleracao-001.png",
+    "cli/verify_out_utf8.txt",
+    "cli/verify_out.txt",
+    "cli/verify_report.txt",
     "db.sqlite-journal",
     "cli/similarity_results_utf8.txt",
-    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-005.jpeg",
-    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-004.jpeg",
-    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png",
-    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-002.png",
-    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-001.jpeg",
-    "media/images/work-mundo-imagem-001.jpeg",
     "cli/similarity_results.txt",
     "cli/internal/similarity/similarity.go",
     "cli/internal/similarity",
-    "media/images/work-mundo-imagem-002.jpeg",
     "entities/works/work-rafael-ensino-angola-2018.md",
-    "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-001.png",
-    "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-003.png",
-    "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-002.png",
     "entities/results.txt",
     "entities/works/work-mestres-do-mundo.md",
     "entities/works/work-exu-nao-vem-hoje.md",
@@ -224,10 +230,6 @@
     "entities/works/work-rafael-ccbj-exu.md",
     "entities/works/work-prof-percurso-basico.md",
     "entities/_internal/seeds",
-    "entities/_internal",
-    "media/images/work-vao-003.jpeg.tmp",
-    "media/images/action-farol-novo-fnt-guaramiranga-2024-doc-003.jpeg.tmp",
-    "media/images/action-farol-novo-constelacao-promo-residencia.jpeg.tmp",
     "Untitled.canvas"
   ]
 }

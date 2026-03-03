@@ -1,0 +1,14 @@
+﻿­ƒöì Carregando imagens e calculando hashes perceptuais...
+Ô£à 117 imagens processadas. Comparando...
+ÔÜá´©Å Probabilidade 100.0%:
+  - test-robust.jpeg
+  - work-exu-nao-vem-hoje\work-exu-nao-vem-hoje-011.jpeg
+
+ÔÜá´©Å Probabilidade 95.3%:
+  - work-pesquisador-ifce\work-pesquisador-ifce-001.jpeg
+  - work-rafael-miraira-reisado\work-rafael-miraira-reisado-003.jpeg
+
+ÔÜá´©Å Probabilidade 98.4%:
+  - work-pesquisador-ifce\work-pesquisador-ifce-002.jpeg
+  - work-rafael-miraira-reisado\work-rafael-miraira-reisado-001.png
+
