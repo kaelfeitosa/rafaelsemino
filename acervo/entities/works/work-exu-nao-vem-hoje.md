@@ -48,6 +48,54 @@ occurrences:
       end_date: "2023"
       context: Temporada Hub Cultural Porto Dragão
       role: Ator
+attachment_1_type: image
+attachment_1_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.jpeg
+attachment_1_label: Exu Não Vem Hoje, imagem 1
+attachment_1_category: documentation
+attachment_2_type: image
+attachment_2_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.jpeg
+attachment_2_label: Exu Não Vem Hoje, imagem 2
+attachment_2_category: documentation
+attachment_3_type: image
+attachment_3_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.jpeg
+attachment_3_label: Exu Não Vem Hoje, imagem 3
+attachment_3_category: documentation
+attachment_4_type: image
+attachment_4_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.jpeg
+attachment_4_label: Exu Não Vem Hoje, imagem 4
+attachment_4_category: documentation
+attachment_5_type: image
+attachment_5_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-005.jpeg
+attachment_5_label: Exu Não Vem Hoje, imagem 5
+attachment_5_category: documentation
+attachment_6_type: image
+attachment_6_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-006.jpeg
+attachment_6_label: Exu Não Vem Hoje, imagem 6
+attachment_6_category: documentation
+attachment_7_type: image
+attachment_7_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-007.jpeg
+attachment_7_label: Exu Não Vem Hoje, imagem 7
+attachment_7_category: documentation
+attachment_8_type: image
+attachment_8_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-008.jpeg
+attachment_8_label: Exu Não Vem Hoje, imagem 8
+attachment_8_category: documentation
+attachment_9_type: image
+attachment_9_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.jpeg
+attachment_9_label: Exu Não Vem Hoje, imagem 9
+attachment_9_category: documentation
+attachment_10_type: image
+attachment_10_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.jpeg
+attachment_10_label: Exu Não Vem Hoje, imagem 10
+attachment_10_category: documentation
+attachment_11_type: image
+attachment_11_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.jpeg
+attachment_11_label: Exu Não Vem Hoje, imagem 11
+attachment_11_category: documentation
+attachment_12_type: image
+attachment_12_url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.jpeg
+attachment_12_label: Exu Não Vem Hoje, imagem 12
+attachment_12_category: documentation
 ---
 Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Rafael Semino no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, em diálogo com sua investigação em torno de Exu, oralidade e presença cênica. A obra articula rito, jogo e participação do público, tendo Rafael Semino como autor e intérprete. Atuando de forma contínua e imersiva na temporada e fundação do espetáculo, o projeto também contou com Gabriel França como co-fundador e construtor da partitura física e sonora, além de Felipe Rodrigues Marques, que assumiu a engenharia técnica e de maquinária cênica.
 
