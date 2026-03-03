@@ -96,8 +96,8 @@ func ExtractAttachments(m map[string]interface{}) []Attachment {
 				var att Attachment
 				if v, ok := attMap["type"].(string); ok { att.Type = v }
 				if v, ok := attMap["url"].(string); ok { att.URL = v }
-				if v, ok := attMap["label"].(string); ok { att.Label = v } else if v, ok := attMap["caption"].(string); ok { att.Label = v }
-				if v, ok := attMap["category"].(string); ok { att.Category = v } else if v, ok := attMap["role"].(string); ok { att.Category = v }
+				if v, ok := attMap["label"].(string); ok && v != "" { att.Label = v } else if v, ok := attMap["caption"].(string); ok { att.Label = v }
+				if v, ok := attMap["category"].(string); ok && v != "" { att.Category = v } else if v, ok := attMap["role"].(string); ok { att.Category = v }
 				attachments = append(attachments, att)
 			}
 		}
