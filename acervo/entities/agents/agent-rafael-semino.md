@@ -4,41 +4,41 @@ name: Francisco Rafael da Silva Semino
 kind: person
 description: Rafael Semino (29 anos) é um artista múltiplo atuando como ator, professor e pesquisador de Teatro
 attachment_1_type: image
-attachment_1_url: agent-rafael-semino/agent-rafael-semino-001.jpeg
+attachment_1_url: '[[agent-rafael-semino/agent-rafael-semino-001.jpeg]]'
 attachment_1_label: agent-rafael-semino, imagem 1
-attachment_1_category: documentation
+attachment_1_category: registro
 attachment_2_type: image
-attachment_2_url: agent-rafael-semino/agent-rafael-semino-002.jpeg
+attachment_2_url: '[[agent-rafael-semino/agent-rafael-semino-002.jpeg]]'
 attachment_2_label: agent-rafael-semino, imagem 2
-attachment_2_category: documentation
+attachment_2_category: registro
 attachment_3_type: image
-attachment_3_url: agent-rafael-semino/agent-rafael-semino-003.jpeg
+attachment_3_url: '[[agent-rafael-semino/agent-rafael-semino-003.jpeg]]'
 attachment_3_label: agent-rafael-semino, imagem 3
-attachment_3_category: documentation
+attachment_3_category: registro
 attachment_4_type: image
-attachment_4_url: agent-rafael-semino/agent-rafael-semino-004.jpeg
+attachment_4_url: '[[agent-rafael-semino/agent-rafael-semino-004.jpeg]]'
 attachment_4_label: agent-rafael-semino, imagem 4
-attachment_4_category: documentation
+attachment_4_category: registro
 attachment_5_type: image
-attachment_5_url: agent-rafael-semino/agent-rafael-semino-005.jpeg
+attachment_5_url: '[[agent-rafael-semino/agent-rafael-semino-005.jpeg]]'
 attachment_5_label: agent-rafael-semino, imagem 5
-attachment_5_category: documentation
+attachment_5_category: registro
 attachment_6_type: image
-attachment_6_url: agent-rafael-semino/agent-rafael-semino-006.jpeg
+attachment_6_url: '[[agent-rafael-semino/agent-rafael-semino-006.jpeg]]'
 attachment_6_label: agent-rafael-semino, imagem 6
-attachment_6_category: documentation
+attachment_6_category: registro
 attachment_7_type: image
-attachment_7_url: agent-rafael-semino/agent-rafael-semino-007.jpeg
+attachment_7_url: '[[agent-rafael-semino/agent-rafael-semino-007.jpeg]]'
 attachment_7_label: agent-rafael-semino, imagem 7
-attachment_7_category: documentation
+attachment_7_category: registro
 attachment_8_type: image
-attachment_8_url: agent-rafael-semino/agent-rafael-semino-008.jpeg
+attachment_8_url: '[[agent-rafael-semino/agent-rafael-semino-008.jpeg]]'
 attachment_8_label: agent-rafael-semino, imagem 8
-attachment_8_category: documentation
+attachment_8_category: registro
 attachment_9_type: image
-attachment_9_url: agent-rafael-semino/agent-rafael-semino-009.jpeg
+attachment_9_url: '[[agent-rafael-semino/agent-rafael-semino-009.jpeg]]'
 attachment_9_label: agent-rafael-semino, imagem 9
-attachment_9_category: documentation
+attachment_9_category: registro
 ---
 
 Francisco Rafael da Silva Semino atua há mais de dez anos no campo das artes cênicas como Ator, Diretor, Dramaturgo, Produtor, Pesquisador e Professor de Teatro.

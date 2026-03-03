@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
-	"gopkg.in/yaml.v3"
 
+	"gopkg.in/yaml.v3"
 
 	"acervo/internal/assets"
 	"acervo/internal/auditor"
@@ -230,7 +230,6 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 		},
 	}
 
-
 	var migrateAttachmentsCmd = &cobra.Command{
 		Use:   "migrate-attachments",
 		Short: "Migrates nested YAML attachments to flattened attachment_X_Y keys",
@@ -240,10 +239,14 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 			// Let's implement a clean pass using yaml.v3 Unmarshal/Marshal which our models now support.
 			fmt.Println("🚀 Starting attachment migration...")
 			err := filepath.Walk("../entities", func(path string, info os.FileInfo, err error) error {
-				if err != nil { return err }
+				if err != nil {
+					return err
+				}
 				if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
 					content, err := os.ReadFile(path)
-					if err != nil { return err }
+					if err != nil {
+						return err
+					}
 					parts := bytes.SplitN(content, []byte("---"), 3)
 					if len(parts) >= 3 {
 						rel, _ := filepath.Rel("../entities", path)
@@ -267,11 +270,140 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 						}
 
 						if data != nil {
-							newYaml, err := yaml.Marshal(data)
-							if err != nil {
+							// Pass 0: Pre-parse part[1] as a generic map to extract attachments from occurrences
+							// since the Go models no longer have the Attachments field in Occurrence.
+							var rawMap map[string]interface{}
+							if err := yaml.Unmarshal(parts[1], &rawMap); err == nil {
+								if occurrences, ok := rawMap["occurrences"].([]interface{}); ok {
+									var topAtts []domain.Attachment
+									if work, ok := data.(*domain.Work); ok {
+										topAtts = work.GetAttachments()
+									} else if agent, ok := data.(*domain.Agent); ok {
+										topAtts = agent.GetAttachments()
+									}
+
+									for _, rawOcc := range occurrences {
+										if occMap, ok := rawOcc.(map[string]interface{}); ok {
+											// Get occurrence identifiers for labelling
+											occLabel := ""
+											if t, ok := occMap["title"].(string); ok && t != "" {
+												occLabel = t
+											} else if c, ok := occMap["context"].(string); ok && c != "" {
+												occLabel = c
+											}
+
+											occAtts := domain.ExtractAttachments(occMap)
+											for _, att := range occAtts {
+												// Enhance label with occurrence info if provided
+												if occLabel != "" {
+													if att.Label == "" || att.Label == "Image" || strings.HasPrefix(att.Label, "work-") || strings.HasPrefix(att.Label, "agent-") {
+														att.Label = occLabel
+													} else if !strings.Contains(att.Label, occLabel) {
+														att.Label = occLabel + " (" + att.Label + ")"
+													}
+												}
+
+												// Assign default category if missing
+												if att.Category == "" {
+													att.Category = "registro"
+												}
+												// Deduplicate by URL
+												exists := false
+												for _, existing := range topAtts {
+													if existing.URL == att.URL {
+														exists = true
+														break
+													}
+												}
+												if !exists {
+													topAtts = append(topAtts, att)
+												}
+											}
+
+											// Remove all attachment_ keys from the occurrence map
+											for k := range occMap {
+												if strings.HasPrefix(k, "attachment_") {
+													delete(occMap, k)
+												}
+											}
+											delete(occMap, "attachments") // Just in case
+										}
+									}
+
+									if work, ok := data.(*domain.Work); ok {
+										work.SetAttachments(topAtts)
+
+										// Re-construct occurrences from the modified raw maps (which have attachments removed)
+										var modifiedOccs []*domain.Occurrence
+										for _, rawOcc := range occurrences {
+											var o domain.Occurrence
+											occBytes, _ := yaml.Marshal(rawOcc)
+											if err := yaml.Unmarshal(occBytes, &o); err != nil {
+												fmt.Printf("[WARNING] failed to unmarshal occurrence for %s: %v\n", path, err)
+											}
+											modifiedOccs = append(modifiedOccs, &o)
+										}
+										work.Occurrences = modifiedOccs
+									}
+								}
+							}
+
+							// Perform category mapping before marshaling
+							var atts []domain.Attachment
+							if work, ok := data.(*domain.Work); ok {
+								atts = work.GetAttachments()
+							} else if agent, ok := data.(*domain.Agent); ok {
+								atts = agent.GetAttachments()
+							}
+
+							if len(atts) > 0 {
+								changed := false
+								for i := range atts {
+									oldCat := atts[i].Category
+									newCat := ""
+									switch oldCat {
+									case "documentation":
+										newCat = "registro"
+									case "poster", "program":
+										newCat = "divulgacao"
+									case "clipping":
+										newCat = "imprensa"
+									case "technical":
+										newCat = "documentacao"
+									case "outro":
+										newCat = "" // remove 'outro' as requested
+									default:
+										newCat = oldCat // preserve if already migrated or unknown
+									}
+									if newCat != oldCat {
+										atts[i].Category = newCat
+										changed = true
+									}
+								}
+								if changed || true { // force set if promoted
+									if work, ok := data.(*domain.Work); ok {
+										work.SetAttachments(atts)
+									} else if agent, ok := data.(*domain.Agent); ok {
+										agent.SetAttachments(atts)
+									}
+								}
+							}
+
+							var buf bytes.Buffer
+							enc := yaml.NewEncoder(&buf)
+							enc.SetIndent(4)
+							if err := enc.Encode(data); err != nil {
 								return fmt.Errorf("failed to marshal %s %s: %w", parentDir, path, err)
 							}
-							newContent := string(parts[0]) + "---\n" + string(newYaml) + "---" + string(parts[2])
+							enc.Close()
+
+							newYaml := buf.String()
+							// Force double quotes for Wikilinks and other properties if they became single quotes
+							// or just let yaml.v3 handle it if configured.
+							// Note: yaml.v3 doesn't have a global "force double quotes" easily.
+							// But we can do a post-processing if needed, or rely on the fact that if we use double quotes in the model it might preserve it.
+
+							newContent := string(parts[0]) + "---\n" + newYaml + "---" + string(parts[2])
 							if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {
 								return fmt.Errorf("failed to write %s: %w", path, err)
 							}

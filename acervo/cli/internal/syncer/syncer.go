@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -160,7 +161,6 @@ func SyncImages(entitiesDir string, mode string) error {
 	})
 }
 
-
 type attData struct {
 	idx     int
 	nodes   []*yaml.Node
@@ -276,7 +276,7 @@ func appendMissingBodyImages(keptAtts []*attData, bodyImages map[string]bool, ya
 				isImage: true,
 				nodes: []*yaml.Node{
 					{Kind: yaml.ScalarNode, Value: "label"}, {Kind: yaml.ScalarNode, Value: "Image"},
-					{Kind: yaml.ScalarNode, Value: "category"}, {Kind: yaml.ScalarNode, Value: "documentation"},
+					{Kind: yaml.ScalarNode, Value: "category"}, {Kind: yaml.ScalarNode, Value: "registro"},
 					{Kind: yaml.ScalarNode, Value: "url"}, {Kind: yaml.ScalarNode, Value: imgName, Style: yaml.DoubleQuotedStyle},
 					{Kind: yaml.ScalarNode, Value: "type"}, {Kind: yaml.ScalarNode, Value: "image"},
 				},

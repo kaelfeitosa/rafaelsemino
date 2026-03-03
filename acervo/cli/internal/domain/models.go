@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -27,35 +28,34 @@ type Link struct {
 }
 
 type Work struct {
-	ID            string       `yaml:"id"`
-	Title         string       `yaml:"title"`
-	Medium        string       `yaml:"medium"` // teatro | audiovisual | pesquisa | ensino | formacao | exposicao | outro
-	Description   string       `yaml:"description,omitempty"`
-	Year          interface{}  `yaml:"year,omitempty"` // interface to handle int or string
-	Role          string       `yaml:"role,omitempty"` // For standalone works where I took a role
-	Collaborators []string     `yaml:"collaborators,omitempty"`
-	Attachments []Attachment `yaml:"-"`
+	ID            string        `yaml:"id"`
+	Title         string        `yaml:"title"`
+	Medium        string        `yaml:"medium"` // teatro | audiovisual | pesquisa | ensino | formacao | exposicao | outro
+	Description   string        `yaml:"description,omitempty"`
+	Year          interface{}   `yaml:"year,omitempty"` // interface to handle int or string
+	Role          string        `yaml:"role,omitempty"` // For standalone works where I took a role
+	Collaborators []string      `yaml:"collaborators,omitempty"`
+	Attachments   []Attachment  `yaml:"-"`
 	Occurrences   []*Occurrence `yaml:"occurrences,omitempty"`
-	Featured      bool         `yaml:"featured,omitempty"`
+	Featured      bool          `yaml:"featured,omitempty"`
 }
 
 type Attachment struct {
 	Type     string `yaml:"type"` // image | video | pdf | link
 	URL      string `yaml:"url"`
 	Label    string `yaml:"label,omitempty"`
-	Category string `yaml:"category,omitempty"` // documentation | poster | clipping | program | technical | outro
+	Category string `yaml:"category,omitempty"` // registro | divulgacao | imprensa | documentacao
 }
 
 // Occurrence represents an event linked to a Work (e.g., season, presentation)
 type Occurrence struct {
-	Title         string       `yaml:"title,omitempty"`
-	Type          string       `yaml:"type"` // apresentacao | residencia | oficina | publicacao_ou_apresentacao | lancamento | premio | exposicao
-	StartDate     string       `yaml:"start_date"`
-	EndDate       string       `yaml:"end_date,omitempty"`
-	Context       string       `yaml:"context,omitempty"`
-	Role          string       `yaml:"role,omitempty"`
-	Collaborators []string     `yaml:"collaborators,omitempty"`
-	Attachments []Attachment `yaml:"-"`
+	Title         string   `yaml:"title,omitempty"`
+	Type          string   `yaml:"type"` // apresentacao | residencia | oficina | publicacao_ou_apresentacao | lancamento | premio | exposicao
+	StartDate     string   `yaml:"start_date"`
+	EndDate       string   `yaml:"end_date,omitempty"`
+	Context       string   `yaml:"context,omitempty"`
+	Role          string   `yaml:"role,omitempty"`
+	Collaborators []string `yaml:"collaborators,omitempty"`
 }
 
 var attachmentRegexp = regexp.MustCompile(`^attachment_(\d+)_(.+)$`)
@@ -85,7 +85,6 @@ func MarshalAttachments(a Attachable, alias interface{}) (interface{}, error) {
 	return node, nil
 }
 
-
 func ExtractAttachments(m map[string]interface{}) []Attachment {
 	var attachments []Attachment
 
@@ -94,10 +93,22 @@ func ExtractAttachments(m map[string]interface{}) []Attachment {
 		for _, rawAtt := range rawAtts {
 			if attMap, ok := rawAtt.(map[string]interface{}); ok {
 				var att Attachment
-				if v, ok := attMap["type"].(string); ok { att.Type = v }
-				if v, ok := attMap["url"].(string); ok { att.URL = v }
-				if v, ok := attMap["label"].(string); ok && v != "" { att.Label = v } else if v, ok := attMap["caption"].(string); ok { att.Label = v }
-				if v, ok := attMap["category"].(string); ok && v != "" { att.Category = v } else if v, ok := attMap["role"].(string); ok { att.Category = v }
+				if v, ok := attMap["type"].(string); ok {
+					att.Type = v
+				}
+				if v, ok := attMap["url"].(string); ok {
+					att.URL = v
+				}
+				if v, ok := attMap["label"].(string); ok && v != "" {
+					att.Label = v
+				} else if v, ok := attMap["caption"].(string); ok {
+					att.Label = v
+				}
+				if v, ok := attMap["category"].(string); ok && v != "" {
+					att.Category = v
+				} else if v, ok := attMap["role"].(string); ok {
+					att.Category = v
+				}
 				attachments = append(attachments, att)
 			}
 		}
@@ -124,6 +135,16 @@ func ExtractAttachments(m map[string]interface{}) []Attachment {
 					strVal = fmt.Sprintf("%v", v)
 				}
 			}
+
+			// Strip Wikilinks [[Path]] or [[Path|Label]]
+			if strings.HasPrefix(strVal, "[[") && strings.HasSuffix(strVal, "]]") {
+				strVal = strings.TrimPrefix(strVal, "[[")
+				strVal = strings.TrimSuffix(strVal, "]]")
+				if pipeIdx := strings.Index(strVal, "|"); pipeIdx != -1 {
+					strVal = strVal[:pipeIdx]
+				}
+			}
+
 			attFieldsMap[idx][field] = strVal
 		}
 	}
@@ -186,9 +207,15 @@ func injectAttachmentsToNode(node *yaml.Node, attachments []Attachment) error {
 
 		for _, field := range fields {
 			if field.Value != "" {
+				val := field.Value
+				// Wrap URL in Wikilink if it's not external
+				if field.Name == "url" && !strings.HasPrefix(val, "http") {
+					val = fmt.Sprintf("[[%s]]", val)
+				}
+
 				node.Content = append(node.Content,
-					&yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", idx, field.Name)},
-					&yaml.Node{Kind: yaml.ScalarNode, Value: field.Value},
+					&yaml.Node{Kind: yaml.ScalarNode, Style: yaml.DoubleQuotedStyle, Value: fmt.Sprintf("attachment_%d_%s", idx, field.Name)},
+					&yaml.Node{Kind: yaml.ScalarNode, Style: yaml.DoubleQuotedStyle, Value: val},
 				)
 			}
 		}
@@ -196,15 +223,11 @@ func injectAttachmentsToNode(node *yaml.Node, attachments []Attachment) error {
 	return nil
 }
 
-
-func (a *Agent) GetAttachments() []Attachment { return a.Attachments }
+func (a *Agent) GetAttachments() []Attachment     { return a.Attachments }
 func (a *Agent) SetAttachments(atts []Attachment) { a.Attachments = atts }
 
-func (w *Work) GetAttachments() []Attachment { return w.Attachments }
+func (w *Work) GetAttachments() []Attachment     { return w.Attachments }
 func (w *Work) SetAttachments(atts []Attachment) { w.Attachments = atts }
-
-func (o *Occurrence) GetAttachments() []Attachment { return o.Attachments }
-func (o *Occurrence) SetAttachments(atts []Attachment) { o.Attachments = atts }
 
 // Agent custom marshal/unmarshal
 func (a *Agent) UnmarshalYAML(value *yaml.Node) error {
@@ -242,23 +265,4 @@ func (w *Work) MarshalYAML() (interface{}, error) {
 		return nil, nil
 	}
 	return MarshalAttachments(w, alias(*w))
-}
-
-// Occurrence custom marshal/unmarshal
-func (o *Occurrence) UnmarshalYAML(value *yaml.Node) error {
-	type alias Occurrence
-	var aux alias
-	if err := value.Decode(&aux); err != nil {
-		return err
-	}
-	*o = Occurrence(aux)
-	return UnmarshalAttachments(value, o)
-}
-
-func (o *Occurrence) MarshalYAML() (interface{}, error) {
-	type alias Occurrence
-	if o == nil {
-		return nil, nil
-	}
-	return MarshalAttachments(o, alias(*o))
 }

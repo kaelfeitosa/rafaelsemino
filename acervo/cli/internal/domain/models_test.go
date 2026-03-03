@@ -21,12 +21,12 @@ medium: teatro
 attachment_1_type: image
 attachment_1_url: foo.jpg
 attachment_1_label: Foo Label
-attachment_1_category: documentation
+attachment_1_category: registro
 attachment_2_type: video
 attachment_2_url: bar.mp4
 `,
 			expected: []Attachment{
-				{Type: "image", URL: "foo.jpg", Label: "Foo Label", Category: "documentation"},
+				{Type: "image", URL: "foo.jpg", Label: "Foo Label", Category: "registro"},
 				{Type: "video", URL: "bar.mp4"},
 			},
 		},
@@ -39,10 +39,10 @@ attachments:
   - type: image
     url: baz.jpg
     caption: Baz Label
-    role: documentation
+    role: registro
 `,
 			expected: []Attachment{
-				{Type: "image", URL: "baz.jpg", Label: "Baz Label", Category: "documentation"},
+				{Type: "image", URL: "baz.jpg", Label: "Baz Label", Category: "registro"},
 			},
 		},
 		{
@@ -92,6 +92,30 @@ attachment_1_role: Fallback Category
 `,
 			expected: []Attachment{
 				{Type: "image", URL: "img.jpg", Label: "Fallback Label", Category: "Fallback Category"},
+			},
+		},
+		{
+			name: "Obsidian Wikilink URL",
+			yamlStr: `id: work-6
+title: Test Work 6
+medium: teatro
+attachment_1_type: image
+attachment_1_url: "[[work-300-reais/work-300-reais-001.png]]"
+`,
+			expected: []Attachment{
+				{Type: "image", URL: "work-300-reais/work-300-reais-001.png"},
+			},
+		},
+		{
+			name: "Obsidian Wikilink with Label",
+			yamlStr: `id: work-7
+title: Test Work 7
+medium: teatro
+attachment_1_type: image
+attachment_1_url: "[[work-300-reais/work-300-reais-001.png|Some Label]]"
+`,
+			expected: []Attachment{
+				{Type: "image", URL: "work-300-reais/work-300-reais-001.png"},
 			},
 		},
 	}

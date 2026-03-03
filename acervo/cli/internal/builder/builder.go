@@ -48,7 +48,7 @@ func parseYear(y interface{}) int {
 
 func isFeatured(w domain.Work) bool {
 	for _, a := range w.Attachments {
-		if a.Category == "documentation" || a.Category == "poster" {
+		if a.Category == "registro" || a.Category == "divulgacao" {
 			return true
 		}
 	}
@@ -201,7 +201,7 @@ func BuildSite(entitiesDir, templatePath, outputPath string) error {
 		"getDocs": func(attachments []domain.Attachment) []domain.Attachment {
 			var res []domain.Attachment
 			for _, a := range attachments {
-				if a.Category == "documentation" {
+				if a.Category == "registro" {
 					res = append(res, a)
 				}
 			}
@@ -210,7 +210,7 @@ func BuildSite(entitiesDir, templatePath, outputPath string) error {
 		"getPosters": func(attachments []domain.Attachment) []domain.Attachment {
 			var res []domain.Attachment
 			for _, a := range attachments {
-				if a.Category == "poster" {
+				if a.Category == "divulgacao" {
 					res = append(res, a)
 				}
 			}

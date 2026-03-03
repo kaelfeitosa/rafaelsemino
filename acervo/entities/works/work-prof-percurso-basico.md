@@ -6,17 +6,17 @@ description: Atuação como professor do Projeto Abarca e do Percurso Básico de
 year: 2023
 role: Professor Formador
 attachment_1_type: image
-attachment_1_url: work-prof-percurso-basico/work-prof-percurso-basico-001.png
-attachment_1_label: Image
+attachment_1_url: "[[work-prof-percurso-basico/work-prof-percurso-basico-001.png]]"
+attachment_1_category: registro
 attachment_2_type: image
-attachment_2_url: work-prof-percurso-basico/work-prof-percurso-basico-002.png
-attachment_2_label: Image
+attachment_2_url: "[[work-prof-percurso-basico/work-prof-percurso-basico-002.png]]"
+attachment_2_category: registro
 attachment_3_type: image
-attachment_3_url: work-prof-percurso-basico/work-prof-percurso-basico-003.jpeg
-attachment_3_label: Image
+attachment_3_url: "[[work-prof-percurso-basico/work-prof-percurso-basico-003.jpeg]]"
+attachment_3_category: registro
 attachment_4_type: image
-attachment_4_url: work-prof-percurso-basico/work-prof-percurso-basico-004.jpeg
-attachment_4_label: Image
+attachment_4_url: "[[work-prof-percurso-basico/work-prof-percurso-basico-004.jpeg]]"
+attachment_4_category: registro
 ---
 
 

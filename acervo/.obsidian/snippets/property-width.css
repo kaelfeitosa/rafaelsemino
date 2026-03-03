@@ -1,0 +1,9 @@
+/* Aumenta a largura da label das propriedades para caber nomes como attachment_1_category */
+body {
+    --metadata-label-width: 250px;
+}
+
+/* Ajuste opcional para a fonte ficar um pouco mais compacta */
+.metadata-property-key {
+    font-size: 0.85em;
+}

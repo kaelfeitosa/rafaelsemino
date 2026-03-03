@@ -25,7 +25,7 @@ var (
 		"apresentacao": true, "residencia": true, "oficina": true, "publicacao_ou_apresentacao": true, "lancamento": true, "premio": true, "exposicao": true,
 	}
 	validAttachmentCategories = map[string]bool{
-		"documentation": true, "poster": true, "clipping": true, "program": true, "technical": true, "outro": true,
+		"registro": true, "divulgacao": true, "imprensa": true, "documentacao": true,
 	}
 )
 

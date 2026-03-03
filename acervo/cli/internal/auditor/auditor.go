@@ -82,13 +82,6 @@ func Audit(entitiesDir string, imagesDir string, htmlPath string) error {
 						referencedImages[att.URL] = true
 					}
 				}
-				for _, occ := range work.Occurrences {
-					for _, att := range occ.Attachments {
-						if att.Type == "image" && att.URL != "" {
-							referencedImages[att.URL] = true
-						}
-					}
-				}
 			} else {
 				fmt.Printf("[WARNING] Falha ao analisar Work em %s: %v\n", path, err)
 			}
