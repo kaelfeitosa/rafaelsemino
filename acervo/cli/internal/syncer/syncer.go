@@ -101,9 +101,6 @@ func SyncImages(entitiesDir string, mode string) error {
 							safeCaption := strings.ReplaceAll(caption, "\n", " ")
 							safeCaption = strings.ReplaceAll(safeCaption, "[", "\\[")
 							safeCaption = strings.ReplaceAll(safeCaption, "]", "\\]")
-							safeCaption = strings.ReplaceAll(safeCaption, "\"", "&quot;")
-							safeCaption = strings.ReplaceAll(safeCaption, "<", "&lt;")
-							safeCaption = strings.ReplaceAll(safeCaption, ">", "&gt;")
 
 							safeSrcStr := strings.ReplaceAll(att.URL, "\n", "")
 							safeSrcStr = strings.ReplaceAll(safeSrcStr, ")", "%29")
@@ -304,12 +301,48 @@ func reindexAttachments(keptAtts []*attData) ([]*yaml.Node, bool) {
 			changed = true
 		} // Needs re-indexing
 
+		// Collect fields to apply precedence logic
+		fields := make(map[string]*yaml.Node)
 		for j := 0; j < len(ad.nodes); j += 2 {
-			field := ad.nodes[j].Value
-			valNode := ad.nodes[j+1]
+			fields[ad.nodes[j].Value] = ad.nodes[j+1]
+		}
 
-			keyNode := &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", newIdx, field)}
-			newContent = append(newContent, keyNode, valNode)
+		// Apply precedence: label > caption
+		if _, hasLabel := fields["label"]; !hasLabel {
+			if captionNode, hasCaption := fields["caption"]; hasCaption {
+				fields["label"] = captionNode
+				changed = true
+			}
+		}
+		delete(fields, "caption")
+
+		// Apply precedence: category > role
+		if _, hasCategory := fields["category"]; !hasCategory {
+			if roleNode, hasRole := fields["role"]; hasRole {
+				fields["category"] = roleNode
+				changed = true
+			}
+		}
+		delete(fields, "role")
+
+		// Rebuild nodes using a stable order (e.g., type, url, label, category, etc.)
+		orderedKeys := []string{"type", "url", "label", "category"}
+		writtenKeys := make(map[string]bool)
+
+		for _, k := range orderedKeys {
+			if v, exists := fields[k]; exists {
+				keyNode := &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", newIdx, k)}
+				newContent = append(newContent, keyNode, v)
+				writtenKeys[k] = true
+			}
+		}
+
+		// Write any remaining unknown fields
+		for k, v := range fields {
+			if !writtenKeys[k] {
+				keyNode := &yaml.Node{Kind: yaml.ScalarNode, Value: fmt.Sprintf("attachment_%d_%s", newIdx, k)}
+				newContent = append(newContent, keyNode, v)
+			}
 		}
 	}
 	return newContent, changed
