@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"acervo/internal/domain"
+	"acervo/internal/similarity"
 
 	"gopkg.in/yaml.v3"
 
@@ -420,7 +421,61 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 		},
 	}
 
-	rootCmd.AddCommand(migrateAttachmentsCmd, validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
+	var similarityAuditCmd = &cobra.Command{
+		Use:   "similarity-audit [mediaDir]",
+		Short: "Audit acervo images for visual similarity (find duplicates)",
+		Run: func(cmd *cobra.Command, args []string) {
+			mediaDir := "../media/images"
+			if len(args) > 0 {
+				mediaDir = args[0]
+			}
+
+			fmt.Println("🔍 Carregando imagens e calculando hashes perceptuais...")
+			type imgHash struct {
+				Path string
+				Hash uint64
+			}
+			var hashes []imgHash
+
+			filepath.Walk(mediaDir, func(path string, info os.FileInfo, err error) error {
+				if err != nil || info.IsDir() {
+					return nil
+				}
+				ext := strings.ToLower(filepath.Ext(path))
+				if ext == ".jpg" || ext == ".jpeg" || ext == ".png" {
+					h, err := similarity.DHash(path)
+					if err == nil {
+						hashes = append(hashes, imgHash{Path: path, Hash: h})
+					}
+				}
+				return nil
+			})
+
+			fmt.Printf("✅ %d imagens processadas. Comparando...\n", len(hashes))
+			threshold := 0.90
+			found := false
+
+			for i := 0; i < len(hashes); i++ {
+				for j := i + 1; j < len(hashes); j++ {
+					dist := similarity.HammingDistance(hashes[i].Hash, hashes[j].Hash)
+					prob := similarity.Probability(dist)
+
+					if prob >= threshold {
+						rel1, _ := filepath.Rel(mediaDir, hashes[i].Path)
+						rel2, _ := filepath.Rel(mediaDir, hashes[j].Path)
+						fmt.Printf("⚠️ Probabilidade %.1f%%:\n  - %s\n  - %s\n\n", prob*100, rel1, rel2)
+						found = true
+					}
+				}
+			}
+
+			if !found {
+				fmt.Println("✨ Nenhuma imagem similar encontrada com o threshold de 90%.")
+			}
+		},
+	}
+
+	rootCmd.AddCommand(similarityAuditCmd, migrateAttachmentsCmd, validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

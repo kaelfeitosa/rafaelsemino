@@ -14,9 +14,4 @@ attachment_2_category: registro
 attachment_3_type: image
 attachment_3_url: '[[work-prof-percurso-basico/work-prof-percurso-basico-003.jpeg]]'
 attachment_3_category: registro
-attachment_4_type: image
-attachment_4_url: '[[work-prof-percurso-basico/work-prof-percurso-basico-004.jpeg]]'
-attachment_4_category: registro
 ---
-
-

@@ -11,10 +11,12 @@
             "id": "51db4c1a83c9558f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Nova aba"
+              "type": "image",
+              "state": {
+                "file": "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png"
+              },
+              "icon": "lucide-image",
+              "title": "work-ha-numeros-que-sonham-003"
             }
           }
         ]
@@ -90,6 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +102,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos"
+              "title": "Links inversos para work-ha-numeros-que-sonham-003"
             }
           },
           {
@@ -177,21 +180,25 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "e72ec760f916f356",
+  "active": "51db4c1a83c9558f",
   "lastOpenFiles": [
     "db.sqlite-journal",
-    "media/images/work-mundo-imagem-002.jpeg",
+    "cli/similarity_results_utf8.txt",
+    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-005.jpeg",
+    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-004.jpeg",
+    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-003.png",
+    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-002.png",
+    "media/images/work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-001.jpeg",
     "media/images/work-mundo-imagem-001.jpeg",
+    "cli/similarity_results.txt",
+    "cli/internal/similarity/similarity.go",
+    "cli/internal/similarity",
+    "media/images/work-mundo-imagem-002.jpeg",
     "entities/works/work-rafael-ensino-angola-2018.md",
     "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-001.png",
     "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-003.png",
     "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-002.png",
-    "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-004.jpeg",
-    "media/images/work-rafael-ensino-angola-2018/work-rafael-ensino-angola-2018-005.png",
-    "media/images/work-rafael-ccbj-exu/work-rafael-ccbj-exu-001.jpeg",
-    "media/images/work-prof-percurso-basico/work-prof-percurso-basico-004.jpeg",
     "entities/results.txt",
-    "media/images/work-prof-percurso-basico/work-prof-percurso-basico-003.jpeg",
     "entities/works/work-mestres-do-mundo.md",
     "entities/works/work-exu-nao-vem-hoje.md",
     "entities/works/work-black-heroes.md",
@@ -221,9 +228,6 @@
     "media/images/work-vao-003.jpeg.tmp",
     "media/images/action-farol-novo-fnt-guaramiranga-2024-doc-003.jpeg.tmp",
     "media/images/action-farol-novo-constelacao-promo-residencia.jpeg.tmp",
-    "media/images/action-direcao-sao-joao-santa-cecilia-002.jpeg.tmp",
-    "media/images/action-colaboracao-curso-bece-2023-002.jpeg.tmp",
-    "cli/find_corrupt.go",
     "Untitled.canvas"
   ]
 }

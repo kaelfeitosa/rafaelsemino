@@ -23,10 +23,6 @@ attachment_4_type: image
 attachment_4_url: '[[work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-004.jpeg]]'
 attachment_4_label: Há números que sonham, imagem 4
 attachment_4_category: registro
-attachment_5_type: image
-attachment_5_url: '[[work-ha-numeros-que-sonham/work-ha-numeros-que-sonham-005.jpeg]]'
-attachment_5_label: Há números que sonham, imagem 5
-attachment_5_category: registro
 ---
 Produção audiovisual independente explorando poéticas visuais. Rafael Semino tem experiência em atuação audiovisual sob direção de Jennifer Vieira (2019).
 
