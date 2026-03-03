@@ -6,6 +6,7 @@ description: Detalhes específicos da participação.
 year: 2022
 role: Mestrando
 collaborators:
-    - Zeis
+- Zeis
+attachments: []
 ---
 Pesquisas acadêmicas, laboratórios imersivos e desdobramentos cênicos ocorridos durante o período do Mestrado em Artes de Rafael Semino (UFC).

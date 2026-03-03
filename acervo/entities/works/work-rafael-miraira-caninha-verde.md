@@ -6,6 +6,7 @@ description: Apresentação de dança dramática de Caninha Verde com o Grupo Mi
 year: 2016
 role: Intérprete (Caninha Verde)
 collaborators:
-    - Zeis
+- Zeis
+attachments: []
 ---
 Apresentação da dança dramática de Caninha Verde com o Grupo Mira Ira (IFCE). Rafael Semino integrou o grupo como intérprete popular ao lado de outros pesquisadores, culminando na apresentação destas tradições ancestrais e poéticas rurais no Mercado dos Peixes.

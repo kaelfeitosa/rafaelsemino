@@ -1,17 +1,19 @@
----
+--- 
+description: Cultura popular e manifestações do Grupo Mira Ira.
 id: work-seca-flor
 title: Seca Flor / Grupo Mira Ira
-medium: cultura_popular
-description: Cultura popular e manifestações do Grupo Mira Ira.
 year: 2016
-role: Pesquisador / Intérprete
+medium: cultura_popular
 occurrences:
-    - title: Intérprete em Encontro Mestres do Mundo (2016)
-      type: lancamento
-      start_date: "2016"
-      end_date: "2016"
-      context: Mestres do Mundo (2016)
-      role: Criador e Intérprete
+- title: Intérprete em Encontro Mestres do Mundo (2016)
+  type: lancamento
+  start_date: '2016'
+  end_date: '2016'
+  context: Mestres do Mundo (2016)
+  role: Criador e Intérprete
+  collaborators: []
+  attachments: []
+role: Pesquisador / Intérprete
 ---
 Uma das atuações voltado ao Reisado e às tradições cearenses. Rafael Semino foi ator. 
 

@@ -6,6 +6,7 @@ description: Detalhes específicos da participação de Rafael Semino como Diret
 year: 2023
 role: Diretor
 collaborators:
-    - Zeis
+- Zeis
+attachments: []
 ---
 Participação de Rafael Semino trabalhando como Diretor durante o processo de Residência de Criação Colaborativa do projeto Constelação.

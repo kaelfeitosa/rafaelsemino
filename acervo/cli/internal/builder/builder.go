@@ -216,7 +216,7 @@ func BuildSite(entitiesDir, templatePath, outputPath string) error {
 			}
 			return res
 		},
-		"hasOccurrences": func(occ []*domain.Occurrence) bool {
+		"hasOccurrences": func(occ []domain.Occurrence) bool {
 			return len(occ) > 0
 		},
 		"getWork": func(id string) domain.Work {
