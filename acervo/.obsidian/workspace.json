@@ -11,14 +11,12 @@
             "id": "51db4c1a83c9558f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "entities/works/work-mestres-do-mundo.md",
-                "mode": "source",
-                "source": false
+                "file": "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg"
               },
-              "icon": "lucide-file",
-              "title": "work-mestres-do-mundo"
+              "icon": "lucide-image",
+              "title": "work-mestres-do-mundo-001"
             }
           }
         ]
@@ -94,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "entities/works/work-mestres-do-mundo.md",
+                "file": "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +102,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para work-mestres-do-mundo"
+              "title": "Links inversos para work-mestres-do-mundo-001"
             }
           },
           {
@@ -182,8 +180,9 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "e7d1dd5b422a2de2",
+  "active": "51db4c1a83c9558f",
   "lastOpenFiles": [
+    "entities/works/work-mestres-do-mundo.md",
     "cli/verify_out2.txt",
     "media/images/work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg",
     "media/images/work-mestres-do-mundo/work-mestres-do-mundo-002.jpeg",
@@ -205,7 +204,6 @@
     "cli/internal/similarity",
     "entities/works/work-rafael-ensino-angola-2018.md",
     "entities/results.txt",
-    "entities/works/work-mestres-do-mundo.md",
     "entities/works/work-exu-nao-vem-hoje.md",
     "entities/works/work-black-heroes.md",
     "entities/works/work-300-reais.md",
@@ -229,7 +227,6 @@
     "entities/works/work-rafael-licenciatura-ifce.md",
     "entities/works/work-rafael-ccbj-exu.md",
     "entities/works/work-prof-percurso-basico.md",
-    "entities/_internal/seeds",
     "Untitled.canvas"
   ]
 }
