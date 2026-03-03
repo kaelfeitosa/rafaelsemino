@@ -4,6 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"bytes"
+	"path/filepath"
+	"strings"
+
+	"acervo/internal/domain"
+	"gopkg.in/yaml.v3"
+
+
 	"acervo/internal/assets"
 	"acervo/internal/auditor"
 	"acervo/internal/builder"
@@ -222,7 +230,65 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 		},
 	}
 
-	rootCmd.AddCommand(validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
+
+	var migrateAttachmentsCmd = &cobra.Command{
+		Use:   "migrate-attachments",
+		Short: "Migrates nested YAML attachments to flattened attachment_X_Y keys",
+		Run: func(cmd *cobra.Command, args []string) {
+			// Actually, just running syncer body-to-yaml is practically doing this
+			// since we added migration logic into syncer.go itself for `attachments` map parsing.
+			// Let's implement a clean pass using yaml.v3 Unmarshal/Marshal which our models now support.
+			fmt.Println("🚀 Starting attachment migration...")
+			err := filepath.Walk("../entities", func(path string, info os.FileInfo, err error) error {
+				if err != nil { return err }
+				if !info.IsDir() && strings.HasSuffix(info.Name(), ".md") {
+					content, err := os.ReadFile(path)
+					if err != nil { return err }
+					parts := bytes.SplitN(content, []byte("---"), 3)
+					if len(parts) >= 3 {
+						rel, _ := filepath.Rel("../entities", path)
+						parentDir := filepath.Base(filepath.Dir(rel))
+
+						var data interface{}
+
+						switch parentDir {
+						case "agents":
+							var agent domain.Agent
+							if err := yaml.Unmarshal(parts[1], &agent); err != nil {
+								return fmt.Errorf("failed to unmarshal agent %s: %w", path, err)
+							}
+							data = &agent
+						case "works":
+							var work domain.Work
+							if err := yaml.Unmarshal(parts[1], &work); err != nil {
+								return fmt.Errorf("failed to unmarshal work %s: %w", path, err)
+							}
+							data = &work
+						}
+
+						if data != nil {
+							newYaml, err := yaml.Marshal(data)
+							if err != nil {
+								return fmt.Errorf("failed to marshal %s %s: %w", parentDir, path, err)
+							}
+							newContent := string(parts[0]) + "---\n" + string(newYaml) + "---" + string(parts[2])
+							if err := os.WriteFile(path, []byte(newContent), 0644); err != nil {
+								return fmt.Errorf("failed to write %s: %w", path, err)
+							}
+						}
+					}
+				}
+				return nil
+			})
+			if err != nil {
+				fmt.Println("❌ Migration failed:", err)
+				os.Exit(1)
+			}
+			fmt.Println("✅ Migration completed successfully.")
+		},
+	}
+
+	rootCmd.AddCommand(migrateAttachmentsCmd, validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

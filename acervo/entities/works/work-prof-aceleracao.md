@@ -5,10 +5,8 @@ medium: ensino_e_formacao
 description: Ensino na Escola Dom Helder Câmara com foco no SPAECE.
 year: 2024
 role: Professor de Teatro / Diretor Cênico
-collaborators: []
-attachments:
-  - label: Image
-    type: image
-    url: work-prof-aceleracao/work-prof-aceleracao-001.png
+attachment_1_type: image
+attachment_1_url: work-prof-aceleracao/work-prof-aceleracao-001.png
+attachment_1_label: Image
 ---
 Entre Maio de 2019 a Outubro de 2020, houve a ministração de aulas de Artes na Escola Dom Helder Câmara, com foco em metodologias criativas e preparação de alunos para o SPAECE.

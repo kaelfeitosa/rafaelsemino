@@ -6,8 +6,7 @@ description: Peça com direção de Fran Teixeira a partir do laboratório de cr
 year: 2015
 role: Ator
 collaborators:
-- Fran Teixeira
-occurrences: []
+    - Fran Teixeira
 ---
 
 **Antígona** foi uma peça teatral com direção de Fran Teixeira, desenvolvida a partir do curso "Laboratório de Criação Teatral" (45h) na Escola Porto Iracema das Artes em 2015.
