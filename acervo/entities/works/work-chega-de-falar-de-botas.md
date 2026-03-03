@@ -6,21 +6,7 @@ description: '**Chega de Falar de Botas** foi uma peça teatral com direção de
 year: 2015
 role: Ator
 collaborators:
-- Andrei Bessa
-occurrences: []
-attachments:
-- type: image
-  url: work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-001.png
-  label: Chega de Falar de Botas, imagem 1
-  category: documentation
-- type: image
-  url: work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-002.png
-  label: Chega de Falar de Botas, imagem 2
-  category: documentation
-- type: image
-  url: work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-003.png
-  label: Chega de Falar de Botas, imagem 3
-  category: documentation
+    - Andrei Bessa
 ---
 **Chega de Falar de Botas** foi uma peça teatral com direção de Andrei Bessa, concebida a partir do curso "Laboratório de Improvisação" (45h) na Escola Porto Iracema das Artes, em 2015.
 

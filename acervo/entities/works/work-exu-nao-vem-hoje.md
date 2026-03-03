@@ -2,110 +2,52 @@
 id: work-exu-nao-vem-hoje
 title: Exu Não Vem Hoje
 medium: teatro
-description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo
-  a pesquisa de mestrado para o palco.
+description: Peça teatral apresentada ao final do Laboratório do Porto Iracema, transpondo a pesquisa de mestrado para o palco.
 year: 2022
 role: Ator
 collaborators:
-- Gabriel França
-- Felipe Marques
+    - Gabriel França
+    - Felipe Marques
 occurrences:
-- title: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga
-  type: apresentacao
-  start_date: '2024'
-  end_date: '2024'
-  context: 30º Festival Nordestino de Teatro de Guaramiranga
-  role: Diretor
-  collaborators: []
-  attachments:
-  - label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 1
-    type: image
-    url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-001.jpeg
-  - label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 2
-    type: image
-    url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-002.jpeg
-  - label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 3
-    type: image
-    url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-003.jpeg
-  - label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 4
-    type: image
-    url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-004.jpeg
-- title: Farol Novo Temporada Porto Dragão 2023
-  type: lancamento
-  start_date: '2023'
-  end_date: '2023'
-  context: Temporada Porto Dragão
-  role: Diretor
-  collaborators: []
-  attachments:
-  - label: Farol Novo Temporada Porto Dragão 2023, imagem 1
-    type: image
-    url: work-farol-novo-temporada-porto-dragao-2023-03/work-farol-novo-temporada-porto-dragao-2023-03-001.jpeg
-- title: Diretor em Temporada Hub Porto Dragão 2023
-  type: exposicao
-  start_date: 2023-01
-  end_date: 2023-01
-  context: Temporada Hub Porto Dragão 2023
-  role: Diretor
-  collaborators: []
-  attachments: []
-- title: Atuação e Co-fundação de Exu Não Vem Hoje
-  type: lancamento
-  start_date: '2023'
-  end_date: '2023'
-  context: Temporada Hub Cultural Porto Dragão
-  role: Ator
-  collaborators: []
-  attachments: []
-attachments:
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.jpeg
-  label: Exu Não Vem Hoje, imagem 1
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-002.jpeg
-  label: Exu Não Vem Hoje, imagem 2
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-003.jpeg
-  label: Exu Não Vem Hoje, imagem 3
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-004.jpeg
-  label: Exu Não Vem Hoje, imagem 4
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-005.jpeg
-  label: Exu Não Vem Hoje, imagem 5
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-006.jpeg
-  label: Exu Não Vem Hoje, imagem 6
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-007.jpeg
-  label: Exu Não Vem Hoje, imagem 7
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-008.jpeg
-  label: Exu Não Vem Hoje, imagem 8
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-009.jpeg
-  label: Exu Não Vem Hoje, imagem 9
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.jpeg
-  label: Exu Não Vem Hoje, imagem 10
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-011.jpeg
-  label: Exu Não Vem Hoje, imagem 11
-  category: documentation
-- type: image
-  url: work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.jpeg
-  label: Exu Não Vem Hoje, imagem 12
-  category: documentation
+    - title: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga
+      type: apresentacao
+      start_date: "2024"
+      end_date: "2024"
+      context: 30º Festival Nordestino de Teatro de Guaramiranga
+      role: Diretor
+      attachment_1_type: image
+      attachment_1_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-001.jpeg
+      attachment_1_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 1
+      attachment_2_type: image
+      attachment_2_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-002.jpeg
+      attachment_2_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 2
+      attachment_3_type: image
+      attachment_3_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-003.jpeg
+      attachment_3_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 3
+      attachment_4_type: image
+      attachment_4_url: work-farol-novo-fnt-guaramiranga-2024/work-farol-novo-fnt-guaramiranga-2024-004.jpeg
+      attachment_4_label: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga, imagem 4
+    - title: Farol Novo Temporada Porto Dragão 2023
+      type: lancamento
+      start_date: "2023"
+      end_date: "2023"
+      context: Temporada Porto Dragão
+      role: Diretor
+      attachment_1_type: image
+      attachment_1_url: work-farol-novo-temporada-porto-dragao-2023-03/work-farol-novo-temporada-porto-dragao-2023-03-001.jpeg
+      attachment_1_label: Farol Novo Temporada Porto Dragão 2023, imagem 1
+    - title: Diretor em Temporada Hub Porto Dragão 2023
+      type: exposicao
+      start_date: 2023-01
+      end_date: 2023-01
+      context: Temporada Hub Porto Dragão 2023
+      role: Diretor
+    - title: Atuação e Co-fundação de Exu Não Vem Hoje
+      type: lancamento
+      start_date: "2023"
+      end_date: "2023"
+      context: Temporada Hub Cultural Porto Dragão
+      role: Ator
 ---
 Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Rafael Semino no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, em diálogo com sua investigação em torno de Exu, oralidade e presença cênica. A obra articula rito, jogo e participação do público, tendo Rafael Semino como autor e intérprete. Atuando de forma contínua e imersiva na temporada e fundação do espetáculo, o projeto também contou com Gabriel França como co-fundador e construtor da partitura física e sonora, além de Felipe Rodrigues Marques, que assumiu a engenharia técnica e de maquinária cênica.
 

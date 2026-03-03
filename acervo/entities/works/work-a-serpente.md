@@ -6,13 +6,7 @@ description: Montagem do texto de Nelson Rodrigues, realizada em 2014 a partir d
 year: 2014
 role: Ator
 collaborators:
-- Maria Vitória
-occurrences: []
-attachments:
-- type: image
-  url: work-a-serpente/work-a-serpente-001.png
-  label: A Serpente (Montagem 2014), imagem 1
-  category: documentation
+    - Maria Vitória
 ---
 **A Serpente** foi uma peça teatral resultante do curso "Ações Físicas e Construção do Personagem" (45h), promovido pela Escola Porto Iracema das Artes em 2014.
 

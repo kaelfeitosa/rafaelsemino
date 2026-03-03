@@ -6,7 +6,6 @@ description: Detalhes específicos da participação.
 year: 2019
 role: Graduando
 collaborators:
-- Zeis
-attachments: []
+    - Zeis
 ---
 Ações, experiências de palco e vivências curriculares ocorridas durante o período de graduação em Licenciatura em Teatro de Rafael Semino pelo IFCE.

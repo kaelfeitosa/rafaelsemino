@@ -2,69 +2,23 @@
 id: work-vao
 title: Vão
 medium: teatro
-description: Espetáculo nascido do cruzamento entre teatro e música dentro da escola
-  Porto Iracema (Prêmio Amarrações Estéticas).
+description: Espetáculo nascido do cruzamento entre teatro e música dentro da escola Porto Iracema (Prêmio Amarrações Estéticas).
 year: 2023
 collaborators:
-- Zeis
+    - Zeis
 occurrences:
-- title: Ator em Palco CCBNB 2023
-  type: exposicao
-  start_date: '2023'
-  end_date: '2023'
-  context: Palco CCBNB 2023
-  role: Ator
-  collaborators: []
-  attachments: []
-- title: Atuação e Criação em Vão
-  type: lancamento
-  start_date: '2022'
-  end_date: '2022'
-  context: Laboratório de Teatro - Porto Iracema das Artes (2022)
-  role: Colaborador Criativo
-  collaborators: []
-  attachments: []
-attachments:
-- type: image
-  url: work-vao/work-vao-001.jpeg
-  label: Vão, imagem 1
-  category: documentation
-- type: image
-  url: work-vao/work-vao-002.jpeg
-  label: Vão, imagem 2
-  category: documentation
-- type: image
-  url: work-vao/work-vao-003.jpeg
-  label: Vão, imagem 3
-  category: documentation
-- type: image
-  url: work-vao/work-vao-004.jpeg
-  label: Vão, imagem 4
-  category: documentation
-- type: image
-  url: work-vao/work-vao-005.jpeg
-  label: Vão, imagem 5
-  category: documentation
-- type: image
-  url: work-vao/work-vao-006.jpeg
-  label: Vão, imagem 6
-  category: documentation
-- type: image
-  url: work-vao/work-vao-007.png
-  label: Vão, imagem 7
-  category: documentation
-- type: image
-  url: work-vao/work-vao-008.png
-  label: Vão, imagem 8
-  category: documentation
-- type: image
-  url: work-vao/work-vao-009.png
-  label: Vão, imagem 9
-  category: documentation
-- type: image
-  url: work-vao/work-vao-010.png
-  label: Vão, imagem 10
-  category: documentation
+    - title: Ator em Palco CCBNB 2023
+      type: exposicao
+      start_date: "2023"
+      end_date: "2023"
+      context: Palco CCBNB 2023
+      role: Ator
+    - title: Atuação e Criação em Vão
+      type: lancamento
+      start_date: "2022"
+      end_date: "2022"
+      context: Laboratório de Teatro - Porto Iracema das Artes (2022)
+      role: Colaborador Criativo
 ---
 Espetáculo nascido do cruzamento interdisciplinar fomentado pelo Prêmio "Amarrações Estéticas" da Escola Porto Iracema das Artes, em 2023. Em 2022, o laboratório incentivou a colaboração entre diferentes projetos e grupos residentes, e Rafael Semino foi contemplado em parceria com o músico Zéis.
 
