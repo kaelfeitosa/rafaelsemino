@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rafael Semino | Portfólio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -1057,209 +1058,227 @@
             transform: translate(-4px, -4px);
         }
 
-        /* --- PRINT OPTIMIZATION --- */
+        /* ── DIGITAL PDF OPTIMIZATION ── */
         @media print {
-            * {
+
+            /* ── Global: preserve colors, kill animations ── */
+            *,
+            *::before,
+            *::after {
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+                transition: none !important;
+                animation: none !important;
                 box-shadow: none !important;
                 text-shadow: none !important;
                 -webkit-text-stroke: 0 !important;
-                transition: none !important;
             }
 
             @page {
-                margin: 1.5cm;
+                size: A4;
+                margin: 0.8cm;
             }
 
             html,
             body {
-                background: #fff !important;
-                color: #000 !important;
                 overflow: visible !important;
                 height: auto !important;
-                min-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
+                background-color: #ffffff !important;
+                color: #000000 !important;
             }
 
+            /* ── Hide interactive-only elements ── */
+            header,
+            .noise,
+            .carousel-btn,
+            .carousel-indicators,
+            .btn-print,
+            .btn-work,
+            .qr-placeholder,
+            .no-print {
+                display: none !important;
+            }
+
+            /* ── Page wrapper ── */
             .page-wrapper {
                 max-width: none !important;
                 border: none !important;
                 margin: 0 !important;
                 padding: 0 !important;
-                overflow: visible !important;
             }
 
-            /* Fix viewport heights which can explode to the full doc height in print */
-            .hero,
-            .hero--index {
-                height: auto !important;
-                min-height: 0 !important;
-                max-height: none !important;
-                background: #fff !important;
-                color: #000 !important;
-                display: block !important;
-                padding: 1cm 0 !important;
-                border-bottom: 2pt solid #000 !important;
-            }
-
-            /* Hide unnecessary elements */
-            header,
-            .main-footer,
-            .btn-print,
-            .noise,
-            .hero-overlay,
-            .hero-header-info,
-            .carousel-btn,
-            .carousel-indicators,
-            .card-tag,
-            .btn-work {
-                display: none !important;
-            }
-
-            /* Layout adjustments */
+            /* ── Sections: linearize layout ── */
             section {
-                padding: 1cm 0 !important;
-                border: none !important;
-                display: block !important;
                 opacity: 1 !important;
+                visibility: visible !important;
                 transform: none !important;
-                page-break-inside: auto;
+                display: block !important;
+                padding: 40px 0 !important;
+                border-bottom: 3px solid #000000 !important;
                 break-inside: auto;
             }
 
-            .catalog-grid,
-            .atuacao-consolidated-grid,
-            .img-stack {
+            /* ── Section labels: STRICTLY horizontal & black ── */
+            .section-label {
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
                 display: block !important;
-                gap: 0 !important;
-            }
-
-            .card,
-            .atuacao-group,
-            .hero-bio {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                margin-bottom: 1cm !important;
-            }
-
-            .card {
-                border: 1pt solid #000 !important;
-                background: #fff !important;
-                color: #000 !important;
-                transform: none !important;
-            }
-
-            .card-content {
-                padding: 1cm !important;
-            }
-
-            .card h3,
-            .project-title,
-            .course-institution {
-                color: #000 !important;
-                font-size: 16pt !important;
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            .card p,
-            .card li,
-            .detail-list li,
-            .eixos-list li,
-            .project-desc,
-            .project-meta p,
-            .project-details-mini {
-                color: #222 !important;
-                font-size: 11pt !important;
-            }
-
-            .card-img {
-                height: 200px !important;
-                max-height: 200px !important;
-                border-bottom: 1pt solid #000 !important;
-                overflow: hidden !important;
-            }
-
-            .card-img focus-image {
-                filter: grayscale(100%) !important;
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                font-size: 3rem !important;
+                color: #000000 !important;
+                margin: 0 0 30px 0 !important;
+                padding: 0 0 10px 0 !important;
+                border-bottom: 8px solid #e60000 !important;
+                height: auto !important;
                 width: 100% !important;
-                height: 100% !important;
+                -webkit-text-stroke: 0 !important;
+                text-align: left !important;
+                pointer-events: auto !important;
             }
 
-            .hero-text h2 {
-                color: #000 !important;
-                font-size: 24pt !important;
-                line-height: 1.2 !important;
-                transform: none !important;
-                letter-spacing: normal !important;
-                margin-bottom: 0.5cm !important;
+            .stamped {
+                -webkit-text-stroke: 0 !important;
+                text-shadow: none !important;
             }
 
-            .hero-text span {
-                color: #000 !important;
+            /* ── Hero section ── */
+            .hero,
+            .hero--index {
+                height: auto !important;
+                min-height: 400px !important;
+                background-color: #000000 !important;
+                break-after: page;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                padding: 2cm !important;
+            }
+
+            .hero-title {
+                font-size: 5rem !important;
+                color: #ffffff !important;
+            }
+
+            .hero-title span {
+                color: #e60000 !important;
             }
 
             .hero-bio--floating {
-                background: transparent !important;
-                border-left: 2pt solid #000 !important;
-                padding: 10pt !important;
-                backdrop-filter: none !important;
-                margin-top: 0.5cm !important;
-                max-width: none !important;
+                background: rgba(0, 0, 0, 0.8) !important;
+                border-left: 10px solid #e60000 !important;
+                padding: 20px !important;
+                margin-top: 40px !important;
             }
 
             .hero-bio--floating p {
-                color: #000 !important;
-                font-size: 14pt !important;
+                color: #ffffff !important;
+                font-size: 1.5rem !important;
             }
 
-            .section-label {
-                position: static !important;
-                writing-mode: horizontal-tb !important;
+            /* ── Cards: clear contrast ── */
+            .card {
                 transform: none !important;
-                color: #000 !important;
-                font-size: 20pt !important;
-                border-bottom: 1pt solid #000 !important;
-                padding: 0 0 10pt 0 !important;
-                margin: 0 0 20pt 0 !important;
-                width: 100% !important;
-                height: auto !important;
+                break-inside: avoid;
+                margin-bottom: 30px !important;
+                border: 2px solid #000000 !important;
             }
 
-            /* Links visibility */
-            a[href]::after {
-                content: " (" attr(href) ")";
-                font-size: 9pt;
-                color: #555;
+            .card--light {
+                background-color: #ffffff !important;
+                color: #000000 !important;
             }
 
-            a[href^="#"]::after,
-            a[href="javascript:void(0)"]::after {
-                content: "";
+            .card--light p,
+            .card--light h3,
+            .card--light li,
+            .card--light span {
+                color: #000000 !important;
             }
 
-            /* Carousel to static */
+            .card:not(.card--light) {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+            }
+
+            .card:not(.card--light) p,
+            .card:not(.card--light) h3,
+            .card:not(.card--light) li,
+            .card:not(.card--light) span {
+                color: #ffffff !important;
+            }
+
+            .card-tag {
+                background-color: #e60000 !important;
+                color: #ffffff !important;
+                display: inline-block !important;
+                padding: 2px 8px !important;
+            }
+
+            .card-img {
+                height: 350px !important;
+                border-bottom: 2px solid #000000 !important;
+            }
+
+            .card-img focus-image {
+                filter: none !important;
+            }
+
+            /* ── Carousels → Grid ── */
             .carousel-container {
                 height: auto !important;
                 border: none !important;
-                overflow: visible !important;
-                max-height: none !important;
             }
 
             .carousel-wrapper {
-                display: block !important;
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 5px !important;
                 transform: none !important;
-                gap: 0 !important;
-                overflow: visible !important;
             }
 
             .carousel-slide {
-                display: block !important;
-                margin-bottom: 1cm !important;
-                width: 100% !important;
-                border: 1pt solid #000 !important;
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
+                height: 180px !important;
+            }
+
+            .carousel-slide:nth-child(n+4) {
+                display: none !important;
+            }
+
+            .carousel-slide focus-image {
+                filter: none !important;
+            }
+
+            /* ── Footer ── */
+            .main-footer {
+                break-before: page;
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                padding: 2cm !important;
+            }
+
+            .big-link {
+                font-size: 4rem !important;
+                color: #ffffff !important;
+            }
+
+            .footer-summary-text {
+                color: #dddddd !important;
+            }
+
+            /* ── Utilities ── */
+            h2,
+            h3,
+            .project-title,
+            .section-header {
+                break-after: avoid;
+            }
+
+            p,
+            li {
+                orphans: 3;
+                widows: 3;
             }
         }
     </style>
