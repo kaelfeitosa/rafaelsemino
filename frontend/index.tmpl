@@ -500,7 +500,7 @@
         }
 
         .hero--index {
-            background: url('images/optimized/agent-rafael-semino/agent-rafael-semino-009.webp') center/cover no-repeat;
+            background: url('acervo/media/images/agent-rafael-semino/agent-rafael-semino-004.jpeg') center/cover no-repeat;
             height: 85vh;
             max-height: 1080px;
             position: relative;
@@ -1364,28 +1364,39 @@
 
                 <h2 class="section-header mt-20">Formação Complementar</h2>
                 <div class="catalog-grid catalog-grid--single-col">
-                    {{ $porto := getWork "work-rafael-porto-iracema-2022" }}
                     <div class="card woodcut-border card--light">
                         <div class="card-content">
-                            <span class="card-tag">{{ $porto.Medium }}</span>
-                            <h3 class="course-institution">{{ $porto.Title }}</h3>
-                            <p class="course-details">{{ $porto.Description }}</p>
-                        </div>
-                    </div>
-                    {{ $ccbj := getWork "work-rafael-ccbj-exu" }}
-                    <div class="card woodcut-border card--light">
-                        <div class="card-content">
-                            <span class="card-tag">{{ $ccbj.Medium }}</span>
-                            <h3 class="course-institution">{{ $ccbj.Title }}</h3>
-                            <p class="course-details">{{ $ccbj.Description }}</p>
-                        </div>
-                    </div>
-                    {{ $mira := getWork "work-pesquisador-ifce" }}
-                    <div class="card woodcut-border card--light">
-                        <div class="card-content">
-                            <span class="card-tag">{{ $mira.Medium }}</span>
-                            <h3 class="course-institution">{{ $mira.Title }}</h3>
-                            <p class="course-details">{{ $mira.Description }}</p>
+                            <span class="card-tag">Imersões e Laboratórios</span>
+                            <h3 class="course-institution">Cursos de Extensão e Pesquisa Cênica</h3>
+                            <div class="course-details mt-20" style="font-size: 0.95em; line-height: 1.6;">
+                                <p>Trajetória formativa consolidada através de vivências laboratoriais focadas na pesquisa de linguagem, treinamento corporal e dramaturgia, gerando resultados práticos diretos no repertório do artista:</p>
+                                <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                                    <li style="margin-bottom: 15px;">
+                                        <strong>Laboratório de Criação em Teatro (2022)</strong><br>
+                                        <span style="color: #666;">Porto Iracema das Artes • Pesquisa: "Exu e suas encruzilhadas". Resultou na publicação "Contos de Exu".</span>
+                                    </li>
+                                    <li style="margin-bottom: 15px;">
+                                        <strong>Laboratório de Pesquisa Teatral (2020)</strong><br>
+                                        <span style="color: #666;">Centro Cultural Bom Jardim (CCBJ) • Investigação de criação do espetáculo "Exu Não Vem Hoje".</span>
+                                    </li>
+                                    <li style="margin-bottom: 15px;">
+                                        <strong>Construção do Personagem / Ações Físicas (2019)</strong><br>
+                                        <span style="color: #666;">Curso extensivo C.H. 100h • Resultou no espetáculo "A Serpente".</span>
+                                    </li>
+                                    <li style="margin-bottom: 15px;">
+                                        <strong>Corpo e Movimento (2018)</strong><br>
+                                        <span style="color: #666;">Porto Iracema das Artes • Extensivo C.H. 100h • Resultou no espetáculo "300 Reais".</span>
+                                    </li>
+                                    <li style="margin-bottom: 15px;">
+                                        <strong>Laboratório de Criação Teatral (2017)</strong><br>
+                                        <span style="color: #666;">Porto Iracema das Artes • Extensivo C.H. 100h • Resultou no espetáculo "Antígona".</span>
+                                    </li>
+                                    <li>
+                                        <strong>Laboratório de Improvisação (2017)</strong><br>
+                                        <span style="color: #666;">Porto Iracema das Artes • Extensivo C.H. 100h • Resultou no espetáculo "Chega de Falar de Botas".</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1447,8 +1458,8 @@
                                 <li>{{ $occ.Context }} ({{ $occ.StartDate }})</li>
                                 {{ end }}
                             </ul>
-                            <a href="https://www.youtube.com/watch?v=bjwQwDCBGsI&t=108s" target="_blank"
-                                class="btn-work">Assista o Espetáculo</a>
+                            <a href="https://www.youtube.com/watch?v=NoRFTc6Wv_s" target="_blank"
+                                class="btn-work">Assista uma Prévia</a>
                         </div>
                         {{ end }}
                     </div>
@@ -1514,8 +1525,12 @@
                                     <li>{{ $occ.Context }} ({{ $occ.StartDate }})</li>
                                     {{ end }}
                                 </ul>
-                                <a href="https://drive.google.com/file/d/1B4qxxLZdMHsu6nY-ghGDl61jHWcjkTmW/view?usp=sharing"
-                                    target="_blank" class="btn-work">Leia o Livro</a>
+                                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                                    <a href="https://www.amazon.com.br/Contos-Exu-Rafael-Semino-ebook/dp/B0D192M6VJ"
+                                        target="_blank" class="btn-work" style="margin-top: 0;">Comprar</a>
+                                    <a href="acervo/media/documents/contos-de-exu-conto-1.pdf" target="_blank"
+                                        class="btn-work" style="margin-top: 0;">Ler Prévia</a>
+                                </div>
                             </div>
                             {{ end }}
                         </div>
@@ -1659,8 +1674,6 @@
                             </div>
                         </div>
                         <div class="project-meta light">
-                            <a href="https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2024/12/Catalogo-Encontro-Mestres-do-Mundo-2022.pdf"
-                                target="_blank" class="btn-work">Catálogo Encontro Mestres do Mundo</a>
                         </div>
                     </div>
                 </div>

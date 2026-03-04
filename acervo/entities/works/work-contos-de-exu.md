@@ -2,13 +2,21 @@
 id: work-contos-de-exu
 title: Contos de Exu
 medium: livro
-description: Livro resultante do Laboratório do Porto Iracema dando contornos práticos à pesquisa de mestrado da UFC.
+description: Obra literária completa composta por quatro contos, fruto da pesquisa de Mestrado (UFC). O livro todo existe; o arquivo anexo é uma amostra (prévia).
 year: 2022
 role: Autor
 attachment_1_type: image
 attachment_1_url: '[[work-contos-de-exu/work-contos-de-exu-001.png]]'
 attachment_1_label: Contos de Exu, imagem 1
 attachment_1_category: registro
+attachment_2_type: pdf
+attachment_2_url: '[[contos-de-exu-conto-1.pdf]]'
+attachment_2_label: Ler Prévia
+attachment_2_category: documento
+attachment_3_type: link
+attachment_3_url: 'https://www.amazon.com.br/Contos-Exu-Rafael-Semino-ebook/dp/B0D192M6VJ'
+attachment_3_label: Comprar
+attachment_3_category: publicacao
 attachment_2_type: image
 attachment_2_url: '[[work-contos-de-exu/work-contos-de-exu-002.png]]'
 attachment_2_label: Contos de Exu, imagem 2

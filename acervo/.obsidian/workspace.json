@@ -11,14 +11,12 @@
             "id": "51db4c1a83c9558f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "entities/works/work-rastros-de-exu.md",
-                "mode": "source",
-                "source": false
+                "file": "media/images/work-pai/work-pai-001.jpeg"
               },
-              "icon": "lucide-file",
-              "title": "work-rastros-de-exu"
+              "icon": "lucide-image",
+              "title": "work-pai-001"
             }
           }
         ]
@@ -53,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rastro",
+                "query": "pai",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -95,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "entities/works/work-rastros-de-exu.md",
+                "file": "media/images/work-pai/work-pai-001.jpeg",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para work-rastros-de-exu"
+              "title": "Links inversos para work-pai-001"
             }
           },
           {
@@ -185,11 +183,12 @@
   },
   "active": "51db4c1a83c9558f",
   "lastOpenFiles": [
+    "entities/works/work-pai.md",
+    "entities/works/work-rastros-de-exu.md",
     "cli/patch_atuacao_carousel.py",
     "cli/atuacao_img_counts.txt",
     "cli/analyze_atuacao.py",
     "media/images/work-rastros-de-exu/work-rastros-de-exu-005.png",
-    "entities/works/work-rastros-de-exu.md",
     "media/images/work-rastros-de-exu/work-rastros-de-exu-004.png",
     "entities/works/work-prof-percurso-basico.md",
     "cli/fix_luanda_rastros.py",
@@ -200,7 +199,6 @@
     "cli/audit_consistency.py",
     "cli/patch_layout.py",
     "cli/adjust_layout.py",
-    "cli/inject_curated.py",
     "entities/works/work-prof-hugo-sadrack.md",
     "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg",
     "entities/works/work-mestres-do-mundo.md",

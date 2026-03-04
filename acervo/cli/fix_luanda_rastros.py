@@ -203,9 +203,10 @@ replacement_rastros = """                        <!-- RASTROS DE EXU -->
                                         Ação performática derivada do encontro de laboratórios no CCBJ, trabalhando
                                         processos de transe e improvisação cênica.
                                     </p>
-                                    <p class="project-desc light" style="margin-top: 15px;">
-                                        <a href="https://www.youtube.com/watch?v=bjwQwDCBGsI&t=3s" target="_blank" class="catalog-link">▶ Assista à Performance</a>
-                                    </p>
+                                </div>
+                                <div class="project-meta light">
+                                    <a href="https://www.youtube.com/watch?v=bjwQwDCBGsI&t=3s" target="_blank"
+                                        class="btn-work">▶ Assista à Performance</a>
                                 </div>
                             </div>
                         </div>"""
