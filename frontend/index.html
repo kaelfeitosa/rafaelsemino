@@ -1076,7 +1076,8 @@
 
             @page {
                 size: A4;
-                margin: 0.8cm;
+                margin: 0;
+                /* Full control with CSS padding */
             }
 
             html,
@@ -1085,9 +1086,11 @@
                 height: auto !important;
                 background-color: #ffffff !important;
                 color: #000000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
-            /* ── Hide interactive-only elements ── */
+            /* ── Hide interactive/overlay elements ── */
             header,
             .noise,
             .carousel-btn,
@@ -1095,7 +1098,8 @@
             .btn-print,
             .btn-work,
             .qr-placeholder,
-            .no-print {
+            .no-print,
+            .hero-overlay {
                 display: none !important;
             }
 
@@ -1107,35 +1111,38 @@
                 padding: 0 !important;
             }
 
-            /* ── Sections: linearize layout ── */
+            /* ── Sections ── */
             section {
                 opacity: 1 !important;
                 visibility: visible !important;
                 transform: none !important;
                 display: block !important;
-                padding: 40px 0 !important;
-                border-bottom: 3px solid #000000 !important;
+                padding: 1.5cm !important;
+                border-bottom: 1px solid #eeeeee !important;
                 break-inside: auto;
             }
 
-            /* ── Section labels: STRICTLY horizontal & black ── */
+            /* ── Section labels ── */
             .section-label {
                 writing-mode: horizontal-tb !important;
                 transform: none !important;
-                display: block !important;
+                display: inline-block !important;
+                /* Content-based width */
                 position: relative !important;
                 top: 0 !important;
                 left: 0 !important;
-                font-size: 3rem !important;
+                font-size: 2rem !important;
                 color: #000000 !important;
-                margin: 0 0 30px 0 !important;
-                padding: 0 0 10px 0 !important;
-                border-bottom: 8px solid #e60000 !important;
+                margin: 0 0 1cm 0 !important;
+                padding: 0 0 5px 0 !important;
+                border-bottom: 5px solid #e60000 !important;
                 height: auto !important;
-                width: 100% !important;
+                width: auto !important;
                 -webkit-text-stroke: 0 !important;
                 text-align: left !important;
                 pointer-events: auto !important;
+                text-transform: uppercase !important;
+                font-family: 'Archivo Black', sans-serif !important;
             }
 
             .stamped {
@@ -1143,22 +1150,43 @@
                 text-shadow: none !important;
             }
 
-            /* ── Hero section ── */
+            /* ── Hero section (Cover Page) ── */
             .hero,
             .hero--index {
-                height: auto !important;
-                min-height: 400px !important;
+                height: 29.7cm !important;
+                /* Fixed A4 height */
                 background-color: #000000 !important;
                 break-after: page;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
+                align-items: center !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                position: relative !important;
+                text-align: center !important;
+            }
+
+            .hero-header-info {
+                position: absolute !important;
+                top: 2cm !important;
+                left: 0 !important;
+                right: 0 !important;
+                text-align: center !important;
+                color: #ffffff !important;
+                font-size: 1rem !important;
+                opacity: 1 !important;
+            }
+
+            .hero-content {
+                width: 100% !important;
                 padding: 2cm !important;
             }
 
             .hero-title {
-                font-size: 5rem !important;
+                font-size: 4rem !important;
                 color: #ffffff !important;
+                line-height: 1.1 !important;
             }
 
             .hero-title span {
@@ -1166,46 +1194,61 @@
             }
 
             .hero-bio--floating {
-                background: rgba(0, 0, 0, 0.8) !important;
-                border-left: 10px solid #e60000 !important;
-                padding: 20px !important;
-                margin-top: 40px !important;
+                background: transparent !important;
+                border: none !important;
+                border-top: 2px solid #e60000 !important;
+                padding: 20px 0 !important;
+                margin-top: 1cm !important;
+                position: static !important;
+                width: 80% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
             .hero-bio--floating p {
                 color: #ffffff !important;
-                font-size: 1.5rem !important;
+                font-size: 1.4rem !important;
             }
 
-            /* ── Cards: clear contrast ── */
+            /* ── Cards ── */
             .card {
                 transform: none !important;
                 break-inside: avoid;
-                margin-bottom: 30px !important;
-                border: 2px solid #000000 !important;
-            }
-
-            .card--light {
+                margin-bottom: 1cm !important;
+                border: 1px solid #dddddd !important;
                 background-color: #ffffff !important;
                 color: #000000 !important;
             }
 
-            .card--light p,
-            .card--light h3,
-            .card--light li,
-            .card--light span {
-                color: #000000 !important;
+            .card-content {
+                padding: 30px !important;
             }
 
+            .card--light {
+                background-color: #ffffff !important;
+            }
+
+            .card h3 {
+                color: #000000 !important;
+                font-size: 1.6rem !important;
+                margin-bottom: 15px !important;
+            }
+
+            .card p,
+            .card li,
+            .card span {
+                color: #333333 !important;
+            }
+
+            /* Reversed colors for specific cards if needed */
             .card:not(.card--light) {
                 background-color: #000000 !important;
                 color: #ffffff !important;
             }
 
-            .card:not(.card--light) p,
             .card:not(.card--light) h3,
-            .card:not(.card--light) li,
-            .card:not(.card--light) span {
+            .card:not(.card--light) p,
+            .card:not(.card--light) li {
                 color: #ffffff !important;
             }
 
@@ -1213,22 +1256,20 @@
                 background-color: #e60000 !important;
                 color: #ffffff !important;
                 display: inline-block !important;
-                padding: 2px 8px !important;
+                padding: 4px 10px !important;
+                font-size: 0.8rem !important;
             }
 
             .card-img {
-                height: 350px !important;
-                border-bottom: 2px solid #000000 !important;
+                height: 300px !important;
+                border-bottom: 1px solid #eeeeee !important;
             }
 
-            .card-img focus-image {
-                filter: none !important;
-            }
-
-            /* ── Carousels → Grid ── */
+            /* ── Carousels ── */
             .carousel-container {
                 height: auto !important;
                 border: none !important;
+                margin-bottom: 20px !important;
             }
 
             .carousel-wrapper {
@@ -1255,16 +1296,23 @@
                 break-before: page;
                 background-color: #000000 !important;
                 color: #ffffff !important;
-                padding: 2cm !important;
+                padding: 3cm 2cm !important;
+                height: 29.7cm !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                text-align: center !important;
             }
 
             .big-link {
-                font-size: 4rem !important;
+                font-size: 3.5rem !important;
                 color: #ffffff !important;
+                margin-bottom: 1cm !important;
             }
 
             .footer-summary-text {
-                color: #dddddd !important;
+                color: #cccccc !important;
+                font-size: 1.2rem !important;
             }
 
             /* ── Utilities ── */
