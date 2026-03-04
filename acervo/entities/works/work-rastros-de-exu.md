@@ -21,6 +21,14 @@ attachment_3_type: image
 attachment_3_url: '[[work-rastros-de-exu/work-rastros-de-exu-003.jpeg]]'
 attachment_3_label: Rastros de Exu, imagem 3
 attachment_3_category: imprensa
+attachment_4_type: image
+attachment_4_url: '[[work-rastros-de-exu/work-rastros-de-exu-004.png]]'
+attachment_4_label: Rastros de Exu, imagem 4
+attachment_4_category: registro
+attachment_5_type: image
+attachment_5_url: '[[work-rastros-de-exu/work-rastros-de-exu-005.png]]'
+attachment_5_label: Rastros de Exu, imagem 5
+attachment_5_category: registro
 ---
 Projeto audiovisual criado como desdobramento do espetáculo "Exu Não Vem Hoje", integrando as ações da **Zona de Criação** do Hub Cultural Porto Dragão.
 

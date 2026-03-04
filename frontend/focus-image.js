@@ -21,6 +21,7 @@ class MetadataReader {
                 let xmpString = "";
                 if (MetadataReader.isJPEG(fullView)) xmpString = MetadataReader.extractXMPFromJPEG(fullView);
                 else if (MetadataReader.isPNG(fullView)) xmpString = MetadataReader.extractXMPFromPNG(fullView);
+                else if (MetadataReader.isWebP(fullView)) xmpString = MetadataReader.extractXMPFromWebP(fullView);
                 return xmpString ? MetadataReader.parseXMPFocus(xmpString) : null;
             }
 
@@ -37,8 +38,32 @@ class MetadataReader {
                 xmpString = MetadataReader.extractXMPFromWebP(view);
             }
 
-            if (!xmpString) return null;
-            return MetadataReader.parseXMPFocus(xmpString);
+            if (xmpString) {
+                return MetadataReader.parseXMPFocus(xmpString);
+            }
+
+            // Fallback para buscar o arquivo completo se foi uma resposta parcial e não achou o XMP
+            // (Comum em WebP, onde o XMP geralmente fica no final do arquivo após os dados da imagem)
+            if (response.status === 206) {
+                const fullResponse = await fetch(src, { signal });
+                if (!fullResponse.ok) return null;
+                const fullBuffer = await fullResponse.arrayBuffer();
+                const fullView = new DataView(fullBuffer);
+                
+                if (MetadataReader.isJPEG(fullView)) {
+                    xmpString = MetadataReader.extractXMPFromJPEG(fullView);
+                } else if (MetadataReader.isPNG(fullView)) {
+                    xmpString = MetadataReader.extractXMPFromPNG(fullView);
+                } else if (MetadataReader.isWebP(fullView)) {
+                    xmpString = MetadataReader.extractXMPFromWebP(fullView);
+                }
+                
+                if (xmpString) {
+                    return MetadataReader.parseXMPFocus(xmpString);
+                }
+            }
+
+            return null;
         } catch (e) {
             if (e.name !== 'AbortError') {
                 console.warn("MetadataReader error:", e);

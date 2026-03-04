@@ -1,0 +1,147 @@
+=========================================
+ACERVO CONSISTENCY AUDIT REPORT
+=========================================
+
+[-] agent-rafael-semino.md: Francisco Rafael da Silva Semino
+    - Item missing entirely from index.html
+
+[-] work-300-reais.md: 300 Reais
+    - Item missing entirely from index.html
+
+[-] work-a-serpente.md: A Serpente (Montagem 2014)
+    - Item missing entirely from index.html
+
+[-] work-antigona.md: Antígona
+    - Item missing entirely from index.html
+
+[-] work-avaliador-ciclo-carnavalesco.md: Avaliador do Ciclo Carnavalesco
+    - Item missing entirely from index.html
+
+[-] work-avaliador-junino.md: Avaliador do Ciclo Junino
+    - Item missing entirely from index.html
+
+[?] work-cala-me-os-olhos.md: Cala-me os Olhos
+    - Role keyword 'Diretor' possibly missing in HTML near this item.
+
+[-] work-calor.md: Calor
+    - Item missing entirely from index.html
+
+[?] work-chega-de-falar-de-botas.md: Chega de Falar de Botas
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[-] work-colaboracao-curso-bece-2023.md: Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE)
+    - Item missing entirely from index.html
+
+[?] work-contos-de-exu.md: Contos de Exu
+    - Role keyword 'Autor' possibly missing in HTML near this item.
+
+[-] work-convite.md: Convite
+    - Item missing entirely from index.html
+
+[?] work-de-louco-todo-mundo-tem-um-pouco.md: De Louco, Todo Mundo Tem Um Pouco
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[?] work-de-sucupira-a-asa-branca.md: De Sucupira à Asa Branca
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[-] work-direcao-sao-joao-santa-cecilia.md: São João Escola Santa Cecília
+    - Item missing entirely from index.html
+
+[?] work-exu-nao-vem-hoje.md: Exu Não Vem Hoje
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[-] work-farol-novo-constelacao.md: Residência de Criação Colaborativa Constelação
+    - Item missing entirely from index.html
+
+[?] work-ha-numeros-que-sonham.md: Há números que sonham
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[?] work-irreversivel.md: Irreversível
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[?] work-mestres-do-mundo.md: Mestres Do Mundo
+    - Role keyword 'Pesquisador' possibly missing in HTML near this item.
+
+[?] work-mundo-imagem.md: Mundo-Imagem
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[?] work-noite-de-alegria.md: Noite de Alegria da Rua Trinta e Sete
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[?] work-o-caso-da-casa.md: O Caso da Casa
+    - Role keyword 'Diretor' possibly missing in HTML near this item.
+
+[-] work-paixao-de-cristo.md: Paixao De Cristo
+    - Item missing entirely from index.html
+
+[-] work-pesquisador-ifce.md: Pesquisador no IFCE
+    - Item missing entirely from index.html
+
+[-] work-praticas-de-ator-116h.md: Práticas de Ator (Porto Iracema 116h)
+    - Item missing entirely from index.html
+
+[-] work-prof-aceleracao.md: Docência em Projeto de Aceleração da Aprendizagem
+    - Item missing entirely from index.html
+
+[-] work-prof-hugo-sadrack.md: Professor de Artes na Escola Estadual Hugo Sidrack do Vale
+    - Item missing entirely from index.html
+
+[-] work-prof-paulo-petrola.md: Professor de Artes na Escola Municipal Paulo Petrola
+    - Item missing entirely from index.html
+
+[-] work-prof-percurso-basico.md: Professor em Percurso Básico de Teatro
+    - Item missing entirely from index.html
+
+[-] work-rafael-ccbj-exu.md: Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
+    - Item missing entirely from index.html
+
+[-] work-rafael-ensino-angola-2018.md: Ensino de Artes e Cinema em Angola
+    - Item missing entirely from index.html
+
+[-] work-rafael-licenciatura-ifce.md: Graduando em Licenciatura em Teatro
+    - Item missing entirely from index.html
+
+[-] work-rafael-mestrado-ufc.md: Mestrando em Mestrado em Artes
+    - Item missing entirely from index.html
+
+[-] work-rafael-miraira-caninha-verde.md: Caninha Verde (Miraira)
+    - Item missing entirely from index.html
+
+[-] work-rafael-miraira-reisado.md: Reisado (Miraira)
+    - Item missing entirely from index.html
+
+[-] work-rafael-porto-iracema-2022.md: Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema (2022)
+    - Item missing entirely from index.html
+
+[-] work-rafael-pos-ufba.md: Pós-graduando em Pós-graduação em Teatro do Oprimido
+    - Item missing entirely from index.html
+
+[?] work-rastros-de-exu.md: Rastros de Exu
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[?] work-rebordose.md: Rebordose
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[-] work-reino-de-aspan.md: Reino de Aspan
+    - Item missing entirely from index.html
+
+[-] work-rua-azusa.md: Rua Azusa
+    - Item missing entirely from index.html
+
+[?] work-santo-bordel-de-tiatira.md: Santo Bordel de Tiatira
+    - Role keyword 'Ator' possibly missing in HTML near this item.
+
+[-] work-seca-flor.md: Seca Flor / Grupo Mira Ira
+    - Item missing entirely from index.html
+
+[-] work-sociedade-o-circo.md: Sociedade, o Circo
+    - Item missing entirely from index.html
+
+[-] work-tejo-estudio.md: Tejo Estudio
+    - Item missing entirely from index.html
+
+[?] work-trapo-preto.md: Trapo Preto
+    - Role keyword 'Fundador' possibly missing in HTML near this item.
+
+=========================================
+Audit complete.

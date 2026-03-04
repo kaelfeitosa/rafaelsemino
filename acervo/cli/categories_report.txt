@@ -1,0 +1,31 @@
+
+--- work-irreversivel ---
+[1]: [[work-irreversivel/work-irreversivel-001.png]] -> registro
+[2]: [[work-irreversivel/work-irreversivel-002.jpeg]] -> registro
+
+--- work-santo-bordel-de-tiatira ---
+[1]: [[work-santo-bordel-de-tiatira/work-santo-bordel-de-tiatira-001.png]] -> registro
+[2]: [[work-santo-bordel-de-tiatira/work-santo-bordel-de-tiatira-002.png]] -> registro
+[3]: [[work-santo-bordel-de-tiatira/work-santo-bordel-de-tiatira-003.png]] -> registro
+
+--- work-chega-de-falar-de-botas ---
+[1]: [[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-001.png]] -> registro
+[2]: [[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-002.png]] -> registro
+[3]: [[work-chega-de-falar-de-botas/work-chega-de-falar-de-botas-003.png]] -> divulgacao
+
+--- work-de-louco-todo-mundo-tem-um-pouco ---
+[1]: [[work-de-louco-todo-mundo-tem-um-pouco/work-de-louco-todo-mundo-tem-um-pouco-001.png]] -> registro
+[2]: [[work-de-louco-todo-mundo-tem-um-pouco/work-de-louco-todo-mundo-tem-um-pouco-002.png]] -> registro
+[3]: [[work-de-louco-todo-mundo-tem-um-pouco/work-de-louco-todo-mundo-tem-um-pouco-003.png]] -> registro
+
+--- work-de-sucupira-a-asa-branca ---
+[1]: [[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-001.png]] -> divulgacao
+[2]: [[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-002.png]] -> divulgacao
+[3]: [[work-de-sucupira-a-asa-branca/work-de-sucupira-a-asa-branca-003.png]] -> registro
+
+--- work-a-serpente ---
+[1]: [[work-a-serpente/work-a-serpente-001.png]] -> divulgacao
+
+--- work-sociedade-o-circo ---
+[1]: [[work-sociedade-o-circo/work-sociedade-o-circo-001.png]] -> registro
+[2]: [[work-sociedade-o-circo/work-sociedade-o-circo-002.png]] -> registro

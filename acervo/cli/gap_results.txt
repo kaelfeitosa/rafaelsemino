@@ -1,0 +1,179 @@
+Total entities analyzed: 54
+Missing entities found: 35
+
+--- POTENTIAL ADDITIONS TO SITE ---
+📌 seed1
+   ID: seed1
+   Readiness: 🖼 Has Images, 43 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\_internal\seeds\seed1.md
+
+📌 seed2
+   ID: seed2
+   Readiness: 🖼 Has Images, 43 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\_internal\seeds\seed2.md
+
+📌 seed3
+   ID: seed3
+   Readiness: 🖼 Has Images, 43 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\_internal\seeds\seed3.md
+
+📌 seed4
+   ID: seed4
+   Readiness: 🖼 Has Images, 43 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\_internal\seeds\seed4.md
+
+📌 Pesquisador/Aluno em Laboratório de Criação em Teatro - Porto Iracema (2022)
+   ID: work-rafael-porto-iracema-2022
+   Readiness: 🖼 Has Images, 28 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rafael-porto-iracema-2022.md
+
+📌 Rastros de Exu
+   ID: work-rastros-de-exu
+   Readiness: 🖼 Has Images, 28 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rastros-de-exu.md
+
+📌 Irreversível
+   ID: work-irreversivel
+   Readiness: 🖼 Has Images, 27 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-irreversivel.md
+
+📌 Chega de Falar de Botas
+   ID: work-chega-de-falar-de-botas
+   Readiness: 🖼 Has Images, 26 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-chega-de-falar-de-botas.md
+
+📌 De Louco, Todo Mundo Tem Um Pouco
+   ID: work-de-louco-todo-mundo-tem-um-pouco
+   Readiness: 🖼 Has Images, 24 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-de-louco-todo-mundo-tem-um-pouco.md
+
+📌 De Sucupira à Asa Branca
+   ID: work-de-sucupira-a-asa-branca
+   Readiness: 🖼 Has Images, 24 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-de-sucupira-a-asa-branca.md
+
+📌 Santo Bordel de Tiatira
+   ID: work-santo-bordel-de-tiatira
+   Readiness: 🖼 Has Images, 24 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-santo-bordel-de-tiatira.md
+
+📌 Rua Azusa
+   ID: work-rua-azusa
+   Readiness: 🖼 Has Images, 22 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rua-azusa.md
+
+📌 Trapo Preto
+   ID: work-trapo-preto
+   Readiness: 🖼 Has Images, 22 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-trapo-preto.md
+
+📌 Pesquisador no IFCE
+   ID: work-pesquisador-ifce
+   Readiness: 🖼 Has Images, 19 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-pesquisador-ifce.md
+
+📌 300 Reais
+   ID: work-300-reais
+   Readiness: 🖼 Has Images, 18 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-300-reais.md
+
+📌 A Serpente (Montagem 2014)
+   ID: work-a-serpente
+   Readiness: 🖼 Has Images, 18 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-a-serpente.md
+
+📌 Seca Flor / Grupo Mira Ira
+   ID: work-seca-flor
+   Readiness: 📄 Text Only, 18 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-seca-flor.md
+
+📌 Sociedade, o Circo
+   ID: work-sociedade-o-circo
+   Readiness: 🖼 Has Images, 18 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-sociedade-o-circo.md
+
+📌 Paixao De Cristo
+   ID: work-paixao-de-cristo
+   Readiness: 🖼 Has Images, 17 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-paixao-de-cristo.md
+
+📌 Professor em Percurso Básico de Teatro
+   ID: work-prof-percurso-basico
+   Readiness: 🖼 Has Images, 17 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-prof-percurso-basico.md
+
+📌 Ensino de Artes e Cinema em Angola
+   ID: work-rafael-ensino-angola-2018
+   Readiness: 🖼 Has Images, 17 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rafael-ensino-angola-2018.md
+
+📌 Tejo Estudio
+   ID: work-tejo-estudio
+   Readiness: 🖼 Has Images, 17 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-tejo-estudio.md
+
+📌 Docência em Projeto de Aceleração da Aprendizagem
+   ID: work-prof-aceleracao
+   Readiness: 🖼 Has Images, 15 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-prof-aceleracao.md
+
+📌 Pós-graduando em Pós-graduação em Teatro do Oprimido
+   ID: work-rafael-pos-ufba
+   Readiness: 🖼 Has Images, 15 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rafael-pos-ufba.md
+
+📌 Reino de Aspan
+   ID: work-reino-de-aspan
+   Readiness: 📄 Text Only, 15 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-reino-de-aspan.md
+
+📌 Antígona
+   ID: work-antigona
+   Readiness: 📄 Text Only, 14 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-antigona.md
+
+📌 Palestrante em Curso Protagonismo Negro na Cultura Pop (BECE)
+   ID: work-colaboracao-curso-bece-2023
+   Readiness: 🖼 Has Images, 14 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-colaboracao-curso-bece-2023.md
+
+📌 Pesquisador em Laboratório de Pesquisa - CCBJ (Exu Não Vem Hoje)
+   ID: work-rafael-ccbj-exu
+   Readiness: 🖼 Has Images, 13 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rafael-ccbj-exu.md
+
+📌 Práticas de Ator (Porto Iracema 116h)
+   ID: work-praticas-de-ator-116h
+   Readiness: 📄 Text Only, 12 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-praticas-de-ator-116h.md
+
+📌 Residência de Criação Colaborativa Constelação
+   ID: work-farol-novo-constelacao
+   Readiness: 📄 Text Only, 11 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-farol-novo-constelacao.md
+
+📌 Professor de Artes na Escola Municipal Paulo Petrola
+   ID: work-prof-paulo-petrola
+   Readiness: 📄 Text Only, 11 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-prof-paulo-petrola.md
+
+📌 Graduando em Licenciatura em Teatro
+   ID: work-rafael-licenciatura-ifce
+   Readiness: 📄 Text Only, 11 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rafael-licenciatura-ifce.md
+
+📌 Mestrando em Mestrado em Artes
+   ID: work-rafael-mestrado-ufc
+   Readiness: 📄 Text Only, 11 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-rafael-mestrado-ufc.md
+
+📌 Calor
+   ID: work-calor
+   Readiness: 📄 Text Only, 10 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-calor.md
+
+📌 Convite
+   ID: work-convite
+   Readiness: 📄 Text Only, 10 lines of markdown content
+   Path: c:\Users\mkael\progs\html\rafaelsemino\acervo\entities\works\work-convite.md
+

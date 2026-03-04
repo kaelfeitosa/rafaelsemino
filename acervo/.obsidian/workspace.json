@@ -11,12 +11,14 @@
             "id": "51db4c1a83c9558f",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg"
+                "file": "entities/works/work-rastros-de-exu.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "work-mestres-do-mundo-001"
+              "icon": "lucide-file",
+              "title": "work-rastros-de-exu"
             }
           }
         ]
@@ -51,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "rastro",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -59,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Procurar"
             }
           },
           {
@@ -72,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -92,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg",
+                "file": "entities/works/work-rastros-de-exu.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para work-mestres-do-mundo-001"
+              "title": "Links inversos para work-rastros-de-exu"
             }
           },
           {
@@ -182,28 +185,31 @@
   },
   "active": "51db4c1a83c9558f",
   "lastOpenFiles": [
-    "cli/rewrite_index.py",
-    "cli/map_images.py",
-    "cli/image_report.txt",
-    "cli/extract_meta.py",
+    "cli/patch_atuacao_carousel.py",
+    "cli/atuacao_img_counts.txt",
+    "cli/analyze_atuacao.py",
+    "media/images/work-rastros-de-exu/work-rastros-de-exu-005.png",
+    "entities/works/work-rastros-de-exu.md",
+    "media/images/work-rastros-de-exu/work-rastros-de-exu-004.png",
+    "entities/works/work-prof-percurso-basico.md",
+    "cli/fix_luanda_rastros.py",
+    "cli/inject_abarca.py",
+    "media/images/work-prof-hugo-sadrack/work-prof-hugo-sadrack-001.png",
+    "cli/fix_hallucinations.py",
+    "cli/audit_report.txt",
+    "cli/audit_consistency.py",
+    "cli/patch_layout.py",
+    "cli/adjust_layout.py",
+    "cli/inject_curated.py",
+    "entities/works/work-prof-hugo-sadrack.md",
+    "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg",
     "entities/works/work-mestres-do-mundo.md",
-    "cli/verify_out2.txt",
     "media/images/work-mestres-do-mundo/work-mestres-do-mundo-004.jpeg",
     "media/images/work-mestres-do-mundo/work-mestres-do-mundo-002.jpeg",
     "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.png",
-    "media/images/work-mestres-do-mundo/work-mestres-do-mundo-001.jpeg",
     "media/images/work-rafael-miraira-reisado/work-rafael-miraira-reisado-001.png",
     "media/images/work-rafael-miraira-reisado/work-rafael-miraira-reisado-002.png",
     "media/images/work-rafael-miraira-reisado/work-rafael-miraira-reisado-003.jpeg",
-    "media/images/work-rastros-de-exu/work-rastros-de-exu-001.jpeg",
-    "media/images/work-prof-aceleracao/work-prof-aceleracao-002.jpeg",
-    "media/images/work-prof-aceleracao/work-prof-aceleracao-001.png",
-    "cli/verify_out_utf8.txt",
-    "cli/verify_out.txt",
-    "cli/verify_report.txt",
-    "db.sqlite-journal",
-    "cli/similarity_results_utf8.txt",
-    "cli/similarity_results.txt",
     "entities/works/work-rafael-ensino-angola-2018.md",
     "entities/works/work-exu-nao-vem-hoje.md",
     "entities/works/work-black-heroes.md",
@@ -219,15 +225,12 @@
     "entities/works/work-rua-azusa.md",
     "entities/works/work-reino-de-aspan.md",
     "entities/works/work-rebordose.md",
-    "entities/works/work-rastros-de-exu.md",
     "entities/works/work-rafael-pos-ufba.md",
     "entities/works/work-rafael-porto-iracema-2022.md",
     "entities/works/work-rafael-miraira-reisado.md",
     "entities/works/work-rafael-miraira-caninha-verde.md",
     "entities/works/work-rafael-mestrado-ufc.md",
     "entities/works/work-rafael-licenciatura-ifce.md",
-    "entities/works/work-rafael-ccbj-exu.md",
-    "entities/works/work-prof-percurso-basico.md",
     "Untitled.canvas"
   ]
 }
