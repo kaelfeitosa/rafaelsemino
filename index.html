@@ -66,18 +66,23 @@
             .noise,
             .btn-work,
             .hero-overlay,
-            .hero-header-info:not(.contact-info-print) {
+            .hero-header-info:not(.contact-info-print),
+            .carousel-btn,
+            .carousel-indicators,
+            .nav-container,
+            button {
                 display: none !important;
             }
 
             body {
-                background: white !important;
+                background: #fdfaf2 !important;
                 color: black !important;
                 padding: 0 !important;
                 margin: 0 !important;
                 font-size: 11pt !important;
                 text-shadow: none !important;
                 -webkit-text-stroke: 0 !important;
+                overflow: visible !important;
             }
 
             * {
@@ -90,10 +95,13 @@
                 border: none !important;
                 margin: 0 !important;
                 padding: 0 !important;
+                overflow: visible !important;
             }
 
             section {
-                page-break-before: always;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-before: auto;
                 border: none !important;
                 padding: 10mm 0 !important;
                 display: block !important;
@@ -268,6 +276,23 @@
                 font-size: 9pt;
                 text-transform: uppercase;
                 letter-spacing: 1px;
+            }
+
+            /* Convert carousels into strict static grids */
+            .carousel-wrapper {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 15px !important;
+                overflow: visible !important;
+                transform: none !important;
+                transition: none !important;
+                width: 100% !important;
+            }
+
+            .carousel-slide {
+                flex: 1 1 calc(33.333% - 15px) !important;
+                width: auto !important;
+                min-width: 0 !important;
             }
         }
 
