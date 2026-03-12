@@ -9,4 +9,4 @@ Artista, técnico, produtor e pesquisador.
 
 ### Atuação
 - Membro do [[agent-coletivo-farol-novo|Coletivo Farol Novo]] e da Cia. Co.Vil.
-- Responsável pela coordenação geral de projetos com expertise em som e cenografia.
+- Responsável pela coordenação geral de projetos com especialização em som e cenografia.
