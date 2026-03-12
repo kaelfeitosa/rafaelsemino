@@ -114,7 +114,7 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 
 ### Ficha Técnica
 - **Diretor, Dramaturgo e Ator:** Rafael Semino
-- **Elenco, Cenografia e Iluminação, Coordenação Geral:** Felipe Rodrigues (Membro do Coletivo Farol Novo)
+- **Elenco, Cenografia e Iluminação, Coordenação Geral:** Felipe Marques (Membro do Coletivo Farol Novo)
 - **Sonoplastia e Composição Musical:** Zéis
 - **Produção Executiva:** Michael Feitosa
 
