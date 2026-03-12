@@ -8,7 +8,7 @@
 - 1 par incandescente (branco quente)
 - 3 tripés para luz
 - 9 extensões pretas
-- 3 pisca-piscas de padrões diferentes
+- 3 pisca-piscas de padrões diferentes (para efeitos de luz)
 
 ### Rider de Som
 - 2 microfones
@@ -18,7 +18,7 @@
 ### Cenário
 - 2 mesas de metal (mesa de bar)
 - 1 caixa organizadora com:
-  - 6 pisca-piscas
+  - 6 pisca-piscas (para composição do cenário)
   - 6 tecidos vermelhos
 - 3 tecidos pretos
 - 14 caixas de engradado, contendo garrafas de cerveja vazias
