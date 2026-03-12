@@ -5,7 +5,7 @@ kind: person
 ---
 Cantor, compositor, ator e produtor.
 
-**Formação:**
+### Formação
 - Graduado em Música pela UFC e História pela UECE.
 - Mestre em Artes pelo IFCE.
 
