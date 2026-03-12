@@ -119,11 +119,11 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - **Produção Executiva:** Michael Feitosa
 
 ### Rider de Luz
-- 4 parleds (54leds)
-- mesa DMX
-- 4 cabos DMX 10 Mts
-- 2 leds portáteis dimerizáveis
-- 1 par incandescente ( branco quente )
+- 4 PAR LEDs (54 LEDs)
+- Mesa DMX
+- 4 cabos DMX de 10 m
+- 2 LEDs portáteis dimerizáveis
+- 1 par incandescente (branco quente)
 - 3 tripés para luz
 - 9 extensões pretas
 - 3 pisca-piscas de padrões diferentes
@@ -134,13 +134,13 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - 1 pedestal
 
 ### Cenário
-- 2 Mesas de metal (mesa de bar)
-- 1 caixa organizadora contendo 6 piscas piscas e 6 tecidos vermelhos
+- 2 mesas de metal (mesa de bar)
+- 1 caixa organizadora contendo 6 pisca-piscas e 6 tecidos vermelhos
 - 3 tecidos pretos
-- 14 Caixa de engradado, contendo garrafas de cerveja vazias
-- 2 caixa de isopor
+- 14 caixas de engradado, contendo garrafas de cerveja vazias
+- 2 caixas de isopor
 - 1 bacia de bambu com uma vara de 2 metros
 - 4 chapéus
 - 2 banquinhos de madeira
 - 1 tonel de metal
-- 2 alguidar
+- 2 alguidares
