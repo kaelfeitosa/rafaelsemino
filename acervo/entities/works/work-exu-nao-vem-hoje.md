@@ -96,7 +96,7 @@ attachment_15_url: '[[work-farol-novo-temporada-porto-dragao-2023-03/work-farol-
 attachment_15_label: Farol Novo Temporada Porto Dragão 2023, imagem 1
 attachment_15_category: registro
 attachment_16_type: link
-attachment_16_url: 'https://youtu.be/NoRFTc6Wv_s?si=t9YgEV6Ccalfn8pi'
+attachment_16_url: 'https://youtu.be/NoRFTc6Wv_s'
 attachment_16_label: Rider de Som (Vídeo Pedestal)
 attachment_16_category: documentacao
 attachment_17_type: document
