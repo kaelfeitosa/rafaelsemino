@@ -7,6 +7,9 @@ year: 2022
 role: Ator
 collaborators:
   - Felipe Marques
+  - Coletivo Farol Novo
+  - Zéis
+  - Michael Feitosa
 occurrences:
   - title: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga
     type: apresentacao
@@ -92,10 +95,14 @@ attachment_15_type: image
 attachment_15_url: '[[work-farol-novo-temporada-porto-dragao-2023-03/work-farol-novo-temporada-porto-dragao-2023-03-001.jpeg]]'
 attachment_15_label: Farol Novo Temporada Porto Dragão 2023, imagem 1
 attachment_15_category: registro
+attachment_16_type: link
+attachment_16_url: 'https://youtu.be/NoRFTc6Wv_s?si=t9YgEV6Ccalfn8pi'
+attachment_16_label: Rider de Som (Vídeo Pedestal)
+attachment_16_category: documentacao
 ---
 Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Rafael Semino no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, em diálogo com sua investigação em torno de Exu, oralidade e presença cênica. A obra articula rito, jogo e participação do público, tendo Rafael Semino como autor e intérprete. Atuando de forma contínua e imersiva na temporada e fundação do espetáculo, o projeto contou com Felipe Rodrigues Marques, que assumiu não só a técnica e maquinaria sonora/cênica, mas também a atuação ao vivo.
 
-A peça mergulha na força matriz e nos rastros de Exu, propondo uma encenação que foge do palco tradicional: o público não é mero observador, mas é intensamente convidado à participação coletiva. Os espectadores assumem personagens, dançam e dissolvem ativamente a barreira física com os atores.
+A peça mergulha na força matriz e nos rastros de Exu, propondo uma encenação que foge do palco tradicional: o público não é mero observador, mas é intensamente convidado à participação coletiva. Os espectadores assumem personagens, dançam e dissolvem ativamente a barreira física com os atores. A narrativa tem início em um baile funk, instaurando um ambiente festivo e coletivo. A partir do anúncio de que “Exu não vem hoje”, a cena se transforma e a ausência do orixá passa a operar como presença simbólica, conduzindo o público e os intérpretes a reflexões sobre tempo, espiritualidade, identidade, resistência cultural e pertencimento.
 
 A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica da Escola Porto Iracema das Artes (2022) e Laborátório de Pesquisa do CCBJ no bom jardim (2023). O processo criativo pavimentou as bases técnicas periféricas do coletivo, integrando Felipe Marques na atuação física e na operação profunda de som e luz, configurando um ambiente teatral vivo e pulsante.
 
@@ -105,3 +112,35 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - Hub Cultural Porto Dragão – Temporada Farol Novo 2023
 - 30º Festival Nordestino de Teatro de Guaramiranga (FNT) (2024)
 
+### Ficha Técnica
+- **Diretor, Dramaturgo e Ator:** Rafael Semino
+- **Elenco, Cenografia e Iluminação, Coordenação Geral:** Felipe Rodrigues (Membro do Coletivo Farol Novo)
+- **Sonoplastia e Composição Musical:** Zéis
+- **Produção Executiva:** Michael Feitosa
+
+### Rider de Luz
+- 4 parleds (54leds)
+- mesa DMX
+- 4 cabos DMX 10 Mts
+- 2 leds portáteis dimerizáveis
+- 1 par incandescente ( branco quente )
+- 3 tripés para luz
+- 9 extensões pretas
+- 3 pisca-piscas de padrões diferentes
+
+### Rider de Som
+- 2 microfones
+- 2 caixas de som
+- 1 pedestal
+
+### Cenário
+- 2 Mesas de metal (mesa de bar)
+- 1 caixa organizadora contendo 6 piscas piscas e 6 tecidos vermelhos
+- 3 tecidos pretos
+- 14 Caixa de engradado, contendo garrafas de cerveja vazias
+- 2 caixa de isopor
+- 1 bacia de bambu com uma vara de 2 metros
+- 4 chapéus
+- 2 banquinhos de madeira
+- 1 tonel de metal
+- 2 alguidar
