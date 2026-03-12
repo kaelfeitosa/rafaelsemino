@@ -3,7 +3,7 @@ id: agent-felipe-marques
 name: Felipe Marques
 kind: person
 ---
-Felipe Rodrigues Marques, creditado também como Felipe Rodrigues ou simplesmente Felipe Marques.
+Felipe Rodrigues Marques, creditado também como Felipe Rodrigues.
 
 Artista, técnico, produtor e pesquisador.
 
