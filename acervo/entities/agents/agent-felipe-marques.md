@@ -8,5 +8,5 @@ Felipe Rodrigues Marques, creditado também como Felipe Rodrigues ou simplesment
 Artista, técnico, produtor e pesquisador.
 
 ### Atuação
-- Membro do Coletivo Farol Novo e da Cia. Co.Vil.
+- Membro do [[agent-coletivo-farol-novo|Coletivo Farol Novo]] e da Cia. Co.Vil.
 - Responsável pela coordenação geral de projetos com expertise em som e cenografia.

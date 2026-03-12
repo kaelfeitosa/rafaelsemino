@@ -117,7 +117,7 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - 30º Festival Nordestino de Teatro de Guaramiranga (FNT) (2024)
 
 ### Ficha Técnica
-- **Diretor, Dramaturgo e Ator:** Rafael Semino
-- **Elenco, Cenografia, Iluminação e Coordenação Geral:** Felipe Marques
-- **Sonoplastia e Composição Musical:** Zéis
-- **Produção Executiva:** Michael Feitosa
+- **Diretor, Dramaturgo e Ator:** [[agent-rafael-semino|Rafael Semino]]
+- **Elenco, Cenografia, Iluminação e Coordenação Geral:** [[agent-felipe-marques|Felipe Marques]]
+- **Sonoplastia e Composição Musical:** [[agent-zeis|Zéis]]
+- **Produção Executiva:** [[agent-michael-feitosa|Michael Feitosa]]
