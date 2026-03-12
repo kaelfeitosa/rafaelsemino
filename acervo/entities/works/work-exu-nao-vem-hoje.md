@@ -97,8 +97,8 @@ attachment_15_label: Farol Novo Temporada Porto Dragão 2023, imagem 1
 attachment_15_category: registro
 attachment_16_type: link
 attachment_16_url: 'https://youtu.be/NoRFTc6Wv_s'
-attachment_16_label: Rider de Som (Vídeo Pedestal)
-attachment_16_category: documentacao
+attachment_16_label: Trechos da apresentação gravados
+attachment_16_category: registro
 attachment_17_type: document
 attachment_17_url: '[[riders-exu-nao-vem-hoje.md]]'
 attachment_17_label: Rider Técnico Completo (Luz, Som, Cenário)
