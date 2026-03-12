@@ -17,7 +17,9 @@
 
 ### Cenário
 - 2 mesas de metal (mesa de bar)
-- 1 caixa organizadora contendo 6 pisca-piscas e 6 tecidos vermelhos
+- 1 caixa organizadora com:
+  - 6 pisca-piscas
+  - 6 tecidos vermelhos
 - 3 tecidos pretos
 - 14 caixas de engradado, contendo garrafas de cerveja vazias
 - 2 caixas de isopor
