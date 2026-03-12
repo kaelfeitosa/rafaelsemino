@@ -99,6 +99,10 @@ attachment_16_type: link
 attachment_16_url: 'https://youtu.be/NoRFTc6Wv_s?si=t9YgEV6Ccalfn8pi'
 attachment_16_label: Rider de Som (Vídeo Pedestal)
 attachment_16_category: documentacao
+attachment_17_type: document
+attachment_17_url: '[[riders-exu-nao-vem-hoje.md]]'
+attachment_17_label: Rider Técnico Completo (Luz, Som, Cenário)
+attachment_17_category: documentacao
 ---
 Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Rafael Semino no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, em diálogo com sua investigação em torno de Exu, oralidade e presença cênica. A obra articula rito, jogo e participação do público, tendo Rafael Semino como autor e intérprete. Atuando de forma contínua e imersiva na temporada e fundação do espetáculo, o projeto contou com Felipe Rodrigues Marques, que assumiu não só a técnica e maquinaria sonora/cênica, mas também a atuação ao vivo.
 
@@ -117,30 +121,3 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - **Elenco, Cenografia e Iluminação, Coordenação Geral:** Felipe Marques (Membro do Coletivo Farol Novo)
 - **Sonoplastia e Composição Musical:** Zéis
 - **Produção Executiva:** Michael Feitosa
-
-### Rider de Luz
-- 4 PAR LEDs (54 LEDs)
-- Mesa DMX
-- 4 cabos DMX de 10 m
-- 2 LEDs portáteis dimerizáveis
-- 1 par incandescente (branco quente)
-- 3 tripés para luz
-- 9 extensões pretas
-- 3 pisca-piscas de padrões diferentes
-
-### Rider de Som
-- 2 microfones
-- 2 caixas de som
-- 1 pedestal
-
-### Cenário
-- 2 mesas de metal (mesa de bar)
-- 1 caixa organizadora contendo 6 pisca-piscas e 6 tecidos vermelhos
-- 3 tecidos pretos
-- 14 caixas de engradado, contendo garrafas de cerveja vazias
-- 2 caixas de isopor
-- 1 bacia de bambu com uma vara de 2 metros
-- 4 chapéus
-- 2 banquinhos de madeira
-- 1 tonel de metal
-- 2 alguidares
