@@ -9,4 +9,4 @@ Cantor, compositor, ator e produtor.
 - Graduado em Música pela UFC e História pela UECE.
 - Mestre em Artes pelo IFCE.
 
-É responsável pela criação e execução de sonoplastias, integrando elementos diversos como funk e hip-hop a trilhas sonoras.
+Colaborou como artista convidado com o Coletivo Farol Novo no espetáculo Vão, assinando a sonoplastia e atuando em cena. Em Exu Não Vem Hoje, colaborou com composições musicais pontuais para a trilha sonora.

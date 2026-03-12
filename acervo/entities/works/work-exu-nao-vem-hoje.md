@@ -108,7 +108,7 @@ Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Raf
 
 A peça mergulha na força matriz e nos rastros de Exu, propondo uma encenação que foge do palco tradicional: o público não é mero observador, mas é intensamente convidado à participação coletiva. Os espectadores assumem personagens, dançam e dissolvem ativamente a barreira física com os atores.
 
-A narrativa tem início em um baile funk, instaurando um ambiente festivo e coletivo. A partir do anúncio de que “Exu não vem hoje”, a cena se transforma e a ausência do orixá passa a operar como presença simbólica, conduzindo o público e os intérpretes a reflexões sobre tempo, espiritualidade, identidade, resistência cultural e pertencimento.
+A narrativa tem início em um baile funk, instaurando um ambiente festivo e coletivo a partir de uma trilha sonora que mescla funk e hip-hop, de autoria do próprio Rafael Semino, em colaboração pontual com compositores convidados, como o artista Zéis e outros rappers parceiros. A partir do anúncio de que “Exu não vem hoje”, a cena se transforma e a ausência do orixá passa a operar como presença simbólica, conduzindo o público e os intérpretes a reflexões sobre tempo, espiritualidade, identidade, resistência cultural e pertencimento.
 
 A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica da Escola Porto Iracema das Artes (2022) e no Laboratório de Pesquisa do CCBJ (2023). O processo criativo pavimentou as bases técnicas periféricas do coletivo, integrando Felipe Marques na atuação física e na operação profunda de som e luz, configurando um ambiente teatral vivo e pulsante.
 
