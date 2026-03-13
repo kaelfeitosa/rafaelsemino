@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coletivo Farol Novo | Portfólio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <script src="focus-image.js"></script>
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --red: #e60000;
+            --gray: #f2f2f2;
+            --border: #000;
+            --text-light: #ddd;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* GRAIN OVERLAY */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: 9999;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Layout */
+        .page-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            border-left: 2px solid var(--border);
+            border-right: 2px solid var(--border);
+            position: relative;
+        }
+
+        header {
+            padding: 15px 40px;
+            border-bottom: 3px solid var(--black);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-nav a {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--black);
+            text-decoration: none;
+            transition: color 0.3s var(--ease);
+            letter-spacing: 1px;
+            padding: 5px;
+        }
+
+        .main-nav a:hover {
+            color: var(--red);
+        }
+
+        .brand h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            line-height: 0.8;
+            letter-spacing: -1px;
+        }
+
+        .brand p {
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        .nav-meta {
+            text-align: right;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .btn-print {
+            background: var(--red);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-print:hover {
+            background: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0 var(--red);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 60px;
+            border-bottom: 2px solid var(--border);
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease);
+            align-items: start;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .section-label {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 5rem;
+            line-height: 0.8;
+            color: var(--black);
+            position: sticky;
+            top: 40px;
+            height: auto;
+            text-transform: uppercase;
+            transition: all 0.4s var(--ease);
+            cursor: default;
+            -webkit-text-stroke: 1px var(--black);
+            z-index: 10;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            padding-bottom: 40px;
+            pointer-events: none;
+        }
+
+        /* Catalog Grid */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        .catalog-grid--single-col {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            border: 2px solid var(--black);
+            background: var(--black);
+            color: var(--white);
+            transition: all 0.5s var(--ease);
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--red);
+            box-shadow: 15px 15px 0px var(--red);
+            transform: translate(-5px, -5px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 640px;
+            background: var(--gray);
+            overflow: hidden;
+            position: relative;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .card-img focus-image {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%) contrast(1.1);
+            transition: all 0.6s var(--ease);
+        }
+
+        .card:hover .card-img focus-image {
+            filter: grayscale(0) contrast(1);
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 40px;
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 15px;
+            display: inline-block;
+            border-bottom: 1px solid var(--red);
+            transition: all 0.3s;
+        }
+
+        .card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .card p {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .card.card--light {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .card.card--light p {
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 0;
+            border-bottom: none;
+            opacity: 1;
+            transform: none;
+            height: 85vh;
+            max-height: 1080px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: url('images/optimized/agent-coletivo-farol-novo/agent-coletivo-farol-novo-002.webp') center/cover no-repeat;
+            border-bottom: 10px solid var(--black);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 40px 60px;
+        }
+
+        .hero-tag {
+            color: var(--red);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 8vw;
+            color: white;
+            line-height: 0.85;
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            color: var(--red);
+        }
+
+        .hero-bio--floating {
+            border-left: 10px solid var(--red);
+            padding: 15px 30px;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            max-width: 800px;
+        }
+
+        .hero-bio--floating p {
+            font-size: 1.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+        }
+
+        /* Utilities */
+        .woodcut-border {
+            border: 4px solid var(--black);
+            box-shadow: 8px 8px 0px var(--black);
+        }
+
+        .stamped {
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+            -webkit-text-stroke: 1px var(--black);
+        }
+
+        .detail-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .detail-list li::before {
+            content: "■ ";
+            color: var(--red);
+            margin-right: 10px;
+        }
+
+        .btn-work {
+            display: inline-flex;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.3s var(--ease);
+            border: 2px solid var(--red);
+        }
+
+        .btn-work:hover {
+            background: var(--white);
+            color: var(--black);
+            box-shadow: 8px 8px 0px var(--red);
+            transform: translate(-4px, -4px);
+        }
+
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            background: var(--black);
+            overflow: hidden;
+            border: 4px solid var(--black);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s var(--ease);
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            height: 100%;
+        }
+
+        .carousel-container--cols-3 .carousel-slide {
+            flex: 0 0 calc((100% - 4px) / 3);
+        }
+
+        .carousel-slide focus-image {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) contrast(1.2);
+            transition: filter 0.3s;
+        }
+
+        .carousel-slide focus-image:hover {
+            filter: grayscale(0) contrast(1);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--red);
+            color: white;
+            border: 2px solid var(--black);
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .carousel-btn--prev {
+            left: 15px;
+        }
+
+        .carousel-btn--next {
+            right: 15px;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--red);
+            transform: scale(1.2) rotate(45deg);
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            header,
+            .noise,
+            .carousel-btn,
+            .btn-print,
+            .no-print {
+                display: none !important;
+            }
+
+            section {
+                display: block !important;
+                opacity: 1 !important;
+                transform: none !important;
+                padding: 1.5cm !important;
+                break-inside: auto;
+            }
+
+            .section-label {
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                position: relative !important;
+                top: 0 !important;
+                font-size: 2rem !important;
+                border-bottom: 5px solid var(--red) !important;
+                width: 100% !important;
+                margin-bottom: 1cm !important;
+            }
+
+            .hero {
+                height: 29.7cm !important;
+                break-after: page;
+            }
+
+            .card {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            section {
+                grid-template-columns: 1fr;
+                padding: 80px 40px;
+            }
+
+            .section-label {
+                writing-mode: horizontal-tb;
+                transform: none;
+                position: relative;
+                font-size: 10vw;
+                width: 100%;
+                line-height: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise no-print"></div>
+
+    <div class="page-wrapper">
+        <header class="no-print">
+            <div class="brand">
+                <h1>FAROL NOVO</h1>
+                <p>Coletivo de Criação Cênica</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#coletivo">O Coletivo</a>
+                <a href="#repertorio">Repertório</a>
+                <a href="#circulacao">Trajetória</a>
+                <a href="#integrantes">Integrantes</a>
+                <a href="#projeto">Novo Projeto</a>
+            </nav>
+            <div class="nav-meta">
+                <button class="btn-print" id="print-button">Gravar PDF</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero visible">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-tag">PORTFÓLIO ARTÍSTICO — EDITAL DE MONTAGEM</p>
+                    <h2 class="hero-title">COLETIVO<br><span>FAROL NOVO</span></h2>
+                    <div class="hero-bio--floating">
+                        <p>Teatro, rito e oralidade nas encruzilhadas da cultura periférica</p>
+                        <p
+                            style="font-size: 1.2rem; margin-top: 10px; font-family: 'Archivo Black'; color: var(--red); letter-spacing: 1px; text-transform: uppercase;">
+                            Grupo independente de criação cênica contemporânea</p>
+                        <p
+                            style="font-size: 1rem; margin-top: 15px; font-family: 'Inter'; font-weight: 500; opacity: 0.8; letter-spacing: 2px;">
+                            FUNDADO EM 2022 — FORTALEZA, CEARÁ</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO: O COLETIVO -->
+            <section id="coletivo">
+                <div class="section-label stamped">O COLETIVO</div>
+                <div class="catalog-grid catalog-grid--single-col">
+                    <div class="card woodcut-border card--light">
+                        <div class="card-content">
+                            <h3>Fundação e trajetória</h3>
+                            <p>O <strong>Coletivo Farol Novo</strong> é um grupo de criação cênica sediado em Fortaleza (CE), fundado em 2022 a partir do <strong>Laboratório de Criação em Teatro da Escola Porto Iracema das Artes</strong>.</p>
+                            <br>
+                            <p>O coletivo nasce do encontro entre os artistas <strong>Rafael Semino</strong> e <strong>Gabriel França</strong>, interessados em investigar relações entre <strong>mito, oralidade e tempo</strong> a partir das experiências culturais das periferias urbanas.</p>
+                            <br>
+                            <p>Desde sua criação, o grupo desenvolve processos artísticos que articulam <strong>teatro, música e audiovisual</strong> como elementos estruturantes da dramaturgia cênica. Com a entrada de <strong>Felipe Rodrigues (Lipex)</strong>, o coletivo amplia sua investigação incorporando <strong>cenografia, iluminação e sonoplastia</strong> como elementos ativos da composição da cena.</p>
+                            <br>
+                            <p>Os trabalhos do Farol Novo buscam criar <strong>experiências cênicas imersivas</strong>, nas quais artistas e público compartilham o espaço da cena. Suas obras dialogam com referências da <strong>ancestralidade afro-brasileira</strong>, da <strong>oralidade popular</strong> e das <strong>poéticas contemporâneas dos territórios periféricos</strong>.</p>
+                            <br>
+                            <p>Entre suas realizações destacam-se os espetáculos <strong>Exu Não Vem Hoje (2022)</strong> e <strong>Vão (2023)</strong>, além do episódio audiovisual <strong>Rastros de Exu (2023)</strong>.</p>
+                            <br>
+                            <p>Essas obras fazem parte de uma <strong>pesquisa artística continuada sobre mito, oralidade e presença cênica</strong>, tendo como eixo simbólico a figura de <strong>Exu</strong>, associada ao movimento, à comunicação e às transformações presentes nas encruzilhadas da vida.</p>
+                            <br>
+                            <p style="border-top: 1px solid var(--black); padding-top: 15px; font-family: 'Lora'; font-style: italic;">
+                                Os trabalhos do coletivo já foram apresentados em espaços culturais como:<br><br>
+                                Escola Porto Iracema das Artes<br>
+                                Hub Cultural Porto Dragão<br>
+                                Cine Teatro São Luís<br>
+                                Centro Cultural Banco do Nordeste<br>
+                                Festival Nordestino de Teatro de Guaramiranga
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO: REPERTÓRIO -->
+            <section id="repertorio">
+                <div class="section-label stamped">REPERTÓRIO</div>
+                <div class="catalog-grid catalog-grid--single-col" style="gap: 80px;">
+
+                    <div class="card woodcut-border card--light no-print">
+                        <div class="card-content">
+                            <h3>Principais Trabalhos</h3>
+                            <ul class="detail-list"
+                                style="font-family: 'Archivo Black'; text-transform: uppercase; font-size: 1.2rem;">
+                                <li>Exu Não Vem Hoje (2022)</li>
+                                <li>Vão (2023)</li>
+                                <li>Rastros de Exu (2023)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- OBRA: EXU NÃO VEM HOJE -->
+                    <div class="card woodcut-border">
+                        <div class="carousel-container carousel-container--cols-3">
+                            <div class="carousel-wrapper">
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-010.webp"></focus-image>
+                                </div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-008.webp"></focus-image>
+                                </div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-012.webp"></focus-image>
+                                </div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-exu-nao-vem-hoje/work-exu-nao-vem-hoje-001.webp"></focus-image>
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                            <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">Espetáculo Teatral</span>
+                            <h3>Exu Não Vem Hoje (2022)</h3>
+                            <p>Primeiro espetáculo do Coletivo Farol Novo, criado a partir do <strong>Laboratório de Criação em Teatro da Escola Porto Iracema das Artes</strong>.</p>
+                            <p>A obra nasce da pesquisa desenvolvida por <strong>Rafael Semino</strong> em seu <strong>mestrado em Artes pela Universidade Federal do Ceará</strong>, que deu origem ao livro <strong>Contos de Exu (2022)</strong>. O trabalho investiga relações entre mito, oralidade e criação cênica a partir da figura simbólica de Exu.</p>
+                            <p>Na encenação, essas investigações dialogam com referências das <strong>culturas urbanas das periferias de Fortaleza</strong>, incorporando elementos do <strong>hip hop, do funk e da musicalidade popular urbana</strong>.</p>
+                            <p>A cena é construída como uma experiência coletiva em que <strong>oralidade, música ao vivo, improvisação e participação do público</strong> transformam o espaço teatral em um território de encontro e criação compartilhada.</p>
+                            <div style="margin-top: 20px;">
+                                <strong>Ficha técnica:</strong>
+                                <ul class="detail-list">
+                                    <li>Direção, dramaturgia e atuação: Rafael Semino</li>
+                                    <li>Atuação, cenografia e iluminação: Felipe Rodrigues (Lipex)</li>
+                                    <li>Sonoplastia e composição musical: Zéis</li>
+                                    <li>Produção executiva: Michael Feitosa</li>
+                                </ul>
+                            </div>
+                            <a href="https://youtu.be/NoRFTc6Wv_s" target="_blank" class="btn-work">Assista Trechos</a>
+                        </div>
+                    </div>
+
+                    <!-- OBRA: VÃO -->
+                    <div class="card woodcut-border card--light">
+                        <div class="carousel-container carousel-container--cols-3">
+                            <div class="carousel-wrapper">
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-vao/work-vao-003.webp"></focus-image></div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-vao/work-vao-004.webp"></focus-image></div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-vao/work-vao-005.webp"></focus-image></div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-vao/work-vao-006.webp"></focus-image></div>
+                            </div>
+                            <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                            <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                            <div class="carousel-indicators"></div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">Teatro & Música</span>
+                            <h3>Vão (2023)</h3>
+                            <p>Espetáculo criado a partir do <strong>Prêmio Amarrações Estéticas</strong>, iniciativa da Escola Porto Iracema das Artes que promove encontros entre diferentes áreas de pesquisa artística.</p>
+                            <p>A obra nasce do diálogo entre a investigação cênica do Coletivo Farol Novo e a pesquisa musical autoral do artista <strong>Zéis</strong>, explorando relações entre <strong>tempo, encontro e deslocamento</strong> nas encruzilhadas da vida urbana.</p>
+                            <p>A encenação articula teatro e música ao vivo como elementos estruturantes da dramaturgia.</p>
+                            <div style="margin-top: 20px;">
+                                <strong>Ficha técnica:</strong>
+                                <ul class="detail-list">
+                                    <li>Direção e dramaturgia: Rafael Semino</li>
+                                    <li>Pesquisa musical: Zéis</li>
+                                    <li>Produção executiva: Michael Feitosa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OBRA: RASTROS DE EXU -->
+                    <div class="card woodcut-border">
+                        <div class="carousel-container carousel-container--cols-3">
+                            <div class="carousel-wrapper">
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-rastros-de-exu/work-rastros-de-exu-001.webp"></focus-image>
+                                </div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-rastros-de-exu/work-rastros-de-exu-004.webp"></focus-image>
+                                </div>
+                                <div class="carousel-slide"><focus-image
+                                        src="images/optimized/work-rastros-de-exu/work-rastros-de-exu-005.webp"></focus-image>
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-btn--prev">&#10094;</button>
+                            <button class="carousel-btn carousel-btn--next">&#10095;</button>
+                            <div class="carousel-indicators"></div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">Série Audiovisual</span>
+                            <h3>Rastros de Exu (2023)</h3>
+                            <p><strong>Rastros de Exu</strong> é um episódio audiovisual produzido dentro da websérie <strong>Zona de Criação</strong>, realizada pelo <strong>Hub Cultural Porto Dragão</strong>.</p>
+                            <p>O episódio reinterpreta o processo criativo do espetáculo <strong>Exu Não Vem Hoje</strong>, explorando suas referências estéticas, musicais e dramatúrgicas a partir da linguagem audiovisual.</p>
+                            <p>O trabalho amplia para o vídeo as investigações do coletivo em torno da <strong>oralidade, da cultura afro-brasileira e da figura simbólica de Exu</strong>, registrando fragmentos de criação e experimentações cênicas.</p>
+                            <a href="https://youtu.be/bjwQwDCBGsI" target="_blank" class="btn-work">Assista Agora</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SEÇÃO: TRAJETÓRIA -->
+            <section id="circulacao">
+                <div class="section-label stamped">TRAJETÓRIA</div>
+                <div class="catalog-grid">
+                    <div class="card woodcut-border">
+                        <div class="card-content">
+                            <span class="card-tag">Circulação de trabalhos</span>
+                            <ul class="detail-list">
+                                <li><strong>Festival Nordestino de Teatro de Guaramiranga</strong> — 2024</li>
+                                <li><strong>Hub Cultural Porto Dragão</strong> — temporada de apresentações (2023)</li>
+                                <li><strong>Centro Cultural Banco do Nordeste</strong> — apresentação do espetáculo <strong>Vão</strong> (2023)</li>
+                                <li><strong>Cine Teatro São Luís</strong> — apresentação do espetáculo <strong>Exu Não Vem Hoje</strong> (2022)</li>
+                                <li><strong>Escola Porto Iracema das Artes</strong> — processo de criação e estreia do espetáculo <strong>Exu Não Vem Hoje</strong> (2022)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card woodcut-border card--light">
+                        <div class="card-content">
+                            <span class="card-tag">Reconhecimento e programas de criação</span>
+                            <ul class="detail-list">
+                                <li><strong>Prêmio Amarrações Estéticas</strong> — Escola Porto Iracema das Artes (2023)</li>
+                                <li><strong>Zona de Criação</strong> — Hub Cultural Porto Dragão (2023)</li>
+                                <li><strong>Residência de Criação Constelação</strong> (2023)</li>
+                                <li><strong>Laboratório de Criação em Teatro</strong> — Escola Porto Iracema das Artes (2022)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO: INTEGRANTES -->
+            <section id="integrantes">
+                <div class="section-label stamped">INTEGRANTES</div>
+                <div class="catalog-grid">
+
+                    <!-- RAFAEL -->
+                    <div class="card woodcut-border">
+                        <div class="card-content">
+                            <span class="card-tag">Direção e dramaturgia</span>
+                            <h3>Rafael Semino</h3>
+                            <p>Diretor, dramaturgo, ator e pesquisador em artes cênicas. Mestre em Artes pela <strong>Universidade Federal do Ceará (UFC)</strong> e licenciado em Teatro pelo <strong>Instituto Federal do Ceará (IFCE)</strong>.</p>
+                            <p>Sua trajetória articula <strong>criação artística, pesquisa acadêmica e práticas pedagógicas</strong>, investigando relações entre mito, oralidade, tempo e ancestralidade afro-brasileira nos processos de criação cênica. É autor do livro <strong>Contos de Exu (2022)</strong> e fundador do Coletivo Farol Novo.</p>
+                        </div>
+                    </div>
+
+                    <!-- FELIPE -->
+                    <div class="card woodcut-border">
+                        <div class="card-content">
+                            <span class="card-tag">Artes técnicas</span>
+                            <h3>Felipe Rodrigues (Lipex)</h3>
+                            <p>Artista, técnico e pesquisador da cena teatral de Fortaleza. Atua nas áreas de <strong>cenografia, iluminação e sonoplastia</strong>, desenvolvendo investigações sobre o papel das artes técnicas na dramaturgia cênica.</p>
+                            <p>Integra diferentes coletivos e projetos artísticos da cidade, participando da criação técnica de espetáculos, festivais e mostras culturais.</p>
+                        </div>
+                    </div>
+
+                    <!-- MICHAEL -->
+                    <div class="card woodcut-border">
+                        <div class="card-content">
+                            <span class="card-tag">Produção e estratégia</span>
+                            <h3>Michael Feitosa</h3>
+                            <p>Produtor cultural e artista multimídia. Atua na <strong>produção executiva, comunicação e desenvolvimento estratégico</strong> dos projetos do coletivo, colaborando na organização das etapas de criação, circulação e mediação cultural das obras.</p>
+                        </div>
+                    </div>
+
+                    <!-- LUCAS (CONVIDADO) -->
+                    <div class="card woodcut-border card--light">
+                        <div class="card-content">
+                            <span class="card-tag">Colaborador convidado</span>
+                            <h3>Lucas Damasceno (Caslu)</h3>
+                            <p>Ator, músico e pesquisador da cultura afro-brasileira. Desenvolve investigações sobre <strong>teatro negro, cultura popular e musicalidade afro-ancestral</strong>, integrando diferentes coletivos de pesquisa em artes vivas.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SEÇÃO: PROJETO FUTURO -->
+            <section id="projeto">
+                <div class="section-label stamped">PROJETO</div>
+                <div class="catalog-grid catalog-grid--single-col">
+                    <div class="card woodcut-border" style="background: var(--red);">
+                        <div class="card-content">
+                            <span class="card-tag" style="color: white; border-color: white;">Novo projeto</span>
+                            <h3 style="color: white;">Andanças de Exu</h3>
+                            <p style="color: white;"><strong>Andanças de Exu</strong> é o novo projeto de criação e montagem do Coletivo Farol Novo.</p>
+                            <p style="color: white; margin-top: 10px;">O espetáculo nasce da adaptação de novos contos do universo literário <strong>Contos de Exu</strong>, ampliando uma pesquisa artística iniciada com o livro homônimo e já desdobrada em teatro e audiovisual.</p>
+                            <p style="color: white; margin-top: 10px;">A criação investiga relações entre <strong>oralidade, teatro popular e tradições do reisado cearense</strong>, articulando canto coletivo, música ao vivo, improvisação, teatro de bonecos e participação do público.</p>
+                            <p style="color: white; margin-top: 10px;">A encenação acompanha as <strong>andanças de Exu</strong> por diferentes histórias e encontros, explorando o personagem como símbolo de movimento, transformação e comunicação.</p>
+                            <p style="color: white; margin-top: 10px;">Ao aproximar referências da cultura popular e linguagens contemporâneas do teatro, o projeto busca <strong>ampliar o acesso a narrativas afro-brasileiras e fortalecer a formação de público para as artes cênicas</strong>.</p>
+                            <div style="margin-top: 20px; color: white;">
+                                <p style="font-family: 'Archivo Black'; text-transform: uppercase; font-size: 1rem; margin-bottom: 15px;">Ficha técnica em formação</p>
+                                <ul class="detail-list" style="color: white;">
+                                    <li style="color: white;">Rafael Semino</li>
+                                    <li style="color: white;">Felipe Rodrigues (Lipex)</li>
+                                    <li style="color: white;">Michael Feitosa</li>
+                                    <li style="color: white;">Lucas Damasceno</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contato" style="background: var(--black); color: white; min-height: 40vh;">
+                <div class="section-label stamped" style="-webkit-text-stroke: 1px white; color: white;">CONTATO</div>
+                <div class="catalog-grid">
+                    <div style="padding: 40px;">
+                        <h2 style="font-family: 'Archivo Black'; font-size: 3rem; margin-bottom: 20px;">
+                            PORTFÓLIO<br>ARTÍSTICO</h2>
+                        <p style="font-size: 1.5rem; color: var(--red);">@coletivofarolnovo</p>
+                        <p style="font-size: 1.2rem;">Fortaleza — Ceará — Brasil</p>
+                    </div>
+                    <div style="padding: 40px; display: flex; align-items: flex-end;">
+                        <p style="font-size: 0.8rem; opacity: 0.5;">© 2024 Coletivo Farol Novo. Todos os direitos
+                            reservados.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Carousel Functionality
+        document.querySelectorAll('.carousel-container').forEach(container => {
+            const wrapper = container.querySelector('.carousel-wrapper');
+            const prevBtn = container.querySelector('.carousel-btn--prev');
+            const nextBtn = container.querySelector('.carousel-btn--next');
+            const dotsContainer = container.querySelector('.carousel-indicators');
+
+            const slides = container.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+
+            let cols = 1;
+            if (container.classList.contains('carousel-container--cols-2')) cols = 2;
+            if (container.classList.contains('carousel-container--cols-3')) cols = 3;
+
+            const maxSlide = Math.max(0, totalSlides - cols);
+            let currentSlide = 0;
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i <= maxSlide; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => {
+                        currentSlide = i;
+                        updateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function updateCarousel() {
+                const dots = container.querySelectorAll('.carousel-dot');
+                const gap = 2; // Matches index.html gap logic
+                const slideWidth = slides[0].offsetWidth;
+                wrapper.style.transform = `translateX(-${currentSlide * (slideWidth + gap)}px)`;
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            window.addEventListener('resize', updateCarousel);
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = currentSlide > 0 ? currentSlide - 1 : maxSlide;
+                    updateCarousel();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
+                    updateCarousel();
+                });
+            }
+        });
+
+        document.getElementById('print-button').addEventListener('click', () => {
+            window.print();
+        });
+    </script>
+</body>
+
+</html>
