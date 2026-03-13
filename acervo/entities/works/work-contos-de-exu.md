@@ -17,10 +17,10 @@ attachment_3_type: link
 attachment_3_url: 'https://www.amazon.com.br/Contos-Exu-Rafael-Semino-ebook/dp/B0D192M6VJ'
 attachment_3_label: Comprar
 attachment_3_category: publicacao
-attachment_2_type: image
-attachment_2_url: '[[work-contos-de-exu/work-contos-de-exu-002.png]]'
-attachment_2_label: Contos de Exu, imagem 2
-attachment_2_category: registro
+attachment_4_type: image
+attachment_4_url: '[[work-contos-de-exu/work-contos-de-exu-002.png]]'
+attachment_4_label: Contos de Exu, imagem 2
+attachment_4_category: registro
 ---
 Projeto desenvolvido no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes em 2022. O livro foi um dos desdobramentos artísticos que deram vida prática à pesquisa de mestrado de Rafael Semino pela UFC (Universidade Federal do Ceará), resultando na publicação da obra focada nas oralituras e escrevivências do artista e dos itãs de Exu criando uma relação entre a cosmologia exuística e suas vivencias.
 

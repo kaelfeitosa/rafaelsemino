@@ -7,6 +7,9 @@ year: 2022
 role: Ator
 collaborators:
   - Felipe Marques
+  - Coletivo Farol Novo
+  - Zéis
+  - Michael Feitosa
 occurrences:
   - title: Diretor em 30º Festival Nordestino de Teatro de Guaramiranga
     type: apresentacao
@@ -92,12 +95,22 @@ attachment_15_type: image
 attachment_15_url: '[[work-farol-novo-temporada-porto-dragao-2023-03/work-farol-novo-temporada-porto-dragao-2023-03-001.jpeg]]'
 attachment_15_label: Farol Novo Temporada Porto Dragão 2023, imagem 1
 attachment_15_category: registro
+attachment_16_type: link
+attachment_16_url: 'https://youtu.be/NoRFTc6Wv_s'
+attachment_16_label: Trechos da apresentação gravados
+attachment_16_category: registro
+attachment_17_type: document
+attachment_17_url: '[[riders-exu-nao-vem-hoje.md]]'
+attachment_17_label: Rider Técnico Completo (Luz, Som, Cenário)
+attachment_17_category: documentacao
 ---
 Espetáculo teatral criado a partir do processo de pesquisa desenvolvido por Rafael Semino no Laboratório de Criação em Teatro da Escola Porto Iracema das Artes, em diálogo com sua investigação em torno de Exu, oralidade e presença cênica. A obra articula rito, jogo e participação do público, tendo Rafael Semino como autor e intérprete. Atuando de forma contínua e imersiva na temporada e fundação do espetáculo, o projeto contou com Felipe Rodrigues Marques, que assumiu não só a técnica e maquinaria sonora/cênica, mas também a atuação ao vivo.
 
 A peça mergulha na força matriz e nos rastros de Exu, propondo uma encenação que foge do palco tradicional: o público não é mero observador, mas é intensamente convidado à participação coletiva. Os espectadores assumem personagens, dançam e dissolvem ativamente a barreira física com os atores.
 
-A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica da Escola Porto Iracema das Artes (2022) e Laborátório de Pesquisa do CCBJ no bom jardim (2023). O processo criativo pavimentou as bases técnicas periféricas do coletivo, integrando Felipe Marques na atuação física e na operação profunda de som e luz, configurando um ambiente teatral vivo e pulsante.
+A narrativa tem início em um baile funk, instaurando um ambiente festivo e coletivo. A trilha sonora, que mescla funk e hip-hop, é de autoria do próprio [[agent-rafael-semino|Rafael Semino]], com colaboração pontual de compositores convidados como o artista [[agent-zeis|Zéis]] e outros rappers parceiros. A partir do anúncio de que “Exu não vem hoje”, a cena se transforma. A ausência do orixá passa a operar como presença simbólica, conduzindo o público e os intérpretes a reflexões sobre tempo, espiritualidade, identidade, resistência cultural e pertencimento.
+
+A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica da Escola Porto Iracema das Artes (2022) e no Laboratório de Pesquisa do CCBJ (2023). O processo criativo pavimentou as bases técnicas periféricas do coletivo, integrando [[agent-felipe-marques|Felipe Marques]] na atuação física e na operação profunda de som e luz. Isso configurou um ambiente teatral vivo e pulsante.
 
 **Circulação e Destaques:**
 - Escola Porto Iracema das Artes – apresentação única
@@ -105,3 +118,8 @@ A gestação do projeto ocorreu no interior do Laboratório de Criação Cênica
 - Hub Cultural Porto Dragão – Temporada Farol Novo 2023
 - 30º Festival Nordestino de Teatro de Guaramiranga (FNT) (2024)
 
+### Ficha Técnica
+- **Diretor, Dramaturgo e Ator:** [[agent-rafael-semino|Rafael Semino]]
+- **Elenco, Cenografia, Iluminação e Coordenação Geral:** [[agent-felipe-marques|Felipe Marques]]
+- **Sonoplastia e Composição Musical:** [[agent-zeis|Zéis]]
+- **Produção Executiva:** [[agent-michael-feitosa|Michael Feitosa]]
