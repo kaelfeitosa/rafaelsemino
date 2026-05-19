@@ -30,18 +30,34 @@ occurrences:
 attachment_1_type: link
 attachment_1_url: https://store.steampowered.com/app/4605020/Vem_Exu/
 attachment_1_label: Página de Desejos / Demo na Steam
-attachment_1_category: registro
+attachment_1_category: divulgacao
 attachment_2_type: link
 attachment_2_url: https://play.google.com/store/apps/details?id=com.tejoestudio.exu
 attachment_2_label: Demo no Google Play Store
-attachment_2_category: registro
+attachment_2_category: divulgacao
 attachment_3_type: link
 attachment_3_url: https://www.youtube.com/watch?v=-9ISCxQ5hdE
 attachment_3_label: Trailer Oficial no YouTube
-attachment_3_category: registro
+attachment_3_category: divulgacao
+attachment_4_type: image
+attachment_4_url: '[[work-vem-exu/work-vem-exu-001.png]]'
+attachment_4_label: Vem, Exu!, Ilustração Key Art
+attachment_4_category: divulgacao
+attachment_5_type: image
+attachment_5_url: '[[work-vem-exu/work-vem-exu-002.jpg]]'
+attachment_5_label: Vem, Exu!, imagem 1
+attachment_5_category: registro
+attachment_6_type: image
+attachment_6_url: '[[work-vem-exu/work-vem-exu-003.jpg]]'
+attachment_6_label: Vem, Exu!, imagem 2
+attachment_6_category: registro
+attachment_7_type: image
+attachment_7_url: '[[work-vem-exu/work-vem-exu-004.jpg]]'
+attachment_7_label: Vem, Exu!, imagem 3
+attachment_7_category: registro
 ---
-Jogo eletrônico e conto interativo digital desenvolvido pela [[work-tejo-estudio|Tejo Estúdio]] com direção criativa, game design e programação de [[agent-michael-feitosa|Michael Feitosa]] e roteiro de [[agent-rafael-semino|Rafael Semino]]. A obra é uma adaptação direta do conto *"Exu ficou com medo"*, publicado no livro [[work-contos-de-exu|Contos de Exu]] (2022) de Rafael Semino.
+Jogo eletrônico e conto interativo que une literatura, tradição oral e novas mídias. Desenvolvido pela [[work-tejo-estudio|Tejo Estúdio]], o projeto adapta o conto *"Exu ficou com medo"*, publicado originalmente no livro [[work-contos-de-exu|Contos de Exu]] (2022), de autoria de [[agent-rafael-semino|Rafael Semino]]. A narrativa acompanha a história de um garoto que, ao perder sua arraia em uma briga familiar, precisa enfrentar uma tempestade fantástica gerada por seu próprio orgulho e raiva.
 
-O projeto explora a interseção entre cultura popular, literatura e mídias interativas. Apresenta uma estética minimalista de alto contraste focada em silhuetas (preto, branco e vermelho), com referências visuais à xilogravura e literatura de cordel. A sonoplastia e a trilha sonora reativa do jogo foram desenvolvidas por [[agent-zeis|Zéis]], integrando percussão afro-brasileira.
+A identidade visual traz uma estética de alto contraste baseada em silhuetas, com referências diretas à xilogravura e ao cordel nordestino. A trilha sonora reativa desenvolvida por [[agent-zeis|Zéis]] mistura a percussão afro-brasileira a timbres modernos cearenses, com direção criativa e programação de [[agent-michael-feitosa|Michael Feitosa]].
 
-O projeto foi viabilizado com fomento da Lei Paulo Gustavo (LPG) no estado do Ceará no edital de 2024.
+O projeto foi realizado com fomento da Lei Paulo Gustavo (LPG) via Secretaria da Cultura do Ceará (SECULT-CE) no edital de 2024. Suas ações incluíram playtests e circulação em escolas públicas da rede municipal de Fortaleza, além de demonstrações em feiras de tecnologia e cultura pop do estado.
