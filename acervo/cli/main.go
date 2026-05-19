@@ -219,20 +219,6 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 	repostReviewCmd.MarkFlagRequired("pull-number")
 	repostReviewCmd.MarkFlagRequired("review-id")
 
-	var buildSiteCmd = &cobra.Command{
-		Use:   "build-site",
-		Short: "Generates the static frontend (index.html) from markdown Works (CURRENTLY DISABLED)",
-		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("❌ AVISO: O comando 'build-site' está temporariamente desativado pelo usuário pois está quebrado.")
-			/*
-				if err := builder.BuildSite("../entities", "../../frontend/index.tmpl", "../../frontend/index.html"); err != nil {
-					fmt.Println("❌ Build failed:", err)
-					os.Exit(1)
-				}
-			*/
-		},
-	}
-
 	var migrateAttachmentsCmd = &cobra.Command{
 		Use:   "migrate-attachments",
 		Short: "Migrates nested YAML attachments to flattened attachment_X_Y keys",
@@ -477,7 +463,7 @@ Use absolute paths or adjust flags if running from elsewhere.`,
 		},
 	}
 
-	rootCmd.AddCommand(similarityAuditCmd, migrateAttachmentsCmd, validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd, buildSiteCmd)
+	rootCmd.AddCommand(similarityAuditCmd, migrateAttachmentsCmd, validateCmd, reindexCmd, verifyCmd, ingestCmd, hooksCmd, setFocusCmd, buildAssetsCmd, repostReviewCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
