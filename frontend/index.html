@@ -1058,6 +1058,48 @@
             transform: translate(-4px, -4px);
         }
 
+        /* Subsection Headers & Compact Cards */
+        .subsection-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 8px;
+            color: var(--black);
+        }
+
+        .catalog-grid--compact {
+            gap: 30px !important;
+        }
+
+        .catalog-grid--compact .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .catalog-grid--compact .card-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .catalog-grid--compact .project-context {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card--compact .project-title {
+            font-size: 1.4rem !important;
+        }
+
+        .catalog-grid--compact .project-details-mini {
+            font-size: 0.85rem !important;
+            margin-top: auto !important;
+        }
+
         /* ── DIGITAL PDF OPTIMIZATION ── */
         @media print {
 
@@ -1718,6 +1760,77 @@
                                         target="_blank" class="btn-work" style="margin-top: 0;">Demo no Google Play</a>
                                     <a href="https://www.youtube.com/watch?v=-9ISCxQ5hdE" target="_blank"
                                         class="btn-work" style="margin-top: 0;">Assistir Trailer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUBSEÇÃO: COLABORAÇÕES & GAME JAMS -->
+                    <div class="mt-40">
+                        <h4 class="subsection-title">Outras Produções &amp; Game Jams</h4>
+                        <div class="catalog-grid catalog-grid--compact">
+                            <!-- Card: Caos no Espaço -->
+                            <div class="card woodcut-border card--light card--compact">
+                                <div class="carousel-container">
+                                    <div class="carousel-wrapper">
+                                        <div class="carousel-slide">
+                                            <focus-image
+                                                src="images/optimized/work-caos-no-espaco/work-caos-no-espaco-001.webp"
+                                                alt="Gameplay de Caos no Espaço"></focus-image>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-tag card-tag--red">Game Jam (Brackeys 2021)</span>
+                                    <h3 class="project-title">Caos no Espaço</h3>
+                                    <div class="project-context mt-10">
+                                        <p class="project-desc light" style="font-size: 0.9rem; line-height: 1.4;">
+                                            Jogo casual 2D de física e destruição planetária em órbita alienígena. Desenvolvido para a Brackeys Game Jam 2021.2.
+                                        </p>
+                                        <div class="project-details-mini mt-15">
+                                            <strong>Ficha Técnica:</strong>
+                                            <ul class="detail-list" style="margin-left: 15px;">
+                                                <li><strong>Arte 2D:</strong> Rafael Semino</li>
+                                                <li><strong>Programação &amp; Game Design:</strong> Michael Feitosa</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="project-meta light" style="margin-top: 15px; display: flex; gap: 10px;">
+                                        <a href="https://kaelfeitosa.itch.io/chaos-in-space-fixed" target="_blank" class="btn-work" style="margin-top: 0; padding: 5px 10px; font-size: 0.75rem;">Jogar Demo</a>
+                                        <a href="https://youtu.be/v3kLu4PwAQM?si=PSc1LBGF9A-qGu8R" target="_blank" class="btn-work" style="margin-top: 0; padding: 5px 10px; font-size: 0.75rem;">Ver Vídeo</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card: Na Caverna -->
+                            <div class="card woodcut-border card--light card--compact">
+                                <div class="carousel-container">
+                                    <div class="carousel-wrapper">
+                                        <div class="carousel-slide">
+                                            <focus-image
+                                                src="images/optimized/work-na-caverna/work-na-caverna-001.webp"
+                                                alt="Gameplay de Na Caverna: O Mito da Luz"></focus-image>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-tag card-tag--red">Game Jam (Philosophy Jam #4)</span>
+                                    <h3 class="project-title">Na Caverna: O Mito da Luz</h3>
+                                    <div class="project-context mt-10">
+                                        <p class="project-desc light" style="font-size: 0.9rem; line-height: 1.4;">
+                                            Jogo conceitual 2D inspirado no clássico "Mito da Caverna" de Platão, explorando a dualidade entre luz e sombras.
+                                        </p>
+                                        <div class="project-details-mini mt-15">
+                                            <strong>Ficha Técnica:</strong>
+                                            <ul class="detail-list" style="margin-left: 15px;">
+                                                <li><strong>Arte 2D:</strong> Rafael Semino</li>
+                                                <li><strong>Programação &amp; Game Design:</strong> Michael Feitosa</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="project-meta light" style="margin-top: 15px; display: flex; gap: 10px;">
+                                        <a href="https://kaelfeitosa.itch.io/the-light-cave-myth" target="_blank" class="btn-work" style="margin-top: 0; padding: 5px 10px; font-size: 0.75rem;">Jogar Demo</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
