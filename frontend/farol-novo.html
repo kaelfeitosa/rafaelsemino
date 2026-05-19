@@ -146,15 +146,12 @@
 
         /* Section Styling */
         section {
-            padding: 120px 60px;
+            padding: 100px 5%;
             border-bottom: 2px solid var(--border);
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 60px;
-            opacity: 0;
-            transform: translateY(30px);
+            display: block;
+            opacity: 1;
+            transform: none;
             transition: all 0.8s var(--ease);
-            align-items: start;
         }
 
         section.visible {
@@ -164,21 +161,13 @@
 
         .section-label {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 5rem;
-            line-height: 0.8;
+            font-size: 4rem;
+            line-height: 1;
             color: var(--black);
-            position: sticky;
-            top: 40px;
-            height: auto;
+            margin-bottom: 40px;
             text-transform: uppercase;
-            transition: all 0.4s var(--ease);
-            cursor: default;
-            -webkit-text-stroke: 1px var(--black);
-            z-index: 10;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            padding-bottom: 40px;
-            pointer-events: none;
+            display: block;
+            border-bottom: 5px solid var(--red);
         }
 
         /* Catalog Grid */
@@ -342,7 +331,6 @@
 
         .stamped {
             text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
-            -webkit-text-stroke: 1px var(--black);
         }
 
         .detail-list {
@@ -474,23 +462,23 @@
                 display: none !important;
             }
 
-            section {
+            section:not(.hero) {
                 display: block !important;
-                opacity: 1 !important;
-                transform: none !important;
-                padding: 1.5cm !important;
+                padding: 1.5cm 1cm !important;
                 break-inside: auto;
+                background: var(--white) !important;
+            }
+
+            .hero {
+                display: flex !important;
+                height: 1080px !important;
             }
 
             .section-label {
-                writing-mode: horizontal-tb !important;
-                transform: none !important;
-                position: relative !important;
-                top: 0 !important;
-                font-size: 2rem !important;
+                font-size: 3rem !important;
+                display: block !important;
+                margin-bottom: 30px !important;
                 border-bottom: 5px solid var(--red) !important;
-                width: 100% !important;
-                margin-bottom: 1cm !important;
             }
 
             .hero {
